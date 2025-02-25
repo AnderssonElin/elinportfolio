@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import Hero from "@/components/Hero";
 import Timeline from "@/components/Timeline";
 import Dashboard from "@/components/Dashboard";
+import AskMe from "@/components/AskMe";
 
 const Index = () => {
   // Smooth scroll behavior
@@ -22,10 +23,11 @@ const Index = () => {
   }, []);
 
   return (
-    <main className="bg-white">
+    <main className="bg-secondary">
       <Hero />
       <Timeline />
       <Dashboard />
+      <AskMe />
     </main>
   );
 };
