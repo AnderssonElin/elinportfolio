@@ -4,74 +4,58 @@ import { Play } from "lucide-react";
 import { useState, useEffect } from "react";
 
 const Hero = () => {
-  const sqlCode = `/* Booting Up My Profile */\n\nSELECT 'Hello, my name is ' || 'Elin' AS Greeting,\n       'BI Analyst' AS Role,\n       'Transforming raw data into golden insights' AS Tagline\nFROM experience;`;
+  const sqlCode = `/* Booting Up My Profile */
+SELECT 'Hello, my name is ' || 'Elin' AS Greeting,
+      'BI Analyst' AS Role,
+      'Transforming raw data into golden insights' AS Tagline
+FROM experience;`;
 
-  // Separera SQL-koden i delar för färgkodning
-  const colorizedSQL = sqlCode.split('\n').map((line, lineIndex) => {
-    return line.split(' ').map((word, wordIndex) => {
-      if (['SELECT', 'FROM', 'AS'].includes(word)) {
-        return (
-          <motion.span
-            key={`${lineIndex}-${wordIndex}`}
-            className="text-blue-400"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{
-              duration: 0.05,
-              delay: (lineIndex * line.length + wordIndex) * 0.03,
-            }}
-          >
-            {word}{' '}
-          </motion.span>
-        );
-      } else if (word.startsWith("'") && word.endsWith("'")) {
-        return (
-          <motion.span
-            key={`${lineIndex}-${wordIndex}`}
-            className="text-red-400"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{
-              duration: 0.05,
-              delay: (lineIndex * line.length + wordIndex) * 0.03,
-            }}
-          >
-            {word}{' '}
-          </motion.span>
-        );
-      } else if (word.startsWith('/*') || word.endsWith('*/')) {
-        return (
-          <motion.span
-            key={`${lineIndex}-${wordIndex}`}
-            className="text-green-400"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{
-              duration: 0.05,
-              delay: (lineIndex * line.length + wordIndex) * 0.03,
-            }}
-          >
-            {word}{' '}
-          </motion.span>
-        );
-      } else {
-        return (
-          <motion.span
-            key={`${lineIndex}-${wordIndex}`}
-            className="text-gray-300"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{
-              duration: 0.05,
-              delay: (lineIndex * line.length + wordIndex) * 0.03,
-            }}
-          >
-            {word}{' '}
-          </motion.span>
-        );
-      }
-    });
-  });
+  // Separera SQL-koden i rader för korrekt formatering och animation
+  const colorizedSQL = sqlCode.split('\n').map((line, lineIndex) => (
+    <motion.div
+      key={lineIndex}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{
+        duration: 0.5,
+        delay: lineIndex * 0.5, // Varje rad kommer att visas med 0.5s mellanrum
+      }}
+    >
+      {line.split(' ').map((word, wordIndex) => {
+        // Behåll mellanslag i början av raden
+        const prefix = line.match(/^\s*/)?.[0] || '';
+        if (wordIndex === 0) {
+          word = prefix + word;
+        }
+
+        if (['SELECT', 'FROM', 'AS'].includes(word.trim())) {
+          return (
+            <span key={`${lineIndex}-${wordIndex}`} className="text-blue-400">
+              {word}{' '}
+            </span>
+          );
+        } else if (word.includes("'")) {
+          return (
+            <span key={`${lineIndex}-${wordIndex}`} className="text-red-400">
+              {word}{' '}
+            </span>
+          );
+        } else if (word.includes('/*') || word.includes('*/')) {
+          return (
+            <span key={`${lineIndex}-${wordIndex}`} className="text-green-400">
+              {word}{' '}
+            </span>
+          );
+        } else {
+          return (
+            <span key={`${lineIndex}-${wordIndex}`} className="text-gray-300">
+              {word}{' '}
+            </span>
+          );
+        }
+      })}
+    </motion.div>
+  ));
 
   const handleExecute = () => {
     const timelineSection = document.getElementById('timeline');
@@ -101,16 +85,19 @@ const Hero = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
         >
-          <div className="space-y-2">
+          <pre className="space-y-2 whitespace-pre">
             {colorizedSQL}
-          </div>
+          </pre>
         </motion.div>
         
         <motion.button
           onClick={handleExecute}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 2 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ 
+            delay: sqlCode.split('\n').length * 0.5 + 0.5, // Väntar tills alla rader är synliga plus lite extra
+            duration: 0.5 
+          }}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           className="mt-6 bg-emerald-500 hover:bg-emerald-600 text-white px-6 py-3 rounded-md font-sql flex items-center gap-2 mx-auto transition-colors"
