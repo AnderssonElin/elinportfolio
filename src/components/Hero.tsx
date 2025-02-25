@@ -4,7 +4,7 @@ import { ArrowRight } from "lucide-react";
 
 const Hero = () => {
   return (
-    <section className="min-h-screen flex items-center justify-center bg-gradient-to-b from-secondary to-white px-4">
+    <section className="min-h-screen flex items-center justify-center bg-secondary px-4">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -14,11 +14,11 @@ const Hero = () => {
         <span className="inline-block bg-accent/10 text-accent px-4 py-2 rounded-full text-sm font-medium">
           Business Intelligence Analyst
         </span>
-        <h1 className="text-4xl md:text-6xl font-bold text-primary">
+        <h1 className="text-4xl md:text-6xl font-bold text-white">
           Turning Data into
           <span className="text-accent"> Actionable Insights</span>
         </h1>
-        <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
+        <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto">
           Helping businesses make data-driven decisions through advanced analytics
           and visualization
         </p>
