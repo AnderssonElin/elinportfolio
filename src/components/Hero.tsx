@@ -1,94 +1,124 @@
 
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { Play } from "lucide-react";
 import { useState, useEffect } from "react";
 
 const Hero = () => {
-  const [isTyping, setIsTyping] = useState(true);
-  const sqlCode = `/* Booting Up My Profile */
-SELECT 'Hello, my name is ' || 'Elin' AS Greeting,
-       'BI Analyst' AS Role,
-       'Transforming raw data into golden insights' AS Tagline
-FROM experience;`;
+  const sqlCode = `/* Booting Up My Profile */\n\nSELECT 'Hello, my name is ' || 'Elin' AS Greeting,\n       'BI Analyst' AS Role,\n       'Transforming raw data into golden insights' AS Tagline\nFROM experience;`;
 
-  const codeVariants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1 }
-  };
-
-  const textVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      transition: {
-        duration: 0.8,
-        delay: 2.5 // Vänta tills SQL-koden är "färdigskriven"
+  // Separera SQL-koden i delar för färgkodning
+  const colorizedSQL = sqlCode.split('\n').map((line, lineIndex) => {
+    return line.split(' ').map((word, wordIndex) => {
+      if (['SELECT', 'FROM', 'AS'].includes(word)) {
+        return (
+          <motion.span
+            key={`${lineIndex}-${wordIndex}`}
+            className="text-blue-400"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{
+              duration: 0.05,
+              delay: (lineIndex * line.length + wordIndex) * 0.03,
+            }}
+          >
+            {word}{' '}
+          </motion.span>
+        );
+      } else if (word.startsWith("'") && word.endsWith("'")) {
+        return (
+          <motion.span
+            key={`${lineIndex}-${wordIndex}`}
+            className="text-red-400"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{
+              duration: 0.05,
+              delay: (lineIndex * line.length + wordIndex) * 0.03,
+            }}
+          >
+            {word}{' '}
+          </motion.span>
+        );
+      } else if (word.startsWith('/*') || word.endsWith('*/')) {
+        return (
+          <motion.span
+            key={`${lineIndex}-${wordIndex}`}
+            className="text-green-400"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{
+              duration: 0.05,
+              delay: (lineIndex * line.length + wordIndex) * 0.03,
+            }}
+          >
+            {word}{' '}
+          </motion.span>
+        );
+      } else {
+        return (
+          <motion.span
+            key={`${lineIndex}-${wordIndex}`}
+            className="text-gray-300"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{
+              duration: 0.05,
+              delay: (lineIndex * line.length + wordIndex) * 0.03,
+            }}
+          >
+            {word}{' '}
+          </motion.span>
+        );
       }
+    });
+  });
+
+  const handleExecute = () => {
+    const timelineSection = document.getElementById('timeline');
+    if (timelineSection) {
+      timelineSection.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
+  useEffect(() => {
+    const handleKeyPress = (event: KeyboardEvent) => {
+      if (event.key === 'F5') {
+        event.preventDefault();
+        handleExecute();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyPress);
+    return () => window.removeEventListener('keydown', handleKeyPress);
+  }, []);
+
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center bg-secondary px-4 relative overflow-hidden">
-      <motion.div
-        initial="hidden"
-        animate="visible"
-        variants={codeVariants}
-        className="absolute top-20 left-0 w-full flex justify-center"
-      >
-        <motion.pre 
-          className="text-accent/70 font-sql text-sm md:text-base bg-primary/30 p-6 rounded-lg backdrop-blur-sm"
+    <section className="min-h-screen flex flex-col items-center justify-center bg-secondary px-4 relative">
+      <div className="w-full max-w-4xl">
+        <motion.div
+          className="bg-primary/30 p-8 rounded-lg backdrop-blur-sm font-sql"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
         >
-          {sqlCode.split('').map((char, index) => (
-            <motion.span
-              key={index}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{
-                duration: 0.05,
-                delay: index * 0.03,
-              }}
-            >
-              {char}
-            </motion.span>
-          ))}
-        </motion.pre>
-      </motion.div>
-
-      <motion.div
-        initial="hidden"
-        animate="visible"
-        variants={textVariants}
-        className="text-center space-y-6 max-w-4xl mt-32"
-      >
-        <span className="inline-block bg-accent/10 text-accent px-4 py-2 rounded-full text-sm font-medium">
-          Business Intelligence Analyst
-        </span>
-        <h1 className="text-4xl md:text-6xl font-bold text-white">
-          Turning Data into
-          <span className="text-accent"> Actionable Insights</span>
-        </h1>
-        <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto">
-          Helping businesses make data-driven decisions through advanced analytics
-          and visualization
-        </p>
-        <motion.div
+          <div className="space-y-2">
+            {colorizedSQL}
+          </div>
+        </motion.div>
+        
+        <motion.button
+          onClick={handleExecute}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 2 }}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="inline-block"
+          className="mt-6 bg-emerald-500 hover:bg-emerald-600 text-white px-6 py-3 rounded-md font-sql flex items-center gap-2 mx-auto transition-colors"
         >
-          <a
-            href="#projects"
-            className="inline-flex items-center gap-2 bg-primary text-white px-8 py-4 rounded-full font-medium hover:bg-primary/90 transition-colors"
-          >
-            View My Work
-            <ArrowRight className="w-4 h-4" />
-          </a>
-        </motion.div>
-      </motion.div>
+          <Play className="w-4 h-4" />
+          Execute (F5)
+        </motion.button>
+      </div>
     </section>
   );
 };
