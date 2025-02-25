@@ -1,7 +1,6 @@
-
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Send, Bot, Sparkle, PartyPopper } from "lucide-react";
+import { Send, Bot, Sparkle } from "lucide-react";
 
 const funResponses = [
   "Enligt min BI-kristallkula är svaret 42! 🔮",
@@ -65,6 +64,24 @@ const Bubble = ({ style }: { style: React.CSSProperties }) => (
   />
 );
 
+const Glitter = ({ style }: { style: React.CSSProperties }) => (
+  <motion.div
+    initial={{ opacity: 0, scale: 0 }}
+    animate={{ 
+      opacity: [0, 1, 0],
+      scale: [0, 1, 0],
+      rotate: [0, 180, 360]
+    }}
+    transition={{
+      duration: 1,
+      ease: "easeInOut",
+      repeat: 3
+    }}
+    className="absolute w-1 h-1 bg-yellow-200 rounded-full animate-glitter"
+    style={style}
+  />
+);
+
 const AskMe = () => {
   const [question, setQuestion] = useState("");
   const [response, setResponse] = useState("");
@@ -90,22 +107,34 @@ const AskMe = () => {
   };
 
   return (
-    <section className="py-20 bg-secondary px-4" id="ask-me">
+    <section className="py-20 bg-secondary px-4 font-sql relative overflow-hidden" id="ask-me">
       <div className="container mx-auto max-w-4xl">
         <h2 className="text-3xl font-bold text-center text-white mb-16">Fråga BI-Oraklet</h2>
         
-        <div className="bg-primary/50 p-8 rounded-2xl backdrop-blur-sm relative overflow-hidden">
+        <div className="bg-primary/50 p-8 rounded-2xl backdrop-blur-sm relative">
           <AnimatePresence>
             {showCelebration && (
               <>
-                {/* Fireworks */}
+                {/* Outer Fireworks */}
                 {[...Array(12)].map((_, i) => (
                   <Firework
                     key={`firework-${i}`}
                     style={{
-                      left: `${Math.random() * 100}%`,
+                      left: `${Math.random() < 0.5 ? -20 : 120}%`,
                       top: `${Math.random() * 100}%`,
                       animationDelay: `${Math.random() * 0.5}s`,
+                    }}
+                  />
+                ))}
+                
+                {/* Glitter Effects */}
+                {[...Array(30)].map((_, i) => (
+                  <Glitter
+                    key={`glitter-${i}`}
+                    style={{
+                      left: `${Math.random() * 100}%`,
+                      top: `${Math.random() * 100}%`,
+                      animationDelay: `${Math.random() * 2}s`,
                     }}
                   />
                 ))}
@@ -115,34 +144,12 @@ const AskMe = () => {
                   <Star
                     key={`star-${i}`}
                     style={{
-                      left: `${Math.random() * 100}%`,
+                      left: `${Math.random() < 0.5 ? -10 : 110}%`,
                       top: `${Math.random() * 100}%`,
                       animationDelay: `${Math.random() * 0.3}s`,
                     }}
                   />
                 ))}
-                
-                {/* Champagne bubbles */}
-                {[...Array(20)].map((_, i) => (
-                  <Bubble
-                    key={`bubble-${i}`}
-                    style={{
-                      left: `${Math.random() * 100}%`,
-                      bottom: "0",
-                      animationDelay: `${Math.random() * 1}s`,
-                    }}
-                  />
-                ))}
-
-                {/* Celebration icon */}
-                <motion.div
-                  initial={{ scale: 0, opacity: 0 }}
-                  animate={{ scale: [0, 1.2, 1], opacity: 1 }}
-                  exit={{ scale: 0, opacity: 0 }}
-                  className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-                >
-                  <PartyPopper className="w-16 h-16 text-yellow-400" />
-                </motion.div>
               </>
             )}
           </AnimatePresence>

@@ -1,7 +1,6 @@
-
 import { motion } from "framer-motion";
 import { BarChart, Bar, XAxis, Tooltip, ResponsiveContainer } from "recharts";
-import { Award, Coffee, Code, Database, Users, Star, Target, Zap } from "lucide-react";
+import { Award, Coffee, Code, Database, Users, Star } from "lucide-react";
 
 const stats = [
   { 
@@ -96,7 +95,7 @@ const CustomTooltip = ({ active, payload, label }: any) => {
 
 const Dashboard = () => {
   return (
-    <section className="py-20 bg-primary px-4" id="dashboard">
+    <section className="py-20 bg-primary px-4 font-sql" id="dashboard">
       <div className="container mx-auto">
         <h2 className="text-3xl font-bold text-center mb-16 text-white">Dashboard</h2>
         
@@ -137,12 +136,12 @@ const Dashboard = () => {
                 />
                 <Tooltip 
                   content={<CustomTooltip />}
-                  cursor={false}
+                  cursor={{ fill: 'transparent' }}
                 />
                 <Bar 
                   dataKey="value" 
                   fill="#9b87f5"
-                  onMouseOver={() => {
+                  onMouseMove={(e) => {
                     document.body.style.transition = "filter 0.3s ease";
                     document.body.style.filter = "blur(4px)";
                     const currentSection = document.getElementById('dashboard');
@@ -152,7 +151,7 @@ const Dashboard = () => {
                       currentSection.style.zIndex = "50";
                     }
                   }}
-                  onMouseOut={() => {
+                  onMouseLeave={() => {
                     document.body.style.filter = "none";
                     const currentSection = document.getElementById('dashboard');
                     if (currentSection instanceof HTMLElement) {

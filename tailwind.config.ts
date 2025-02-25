@@ -19,6 +19,9 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        'sql': ['Source Code Pro', 'monospace'],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -63,6 +66,10 @@ export default {
           from: { opacity: "0" },
           to: { opacity: "1" },
         },
+        glitter: {
+          "0%, 100%": { opacity: "0" },
+          "50%": { opacity: "1" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -70,6 +77,7 @@ export default {
         float: "float 3s ease-in-out infinite",
         slideUp: "slideUp 0.5s ease-out",
         fadeIn: "fadeIn 0.5s ease-out",
+        glitter: "glitter 0.8s ease-in-out infinite",
       },
     },
   },
