@@ -8,7 +8,7 @@ const projectsData = [
     id: 1,
     title: "Data Lake Implementation",
     description: "Enterprise-wide data lake architecture with real-time analytics",
-    image: "photo-1486312338219-ce68d2c6f44d",
+    image: "photo-1488590528505-98d2b5aba04b",
     link: "/projects/data-lake"
   },
   {
@@ -24,6 +24,27 @@ const projectsData = [
     description: "Self-service analytics platform with interactive dashboards",
     image: "photo-1498050108023-c5249f4df085",
     link: "/projects/analytics"
+  },
+  {
+    id: 4,
+    title: "BI Dashboard Suite",
+    description: "Comprehensive business intelligence dashboard solution",
+    image: "photo-1486312338219-ce68d2c6f44d",
+    link: "/projects/bi-dashboard"
+  },
+  {
+    id: 5,
+    title: "Data Visualization Tool",
+    description: "Interactive data visualization and reporting platform",
+    image: "photo-1504868584819-f8e8b4b6d7e3",
+    link: "/projects/data-viz"
+  },
+  {
+    id: 6,
+    title: "AI Analytics Engine",
+    description: "AI-powered analytics engine for predictive insights",
+    image: "photo-1509718443690-d8e2fb3474b7",
+    link: "/projects/ai-analytics"
   }
 ];
 
@@ -36,7 +57,7 @@ const Projects = () => {
       <div className="container mx-auto">
         <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12 md:mb-16 text-accent">Projects</h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
           {projectsData.map((project) => (
             <motion.div
               key={project.id}
@@ -47,18 +68,21 @@ const Projects = () => {
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.2 }}
             >
-              <img
+              <motion.img
                 src={`https://source.unsplash.com/${project.image}`}
                 alt={project.title}
                 className="w-full h-full object-cover"
+                animate={{
+                  opacity: hoveredId === project.id ? 0 : 1
+                }}
+                transition={{ duration: 0.2 }}
               />
               
               <motion.div
                 className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent p-6 flex flex-col justify-end"
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0 }}
                 animate={{ 
-                  opacity: hoveredId === project.id ? 1 : 0,
-                  y: hoveredId === project.id ? 0 : 20
+                  opacity: hoveredId === project.id ? 1 : 0
                 }}
                 transition={{ duration: 0.2 }}
               >
