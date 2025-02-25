@@ -1,4 +1,3 @@
-
 import { motion, AnimatePresence } from "framer-motion";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
 import { Award, Coffee, Code, Database, Users, Star } from "lucide-react";
@@ -49,40 +48,35 @@ const skillsData = [
     value: 65,
     project: "Hospital Data Management",
     description: "Healthcare data analytics system",
-    icon: "🏥",
-    path: "M10,0 L20,0 L20,40 L30,40 L30,60 L0,60 L0,40 L10,40 Z M5,10 h5 v5 h-5 Z M15,10 h5 v5 h-5 Z M5,20 h5 v5 h-5 Z M15,20 h5 v5 h-5 Z M5,30 h5 v5 h-5 Z M15,30 h5 v5 h-5 Z"
+    icon: "🏥"
   },
   { 
     date: "2024-02",
     value: 75,
     project: "School Analytics",
     description: "Educational performance tracking",
-    icon: "🏫",
-    path: "M15,0 L30,10 L30,50 L0,50 L0,10 Z M5,20 h5 v5 h-5 Z M20,20 h5 v5 h-5 Z M5,30 h5 v5 h-5 Z M20,30 h5 v5 h-5 Z M12,35 h6 v15 h-6 Z"
+    icon: "🏫"
   },
   { 
     date: "2024-03",
     value: 82,
     project: "City Time Analysis",
     description: "Urban planning time series",
-    icon: "🕰️",
-    path: "M15,0 L30,15 L30,70 L0,70 L0,15 Z M13,25 h4 v20 h-4 Z M10,25 L15,35 Z M20,25 L15,35 Z"
+    icon: "🕰️"
   },
   { 
     date: "2024-04",
     value: 88,
     project: "Tech Infrastructure",
     description: "IT systems analysis",
-    icon: "💻",
-    path: "M0,10 L30,10 L30,40 L0,40 Z M2,15 L28,15 L28,35 L2,35 Z M10,40 L20,40 L25,45 L5,45 Z"
+    icon: "💻"
   },
   { 
     date: "2024-05",
     value: 95,
     project: "Urban Data Center",
     description: "Smart city analytics",
-    icon: "🏢",
-    path: "M5,0 L25,0 L25,80 L5,80 Z M8,5 h4 v4 h-4 Z M18,5 h4 v4 h-4 Z M8,15 h4 v4 h-4 Z M18,15 h4 v4 h-4 Z M8,25 h4 v4 h-4 Z M18,25 h4 v4 h-4 Z M8,35 h4 v4 h-4 Z M18,35 h4 v4 h-4 Z M8,45 h4 v4 h-4 Z M18,45 h4 v4 h-4 Z M8,55 h4 v4 h-4 Z M18,55 h4 v4 h-4 Z M8,65 h4 v4 h-4 Z M18,65 h4 v4 h-4 Z"
+    icon: "🏢"
   }
 ];
 
@@ -108,47 +102,19 @@ const CustomTooltip = ({ active, payload, label }: any) => {
 };
 
 const CustomBar = (props: any) => {
-  const { x, y, width, height, payload } = props;
-  const scale = height / 100; // Normalize the height for SVG scaling
+  const { x, y, width, height, icon } = props;
   
   return (
-    <g transform={`translate(${x},${y})`}>
-      <defs>
-        <linearGradient id={`barGradient-${payload.date}`} x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#9b87f5" />
-          <stop offset="100%" stopColor="#7b67d5" />
-        </linearGradient>
-      </defs>
-      <motion.path
-        initial={{ scale: 0, opacity: 0 }}
-        animate={{ 
-          scale: [0, 1],
-          opacity: [0, 1],
-        }}
-        transition={{
-          duration: 1,
-          ease: "easeOut"
-        }}
-        d={payload.path}
-        fill={`url(#barGradient-${payload.date})`}
-        transform={`scale(1, ${scale})`}
-        style={{
-          transformOrigin: 'bottom',
-          filter: 'drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.1))'
-        }}
-      />
-      <motion.text
-        x="15"
-        y="-10"
+    <g>
+      <rect x={x} y={y} width={width} height={height} fill="#9b87f5" rx={4} />
+      <text
+        x={x + width / 2}
+        y={y - 10}
         textAnchor="middle"
-        fill="#fff"
         fontSize="20"
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.5 }}
       >
-        {payload.icon}
-      </motion.text>
+        {icon}
+      </text>
     </g>
   );
 };
@@ -191,13 +157,12 @@ const Dashboard = () => {
 
         <div className="bg-secondary/50 backdrop-blur-sm p-4 sm:p-6 rounded-2xl shadow-lg relative">
           <h3 className="text-lg sm:text-xl font-semibold mb-4 sm:mb-6 text-white">Project Performance</h3>
-          <div className="h-[350px] sm:h-[400px]">
+          <div className="h-[250px] sm:h-[300px]">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart 
                 data={skillsData}
                 onMouseEnter={() => setIsHovering(true)}
                 onMouseLeave={() => setIsHovering(false)}
-                margin={{ top: 30, right: 30, left: 20, bottom: 5 }}
               >
                 <XAxis 
                   dataKey="date" 
@@ -223,6 +188,7 @@ const Dashboard = () => {
                 <Bar 
                   dataKey="value" 
                   shape={<CustomBar />}
+                  fill="#9b87f5"
                 />
               </BarChart>
             </ResponsiveContainer>
