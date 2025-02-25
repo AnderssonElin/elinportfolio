@@ -1,5 +1,5 @@
 
-import { Mail, Linkedin } from "lucide-react";
+import { Mail, Linkedin, Github } from "lucide-react";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
@@ -11,7 +11,6 @@ const Footer = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Här kan du implementera email-funktionaliteten
     toast({
       title: "Message sent!",
       description: "Thank you for your message. I'll get back to you soon.",
@@ -79,7 +78,7 @@ const Footer = () => {
           >
             <h3 className="text-xl sm:text-2xl font-bold text-white">Connect With Me</h3>
             <a
-              href="https://linkedin.com/in/your-profile" // Uppdatera med din LinkedIn-profil
+              href="https://linkedin.com/in/your-profile"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors"
@@ -88,7 +87,16 @@ const Footer = () => {
               <span>LinkedIn Profile</span>
             </a>
             <a
-              href="mailto:your@email.com" // Uppdatera med din email
+              href="https://github.com/your-username"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors"
+            >
+              <Github className="w-6 h-6" />
+              <span>GitHub Profile</span>
+            </a>
+            <a
+              href="mailto:your@email.com"
               className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors"
             >
               <Mail className="w-6 h-6" />
