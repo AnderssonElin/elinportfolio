@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Send, Robot } from "lucide-react";
+import { Send, Bot } from "lucide-react";
 
 const funResponses = [
   "Enligt min BI-kristallkula är svaret 42! 🔮",
@@ -63,7 +63,7 @@ const AskMe = () => {
             >
               <div className="flex items-start gap-4">
                 <div className="bg-accent/20 p-2 rounded-lg">
-                  <Robot className="w-6 h-6 text-accent" />
+                  <Bot className="w-6 h-6 text-accent" />
                 </div>
                 <p className="text-white">{response}</p>
               </div>
