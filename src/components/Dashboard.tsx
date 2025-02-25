@@ -78,13 +78,17 @@ const skillsData = [
 const CustomTooltip = ({ active, payload, label }: any) => {
   if (active && payload && payload.length) {
     return (
-      <div className="bg-primary/80 backdrop-blur-sm p-4 rounded-lg border border-accent/20 shadow-xl">
+      <motion.div
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        className="bg-primary/80 backdrop-blur-sm p-4 rounded-lg border border-accent/20 shadow-xl"
+      >
         <h4 className="text-white font-bold mb-2">{payload[0].payload.project}</h4>
         <p className="text-gray-300 text-sm">{payload[0].payload.description}</p>
         <div className="mt-2 text-accent font-medium">
           Completion: {payload[0].value}%
         </div>
-      </div>
+      </motion.div>
     );
   }
   return null;
@@ -133,6 +137,7 @@ const Dashboard = () => {
                 />
                 <Tooltip 
                   content={<CustomTooltip />}
+                  cursor={false}
                 />
                 <Bar 
                   dataKey="value" 

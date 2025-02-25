@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Send, Bot } from "lucide-react";
+import { Send, Bot, Sparkle, PartyPopper } from "lucide-react";
 
 const funResponses = [
   "Enligt min BI-kristallkula är svaret 42! 🔮",
@@ -30,18 +30,53 @@ const Firework = ({ style }: { style: React.CSSProperties }) => (
   />
 );
 
+const Star = ({ style }: { style: React.CSSProperties }) => (
+  <motion.div
+    initial={{ scale: 0, opacity: 1 }}
+    animate={{
+      scale: [0, 1],
+      opacity: [1, 0],
+      rotate: [0, 180],
+    }}
+    transition={{
+      duration: 0.6,
+      ease: "easeOut",
+    }}
+    className="absolute text-yellow-400"
+    style={style}
+  >
+    <Sparkle className="w-6 h-6" />
+  </motion.div>
+);
+
+const Bubble = ({ style }: { style: React.CSSProperties }) => (
+  <motion.div
+    initial={{ y: 0, opacity: 1 }}
+    animate={{
+      y: -100,
+      opacity: [1, 0],
+    }}
+    transition={{
+      duration: 1,
+      ease: "easeOut",
+    }}
+    className="absolute w-2 h-2 bg-yellow-200 rounded-full"
+    style={style}
+  />
+);
+
 const AskMe = () => {
   const [question, setQuestion] = useState("");
   const [response, setResponse] = useState("");
   const [isAnimating, setIsAnimating] = useState(false);
-  const [showFireworks, setShowFireworks] = useState(false);
+  const [showCelebration, setShowCelebration] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!question.trim()) return;
 
     setIsAnimating(true);
-    setShowFireworks(true);
+    setShowCelebration(true);
     
     setTimeout(() => {
       const randomResponse = funResponses[Math.floor(Math.random() * funResponses.length)];
@@ -49,8 +84,8 @@ const AskMe = () => {
       setIsAnimating(false);
       
       setTimeout(() => {
-        setShowFireworks(false);
-      }, 1000);
+        setShowCelebration(false);
+      }, 2000);
     }, 1000);
   };
 
@@ -61,11 +96,12 @@ const AskMe = () => {
         
         <div className="bg-primary/50 p-8 rounded-2xl backdrop-blur-sm relative overflow-hidden">
           <AnimatePresence>
-            {showFireworks && (
+            {showCelebration && (
               <>
+                {/* Fireworks */}
                 {[...Array(12)].map((_, i) => (
                   <Firework
-                    key={i}
+                    key={`firework-${i}`}
                     style={{
                       left: `${Math.random() * 100}%`,
                       top: `${Math.random() * 100}%`,
@@ -73,6 +109,40 @@ const AskMe = () => {
                     }}
                   />
                 ))}
+                
+                {/* Stars */}
+                {[...Array(8)].map((_, i) => (
+                  <Star
+                    key={`star-${i}`}
+                    style={{
+                      left: `${Math.random() * 100}%`,
+                      top: `${Math.random() * 100}%`,
+                      animationDelay: `${Math.random() * 0.3}s`,
+                    }}
+                  />
+                ))}
+                
+                {/* Champagne bubbles */}
+                {[...Array(20)].map((_, i) => (
+                  <Bubble
+                    key={`bubble-${i}`}
+                    style={{
+                      left: `${Math.random() * 100}%`,
+                      bottom: "0",
+                      animationDelay: `${Math.random() * 1}s`,
+                    }}
+                  />
+                ))}
+
+                {/* Celebration icon */}
+                <motion.div
+                  initial={{ scale: 0, opacity: 0 }}
+                  animate={{ scale: [0, 1.2, 1], opacity: 1 }}
+                  exit={{ scale: 0, opacity: 0 }}
+                  className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+                >
+                  <PartyPopper className="w-16 h-16 text-yellow-400" />
+                </motion.div>
               </>
             )}
           </AnimatePresence>
