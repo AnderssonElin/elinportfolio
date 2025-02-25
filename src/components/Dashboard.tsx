@@ -138,10 +138,21 @@ const Dashboard = () => {
                   dataKey="value" 
                   fill="#9b87f5"
                   onMouseOver={() => {
-                    document.body.style.backdropFilter = "blur(4px)";
+                    document.body.style.transition = "filter 0.3s ease";
+                    document.body.style.filter = "blur(4px)";
+                    const currentSection = document.querySelector('#dashboard');
+                    if (currentSection) {
+                      currentSection.style.filter = "blur(0px)";
+                      currentSection.style.position = "relative";
+                      currentSection.style.zIndex = "50";
+                    }
                   }}
                   onMouseOut={() => {
-                    document.body.style.backdropFilter = "none";
+                    document.body.style.filter = "none";
+                    const currentSection = document.querySelector('#dashboard');
+                    if (currentSection) {
+                      currentSection.style.zIndex = "auto";
+                    }
                   }}
                 />
               </BarChart>

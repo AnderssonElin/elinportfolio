@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Send, Bot } from "lucide-react";
 
 const funResponses = [
@@ -11,20 +11,46 @@ const funResponses = [
   "Enligt min avancerade AI (Actually Improvising) är svaret självklart! 🤖",
 ];
 
+const Firework = ({ style }: { style: React.CSSProperties }) => (
+  <motion.div
+    initial={{ scale: 0, opacity: 1 }}
+    animate={{
+      scale: [0, 1.5],
+      opacity: [1, 0],
+    }}
+    transition={{
+      duration: 0.5,
+      ease: "easeOut",
+    }}
+    className="absolute w-4 h-4"
+    style={{
+      background: "radial-gradient(circle, var(--tw-colors-accent) 0%, transparent 70%)",
+      ...style,
+    }}
+  />
+);
+
 const AskMe = () => {
   const [question, setQuestion] = useState("");
   const [response, setResponse] = useState("");
   const [isAnimating, setIsAnimating] = useState(false);
+  const [showFireworks, setShowFireworks] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!question.trim()) return;
 
     setIsAnimating(true);
+    setShowFireworks(true);
+    
     setTimeout(() => {
       const randomResponse = funResponses[Math.floor(Math.random() * funResponses.length)];
       setResponse(randomResponse);
       setIsAnimating(false);
+      
+      setTimeout(() => {
+        setShowFireworks(false);
+      }, 1000);
     }, 1000);
   };
 
@@ -33,8 +59,25 @@ const AskMe = () => {
       <div className="container mx-auto max-w-4xl">
         <h2 className="text-3xl font-bold text-center text-white mb-16">Fråga BI-Oraklet</h2>
         
-        <div className="bg-primary/50 p-8 rounded-2xl backdrop-blur-sm">
-          <form onSubmit={handleSubmit} className="space-y-4">
+        <div className="bg-primary/50 p-8 rounded-2xl backdrop-blur-sm relative overflow-hidden">
+          <AnimatePresence>
+            {showFireworks && (
+              <>
+                {[...Array(12)].map((_, i) => (
+                  <Firework
+                    key={i}
+                    style={{
+                      left: `${Math.random() * 100}%`,
+                      top: `${Math.random() * 100}%`,
+                      animationDelay: `${Math.random() * 0.5}s`,
+                    }}
+                  />
+                ))}
+              </>
+            )}
+          </AnimatePresence>
+
+          <form onSubmit={handleSubmit} className="space-y-4 relative z-10">
             <div className="flex gap-4">
               <input
                 type="text"

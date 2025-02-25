@@ -4,6 +4,7 @@ import Hero from "@/components/Hero";
 import Timeline from "@/components/Timeline";
 import Dashboard from "@/components/Dashboard";
 import AskMe from "@/components/AskMe";
+import CoinCounter from "@/components/CoinCounter";
 
 const Index = () => {
   // Smooth scroll behavior
@@ -28,6 +29,7 @@ const Index = () => {
       <Timeline />
       <Dashboard />
       <AskMe />
+      <CoinCounter />
     </main>
   );
 };
