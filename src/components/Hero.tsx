@@ -28,15 +28,37 @@ FROM experience;`;
           word = prefix + word;
         }
 
-        if (['SELECT', 'FROM', 'AS'].includes(word.trim())) {
+        // Separera ord inom citattecken för att kunna färglägga specifika ord
+        if (word.includes("'")) {
+          const parts = word.split(/\b/);
           return (
-            <span key={`${lineIndex}-${wordIndex}`} className="text-blue-400">
-              {word}{' '}
+            <span key={`${lineIndex}-${wordIndex}`}>
+              {parts.map((part, partIndex) => {
+                if (['my', 'name', 'is', 'raw', 'data', 'into', 'golden'].includes(part.toLowerCase())) {
+                  return (
+                    <span key={`${lineIndex}-${wordIndex}-${partIndex}`} className="text-red-400">
+                      {part}
+                    </span>
+                  );
+                } else if (part.includes("'")) {
+                  return (
+                    <span key={`${lineIndex}-${wordIndex}-${partIndex}`} className="text-orange-400">
+                      {part}
+                    </span>
+                  );
+                }
+                return (
+                  <span key={`${lineIndex}-${wordIndex}-${partIndex}`} className="text-orange-400">
+                    {part}
+                  </span>
+                );
+              })}
+              {' '}
             </span>
           );
-        } else if (word.includes("'")) {
+        } else if (['SELECT', 'FROM', 'AS'].includes(word.trim())) {
           return (
-            <span key={`${lineIndex}-${wordIndex}`} className="text-red-400">
+            <span key={`${lineIndex}-${wordIndex}`} className="text-blue-400">
               {word}{' '}
             </span>
           );
