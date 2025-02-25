@@ -6,8 +6,8 @@ import { useState, useEffect } from "react";
 const Hero = () => {
   const sqlCode = `/* Booting Up My Profile */
 SELECT 'Hello, my name is ' || 'Elin' AS Greeting,
-      'BI Analyst' AS Role,
-      'Transforming raw data into golden insights' AS Tagline
+               'BI Analyst' AS Role,
+               'Transforming raw data into golden insights' AS Tagline
 FROM experience;`;
 
   // Separera SQL-koden i rader för korrekt formatering och animation
@@ -31,6 +31,12 @@ FROM experience;`;
         if (['SELECT', 'FROM', 'AS'].includes(word.trim())) {
           return (
             <span key={`${lineIndex}-${wordIndex}`} className="text-blue-400">
+              {word}{' '}
+            </span>
+          );
+        } else if (word.includes("'Hello, my name is '") || word.includes("'Transforming raw data into golden insights'")) {
+          return (
+            <span key={`${lineIndex}-${wordIndex}`} className="text-orange-400">
               {word}{' '}
             </span>
           );
@@ -80,7 +86,7 @@ FROM experience;`;
     <section className="min-h-screen flex flex-col items-center justify-center bg-secondary px-4 relative">
       <div className="w-full max-w-4xl">
         <motion.div
-          className="bg-primary/30 p-8 rounded-lg backdrop-blur-sm font-sql"
+          className="bg-primary/30 p-8 rounded-lg backdrop-blur-sm font-sql flex justify-center"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
