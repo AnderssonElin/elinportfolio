@@ -5,7 +5,7 @@ import Timeline from "@/components/Timeline";
 import Dashboard from "@/components/Dashboard";
 import Projects from "@/components/Projects";
 import Footer from "@/components/Footer";
-import AskMe from "@/components/AskMe";
+import AskMe, { AskMeProvider } from "@/components/AskMe";
 import CoinCounter from "@/components/CoinCounter";
 import DownloadCV from "@/components/DownloadCV";
 
@@ -26,16 +26,18 @@ const Index = () => {
   }, []);
 
   return (
-    <main className="bg-secondary">
-      <DownloadCV />
-      <Hero />
-      <Timeline />
-      <Dashboard />
-      <Projects />
-      <CoinCounter />
-      <AskMe />
-      <Footer />
-    </main>
+    <AskMeProvider>
+      <main className="bg-secondary">
+        <DownloadCV />
+        <Hero />
+        <Timeline />
+        <Dashboard />
+        <Projects />
+        <CoinCounter />
+        <AskMe />
+        <Footer />
+      </main>
+    </AskMeProvider>
   );
 };
 

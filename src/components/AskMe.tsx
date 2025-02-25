@@ -1,7 +1,13 @@
-
-import { useState } from "react";
+import { useState, createContext, useContext } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Send, Bot, Sparkle } from "lucide-react";
+
+type AskMeContextType = {
+  isVisible: boolean;
+  setIsVisible: (value: boolean) => void;
+};
+
+const AskMeContext = createContext<AskMeContextType | undefined>(undefined);
 
 const funResponses = [
   "Enligt min BI-kristallkula är svaret 42! 🔮",
@@ -83,12 +89,29 @@ const Glitter = ({ style }: { style: React.CSSProperties }) => (
   />
 );
 
+export const AskMeProvider = ({ children }: { children: React.ReactNode }) => {
+  const [isVisible, setIsVisible] = useState(false);
+  return (
+    <AskMeContext.Provider value={{ isVisible, setIsVisible }}>
+      {children}
+    </AskMeContext.Provider>
+  );
+};
+
+export const useAskMeVisibility = () => {
+  const context = useContext(AskMeContext);
+  if (context === undefined) {
+    throw new Error("useAskMeVisibility must be used within an AskMeProvider");
+  }
+  return context;
+};
+
 const AskMe = () => {
   const [question, setQuestion] = useState("");
   const [response, setResponse] = useState("");
   const [isAnimating, setIsAnimating] = useState(false);
   const [showCelebration, setShowCelebration] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
+  const { isVisible, setIsVisible } = useAskMeVisibility();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -211,11 +234,6 @@ const AskMe = () => {
       )}
     </AnimatePresence>
   );
-};
-
-export const useAskMeVisibility = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  return { isVisible, setIsVisible };
 };
 
 export default AskMe;

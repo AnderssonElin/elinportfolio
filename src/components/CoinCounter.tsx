@@ -21,7 +21,7 @@ const CoinCounter = () => {
         <span className="text-white font-bold">{hasClicked ? '1' : '0'} 🧞‍♂️</span>
       </div>
       <motion.button
-        className="fixed bottom-4 left-4 w-12 h-12 bg-purple-500 rounded-full cursor-pointer flex items-center justify-center"
+        className="fixed bottom-4 left-4 w-12 h-12 rounded-full cursor-pointer flex items-center justify-center"
         animate={{
           rotate: [0, 360],
           scale: [1, 1.1, 1],
