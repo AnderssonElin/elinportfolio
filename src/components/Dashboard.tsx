@@ -1,4 +1,3 @@
-
 import { motion, AnimatePresence } from "framer-motion";
 import { BarChart, Bar, XAxis, Tooltip, ResponsiveContainer } from "recharts";
 import { Award, Coffee, Code, Database, Users, Star } from "lucide-react";
@@ -100,7 +99,7 @@ const Dashboard = () => {
   const [isHovering, setIsHovering] = useState(false);
 
   return (
-    <section className="py-20 bg-primary px-4 font-sql relative" id="dashboard">
+    <section className="py-12 sm:py-16 md:py-20 bg-primary px-4 sm:px-6 md:px-8 font-sql relative" id="dashboard">
       <motion.div 
         className="container mx-auto relative z-10"
         animate={{
@@ -108,9 +107,9 @@ const Dashboard = () => {
           transition: { duration: 0.3 }
         }}
       >
-        <h2 className="text-3xl font-bold text-center mb-16 text-white">Dashboard</h2>
+        <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12 md:mb-16 text-white">Dashboard</h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16 auto-rows-[minmax(120px,auto)]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8 sm:mb-12 md:mb-16 auto-rows-[minmax(120px,auto)]">
           {stats.map((Stat, index) => (
             <motion.div
               key={index}
@@ -119,22 +118,22 @@ const Dashboard = () => {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
               whileHover={{ y: -5 }}
-              className={`bg-secondary/50 backdrop-blur-sm p-6 rounded-2xl shadow-lg ${Stat.className}`}
+              className={`bg-secondary/50 backdrop-blur-sm p-4 sm:p-6 rounded-2xl shadow-lg ${Stat.className}`}
             >
-              <div className="flex items-center gap-4 h-full">
-                <Stat.icon className="w-8 h-8 text-accent" />
+              <div className="flex items-center gap-3 sm:gap-4 h-full">
+                <Stat.icon className="w-6 h-6 sm:w-8 sm:h-8 text-accent" />
                 <div>
-                  <p className="text-sm text-gray-300">{Stat.label}</p>
-                  <p className="text-2xl font-bold text-white">{Stat.value}</p>
+                  <p className="text-xs sm:text-sm text-gray-300">{Stat.label}</p>
+                  <p className="text-xl sm:text-2xl font-bold text-white">{Stat.value}</p>
                 </div>
               </div>
             </motion.div>
           ))}
         </div>
 
-        <div className="bg-secondary/50 backdrop-blur-sm p-6 rounded-2xl shadow-lg relative">
-          <h3 className="text-xl font-semibold mb-6 text-white">Project Performance</h3>
-          <div className="h-[300px]">
+        <div className="bg-secondary/50 backdrop-blur-sm p-4 sm:p-6 rounded-2xl shadow-lg relative">
+          <h3 className="text-lg sm:text-xl font-semibold mb-4 sm:mb-6 text-white">Project Performance</h3>
+          <div className="h-[250px] sm:h-[300px]">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart 
                 data={skillsData}
@@ -182,7 +181,6 @@ const Dashboard = () => {
         </div>
       </motion.div>
       
-      {/* Overlay when hovering */}
       <AnimatePresence>
         {isHovering && (
           <motion.div

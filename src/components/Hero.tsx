@@ -99,15 +99,15 @@ FROM experience;`;
   }, []);
 
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center bg-secondary px-4 relative">
-      <div className="w-full max-w-4xl">
+    <section className="min-h-screen flex flex-col items-center justify-center bg-secondary px-2 sm:px-4 md:px-6 lg:px-8 relative">
+      <div className="w-full max-w-4xl mx-auto">
         <motion.div
-          className="bg-primary/30 p-8 rounded-lg backdrop-blur-sm font-sql"
+          className="bg-primary/30 p-4 sm:p-6 md:p-8 rounded-lg backdrop-blur-sm font-sql"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
         >
-          <pre className="space-y-2 whitespace-pre">
+          <pre className="space-y-2 whitespace-pre text-sm sm:text-base md:text-lg overflow-x-auto">
             {colorizedSQL}
           </pre>
         </motion.div>
@@ -117,14 +117,14 @@ FROM experience;`;
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ 
-            delay: sqlCode.split('\n').length * 0.5 + 0.5, // Väntar tills alla rader är synliga plus lite extra
+            delay: sqlCode.split('\n').length * 0.5 + 0.5,
             duration: 0.5 
           }}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="mt-6 bg-emerald-500 hover:bg-emerald-600 text-white px-6 py-3 rounded-md font-sql flex items-center gap-2 mx-auto transition-colors"
+          className="mt-4 sm:mt-6 bg-emerald-500 hover:bg-emerald-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-md font-sql flex items-center gap-2 mx-auto transition-colors text-sm sm:text-base"
         >
-          <Play className="w-4 h-4" />
+          <Play className="w-3 h-3 sm:w-4 sm:h-4" />
           Execute (F5)
         </motion.button>
       </div>

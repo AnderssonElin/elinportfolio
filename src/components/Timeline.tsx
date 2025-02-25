@@ -21,9 +21,9 @@ const timelineData = [
 
 const Timeline = () => {
   return (
-    <section className="py-20 bg-secondary px-4" id="timeline">
+    <section className="py-12 sm:py-16 md:py-20 bg-secondary px-4 sm:px-6 md:px-8" id="timeline">
       <div className="container mx-auto">
-        <h2 className="text-3xl font-bold text-center mb-16 text-white">My Journey</h2>
+        <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12 md:mb-16 text-white">My Journey</h2>
         <div className="relative">
           {/* Timeline line */}
           <div className="absolute h-full w-0.5 bg-accent/20 left-1/2 transform -translate-x-1/2" />
@@ -35,21 +35,21 @@ const Timeline = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.2 }}
-              className={`flex items-center ${
-                index % 2 === 0 ? "flex-row" : "flex-row-reverse"
-              } mb-8`}
+              className={`flex flex-col ${
+                index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
+              } mb-8 md:mb-0`}
             >
-              <div className="w-1/2 px-6">
+              <div className="w-full md:w-1/2 px-4 md:px-6 mb-4 md:mb-8">
                 <motion.div
                   whileHover={{ scale: 1.05 }}
-                  className="bg-primary/50 backdrop-blur-sm p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow"
+                  className="bg-primary/50 backdrop-blur-sm p-4 sm:p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow"
                 >
-                  <span className="text-accent font-bold">{item.year}</span>
-                  <h3 className="text-xl font-semibold mt-2 text-white">{item.title}</h3>
-                  <p className="text-gray-400 mt-2">{item.description}</p>
+                  <span className="text-accent font-bold text-sm sm:text-base">{item.year}</span>
+                  <h3 className="text-lg sm:text-xl font-semibold mt-2 text-white">{item.title}</h3>
+                  <p className="text-sm sm:text-base text-gray-400 mt-2">{item.description}</p>
                 </motion.div>
               </div>
-              <div className="w-4 h-4 bg-accent rounded-full absolute left-1/2 transform -translate-x-1/2" />
+              <div className="w-4 h-4 bg-accent rounded-full absolute left-1/2 transform -translate-x-1/2 hidden md:block" />
             </motion.div>
           ))}
         </div>
