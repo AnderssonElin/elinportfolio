@@ -140,8 +140,8 @@ const Dashboard = () => {
                   onMouseOver={() => {
                     document.body.style.transition = "filter 0.3s ease";
                     document.body.style.filter = "blur(4px)";
-                    const currentSection = document.querySelector('#dashboard');
-                    if (currentSection) {
+                    const currentSection = document.getElementById('dashboard');
+                    if (currentSection instanceof HTMLElement) {
                       currentSection.style.filter = "blur(0px)";
                       currentSection.style.position = "relative";
                       currentSection.style.zIndex = "50";
@@ -149,8 +149,8 @@ const Dashboard = () => {
                   }}
                   onMouseOut={() => {
                     document.body.style.filter = "none";
-                    const currentSection = document.querySelector('#dashboard');
-                    if (currentSection) {
+                    const currentSection = document.getElementById('dashboard');
+                    if (currentSection instanceof HTMLElement) {
                       currentSection.style.zIndex = "auto";
                     }
                   }}
