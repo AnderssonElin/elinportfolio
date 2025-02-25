@@ -32,8 +32,8 @@ const Index = () => {
       <Timeline />
       <Dashboard />
       <Projects />
-      <AskMe />
       <CoinCounter />
+      <AskMe />
       <Footer />
     </main>
   );
