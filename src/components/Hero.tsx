@@ -6,8 +6,8 @@ import { useState, useEffect } from "react";
 const Hero = () => {
   const sqlCode = `/* Booting Up My Profile */
 SELECT 'Hello, my name is ' || 'Elin' AS Greeting,
-       'BI Analyst' AS Role,
-       'Transforming raw data into golden insights' AS Tagline
+               'BI Analyst' AS Role,
+               'Transforming raw data into golden insights' AS Tagline
 FROM experience;`;
 
   // Separera SQL-koden i rader för korrekt formatering och animation
@@ -34,9 +34,15 @@ FROM experience;`;
               {word}{' '}
             </span>
           );
-        } else if (word.includes("'") && word.endsWith("'")) {
+        } else if (word.includes("'Hello, my name is '") || word.includes("'Transforming raw data into golden insights'")) {
           return (
             <span key={`${lineIndex}-${wordIndex}`} className="text-orange-400">
+              {word}{' '}
+            </span>
+          );
+        } else if (word.includes("'")) {
+          return (
+            <span key={`${lineIndex}-${wordIndex}`} className="text-red-400">
               {word}{' '}
             </span>
           );
