@@ -8,42 +8,42 @@ const projectsData = [
     id: 1,
     title: "Data Lake Implementation",
     description: "Enterprise-wide data lake architecture with real-time analytics",
-    image: "photo-1488590528505-98d2b5aba04b",
+    imageUrl: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=800&q=80",
     link: "/projects/data-lake"
   },
   {
     id: 2,
     title: "ML Pipeline Development",
     description: "Automated machine learning pipeline for predictive analytics",
-    image: "photo-1487058792275-0ad4aaf24ca7",
+    imageUrl: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?auto=format&fit=crop&w=800&q=80",
     link: "/projects/ml-pipeline"
   },
   {
     id: 3,
     title: "Analytics Platform",
     description: "Self-service analytics platform with interactive dashboards",
-    image: "photo-1498050108023-c5249f4df085",
+    imageUrl: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80",
     link: "/projects/analytics"
   },
   {
     id: 4,
     title: "BI Dashboard Suite",
     description: "Comprehensive business intelligence dashboard solution",
-    image: "photo-1486312338219-ce68d2c6f44d",
+    imageUrl: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=800&q=80",
     link: "/projects/bi-dashboard"
   },
   {
     id: 5,
     title: "Data Visualization Tool",
     description: "Interactive data visualization and reporting platform",
-    image: "photo-1504868584819-f8e8b4b6d7e3",
+    imageUrl: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=800&q=80",
     link: "/projects/data-viz"
   },
   {
     id: 6,
     title: "AI Analytics Engine",
     description: "AI-powered analytics engine for predictive insights",
-    image: "photo-1509718443690-d8e2fb3474b7",
+    imageUrl: "https://images.unsplash.com/photo-1509718443690-d8e2fb3474b7?auto=format&fit=crop&w=800&q=80",
     link: "/projects/ai-analytics"
   }
 ];
@@ -61,30 +61,35 @@ const Projects = () => {
           {projectsData.map((project) => (
             <motion.div
               key={project.id}
-              className="relative aspect-video cursor-pointer overflow-hidden rounded-xl"
+              className="relative aspect-video cursor-pointer overflow-hidden rounded-xl bg-black"
               onHoverStart={() => setHoveredId(project.id)}
               onHoverEnd={() => setHoveredId(null)}
               onClick={() => navigate(project.link)}
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.2 }}
             >
-              <motion.img
-                src={`https://source.unsplash.com/${project.image}`}
-                alt={project.title}
-                className="w-full h-full object-cover"
+              <motion.div
+                className="absolute inset-0 w-full h-full"
+                initial={false}
                 animate={{
                   opacity: hoveredId === project.id ? 0 : 1
                 }}
-                transition={{ duration: 0.2 }}
-              />
+                transition={{ duration: 0.3 }}
+              >
+                <img
+                  src={project.imageUrl}
+                  alt={project.title}
+                  className="w-full h-full object-cover"
+                />
+              </motion.div>
               
               <motion.div
-                className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent p-6 flex flex-col justify-end"
+                className="absolute inset-0 flex flex-col justify-end p-6 bg-gradient-to-t from-black/90 to-black/20"
                 initial={{ opacity: 0 }}
                 animate={{ 
                   opacity: hoveredId === project.id ? 1 : 0
                 }}
-                transition={{ duration: 0.2 }}
+                transition={{ duration: 0.3 }}
               >
                 <h3 className="text-xl font-bold text-white mb-2">{project.title}</h3>
                 <p className="text-gray-200 text-sm">{project.description}</p>

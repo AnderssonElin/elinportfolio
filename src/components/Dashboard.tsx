@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { BarChart, Bar, XAxis, Tooltip, ResponsiveContainer } from "recharts";
+import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
 import { Award, Coffee, Code, Database, Users, Star } from "lucide-react";
 import { useState } from "react";
 
@@ -45,34 +45,39 @@ const stats = [
 const skillsData = [
   { 
     date: "2024-01",
-    value: 95,
-    project: "Data Lake Implementation",
-    description: "Successfully implemented enterprise-wide data lake architecture"
+    value: 65,
+    project: "Hospital Data Management",
+    description: "Healthcare data analytics system",
+    icon: "🏥"
   },
   { 
     date: "2024-02",
-    value: 85,
-    project: "ML Pipeline",
-    description: "Built automated machine learning pipeline for predictive analytics"
+    value: 75,
+    project: "School Analytics",
+    description: "Educational performance tracking",
+    icon: "🏫"
   },
   { 
     date: "2024-03",
-    value: 90,
-    project: "BI Dashboard",
-    description: "Created executive dashboard with real-time KPI tracking"
+    value: 82,
+    project: "City Time Analysis",
+    description: "Urban planning time series",
+    icon: "🕰️"
   },
   { 
     date: "2024-04",
     value: 88,
-    project: "Data Integration",
-    description: "Integrated multiple data sources into unified warehouse"
+    project: "Tech Infrastructure",
+    description: "IT systems analysis",
+    icon: "💻"
   },
   { 
     date: "2024-05",
-    value: 92,
-    project: "Analytics Platform",
-    description: "Launched new self-service analytics platform"
-  },
+    value: 95,
+    project: "Urban Data Center",
+    description: "Smart city analytics",
+    icon: "🏢"
+  }
 ];
 
 const CustomTooltip = ({ active, payload, label }: any) => {
@@ -84,15 +89,34 @@ const CustomTooltip = ({ active, payload, label }: any) => {
         exit={{ opacity: 0, y: 10 }}
         className="bg-accent text-white p-4 rounded-lg shadow-xl border border-white/10 backdrop-blur-md"
       >
+        <div className="text-3xl mb-2">{payload[0].payload.icon}</div>
         <h4 className="font-bold mb-2 text-lg">{payload[0].payload.project}</h4>
         <p className="text-white/90 text-sm mb-2">{payload[0].payload.description}</p>
         <div className="text-white/90 font-medium">
-          Completion: {payload[0].value}%
+          Passion for Data: {payload[0].value}%
         </div>
       </motion.div>
     );
   }
   return null;
+};
+
+const CustomBar = (props: any) => {
+  const { x, y, width, height, icon } = props;
+  
+  return (
+    <g>
+      <rect x={x} y={y} width={width} height={height} fill="#9b87f5" rx={4} />
+      <text
+        x={x + width / 2}
+        y={y - 10}
+        textAnchor="middle"
+        fontSize="20"
+      >
+        {icon}
+      </text>
+    </g>
+  );
 };
 
 const Dashboard = () => {
@@ -137,25 +161,8 @@ const Dashboard = () => {
             <ResponsiveContainer width="100%" height="100%">
               <BarChart 
                 data={skillsData}
-                onMouseEnter={() => {
-                  setIsHovering(true);
-                  const elements = document.querySelectorAll('body > *:not(#root)');
-                  elements.forEach((el) => {
-                    if (el instanceof HTMLElement) {
-                      el.style.filter = 'blur(4px)';
-                      el.style.transition = 'filter 0.3s ease';
-                    }
-                  });
-                }}
-                onMouseLeave={() => {
-                  setIsHovering(false);
-                  const elements = document.querySelectorAll('body > *:not(#root)');
-                  elements.forEach((el) => {
-                    if (el instanceof HTMLElement) {
-                      el.style.filter = 'none';
-                    }
-                  });
-                }}
+                onMouseEnter={() => setIsHovering(true)}
+                onMouseLeave={() => setIsHovering(false)}
               >
                 <XAxis 
                   dataKey="date" 
@@ -165,15 +172,23 @@ const Dashboard = () => {
                     return new Intl.DateTimeFormat('sv-SE', { month: 'short' }).format(date);
                   }}
                 />
+                <YAxis
+                  label={{ 
+                    value: 'Passion for Data', 
+                    angle: -90, 
+                    position: 'insideLeft',
+                    style: { fill: '#fff' }
+                  }}
+                  stroke="#fff"
+                />
                 <Tooltip 
                   content={<CustomTooltip />}
                   cursor={false}
-                  position={{ y: 0 }}
                 />
                 <Bar 
                   dataKey="value" 
+                  shape={<CustomBar />}
                   fill="#9b87f5"
-                  radius={[4, 4, 0, 0]}
                 />
               </BarChart>
             </ResponsiveContainer>
