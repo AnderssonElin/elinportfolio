@@ -133,7 +133,7 @@ const Dashboard = () => {
       >
         <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12 md:mb-16 text-white">Dashboard</h2>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8 sm:mb-12 md:mb-16 auto-rows-[minmax(120px,auto)]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8 sm:mb-12 md:mb-16">
           {stats.map((Stat, index) => (
             <motion.div
               key={index}
@@ -142,10 +142,12 @@ const Dashboard = () => {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
               whileHover={{ y: -5 }}
-              className={`bg-secondary/50 backdrop-blur-sm p-4 sm:p-6 rounded-2xl shadow-lg ${Stat.className}`}
+              className={`bg-secondary/50 backdrop-blur-sm p-4 sm:p-6 rounded-2xl shadow-lg ${
+                Stat.className
+              } h-[120px] sm:h-auto`}
             >
               <div className="flex items-center gap-3 sm:gap-4 h-full">
-                <Stat.icon className="w-6 h-6 sm:w-8 sm:h-8 text-accent" />
+                <Stat.icon className="w-6 h-6 sm:w-8 sm:h-8 text-accent flex-shrink-0" />
                 <div>
                   <p className="text-xs sm:text-sm text-gray-300">{Stat.label}</p>
                   <p className="text-xl sm:text-2xl font-bold text-white">{Stat.value}</p>

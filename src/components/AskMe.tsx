@@ -1,3 +1,4 @@
+
 import { useState, createContext, useContext } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Send, Bot, Sparkle } from "lucide-react";
@@ -194,19 +195,19 @@ const AskMe = () => {
               </AnimatePresence>
 
               <form onSubmit={handleSubmit} className="space-y-4">
-                <div className="flex gap-4">
+                <div className="flex flex-col gap-4">
                   <input
                     type="text"
                     value={question}
                     onChange={(e) => setQuestion(e.target.value)}
                     placeholder="Ställ din fråga om BI..."
-                    className="flex-1 bg-white/10 text-white px-4 py-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-accent"
+                    className="w-full bg-white/10 text-white px-4 py-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-accent"
                   />
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     type="submit"
-                    className="bg-accent text-white px-6 py-3 rounded-xl flex items-center gap-2"
+                    className="w-full bg-accent text-white px-6 py-3 rounded-xl flex items-center justify-center gap-2"
                   >
                     <Send className="w-4 h-4" />
                     Skicka

@@ -10,7 +10,6 @@ SELECT 'Hello, my name is ' || 'Elin' AS Greeting,
       'Transforming raw data into golden insights' AS Tagline
 FROM experience;`;
 
-  // Separera SQL-koden i rader för korrekt formatering och animation
   const colorizedSQL = sqlCode.split('\n').map((line, lineIndex) => (
     <motion.div
       key={lineIndex}
@@ -18,17 +17,16 @@ FROM experience;`;
       animate={{ opacity: 1 }}
       transition={{
         duration: 0.5,
-        delay: lineIndex * 0.5, // Varje rad kommer att visas med 0.5s mellanrum
+        delay: lineIndex * 0.5,
       }}
+      className="whitespace-pre-wrap break-words"
     >
       {line.split(' ').map((word, wordIndex) => {
-        // Behåll mellanslag i början av raden
         const prefix = line.match(/^\s*/)?.[0] || '';
         if (wordIndex === 0) {
           word = prefix + word;
         }
 
-        // Separera ord inom citattecken för att kunna färglägga specifika ord
         if (word.includes("'")) {
           const parts = word.split(/\b/);
           return (
@@ -102,12 +100,12 @@ FROM experience;`;
     <section className="min-h-screen flex flex-col items-center justify-center bg-secondary px-2 sm:px-4 md:px-6 lg:px-8 relative">
       <div className="w-full max-w-4xl mx-auto">
         <motion.div
-          className="bg-primary/30 p-4 sm:p-6 md:p-8 rounded-lg backdrop-blur-sm font-sql"
+          className="bg-primary/30 p-4 sm:p-6 md:p-8 rounded-lg backdrop-blur-sm font-sql overflow-x-hidden"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
         >
-          <pre className="space-y-2 whitespace-pre text-sm sm:text-base md:text-lg overflow-x-auto">
+          <pre className="space-y-2 text-sm sm:text-base md:text-lg">
             {colorizedSQL}
           </pre>
         </motion.div>
