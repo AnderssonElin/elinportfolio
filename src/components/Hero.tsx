@@ -5,9 +5,10 @@ import { useState, useEffect } from "react";
 
 const Hero = () => {
   const sqlCode = `/* Booting Up My Profile */
-SELECT 'Hello, my name is ' || 'Elin' AS Greeting,
-      'BI Analyst' AS Role,
-      'Transforming raw data into golden insights' AS Tagline
+SELECT
+     'Hello, my name is ' || 'Elin' AS Greeting,
+     'BI Analyst' AS Role,
+     'Transforming raw data into golden insights' AS Tagline
 FROM experience;`;
 
   const colorizedSQL = sqlCode.split('\n').map((line, lineIndex) => (
@@ -19,7 +20,7 @@ FROM experience;`;
         duration: 0.5,
         delay: lineIndex * 0.5,
       }}
-      className="whitespace-pre-wrap break-words"
+      className="flex whitespace-nowrap"
     >
       {line.split(' ').map((word, wordIndex) => {
         const prefix = line.match(/^\s*/)?.[0] || '';
@@ -98,9 +99,9 @@ FROM experience;`;
 
   return (
     <section className="min-h-screen flex flex-col items-center justify-center bg-secondary px-2 sm:px-4 md:px-6 lg:px-8 relative">
-      <div className="w-full max-w-4xl mx-auto">
+      <div className="w-full max-w-4xl mx-auto overflow-x-auto">
         <motion.div
-          className="bg-primary/30 p-4 sm:p-6 md:p-8 rounded-lg backdrop-blur-sm font-sql overflow-x-hidden"
+          className="bg-primary/30 p-4 sm:p-6 md:p-8 rounded-lg backdrop-blur-sm font-sql"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}

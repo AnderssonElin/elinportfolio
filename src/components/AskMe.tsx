@@ -1,7 +1,6 @@
-
 import { useState, createContext, useContext } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Send, Bot, Sparkle } from "lucide-react";
+import { Send, Bot, Sparkle, X } from "lucide-react";
 
 type AskMeContextType = {
   isVisible: boolean;
@@ -153,6 +152,13 @@ const AskMe = () => {
             exit={{ scale: 0.9, opacity: 0 }}
             onClick={(e) => e.stopPropagation()}
           >
+            <button
+              onClick={() => setIsVisible(false)}
+              className="absolute top-4 right-4 text-white/60 hover:text-white transition-colors"
+            >
+              <X className="w-6 h-6" />
+            </button>
+
             <h2 className="text-3xl font-bold text-center text-white mb-8">Fråga BI-Oraklet</h2>
             
             <div className="relative">
