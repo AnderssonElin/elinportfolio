@@ -15,11 +15,13 @@ const CoinCounter = () => {
 
   return (
     <>
-      <div className="fixed top-4 left-4 bg-accent/20 backdrop-blur-sm px-4 py-2 rounded-full">
-        <span className="text-white font-bold">{clickCount} 🧞‍♂️</span>
+      <div className="fixed top-0 left-0 w-screen h-20 bg-gradient-to-br from-secondary/80 to-secondary/60 backdrop-blur-sm z-40">
+        <div className="fixed top-4 left-4 bg-accent/20 backdrop-blur-sm px-4 py-2 rounded-full">
+          <span className="text-white font-bold">{clickCount} 🧞‍♂️</span>
+        </div>
       </div>
       <motion.button
-        className="fixed bottom-4 left-4 w-12 h-12 rounded-full cursor-pointer flex items-center justify-center overflow-hidden"
+        className="fixed bottom-4 left-4 w-12 h-12 rounded-full cursor-pointer flex items-center justify-center overflow-hidden z-50"
         animate={{
           rotate: [0, 360],
           scale: [1, 1.1, 1],

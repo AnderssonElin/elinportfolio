@@ -11,7 +11,7 @@ const DownloadCV = () => {
       transition={{ duration: 0.5 }}
     >
       <a
-        href="/cv.pdf" // Du behöver lägga till din CV-fil i public-mappen
+        href="/cv.pdf"
         download
         className="bg-accent hover:bg-accent/90 text-white px-4 py-2 rounded-md flex items-center gap-2 transition-colors"
       >
