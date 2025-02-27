@@ -48,17 +48,6 @@ const WaveSection: React.FC<WaveSectionProps> = ({
           stroke={`url(#wave-gradient-${position})`}
           strokeWidth="4"
         />
-        
-        {/* Decorative dots */}
-        {[...Array(12)].map((_, i) => (
-          <circle 
-            key={i}
-            cx={120 * i}
-            cy={40 + (i % 2 ? 15 : -15)}
-            r="3"
-            fill={i % 3 === 0 ? "#9b87f5" : i % 3 === 1 ? "#D946EF" : "#33C3F0"}
-          />
-        ))}
       </svg>
     </div>
   );

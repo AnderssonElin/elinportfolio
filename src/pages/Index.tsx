@@ -44,29 +44,29 @@ const Index = () => {
         {/* Hero-sektionen */}
         <section className="relative bg-transparent">
           <Hero />
-          <WaveSection position="bottom" backgroundColor={backgroundColor} />
         </section>
         
         {/* Timeline-sektionen */}
         <section className="relative bg-transparent pt-16">
+          <WaveSection position="top" backgroundColor={backgroundColor} />
           <Timeline />
-          <WaveSection position="bottom" backgroundColor={backgroundColor} />
         </section>
         
         {/* Dashboard-sektionen */}
         <section className="relative bg-transparent pt-16">
+          <WaveSection position="top" backgroundColor={backgroundColor} />
           <Dashboard />
-          <WaveSection position="bottom" backgroundColor={backgroundColor} />
         </section>
         
         {/* Projects-sektionen */}
         <section className="relative bg-transparent pt-16">
+          <WaveSection position="top" backgroundColor={backgroundColor} />
           <Projects />
-          <WaveSection position="bottom" backgroundColor={backgroundColor} />
         </section>
         
         {/* Slutsektionen */}
         <section className="relative bg-transparent pt-16">
+          <WaveSection position="top" backgroundColor={backgroundColor} />
           <CoinCounter />
           <AskMe />
           <Footer />

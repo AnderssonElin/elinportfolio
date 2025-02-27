@@ -73,22 +73,22 @@ const Projects = () => {
               viewport={{ once: true }}
             >
               {/* Yttram som efterliknar bilden med windowskontrollen */}
-              <div className="rounded-lg p-3 bg-accent/70 overflow-hidden">
+              <div className="rounded-lg p-3 bg-accent/30 backdrop-blur-sm border border-accent/20 shadow-lg overflow-hidden">
                 {/* Windowskontroller */}
                 <div className="flex gap-2 mb-2">
-                  <div className="w-3 h-3 rounded-full bg-purple-900/70"></div>
-                  <div className="w-3 h-3 rounded-full bg-purple-900/70"></div>
-                  <div className="w-3 h-3 rounded-full bg-purple-900/70"></div>
+                  <div className="w-3 h-3 rounded-full bg-purple-900/40"></div>
+                  <div className="w-3 h-3 rounded-full bg-purple-900/40"></div>
+                  <div className="w-3 h-3 rounded-full bg-purple-900/40"></div>
                 </div>
                 
                 {/* Inre container med bild och innehåll */}
-                <div className="relative aspect-square overflow-hidden rounded-md bg-black">
-                  <div className="absolute inset-0 bg-gradient-to-r from-accent/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="relative aspect-square overflow-hidden rounded-md bg-black/40">
+                  <div className="absolute inset-0 bg-gradient-to-r from-accent/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   
                   <motion.div
-                    className="absolute inset-0 border-2 border-accent/0 group-hover:border-accent/50 transition-all duration-300 z-10 rounded-md"
+                    className="absolute inset-0 border border-accent/30 group-hover:border-accent/60 transition-all duration-300 z-10 rounded-md"
                     animate={{
-                      borderColor: hoveredId === project.id ? "rgba(155, 135, 245, 0.5)" : "rgba(155, 135, 245, 0)"
+                      borderColor: hoveredId === project.id ? "rgba(155, 135, 245, 0.6)" : "rgba(155, 135, 245, 0.3)"
                     }}
                   />
                   
@@ -108,7 +108,7 @@ const Projects = () => {
                   </motion.div>
                   
                   <motion.div
-                    className="absolute inset-0 flex flex-col justify-end p-6 bg-gradient-to-t from-black/90 to-black/20"
+                    className="absolute inset-0 flex flex-col justify-end p-6 bg-gradient-to-t from-black/80 to-black/10"
                     initial={{ opacity: 0 }}
                     animate={{ 
                       opacity: hoveredId === project.id ? 1 : 0
