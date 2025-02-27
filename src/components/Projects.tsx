@@ -55,11 +55,6 @@ const Projects = () => {
 
   return (
     <section className="min-h-screen py-12 sm:py-16 md:py-20 bg-secondary px-4 sm:px-6 md:px-8 flex items-center relative" id="projects">
-      {/* Wave at the top */}
-      <div className="absolute top-0 left-0 w-full">
-        <WaveSection position="top" fillColor="#151823" backgroundColor="#1A1F2C" />
-      </div>
-      
       <div className="container mx-auto my-auto">
         <h2 className="text-2xl sm:text-3xl font-bold text-center mb-16 text-accent">Projects</h2>
         
@@ -77,51 +72,57 @@ const Projects = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              <div className="relative aspect-square overflow-hidden rounded-lg bg-black">
-                <div className="absolute inset-0 bg-gradient-to-r from-accent/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              {/* Yttram som efterliknar bilden med windowskontrollen */}
+              <div className="rounded-lg p-3 bg-accent/70 overflow-hidden">
+                {/* Windowskontroller */}
+                <div className="flex gap-2 mb-2">
+                  <div className="w-3 h-3 rounded-full bg-purple-900/70"></div>
+                  <div className="w-3 h-3 rounded-full bg-purple-900/70"></div>
+                  <div className="w-3 h-3 rounded-full bg-purple-900/70"></div>
+                </div>
                 
-                <motion.div
-                  className="absolute inset-0 border-2 border-accent/0 group-hover:border-accent/50 transition-all duration-300 z-10 rounded-lg"
-                  animate={{
-                    borderColor: hoveredId === project.id ? "rgba(155, 135, 245, 0.5)" : "rgba(155, 135, 245, 0)"
-                  }}
-                />
-                
-                <motion.div
-                  className="absolute inset-0 w-full h-full"
-                  initial={false}
-                  animate={{
-                    scale: hoveredId === project.id ? 1.1 : 1
-                  }}
-                  transition={{ duration: 0.4 }}
-                >
-                  <img
-                    src={project.imageUrl}
-                    alt={project.title}
-                    className="w-full h-full object-cover"
+                {/* Inre container med bild och innehåll */}
+                <div className="relative aspect-square overflow-hidden rounded-md bg-black">
+                  <div className="absolute inset-0 bg-gradient-to-r from-accent/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  
+                  <motion.div
+                    className="absolute inset-0 border-2 border-accent/0 group-hover:border-accent/50 transition-all duration-300 z-10 rounded-md"
+                    animate={{
+                      borderColor: hoveredId === project.id ? "rgba(155, 135, 245, 0.5)" : "rgba(155, 135, 245, 0)"
+                    }}
                   />
-                </motion.div>
-                
-                <motion.div
-                  className="absolute inset-0 flex flex-col justify-end p-6 bg-gradient-to-t from-black/90 to-black/20"
-                  initial={{ opacity: 0 }}
-                  animate={{ 
-                    opacity: hoveredId === project.id ? 1 : 0
-                  }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <h3 className="text-xl font-bold text-white mb-2">{project.title}</h3>
-                  <p className="text-gray-200 text-sm">{project.description}</p>
-                </motion.div>
+                  
+                  <motion.div
+                    className="absolute inset-0 w-full h-full"
+                    initial={false}
+                    animate={{
+                      scale: hoveredId === project.id ? 1.1 : 1
+                    }}
+                    transition={{ duration: 0.4 }}
+                  >
+                    <img
+                      src={project.imageUrl}
+                      alt={project.title}
+                      className="w-full h-full object-cover"
+                    />
+                  </motion.div>
+                  
+                  <motion.div
+                    className="absolute inset-0 flex flex-col justify-end p-6 bg-gradient-to-t from-black/90 to-black/20"
+                    initial={{ opacity: 0 }}
+                    animate={{ 
+                      opacity: hoveredId === project.id ? 1 : 0
+                    }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <h3 className="text-xl font-bold text-white mb-2">{project.title}</h3>
+                    <p className="text-gray-200 text-sm">{project.description}</p>
+                  </motion.div>
+                </div>
               </div>
             </motion.div>
           ))}
         </div>
-      </div>
-      
-      {/* Wave at the bottom */}
-      <div className="absolute bottom-0 left-0 w-full">
-        <WaveSection position="bottom" fillColor="#1A1F2C" backgroundColor="#151823" />
       </div>
       
       {/* Render the project details overlay if a project is selected */}

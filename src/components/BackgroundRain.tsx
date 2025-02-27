@@ -1,99 +1,103 @@
 
-import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
-
-interface RainDrop {
-  id: number;
-  x: number;
-  y: number;
-  size: number;
-  opacity: number;
-  rotation: number;
-  delay: number;
-  duration: number;
-}
+import { useEffect, useRef } from "react";
 
 const BackgroundRain = () => {
-  const [drops, setDrops] = useState<RainDrop[]>([]);
-
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  
   useEffect(() => {
-    // Generera initiala regndroppar
-    const generateDrops = () => {
-      return Array.from({ length: 50 }, (_, i) => ({
-        id: i,
-        x: Math.random() * 100,
-        y: -10, // Starta ovanför viewport
-        size: Math.random() * 4 + 2, // Storlek mellan 2-6px
-        opacity: Math.random() * 0.4 + 0.1, // Opacity mellan 0.1-0.5
-        rotation: Math.random() * 360,
-        delay: Math.random() * 2,
-        duration: Math.random() * 10 + 15, // Faller i 15-25 sekunder
-      }));
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+    
+    // Anpassa canvas till fönsterstorlek
+    const resizeCanvas = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
     };
-
-    setDrops(generateDrops());
-
-    // Uppdatera dropparna periodiskt
-    const interval = setInterval(() => {
-      setDrops(prevDrops => {
-        const newDrops = [...prevDrops];
-        // Uppdatera några droppar för att skapa variation
-        for (let i = 0; i < 5; i++) {
-          const indexToUpdate = Math.floor(Math.random() * newDrops.length);
-          newDrops[indexToUpdate] = {
-            ...newDrops[indexToUpdate],
-            id: Date.now() + i, // Nytt ID för att trigga omrendering
-            x: Math.random() * 100,
-            y: -10,
-            size: Math.random() * 4 + 2,
-            opacity: Math.random() * 0.4 + 0.1,
-            rotation: Math.random() * 360,
-            delay: 0,
-            duration: Math.random() * 10 + 15,
-          };
+    
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
+    
+    // Skapa partiklar
+    const particlesArray: Particle[] = [];
+    const particleCount = 40;
+    
+    class Particle {
+      x: number;
+      y: number;
+      size: number;
+      speed: number;
+      opacity: number;
+      color: string;
+      
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 5 + 1;
+        this.speed = Math.random() * 1 + 0.2;
+        this.opacity = Math.random() * 0.5 + 0.1;
+        this.color = this.getRandomColor();
+      }
+      
+      getRandomColor() {
+        const colors = ["#9b87f5", "#7E69AB", "#D946EF", "#33C3F0"];
+        return colors[Math.floor(Math.random() * colors.length)];
+      }
+      
+      update() {
+        this.y += this.speed;
+        if (this.y > canvas.height) {
+          this.y = 0 - this.size;
+          this.x = Math.random() * canvas.width;
         }
-        return newDrops;
-      });
-    }, 500);
-
-    return () => clearInterval(interval);
+      }
+      
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fillStyle = this.color;
+        ctx.globalAlpha = this.opacity;
+        ctx.fill();
+        ctx.globalAlpha = 1;
+      }
+    }
+    
+    // Skapa partiklar
+    const init = () => {
+      for (let i = 0; i < particleCount; i++) {
+        particlesArray.push(new Particle());
+      }
+    };
+    
+    init();
+    
+    // Animationsloop
+    const animate = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      for (let i = 0; i < particlesArray.length; i++) {
+        particlesArray[i].update();
+        particlesArray[i].draw();
+      }
+      
+      requestAnimationFrame(animate);
+    };
+    
+    animate();
+    
+    return () => {
+      window.removeEventListener("resize", resizeCanvas);
+    };
   }, []);
-
+  
   return (
-    <div className="fixed inset-0 w-full h-full overflow-hidden pointer-events-none z-10">
-      {drops.map((drop) => (
-        <motion.div
-          key={drop.id}
-          className="absolute"
-          initial={{
-            x: `${drop.x}%`,
-            y: drop.y,
-            opacity: drop.opacity,
-            rotate: drop.rotation,
-          }}
-          animate={{
-            y: "110vh",
-            opacity: [drop.opacity, drop.opacity * 0.8, 0],
-            rotate: drop.rotation + 180,
-          }}
-          transition={{
-            duration: drop.duration,
-            delay: drop.delay,
-            ease: "linear",
-            repeat: Infinity,
-          }}
-        >
-          {/* Rundad droppe med gradient */}
-          <div 
-            style={{
-              width: `${drop.size}px`,
-              height: `${drop.size}px`,
-            }}
-            className="rounded-full bg-gradient-to-b from-white/30 to-white/10 border border-white/40"
-          />
-        </motion.div>
-      ))}
-    </div>
+    <canvas 
+      ref={canvasRef} 
+      className="fixed inset-0 w-full h-full z-0 pointer-events-none" 
+      style={{ opacity: 0.6 }}
+    />
   );
 };
 
