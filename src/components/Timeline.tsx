@@ -1,5 +1,6 @@
 
 import { motion } from "framer-motion";
+import WaveSection from "./WaveSection";
 
 const timelineData = [
   {
@@ -21,9 +22,14 @@ const timelineData = [
 
 const Timeline = () => {
   return (
-    <section className="py-12 sm:py-16 md:py-20 bg-secondary px-4 sm:px-6 md:px-8" id="timeline">
-      <div className="container mx-auto">
-        <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12 md:mb-16 text-white">My Journey</h2>
+    <section className="min-h-screen py-12 sm:py-16 md:py-20 bg-secondary px-4 sm:px-6 md:px-8 flex items-center relative" id="timeline">
+      {/* Wave at the top */}
+      <div className="absolute top-0 left-0 w-full">
+        <WaveSection position="top" fillColor="#151823" backgroundColor="#1A1F2C" />
+      </div>
+      
+      <div className="container mx-auto my-auto">
+        <h2 className="text-2xl sm:text-3xl font-bold text-center mb-16 text-white">My Journey</h2>
         <div className="relative">
           {/* Timeline line */}
           <div className="absolute h-full w-0.5 bg-accent/20 left-1/2 transform -translate-x-1/2" />
@@ -53,6 +59,11 @@ const Timeline = () => {
             </motion.div>
           ))}
         </div>
+      </div>
+      
+      {/* Wave at the bottom */}
+      <div className="absolute bottom-0 left-0 w-full">
+        <WaveSection position="bottom" fillColor="#1A1F2C" backgroundColor="#151823" />
       </div>
     </section>
   );

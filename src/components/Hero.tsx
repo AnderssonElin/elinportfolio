@@ -2,6 +2,8 @@
 import { motion } from "framer-motion";
 import { Play } from "lucide-react";
 import { useState, useEffect } from "react";
+import BackgroundRain from "./BackgroundRain";
+import WaveSection from "./WaveSection";
 
 const Hero = () => {
   const sqlCode = `/* Booting Up My Profile */ 
@@ -122,8 +124,11 @@ FROM experience;`;
   }, []);
 
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center bg-secondary px-2 sm:px-4 md:px-6 lg:px-8 relative overflow-x-hidden">
-      <div className="w-full max-w-3xl mx-auto">
+    <section className="min-h-screen flex flex-col items-center justify-center bg-secondary px-2 sm:px-4 md:px-6 lg:px-8 relative overflow-hidden" id="hero">
+      {/* Background rain animation */}
+      <BackgroundRain />
+      
+      <div className="w-full max-w-3xl mx-auto relative z-10">
         <motion.div
           className="bg-primary/30 p-3 sm:p-4 md:p-6 lg:p-8 rounded-lg backdrop-blur-sm font-sql overflow-hidden"
           initial={{ opacity: 0 }}
@@ -166,6 +171,11 @@ FROM experience;`;
             Execute (F5)
           </span>
         </motion.button>
+      </div>
+      
+      {/* Wave at the bottom */}
+      <div className="absolute bottom-0 left-0 w-full">
+        <WaveSection position="bottom" fillColor="#1A1F2C" backgroundColor="#151823" />
       </div>
     </section>
   );

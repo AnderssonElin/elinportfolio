@@ -1,7 +1,9 @@
+
 import { motion, AnimatePresence } from "framer-motion";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
 import { Award, Coffee, Code, Database, Users, Star } from "lucide-react";
 import { useState } from "react";
+import WaveSection from "./WaveSection";
 
 const stats = [
   { 
@@ -123,15 +125,20 @@ const Dashboard = () => {
   const [isHovering, setIsHovering] = useState(false);
 
   return (
-    <section className="py-12 sm:py-16 md:py-20 bg-primary px-4 sm:px-6 md:px-8 font-sql relative" id="dashboard">
+    <section className="min-h-screen py-12 sm:py-16 md:py-20 bg-primary px-4 sm:px-6 md:px-8 font-sql relative flex items-center" id="dashboard">
+      {/* Wave at the top */}
+      <div className="absolute top-0 left-0 w-full">
+        <WaveSection position="top" fillColor="#151823" backgroundColor="#151823" />
+      </div>
+      
       <motion.div 
-        className="container mx-auto relative z-10"
+        className="container mx-auto relative z-10 my-auto"
         animate={{
           filter: isHovering ? "blur(0px)" : "blur(0px)",
           transition: { duration: 0.3 }
         }}
       >
-        <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12 md:mb-16 text-white">Dashboard</h2>
+        <h2 className="text-2xl sm:text-3xl font-bold text-center mb-16 text-white">Dashboard</h2>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8 sm:mb-12 md:mb-16">
           {stats.map((Stat, index) => (
@@ -206,6 +213,11 @@ const Dashboard = () => {
           />
         )}
       </AnimatePresence>
+      
+      {/* Wave at the bottom */}
+      <div className="absolute bottom-0 left-0 w-full">
+        <WaveSection position="bottom" fillColor="#151823" backgroundColor="#1A1F2C" />
+      </div>
     </section>
   );
 };

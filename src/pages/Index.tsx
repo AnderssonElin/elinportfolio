@@ -9,6 +9,7 @@ import AskMe, { AskMeProvider } from "@/components/AskMe";
 import CoinCounter from "@/components/CoinCounter";
 import DownloadCV from "@/components/DownloadCV";
 import Copyright from "@/components/Copyright";
+import WaveSection from "@/components/WaveSection";
 
 const Index = () => {
   useEffect(() => {
