@@ -35,22 +35,22 @@ const Index = () => {
         <DownloadCV />
         <Hero />
         <div className="relative">
-          <WaveSection position="top" fillColor="#1A1F2C" backgroundColor="#151823" />
+          <WaveSection position="top" fillColor="#151823" />
           <Timeline />
-          <WaveSection position="bottom" fillColor="#151823" backgroundColor="#1A1F2C" />
+          <WaveSection position="bottom" fillColor="#151823" />
         </div>
         <div className="relative">
-          <WaveSection position="top" fillColor="#151823" backgroundColor="#1A1F2C" />
+          <WaveSection position="top" fillColor="#151823" />
           <Dashboard />
-          <WaveSection position="bottom" fillColor="#1A1F2C" backgroundColor="#151823" />
+          <WaveSection position="bottom" fillColor="#151823" />
         </div>
         <div className="relative">
-          <WaveSection position="top" fillColor="#1A1F2C" backgroundColor="#151823" />
+          <WaveSection position="top" fillColor="#151823" />
           <Projects />
-          <WaveSection position="bottom" fillColor="#151823" backgroundColor="#1A1F2C" />
+          <WaveSection position="bottom" fillColor="#151823" />
         </div>
         <div className="relative">
-          <WaveSection position="top" fillColor="#151823" backgroundColor="#1A1F2C" />
+          <WaveSection position="top" fillColor="#151823" />
           <CoinCounter />
           <AskMe />
           <Footer />

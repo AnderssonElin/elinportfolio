@@ -1,5 +1,5 @@
 
-import { Download, Github, Linkedin, Mail } from "lucide-react";
+import { Download } from "lucide-react";
 import { motion } from "framer-motion";
 
 const DownloadCV = () => {
@@ -46,10 +46,10 @@ const DownloadCV = () => {
       <a
         href="/cv.pdf"
         download
-        className="bg-accent hover:bg-accent/90 text-white px-4 py-2 rounded-md flex items-center gap-2 transition-colors"
+        className="bg-accent hover:bg-accent/90 text-white px-3 py-2 rounded-md flex items-center gap-1 transition-colors"
       >
         <Download className="w-4 h-4" />
-        Download CV
+        CV
       </a>
     </motion.div>
   );
