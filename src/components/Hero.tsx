@@ -20,7 +20,7 @@ FROM experience;`;
         duration: 0.5,
         delay: lineIndex * 0.1,
       }}
-      className="flex whitespace-nowrap"
+      className="flex whitespace-pre"
     >
       {line.split('').map((char, charIndex) => (
         <motion.span
