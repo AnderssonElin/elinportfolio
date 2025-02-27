@@ -11,19 +11,20 @@ const BackgroundRain = () => {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
     
-    // Anpassa canvas till fönsterstorlek
+    // Anpassa canvas till fönsterstorlek och gör den mycket högre för att täcka hela sidan
     const resizeCanvas = () => {
       canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight * 4; // Gör canvasen mycket högre för att täcka hela sidan
+      canvas.height = window.innerHeight * 5; 
     };
     
     window.addEventListener("resize", resizeCanvas);
     resizeCanvas();
     
-    // Skapa partiklar
-    const particlesArray: Particle[] = [];
-    const particleCount = 80; // Fler partiklar för bättre täckning
+    // Skapa olika typer av partiklar
+    const particles: Particle[] = [];
+    const particleCount = 60;
     
+    // Baspartikelklass
     class Particle {
       x: number;
       y: number;
@@ -31,6 +32,8 @@ const BackgroundRain = () => {
       speed: number;
       opacity: number;
       color: string;
+      rotation: number;
+      rotationSpeed: number;
       
       constructor() {
         this.x = Math.random() * canvas.width;
@@ -39,6 +42,8 @@ const BackgroundRain = () => {
         this.speed = Math.random() * 1 + 0.2;
         this.opacity = Math.random() * 0.5 + 0.1;
         this.color = this.getRandomColor();
+        this.rotation = Math.random() * Math.PI * 2;
+        this.rotationSpeed = (Math.random() - 0.5) * 0.02;
       }
       
       getRandomColor() {
@@ -48,26 +53,128 @@ const BackgroundRain = () => {
       
       update() {
         this.y += this.speed;
+        this.rotation += this.rotationSpeed;
+        
         if (this.y > canvas.height) {
-          this.y = 0 - this.size;
+          this.y = -this.size * 10;
           this.x = Math.random() * canvas.width;
         }
       }
       
       draw() {
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fillStyle = this.color;
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.rotate(this.rotation);
         ctx.globalAlpha = this.opacity;
-        ctx.fill();
+        this.drawShape();
         ctx.globalAlpha = 1;
+        ctx.restore();
+      }
+      
+      drawShape() {
+        // Överskrivs av subklasser
       }
     }
     
-    // Skapa partiklar
+    // Cirkeldiagram
+    class PieChart extends Particle {
+      segments: number;
+      
+      constructor() {
+        super();
+        this.segments = Math.floor(Math.random() * 4) + 2;
+        this.size = Math.random() * 15 + 8;
+      }
+      
+      drawShape() {
+        const segmentAngle = (Math.PI * 2) / this.segments;
+        
+        for (let i = 0; i < this.segments; i++) {
+          ctx.beginPath();
+          ctx.moveTo(0, 0);
+          ctx.arc(0, 0, this.size, i * segmentAngle, (i + 1) * segmentAngle);
+          ctx.closePath();
+          
+          // Olika färger för varje segment
+          const segColor = this.getRandomColor();
+          ctx.fillStyle = segColor;
+          ctx.fill();
+          
+          // Tunn kant runt segmentet
+          ctx.strokeStyle = "#ffffff";
+          ctx.lineWidth = 0.5;
+          ctx.stroke();
+        }
+      }
+    }
+    
+    // Stapeldiagram
+    class BarChart extends Particle {
+      bars: number[];
+      
+      constructor() {
+        super();
+        this.bars = Array.from({length: 3 + Math.floor(Math.random() * 3)}, 
+          () => Math.random() * 0.8 + 0.2);
+        this.size = Math.random() * 12 + 8;
+      }
+      
+      drawShape() {
+        const barWidth = this.size / (this.bars.length * 1.5);
+        
+        for (let i = 0; i < this.bars.length; i++) {
+          const x = (i * barWidth * 1.5) - (this.size / 2);
+          const height = this.bars[i] * this.size;
+          
+          ctx.fillStyle = this.getRandomColor();
+          ctx.fillRect(x, -height / 2, barWidth, height);
+        }
+      }
+    }
+    
+    // Donutdiagram
+    class DonutChart extends Particle {
+      segments: number;
+      innerRadius: number;
+      
+      constructor() {
+        super();
+        this.segments = Math.floor(Math.random() * 4) + 2;
+        this.size = Math.random() * 15 + 10;
+        this.innerRadius = this.size * 0.4;
+      }
+      
+      drawShape() {
+        const segmentAngle = (Math.PI * 2) / this.segments;
+        
+        for (let i = 0; i < this.segments; i++) {
+          ctx.beginPath();
+          ctx.arc(0, 0, this.size, i * segmentAngle, (i + 1) * segmentAngle);
+          ctx.arc(0, 0, this.innerRadius, (i + 1) * segmentAngle, i * segmentAngle, true);
+          ctx.closePath();
+          
+          ctx.fillStyle = this.getRandomColor();
+          ctx.fill();
+          
+          ctx.strokeStyle = "#ffffff";
+          ctx.lineWidth = 0.5;
+          ctx.stroke();
+        }
+      }
+    }
+    
+    // Skapa olika typer av partiklar
     const init = () => {
       for (let i = 0; i < particleCount; i++) {
-        particlesArray.push(new Particle());
+        const type = Math.random();
+        
+        if (type < 0.33) {
+          particles.push(new PieChart());
+        } else if (type < 0.66) {
+          particles.push(new BarChart());
+        } else {
+          particles.push(new DonutChart());
+        }
       }
     };
     
@@ -77,9 +184,9 @@ const BackgroundRain = () => {
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
-      for (let i = 0; i < particlesArray.length; i++) {
-        particlesArray[i].update();
-        particlesArray[i].draw();
+      for (let i = 0; i < particles.length; i++) {
+        particles[i].update();
+        particles[i].draw();
       }
       
       requestAnimationFrame(animate);
@@ -87,7 +194,7 @@ const BackgroundRain = () => {
     
     animate();
     
-    // Följ med scrollningen
+    // Följ med scrollningen med parallaxeffekt
     const handleScroll = () => {
       if (!canvas) return;
       canvas.style.transform = `translateY(${window.scrollY * 0.5}px)`;

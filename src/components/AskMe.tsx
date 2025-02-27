@@ -1,3 +1,4 @@
+
 import { useState, createContext, useContext } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Send, Bot, Sparkle, X } from "lucide-react";
@@ -10,11 +11,18 @@ type AskMeContextType = {
 const AskMeContext = createContext<AskMeContextType | undefined>(undefined);
 
 const funResponses = [
-  "Enligt min BI-kristallkula är svaret 42! 🔮",
-  "Låt mig kolla i min magiska dashboard... *bleep bloop* 📊",
-  "Ett ögonblick medan jag konsulterar med mina data-älvor! 🧚‍♂️",
-  "Hmm, mina algoritmer dansar just nu salsa, men de säger ja! 💃",
-  "Enligt min avancerade AI (Actually Improvising) är svaret självklart! 🤖",
+  "According to my BI crystal ball, the answer is 42! 🔮",
+  "Let me check my magical dashboard... *bleep bloop* 📊",
+  "One moment while I consult with my data fairies! 🧚‍♂️",
+  "Hmm, my algorithms are dancing salsa right now, but they say yes! 💃",
+  "My Advanced Predictive Insights Engine says... absolutely! 🤖",
+  "Let me run that through my neural network... result: fascinating! 🧠",
+  "The data lake whispers... it shall be done! 🌊",
+  "My quantum probability calculator is giving this a 97.3% chance of success! ⚛️",
+  "According to my trend analysis, this idea is about to go viral! 📈",
+  "My sentiment analysis is detecting extreme positivity about this! 😁",
+  "The data clusters have spoken - proceed with confidence! 🌟",
+  "My machine learning model just evolved to answer this question perfectly! 🦋",
 ];
 
 const Firework = ({ style }: { style: React.CSSProperties }) => (
@@ -159,7 +167,7 @@ const AskMe = () => {
               <X className="w-6 h-6" />
             </button>
 
-            <h2 className="text-3xl font-bold text-center text-white mb-8">Fråga BI-Oraklet</h2>
+            <h2 className="text-3xl font-bold text-center text-white mb-8">Ask the BI Oracle</h2>
             
             <div className="relative">
               <AnimatePresence>
@@ -201,22 +209,21 @@ const AskMe = () => {
               </AnimatePresence>
 
               <form onSubmit={handleSubmit} className="space-y-4">
-                <div className="flex flex-col gap-4">
+                <div className="flex gap-2">
                   <input
                     type="text"
                     value={question}
                     onChange={(e) => setQuestion(e.target.value)}
-                    placeholder="Ställ din fråga om BI..."
+                    placeholder="Ask about BI..."
                     className="w-full bg-white/10 text-white px-4 py-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-accent"
                   />
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     type="submit"
-                    className="w-full bg-accent text-white px-6 py-3 rounded-xl flex items-center justify-center gap-2"
+                    className="bg-accent text-white p-3 rounded-xl flex items-center justify-center"
                   >
                     <Send className="w-4 h-4" />
-                    Skicka
                   </motion.button>
                 </div>
               </form>

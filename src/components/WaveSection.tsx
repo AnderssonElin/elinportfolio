@@ -15,7 +15,7 @@ const WaveSection: React.FC<WaveSectionProps> = ({
   return (
     <div 
       className={`absolute ${position === "top" ? "top-0" : "bottom-0"} left-0 w-full overflow-hidden z-10 pointer-events-none`}
-      style={{ height: "80px" }}
+      style={{ height: "60px" }}
     >
       <svg
         className="absolute w-full h-24"
@@ -41,20 +41,20 @@ const WaveSection: React.FC<WaveSectionProps> = ({
           fill={backgroundColor || fillColor}
         />
         
-        {/* Wave path with gradient stroke */}
+        {/* Purely horizontal wave path with gradient stroke */}
         <path
-          d="M0,50 C180,80 360,0 540,50 C720,100 900,0 1080,50 C1260,100 1350,30 1440,50 L1440,100 L0,100 Z"
+          d="M0,40 C240,70 480,10 720,40 C960,70 1200,10 1440,40"
           fill="none"
           stroke={`url(#wave-gradient-${position})`}
-          strokeWidth="3"
+          strokeWidth="4"
         />
         
         {/* Decorative dots */}
-        {[...Array(10)].map((_, i) => (
+        {[...Array(12)].map((_, i) => (
           <circle 
             key={i}
-            cx={144 * i}
-            cy={(i % 2) ? 60 : 40}
+            cx={120 * i}
+            cy={40 + (i % 2 ? 15 : -15)}
             r="3"
             fill={i % 3 === 0 ? "#9b87f5" : i % 3 === 1 ? "#D946EF" : "#33C3F0"}
           />

@@ -48,25 +48,25 @@ const Index = () => {
         </section>
         
         {/* Timeline-sektionen */}
-        <section className="relative bg-transparent">
+        <section className="relative bg-transparent pt-16">
           <Timeline />
           <WaveSection position="bottom" backgroundColor={backgroundColor} />
         </section>
         
         {/* Dashboard-sektionen */}
-        <section className="relative bg-transparent">
+        <section className="relative bg-transparent pt-16">
           <Dashboard />
           <WaveSection position="bottom" backgroundColor={backgroundColor} />
         </section>
         
         {/* Projects-sektionen */}
-        <section className="relative bg-transparent">
+        <section className="relative bg-transparent pt-16">
           <Projects />
           <WaveSection position="bottom" backgroundColor={backgroundColor} />
         </section>
         
         {/* Slutsektionen */}
-        <section className="relative bg-transparent">
+        <section className="relative bg-transparent pt-16">
           <CoinCounter />
           <AskMe />
           <Footer />
