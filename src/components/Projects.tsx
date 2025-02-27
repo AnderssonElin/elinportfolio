@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import ProjectDetails from "../pages/ProjectDetails";
+import WaveSection from "./WaveSection";
 
 const projectsData = [
   {
@@ -75,7 +76,6 @@ const Projects = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: project.id * 0.1 }}
             >
               <div className="relative aspect-square overflow-hidden rounded-lg bg-black">
                 <div className="absolute inset-0 bg-gradient-to-r from-accent/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
