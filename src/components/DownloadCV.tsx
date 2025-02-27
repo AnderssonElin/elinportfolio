@@ -1,5 +1,5 @@
 
-import { Download } from "lucide-react";
+import { Download, Github, Linkedin, Mail } from "lucide-react";
 import { motion } from "framer-motion";
 
 const DownloadCV = () => {
