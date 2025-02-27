@@ -32,10 +32,14 @@ FROM experience;`;
             delay: (lineIndex * line.length + charIndex) * 0.02,
           }}
           className={
-            char === "'" ? "text-orange-400" :
-            ['S', 'E', 'L', 'E', 'C', 'T', 'F', 'R', 'O', 'M', 'A', 'S'].includes(char) ? "text-blue-400" :
-            ['/', '*'].includes(char) ? "text-green-400" :
-            ['m', 'y', 'n', 'a', 'm', 'e', 'i', 's', 'r', 'a', 'w', 'd', 't', 'n', 't', 'o', 'g', 'l', 'd', 'e', 'n'].includes(char.toLowerCase()) ? "text-red-400" :
+            lineIndex === 0 ? "text-green-400" :
+            ['S', 'E', 'L', 'E', 'C', 'T', 'F', 'R', 'O', 'M', 'A', 'S'].includes(char) && 
+            ['SELECT', 'AS', 'FROM'].some(keyword => line.includes(keyword)) ? "text-blue-400" :
+            char === "'" || (char >= 'a' && char <= 'z' && line.includes("'")) || 
+            (char >= 'A' && char <= 'Z' && line.includes("'")) || 
+            (char >= '0' && char <= '9' && line.includes("'")) || 
+            char === ' ' && line.includes("'") && (line.indexOf(char) > line.indexOf("'") && 
+            line.indexOf(char) < line.lastIndexOf("'")) ? "text-orange-400" :
             "text-gray-300"
           }
         >
