@@ -1,8 +1,8 @@
 
 import { useEffect, useState, useRef } from "react";
-import { useParams, useNavigate, useLocation } from "react-router-dom";
-import { motion } from "framer-motion";
-import { ArrowLeft, ChevronDown } from "lucide-react";
+import { useParams, useNavigate } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
+import { ArrowLeft, ChevronDown, X } from "lucide-react";
 
 interface ProjectData {
   id: number;
@@ -92,21 +92,31 @@ const projectsData: Record<string, ProjectData> = {
 const ProjectDetails = () => {
   const { projectId } = useParams<{ projectId: string }>();
   const navigate = useNavigate();
-  const location = useLocation();
   const [showHeader, setShowHeader] = useState(true);
   const [showScrollIndicator, setShowScrollIndicator] = useState(true);
   const galleryRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   
   const project = projectId ? projectsData[projectId] : null;
   
-  // Scroll to top when component mounts
+  // Block scroll on body when modal is open
   useEffect(() => {
-    window.scrollTo(0, 0);
+    document.body.style.overflow = 'hidden';
+    // Ensure we start at the top of the modal
+    if (containerRef.current) {
+      containerRef.current.scrollTop = 0;
+    }
+    
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
   }, [projectId]);
   
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY;
+      if (!containerRef.current) return;
+      
+      const scrollPosition = containerRef.current.scrollTop;
       if (scrollPosition > 300) {
         setShowHeader(false);
         setShowScrollIndicator(false);
@@ -116,161 +126,201 @@ const ProjectDetails = () => {
       }
     };
     
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    containerRef.current?.addEventListener("scroll", handleScroll);
+    return () => containerRef.current?.removeEventListener("scroll", handleScroll);
   }, []);
   
   const scrollToGallery = () => {
-    galleryRef.current?.scrollIntoView({ behavior: 'smooth' });
+    galleryRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+  
+  const closeProject = () => {
+    navigate("/#projects");
   };
   
   if (!project) {
     return (
-      <div className="min-h-screen bg-secondary flex flex-col items-center justify-center p-4">
-        <h1 className="text-2xl text-accent mb-4">Project Not Found</h1>
-        <button 
-          onClick={() => navigate("/#projects")} 
-          className="flex items-center gap-2 bg-accent hover:bg-accent/80 px-4 py-2 rounded-md transition-colors"
-        >
-          <ArrowLeft size={16} />
-          Back to Projects
-        </button>
-      </div>
-    );
-  }
-  
-  return (
-    <div className="min-h-screen bg-secondary">
-      {/* Header Section */}
       <motion.div
-        className="py-6 px-4 md:px-8 sticky top-0 z-10 bg-primary/90 backdrop-blur-sm"
-        initial={{ opacity: 1 }}
+        initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4"
       >
-        <div className="container mx-auto">
+        <div className="bg-secondary rounded-lg shadow-xl p-8 max-w-lg w-full">
+          <h1 className="text-2xl text-accent mb-4">Project Not Found</h1>
           <button 
-            onClick={() => navigate("/#projects")}
-            className="flex items-center gap-2 text-gray-300 hover:text-white mb-4 transition-colors"
+            onClick={closeProject} 
+            className="flex items-center gap-2 bg-accent hover:bg-accent/80 px-4 py-2 rounded-md transition-colors"
           >
             <ArrowLeft size={16} />
             Back to Projects
           </button>
-          <h1 className="text-2xl md:text-3xl font-bold text-accent">{project.title}</h1>
         </div>
       </motion.div>
-      
-      {/* Content Section */}
-      <div className="container mx-auto px-4 md:px-8 py-8">
+    );
+  }
+  
+  return (
+    <AnimatePresence>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center"
+      >
         <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: showHeader ? 1 : 0, y: showHeader ? 0 : -20 }}
-          transition={{ duration: 0.5 }}
+          ref={containerRef}
+          className="bg-secondary rounded-lg shadow-xl w-full h-full md:w-11/12 md:h-[90%] md:max-w-6xl overflow-y-auto"
+          initial={{ y: 50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: 50, opacity: 0 }}
+          transition={{ type: "spring", damping: 25 }}
         >
-          <div>
-            <div className="mb-8">
-              <h2 className="text-xl font-semibold text-accent mb-3">Year</h2>
-              <p className="text-gray-300">{project.year}</p>
+          {/* Header Section */}
+          <motion.div
+            className="py-6 px-4 md:px-8 sticky top-0 z-10 bg-primary/90 backdrop-blur-sm flex justify-between items-center"
+            initial={{ opacity: 1 }}
+            animate={{ opacity: 1 }}
+          >
+            <div className="flex-1">
+              <button 
+                onClick={closeProject}
+                className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors"
+              >
+                <ArrowLeft size={16} />
+                Back to Projects
+              </button>
             </div>
             
-            <div className="mb-8">
-              <h2 className="text-xl font-semibold text-accent mb-3">Tech & Technique</h2>
-              <div className="flex flex-wrap gap-2">
-                {project.tech.map((tech, index) => (
-                  <span 
-                    key={index} 
-                    className="px-3 py-1 bg-primary/50 rounded-full text-sm text-gray-300"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
+            <div className="flex-grow text-center">
+              <h1 className="text-xl md:text-2xl font-bold text-accent truncate">{project.title}</h1>
             </div>
-          </div>
+            
+            <div className="flex-1 flex justify-end">
+              <button
+                onClick={closeProject}
+                className="text-gray-300 hover:text-white p-1 rounded-full transition-colors"
+              >
+                <X size={20} />
+              </button>
+            </div>
+          </motion.div>
           
-          <div>
-            <div className="mb-8">
-              <h2 className="text-xl font-semibold text-accent mb-3">Description</h2>
-              <p className="text-gray-300">{project.description}</p>
-            </div>
+          {/* Content Section */}
+          <div className="px-4 md:px-8 py-8">
+            <motion.div 
+              className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: showHeader ? 1 : 0, y: showHeader ? 0 : -20 }}
+              transition={{ duration: 0.5 }}
+            >
+              <div>
+                <div className="mb-8">
+                  <h2 className="text-xl font-semibold text-accent mb-3">Year</h2>
+                  <p className="text-gray-300">{project.year}</p>
+                </div>
+                
+                <div className="mb-8">
+                  <h2 className="text-xl font-semibold text-accent mb-3">Tech & Technique</h2>
+                  <div className="flex flex-wrap gap-2">
+                    {project.tech.map((tech, index) => (
+                      <span 
+                        key={index} 
+                        className="px-3 py-1 bg-primary/50 rounded-full text-sm text-gray-300"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+              
+              <div>
+                <div className="mb-8">
+                  <h2 className="text-xl font-semibold text-accent mb-3">Description</h2>
+                  <p className="text-gray-300">{project.description}</p>
+                </div>
+                
+                <div className="mb-8">
+                  <h2 className="text-xl font-semibold text-accent mb-3">My Role</h2>
+                  <p className="text-gray-300">{project.role}</p>
+                </div>
+              </div>
+            </motion.div>
             
-            <div className="mb-8">
-              <h2 className="text-xl font-semibold text-accent mb-3">My Role</h2>
-              <p className="text-gray-300">{project.role}</p>
-            </div>
+            {/* Scroll indicator - only show if there are images */}
+            {project.images.length > 0 && (
+              <motion.div 
+                className="flex justify-center mt-8 mb-16"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ 
+                  opacity: showScrollIndicator ? 1 : 0, 
+                  y: showScrollIndicator ? 0 : -10 
+                }}
+                transition={{ duration: 0.5 }}
+              >
+                <motion.button
+                  onClick={scrollToGallery}
+                  className="text-gray-400 hover:text-accent transition-colors flex flex-col items-center"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <p className="mb-2 text-sm">View Images</p>
+                  <motion.div
+                    animate={{
+                      y: [0, 10, 0],
+                    }}
+                    transition={{
+                      duration: 1.5,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                  >
+                    <ChevronDown size={24} />
+                  </motion.div>
+                </motion.button>
+              </motion.div>
+            )}
+            
+            {/* Images Section - Use a fixed min-height to ensure it's visible */}
+            {project.images.length > 0 && (
+              <div ref={galleryRef} className="min-h-[50vh] md:min-h-[80vh]">
+                <motion.div 
+                  className="mt-16 pb-16"
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: !showHeader ? 1 : 0.3, y: !showHeader ? 0 : 50 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <div className="space-y-16">
+                    {project.images.map((image, index) => (
+                      <motion.div 
+                        key={index} 
+                        className="flex justify-center"
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: index * 0.3 }}
+                        whileInView={{ 
+                          scale: 1.02,
+                          transition: { duration: 0.5 }
+                        }}
+                        viewport={{ once: false, margin: "-100px" }}
+                      >
+                        <img 
+                          src={image} 
+                          alt={`${project.title} screenshot ${index + 1}`} 
+                          className="object-cover rounded-lg shadow-xl"
+                          style={{ maxWidth: "800px", maxHeight: "800px", width: "100%" }}
+                        />
+                      </motion.div>
+                    ))}
+                  </div>
+                </motion.div>
+              </div>
+            )}
           </div>
         </motion.div>
-        
-        {/* Scroll indicator */}
-        {project.images.length > 0 && (
-          <motion.div 
-            className="flex justify-center mt-8 mb-16"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ 
-              opacity: showScrollIndicator ? 1 : 0, 
-              y: showScrollIndicator ? 0 : -10 
-            }}
-            transition={{ duration: 0.5 }}
-          >
-            <motion.button
-              onClick={scrollToGallery}
-              className="text-gray-400 hover:text-accent transition-colors flex flex-col items-center"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <p className="mb-2 text-sm">View Gallery</p>
-              <motion.div
-                animate={{
-                  y: [0, 10, 0],
-                }}
-                transition={{
-                  duration: 1.5,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              >
-                <ChevronDown size={24} />
-              </motion.div>
-            </motion.button>
-          </motion.div>
-        )}
-        
-        {/* Images Section */}
-        <div ref={galleryRef}>
-          <motion.div 
-            className="mt-16"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: !showHeader ? 1 : 0, y: !showHeader ? 0 : 50 }}
-            transition={{ duration: 0.5 }}
-          >
-            <h2 className="text-2xl font-bold text-accent mb-8">Project Gallery</h2>
-            <div className="space-y-16">
-              {project.images.slice(0, 3).map((image, index) => (
-                <motion.div 
-                  key={index} 
-                  className="flex justify-center"
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: index * 0.3 }}
-                  whileInView={{ 
-                    scale: 1.02,
-                    transition: { duration: 0.5 }
-                  }}
-                  viewport={{ once: false, margin: "-100px" }}
-                >
-                  <img 
-                    src={image} 
-                    alt={`${project.title} screenshot ${index + 1}`} 
-                    className="object-cover rounded-lg shadow-xl"
-                    style={{ maxWidth: "800px", maxHeight: "800px", width: "100%" }}
-                  />
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </div>
-    </div>
+      </motion.div>
+    </AnimatePresence>
   );
 };
 
