@@ -1,7 +1,7 @@
 
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import ProjectDetails from "../pages/ProjectDetails";
 
 const projectsData = [
   {
@@ -9,48 +9,48 @@ const projectsData = [
     title: "Data Lake Implementation",
     description: "Enterprise-wide data lake architecture with real-time analytics",
     imageUrl: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=800&q=80",
-    link: "/project/data-lake"
+    slug: "data-lake"
   },
   {
     id: 2,
     title: "ML Pipeline Development",
     description: "Automated machine learning pipeline for predictive analytics",
     imageUrl: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?auto=format&fit=crop&w=800&q=80",
-    link: "/project/ml-pipeline"
+    slug: "ml-pipeline"
   },
   {
     id: 3,
     title: "Analytics Platform",
     description: "Self-service analytics platform with interactive dashboards",
     imageUrl: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80",
-    link: "/project/analytics"
+    slug: "analytics"
   },
   {
     id: 4,
     title: "BI Dashboard Suite",
     description: "Comprehensive business intelligence dashboard solution",
     imageUrl: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=800&q=80",
-    link: "/project/bi-dashboard"
+    slug: "bi-dashboard"
   },
   {
     id: 5,
     title: "Data Visualization Tool",
     description: "Interactive data visualization and reporting platform",
     imageUrl: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=800&q=80",
-    link: "/project/data-viz"
+    slug: "data-viz"
   },
   {
     id: 6,
     title: "AI Analytics Engine",
     description: "AI-powered analytics engine for predictive insights",
     imageUrl: "https://images.unsplash.com/photo-1509718443690-d8e2fb3474b7?auto=format&fit=crop&w=800&q=80",
-    link: "/project/ai-analytics"
+    slug: "ai-analytics"
   }
 ];
 
 const Projects = () => {
-  const navigate = useNavigate();
   const [hoveredId, setHoveredId] = useState<number | null>(null);
+  const [selectedProject, setSelectedProject] = useState<string | null>(null);
 
   return (
     <section className="py-12 sm:py-16 md:py-20 bg-secondary px-4 sm:px-6 md:px-8" id="projects">
@@ -64,7 +64,7 @@ const Projects = () => {
               className="relative aspect-video cursor-pointer overflow-hidden rounded-xl bg-black"
               onHoverStart={() => setHoveredId(project.id)}
               onHoverEnd={() => setHoveredId(null)}
-              onClick={() => navigate(project.link)}
+              onClick={() => setSelectedProject(project.slug)}
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.2 }}
             >
@@ -98,6 +98,14 @@ const Projects = () => {
           ))}
         </div>
       </div>
+      
+      {/* Render the project details overlay if a project is selected */}
+      {selectedProject && (
+        <ProjectDetails 
+          projectId={selectedProject} 
+          onClose={() => setSelectedProject(null)}
+        />
+      )}
     </section>
   );
 };

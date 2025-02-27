@@ -1,6 +1,5 @@
 
 import { useEffect, useState, useRef } from "react";
-import { useParams, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, ChevronDown, X } from "lucide-react";
 
@@ -89,15 +88,18 @@ const projectsData: Record<string, ProjectData> = {
   }
 };
 
-const ProjectDetails = () => {
-  const { projectId } = useParams<{ projectId: string }>();
-  const navigate = useNavigate();
+interface ProjectDetailsProps {
+  projectId: string;
+  onClose: () => void;
+}
+
+const ProjectDetails = ({ projectId, onClose }: ProjectDetailsProps) => {
   const [showHeader, setShowHeader] = useState(true);
   const [showScrollIndicator, setShowScrollIndicator] = useState(true);
   const galleryRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   
-  const project = projectId ? projectsData[projectId] : null;
+  const project = projectsData[projectId];
   
   // Block scroll on body when modal is open
   useEffect(() => {
@@ -134,10 +136,6 @@ const ProjectDetails = () => {
     galleryRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
   
-  const closeProject = () => {
-    navigate("/#projects");
-  };
-  
   if (!project) {
     return (
       <motion.div
@@ -149,7 +147,7 @@ const ProjectDetails = () => {
         <div className="bg-secondary rounded-lg shadow-xl p-8 max-w-lg w-full">
           <h1 className="text-2xl text-accent mb-4">Project Not Found</h1>
           <button 
-            onClick={closeProject} 
+            onClick={onClose} 
             className="flex items-center gap-2 bg-accent hover:bg-accent/80 px-4 py-2 rounded-md transition-colors"
           >
             <ArrowLeft size={16} />
@@ -184,7 +182,7 @@ const ProjectDetails = () => {
           >
             <div className="flex-1">
               <button 
-                onClick={closeProject}
+                onClick={onClose}
                 className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors"
               >
                 <ArrowLeft size={16} />
@@ -198,7 +196,7 @@ const ProjectDetails = () => {
             
             <div className="flex-1 flex justify-end">
               <button
-                onClick={closeProject}
+                onClick={onClose}
                 className="text-gray-300 hover:text-white p-1 rounded-full transition-colors"
               >
                 <X size={20} />
