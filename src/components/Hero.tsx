@@ -11,6 +11,68 @@ SELECT
      'Transforming raw data into golden insights' AS Tagline 
 FROM experience;`;
 
+  // Function to determine color based on specific text content
+  const getColor = (text: string, char: string, index: number): string => {
+    // Green for comment line
+    if (text.includes("/* Booting Up My Profile */") && index <= text.indexOf("*/") + 2) {
+      return "text-green-400";
+    }
+    
+    // Blue for SQL keywords
+    if ((text.includes("SELECT") && text.indexOf("SELECT") <= index && index < text.indexOf("SELECT") + 6) ||
+        (text.indexOf("AS") === index || text.indexOf("AS") === index - 1) ||
+        (text.includes("FROM") && text.indexOf("FROM") <= index && index < text.indexOf("FROM") + 4)) {
+      return "text-blue-400";
+    }
+    
+    // Orange for quoted strings
+    const singleQuotes = [];
+    for (let i = 0; i < text.length; i++) {
+      if (text[i] === "'") {
+        singleQuotes.push(i);
+      }
+    }
+    
+    for (let i = 0; i < singleQuotes.length; i += 2) {
+      if (i + 1 < singleQuotes.length && index >= singleQuotes[i] && index <= singleQuotes[i + 1]) {
+        return "text-orange-400";
+      }
+    }
+    
+    // White for specific words and symbols
+    if ((text.includes("||") && (index === text.indexOf("||") || index === text.indexOf("||") + 1)) ||
+        (text.includes("Greeting") && text.indexOf("Greeting") <= index && index < text.indexOf("Greeting") + 8) ||
+        (text.includes("Role") && text.indexOf("Role") <= index && index < text.indexOf("Role") + 4) ||
+        (text.includes("Tagline") && text.indexOf("Tagline") <= index && index < text.indexOf("Tagline") + 7) ||
+        (text.includes("experience") && text.indexOf("experience") <= index && index < text.indexOf("experience") + 10)) {
+      return "text-white";
+    }
+    
+    // Default color
+    return "text-gray-300";
+  };
+
+  // Calculate total animation delay for each character
+  const calculateAnimationDelay = () => {
+    let totalChars = 0;
+    const lines = sqlCode.split('\n');
+    const charDelays: Record<string, number> = {};
+    
+    lines.forEach((line, lineIndex) => {
+      for (let charIndex = 0; charIndex < line.length; charIndex++) {
+        const globalIndex = totalChars;
+        charDelays[`${lineIndex}-${charIndex}`] = globalIndex * 0.02;
+        totalChars++;
+      }
+      // Add a small delay between lines
+      totalChars += 2;
+    });
+    
+    return charDelays;
+  };
+  
+  const charDelays = calculateAnimationDelay();
+
   const colorizedSQL = sqlCode.split('\n').map((line, lineIndex) => (
     <motion.div
       key={lineIndex}
@@ -29,19 +91,9 @@ FROM experience;`;
           animate={{ opacity: 1 }}
           transition={{
             duration: 0.05,
-            delay: (lineIndex * line.length + charIndex) * 0.02,
+            delay: charDelays[`${lineIndex}-${charIndex}`],
           }}
-          className={
-            lineIndex === 0 ? "text-green-400" :
-            ['S', 'E', 'L', 'E', 'C', 'T', 'F', 'R', 'O', 'M', 'A', 'S'].includes(char) && 
-            ['SELECT', 'AS', 'FROM'].some(keyword => line.includes(keyword)) ? "text-blue-400" :
-            char === "'" || (char >= 'a' && char <= 'z' && line.includes("'")) || 
-            (char >= 'A' && char <= 'Z' && line.includes("'")) || 
-            (char >= '0' && char <= '9' && line.includes("'")) || 
-            char === ' ' && line.includes("'") && (line.indexOf(char) > line.indexOf("'") && 
-            line.indexOf(char) < line.lastIndexOf("'")) ? "text-orange-400" :
-            "text-gray-300"
-          }
+          className={getColor(line, char, charIndex)}
         >
           {char}
         </motion.span>
