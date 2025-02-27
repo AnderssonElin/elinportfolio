@@ -14,7 +14,7 @@ const BackgroundRain = () => {
     // Anpassa canvas till fönsterstorlek
     const resizeCanvas = () => {
       canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      canvas.height = window.innerHeight * 4; // Gör canvasen mycket högre för att täcka hela sidan
     };
     
     window.addEventListener("resize", resizeCanvas);
@@ -22,7 +22,7 @@ const BackgroundRain = () => {
     
     // Skapa partiklar
     const particlesArray: Particle[] = [];
-    const particleCount = 40;
+    const particleCount = 80; // Fler partiklar för bättre täckning
     
     class Particle {
       x: number;
@@ -87,15 +87,24 @@ const BackgroundRain = () => {
     
     animate();
     
+    // Följ med scrollningen
+    const handleScroll = () => {
+      if (!canvas) return;
+      canvas.style.transform = `translateY(${window.scrollY * 0.5}px)`;
+    };
+    
+    window.addEventListener("scroll", handleScroll);
+    
     return () => {
       window.removeEventListener("resize", resizeCanvas);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
   
   return (
     <canvas 
       ref={canvasRef} 
-      className="fixed inset-0 w-full h-full z-0 pointer-events-none" 
+      className="fixed top-0 left-0 w-full h-full pointer-events-none" 
       style={{ opacity: 0.6 }}
     />
   );

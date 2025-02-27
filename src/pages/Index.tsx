@@ -28,34 +28,50 @@ const Index = () => {
     return () => document.removeEventListener("click", handleAnchorClick);
   }, []);
 
+  // Gemensam bakgrundsfärg för hela sidan
+  const backgroundColor = "#151823";
+
   return (
     <AskMeProvider>
-      <main className="bg-secondary relative">
-        <BackgroundRain />
+      <main className="relative">
+        {/* Bakgrundsanimering som täcker hela sidan */}
+        <div className="fixed inset-0 z-0 bg-secondary">
+          <BackgroundRain />
+        </div>
+        
         <DownloadCV />
-        <Hero />
-        <div className="relative">
-          <WaveSection position="top" fillColor="#151823" />
+        
+        {/* Hero-sektionen */}
+        <section className="relative bg-transparent">
+          <Hero />
+          <WaveSection position="bottom" backgroundColor={backgroundColor} />
+        </section>
+        
+        {/* Timeline-sektionen */}
+        <section className="relative bg-transparent">
           <Timeline />
-          <WaveSection position="bottom" fillColor="#151823" />
-        </div>
-        <div className="relative">
-          <WaveSection position="top" fillColor="#151823" />
+          <WaveSection position="bottom" backgroundColor={backgroundColor} />
+        </section>
+        
+        {/* Dashboard-sektionen */}
+        <section className="relative bg-transparent">
           <Dashboard />
-          <WaveSection position="bottom" fillColor="#151823" />
-        </div>
-        <div className="relative">
-          <WaveSection position="top" fillColor="#151823" />
+          <WaveSection position="bottom" backgroundColor={backgroundColor} />
+        </section>
+        
+        {/* Projects-sektionen */}
+        <section className="relative bg-transparent">
           <Projects />
-          <WaveSection position="bottom" fillColor="#151823" />
-        </div>
-        <div className="relative">
-          <WaveSection position="top" fillColor="#151823" />
+          <WaveSection position="bottom" backgroundColor={backgroundColor} />
+        </section>
+        
+        {/* Slutsektionen */}
+        <section className="relative bg-transparent">
           <CoinCounter />
           <AskMe />
           <Footer />
           <Copyright />
-        </div>
+        </section>
       </main>
     </AskMeProvider>
   );
