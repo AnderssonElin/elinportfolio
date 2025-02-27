@@ -9,42 +9,42 @@ const projectsData = [
     title: "Data Lake Implementation",
     description: "Enterprise-wide data lake architecture with real-time analytics",
     imageUrl: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=800&q=80",
-    link: "/projects/data-lake"
+    link: "/project/data-lake"
   },
   {
     id: 2,
     title: "ML Pipeline Development",
     description: "Automated machine learning pipeline for predictive analytics",
     imageUrl: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?auto=format&fit=crop&w=800&q=80",
-    link: "/projects/ml-pipeline"
+    link: "/project/ml-pipeline"
   },
   {
     id: 3,
     title: "Analytics Platform",
     description: "Self-service analytics platform with interactive dashboards",
     imageUrl: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80",
-    link: "/projects/analytics"
+    link: "/project/analytics"
   },
   {
     id: 4,
     title: "BI Dashboard Suite",
     description: "Comprehensive business intelligence dashboard solution",
     imageUrl: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=800&q=80",
-    link: "/projects/bi-dashboard"
+    link: "/project/bi-dashboard"
   },
   {
     id: 5,
     title: "Data Visualization Tool",
     description: "Interactive data visualization and reporting platform",
     imageUrl: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=800&q=80",
-    link: "/projects/data-viz"
+    link: "/project/data-viz"
   },
   {
     id: 6,
     title: "AI Analytics Engine",
     description: "AI-powered analytics engine for predictive insights",
     imageUrl: "https://images.unsplash.com/photo-1509718443690-d8e2fb3474b7?auto=format&fit=crop&w=800&q=80",
-    link: "/projects/ai-analytics"
+    link: "/project/ai-analytics"
   }
 ];
 

@@ -52,7 +52,7 @@ FROM experience;`;
     return "text-gray-300";
   };
 
-  // Calculate total animation delay for each character
+  // Calculate total animation delay for each character with 50% slower animation
   const calculateAnimationDelay = () => {
     let totalChars = 0;
     const lines = sqlCode.split('\n');
@@ -61,7 +61,8 @@ FROM experience;`;
     lines.forEach((line, lineIndex) => {
       for (let charIndex = 0; charIndex < line.length; charIndex++) {
         const globalIndex = totalChars;
-        charDelays[`${lineIndex}-${charIndex}`] = globalIndex * 0.02;
+        // Increase delay by 50% (0.02 -> 0.03)
+        charDelays[`${lineIndex}-${charIndex}`] = globalIndex * 0.03;
         totalChars++;
       }
       // Add a small delay between lines
@@ -80,9 +81,9 @@ FROM experience;`;
       animate={{ opacity: 1 }}
       transition={{
         duration: 0.5,
-        delay: lineIndex * 0.1,
+        delay: lineIndex * 0.15, // Slow down line appearance by 50%
       }}
-      className="flex whitespace-pre"
+      className="flex whitespace-pre overflow-x-auto md:overflow-visible text-[0.6rem] xs:text-xs sm:text-sm md:text-sm"
     >
       {line.split('').map((char, charIndex) => (
         <motion.span
@@ -124,12 +125,12 @@ FROM experience;`;
     <section className="min-h-screen flex flex-col items-center justify-center bg-secondary px-2 sm:px-4 md:px-6 lg:px-8 relative">
       <div className="w-full max-w-3xl mx-auto">
         <motion.div
-          className="bg-primary/30 p-4 sm:p-6 md:p-8 rounded-lg backdrop-blur-sm font-sql"
+          className="bg-primary/30 p-3 sm:p-4 md:p-6 lg:p-8 rounded-lg backdrop-blur-sm font-sql overflow-hidden"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
         >
-          <pre className="space-y-2 text-xs sm:text-sm">
+          <pre className="space-y-2">
             {colorizedSQL}
           </pre>
         </motion.div>
@@ -142,7 +143,7 @@ FROM experience;`;
             y: 0,
           }}
           transition={{ 
-            delay: sqlCode.length * 0.02 + 0.5,
+            delay: sqlCode.length * 0.03 + 0.5, // Adjust for slower animation
             duration: 0.5 
           }}
           whileHover={{ scale: 1.05 }}

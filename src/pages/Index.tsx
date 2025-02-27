@@ -8,6 +8,7 @@ import Footer from "@/components/Footer";
 import AskMe, { AskMeProvider } from "@/components/AskMe";
 import CoinCounter from "@/components/CoinCounter";
 import DownloadCV from "@/components/DownloadCV";
+import Copyright from "@/components/Copyright";
 
 const Index = () => {
   useEffect(() => {
@@ -36,6 +37,7 @@ const Index = () => {
         <CoinCounter />
         <AskMe />
         <Footer />
+        <Copyright />
       </main>
     </AskMeProvider>
   );
