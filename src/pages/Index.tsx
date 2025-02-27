@@ -10,6 +10,7 @@ import CoinCounter from "@/components/CoinCounter";
 import DownloadCV from "@/components/DownloadCV";
 import Copyright from "@/components/Copyright";
 import WaveSection from "@/components/WaveSection";
+import BackgroundRain from "@/components/BackgroundRain";
 
 const Index = () => {
   useEffect(() => {
@@ -29,16 +30,32 @@ const Index = () => {
 
   return (
     <AskMeProvider>
-      <main className="bg-secondary">
+      <main className="bg-secondary relative">
+        <BackgroundRain />
         <DownloadCV />
         <Hero />
-        <Timeline />
-        <Dashboard />
-        <Projects />
-        <CoinCounter />
-        <AskMe />
-        <Footer />
-        <Copyright />
+        <div className="relative">
+          <WaveSection position="top" fillColor="#1A1F2C" backgroundColor="#151823" />
+          <Timeline />
+          <WaveSection position="bottom" fillColor="#151823" backgroundColor="#1A1F2C" />
+        </div>
+        <div className="relative">
+          <WaveSection position="top" fillColor="#151823" backgroundColor="#1A1F2C" />
+          <Dashboard />
+          <WaveSection position="bottom" fillColor="#1A1F2C" backgroundColor="#151823" />
+        </div>
+        <div className="relative">
+          <WaveSection position="top" fillColor="#1A1F2C" backgroundColor="#151823" />
+          <Projects />
+          <WaveSection position="bottom" fillColor="#151823" backgroundColor="#1A1F2C" />
+        </div>
+        <div className="relative">
+          <WaveSection position="top" fillColor="#151823" backgroundColor="#1A1F2C" />
+          <CoinCounter />
+          <AskMe />
+          <Footer />
+          <Copyright />
+        </div>
       </main>
     </AskMeProvider>
   );

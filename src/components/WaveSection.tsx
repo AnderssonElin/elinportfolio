@@ -14,30 +14,36 @@ const WaveSection: React.FC<WaveSectionProps> = ({
 }) => {
   return (
     <div 
-      className={`absolute w-full overflow-hidden h-16 ${position === "top" ? "top-0" : "bottom-0"} left-0 z-10 pointer-events-none`}
-      style={{ backgroundColor: backgroundColor || "transparent" }}
+      className={`absolute w-full overflow-hidden pointer-events-none ${position === "top" ? "top-0" : "bottom-0"} left-0 z-10`}
+      style={{ 
+        height: "40px",
+        backgroundColor: backgroundColor || "transparent" 
+      }}
     >
       <svg
-        className="absolute w-full h-full"
+        className="absolute w-full"
         preserveAspectRatio="none"
         width="100%"
         height="100%"
-        viewBox="0 0 1440 54"
+        viewBox="0 0 1440 24"
         style={{ 
-          transform: position === "top" ? "rotate(180deg)" : "rotate(0)"
+          transform: position === "top" ? "rotate(180deg) translateY(-100%)" : "translateY(0)",
+          top: position === "top" ? "100%" : "0",
         }}
       >
         <defs>
-          <linearGradient id={`gradient-${position}`} x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" style={{ stopColor: fillColor, stopOpacity: 0.8 }} />
-            <stop offset="50%" style={{ stopColor: fillColor, stopOpacity: 1 }} />
-            <stop offset="100%" style={{ stopColor: fillColor, stopOpacity: 0.8 }} />
+          <linearGradient id={`wave-gradient-${position}`} x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style={{ stopColor: fillColor, stopOpacity: 0.5 }} />
+            <stop offset="50%" style={{ stopColor: fillColor, stopOpacity: 0.8 }} />
+            <stop offset="100%" style={{ stopColor: fillColor, stopOpacity: 0.5 }} />
           </linearGradient>
         </defs>
         <path
-          d="M0 27C151.486 27 226.929 54 378.415 54C529.901 54 605.344 0 756.83 0C908.316 0 983.759 54 1135.25 54C1286.73 54 1362.17 27 1440 27V54H0V27Z"
-          fill={`url(#gradient-${position})`}
-          fillOpacity="1"
+          d="M0,0 C480,24 960,0 1440,12 L1440,24 L0,24 Z"
+          fill={`url(#wave-gradient-${position})`}
+          strokeWidth="0.5"
+          stroke={`${fillColor}`}
+          strokeOpacity="0.3"
         />
       </svg>
     </div>
