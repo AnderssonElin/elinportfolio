@@ -20,7 +20,7 @@ const Copyright = () => {
     <div className="w-full bg-primary/30 py-4 mt-auto">
       <div className="container mx-auto text-center">
         <p className="text-gray-400 text-sm">
-          Copyright © {currentYear}
+          Copyright © {currentYear} Elin
         </p>
       </div>
     </div>

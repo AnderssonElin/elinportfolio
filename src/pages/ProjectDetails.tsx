@@ -115,11 +115,11 @@ const ProjectDetails = () => {
       <div className="min-h-screen bg-secondary flex flex-col items-center justify-center p-4">
         <h1 className="text-2xl text-accent mb-4">Project Not Found</h1>
         <button 
-          onClick={() => navigate("/")} 
+          onClick={() => navigate("/#projects")} 
           className="flex items-center gap-2 bg-accent hover:bg-accent/80 px-4 py-2 rounded-md transition-colors"
         >
           <ArrowLeft size={16} />
-          Back to Home
+          Back to Projects
         </button>
       </div>
     );
@@ -135,7 +135,7 @@ const ProjectDetails = () => {
       >
         <div className="container mx-auto">
           <button 
-            onClick={() => navigate("/")}
+            onClick={() => navigate("/#projects")}
             className="flex items-center gap-2 text-gray-300 hover:text-white mb-4 transition-colors"
           >
             <ArrowLeft size={16} />
@@ -189,26 +189,31 @@ const ProjectDetails = () => {
         
         {/* Images Section */}
         <motion.div 
-          className="grid grid-cols-1 gap-8 mt-16"
+          className="mt-16"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: !showHeader ? 1 : 0, y: !showHeader ? 0 : 50 }}
           transition={{ duration: 0.5 }}
         >
           <h2 className="text-2xl font-bold text-accent mb-6">Project Gallery</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {project.images.map((image, index) => (
+          <div className="space-y-12">
+            {project.images.slice(0, 3).map((image, index) => (
               <motion.div 
                 key={index} 
-                className="aspect-video overflow-hidden rounded-lg"
-                initial={{ opacity: 0, scale: 0.9 }}
+                className="w-full overflow-hidden rounded-lg"
+                initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: index * 0.2 }}
-                whileHover={{ scale: 1.05 }}
+                transition={{ delay: index * 0.3 }}
+                whileInView={{ 
+                  scale: 1.02,
+                  transition: { duration: 0.5 }
+                }}
+                viewport={{ once: false, margin: "-100px" }}
               >
                 <img 
                   src={image} 
                   alt={`${project.title} screenshot ${index + 1}`} 
-                  className="w-full h-full object-cover"
+                  className="w-full object-cover rounded-lg shadow-xl"
+                  style={{ maxHeight: "80vh" }}
                 />
               </motion.div>
             ))}
