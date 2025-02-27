@@ -1,8 +1,8 @@
 
-import { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useEffect, useState, useRef } from "react";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, ChevronDown } from "lucide-react";
 
 interface ProjectData {
   id: number;
@@ -92,23 +92,37 @@ const projectsData: Record<string, ProjectData> = {
 const ProjectDetails = () => {
   const { projectId } = useParams<{ projectId: string }>();
   const navigate = useNavigate();
+  const location = useLocation();
   const [showHeader, setShowHeader] = useState(true);
+  const [showScrollIndicator, setShowScrollIndicator] = useState(true);
+  const galleryRef = useRef<HTMLDivElement>(null);
   
   const project = projectId ? projectsData[projectId] : null;
+  
+  // Scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [projectId]);
   
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
       if (scrollPosition > 300) {
         setShowHeader(false);
+        setShowScrollIndicator(false);
       } else {
         setShowHeader(true);
+        setShowScrollIndicator(true);
       }
     };
     
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+  
+  const scrollToGallery = () => {
+    galleryRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
   
   if (!project) {
     return (
@@ -187,38 +201,74 @@ const ProjectDetails = () => {
           </div>
         </motion.div>
         
-        {/* Images Section */}
-        <motion.div 
-          className="mt-16"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: !showHeader ? 1 : 0, y: !showHeader ? 0 : 50 }}
-          transition={{ duration: 0.5 }}
-        >
-          <h2 className="text-2xl font-bold text-accent mb-6">Project Gallery</h2>
-          <div className="space-y-12">
-            {project.images.slice(0, 3).map((image, index) => (
-              <motion.div 
-                key={index} 
-                className="w-full overflow-hidden rounded-lg"
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: index * 0.3 }}
-                whileInView={{ 
-                  scale: 1.02,
-                  transition: { duration: 0.5 }
+        {/* Scroll indicator */}
+        {project.images.length > 0 && (
+          <motion.div 
+            className="flex justify-center mt-8 mb-16"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ 
+              opacity: showScrollIndicator ? 1 : 0, 
+              y: showScrollIndicator ? 0 : -10 
+            }}
+            transition={{ duration: 0.5 }}
+          >
+            <motion.button
+              onClick={scrollToGallery}
+              className="text-gray-400 hover:text-accent transition-colors flex flex-col items-center"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <p className="mb-2 text-sm">View Gallery</p>
+              <motion.div
+                animate={{
+                  y: [0, 10, 0],
                 }}
-                viewport={{ once: false, margin: "-100px" }}
+                transition={{
+                  duration: 1.5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
               >
-                <img 
-                  src={image} 
-                  alt={`${project.title} screenshot ${index + 1}`} 
-                  className="w-full object-cover rounded-lg shadow-xl"
-                  style={{ maxHeight: "80vh" }}
-                />
+                <ChevronDown size={24} />
               </motion.div>
-            ))}
-          </div>
-        </motion.div>
+            </motion.button>
+          </motion.div>
+        )}
+        
+        {/* Images Section */}
+        <div ref={galleryRef}>
+          <motion.div 
+            className="mt-16"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: !showHeader ? 1 : 0, y: !showHeader ? 0 : 50 }}
+            transition={{ duration: 0.5 }}
+          >
+            <h2 className="text-2xl font-bold text-accent mb-8">Project Gallery</h2>
+            <div className="space-y-16">
+              {project.images.slice(0, 3).map((image, index) => (
+                <motion.div 
+                  key={index} 
+                  className="flex justify-center"
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: index * 0.3 }}
+                  whileInView={{ 
+                    scale: 1.02,
+                    transition: { duration: 0.5 }
+                  }}
+                  viewport={{ once: false, margin: "-100px" }}
+                >
+                  <img 
+                    src={image} 
+                    alt={`${project.title} screenshot ${index + 1}`} 
+                    className="object-cover rounded-lg shadow-xl"
+                    style={{ maxWidth: "800px", maxHeight: "800px", width: "100%" }}
+                  />
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
       </div>
     </div>
   );

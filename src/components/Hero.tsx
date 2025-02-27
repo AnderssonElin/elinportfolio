@@ -83,7 +83,7 @@ FROM experience;`;
         duration: 0.5,
         delay: lineIndex * 0.15, // Slow down line appearance by 50%
       }}
-      className="flex whitespace-pre overflow-x-auto md:overflow-visible text-[0.6rem] xs:text-xs sm:text-sm md:text-sm"
+      className="flex whitespace-pre overflow-hidden text-[0.6rem] xs:text-xs sm:text-sm md:text-sm"
     >
       {line.split('').map((char, charIndex) => (
         <motion.span
@@ -122,7 +122,7 @@ FROM experience;`;
   }, []);
 
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center bg-secondary px-2 sm:px-4 md:px-6 lg:px-8 relative">
+    <section className="min-h-screen flex flex-col items-center justify-center bg-secondary px-2 sm:px-4 md:px-6 lg:px-8 relative overflow-x-hidden">
       <div className="w-full max-w-3xl mx-auto">
         <motion.div
           className="bg-primary/30 p-3 sm:p-4 md:p-6 lg:p-8 rounded-lg backdrop-blur-sm font-sql overflow-hidden"
