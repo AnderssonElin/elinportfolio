@@ -6,16 +6,31 @@ import { useToast } from "@/hooks/use-toast";
 const Footer = () => {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
+    
+    // Skapa en mailto-länk med förifylld information
+    const mailtoLink = `mailto:elin.an@hotmail.com?subject=Message from ${email}&body=${encodeURIComponent(message)}`;
+    
+    // Öppna användarens e-postklient
+    window.open(mailtoLink, "_blank");
+    
+    // Visa bekräftelse och återställ formuläret
     toast({
-      title: "Message sent!",
-      description: "Thank you for your message. I'll get back to you soon.",
+      title: "Message ready to send!",
+      description: "Your email client has been opened with your message.",
     });
-    setEmail("");
-    setMessage("");
+    
+    // Återställ formuläret efter en kort fördröjning
+    setTimeout(() => {
+      setEmail("");
+      setMessage("");
+      setIsSubmitting(false);
+    }, 500);
   };
 
   return (
@@ -41,6 +56,7 @@ const Footer = () => {
                 required
                 className="w-full px-4 py-2 bg-white/10 border border-gray-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-accent"
                 placeholder="your@email.com"
+                disabled={isSubmitting}
               />
             </div>
             <div>
@@ -55,13 +71,15 @@ const Footer = () => {
                 rows={4}
                 className="w-full px-4 py-2 bg-white/10 border border-gray-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-accent"
                 placeholder="Your message..."
+                disabled={isSubmitting}
               />
             </div>
             <button
               type="submit"
-              className="w-full bg-accent hover:bg-accent/90 text-white px-6 py-3 rounded-md transition-colors"
+              className="w-full bg-accent hover:bg-accent/90 text-white px-6 py-3 rounded-md transition-colors disabled:opacity-70 disabled:cursor-not-allowed"
+              disabled={isSubmitting}
             >
-              Send Message
+              {isSubmitting ? "Opening email client..." : "Send Message"}
             </button>
           </form>
         </motion.div>

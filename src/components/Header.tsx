@@ -92,7 +92,7 @@ const Header = () => {
           <div className="flex items-center space-x-2 sm:space-x-4">
             <div className="flex items-center space-x-2 sm:space-x-3">
               <motion.a
-                href="https://github.com/your-username"
+                href="https://github.com/AnderssonElin"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-full hover:bg-black/10 transition-colors"
@@ -103,7 +103,7 @@ const Header = () => {
               </motion.a>
               
               <motion.a
-                href="https://linkedin.com/in/your-profile"
+                href="https://www.linkedin.com/in/e-andersson/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-full hover:bg-black/10 transition-colors"
@@ -114,7 +114,7 @@ const Header = () => {
               </motion.a>
               
               <motion.a
-                href="mailto:your-email@example.com"
+                href="mailto:elin.an@hotmail.com"
                 className="p-2 rounded-full hover:bg-black/10 transition-colors"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
@@ -124,8 +124,9 @@ const Header = () => {
             </div>
             
             <a
-              href="/cv.pdf"
-              download
+              href="https://drive.google.com/file/d/1pdtp7IIRNOBZv1LwRt8PCS5fx6w6HLFq/view?usp=drive_link"
+              target="_blank"
+              rel="noopener noreferrer"
               className="bg-accent hover:bg-accent/90 text-white px-2 py-1 sm:px-3 sm:py-2 rounded-md flex items-center gap-1 transition-colors text-xs sm:text-sm"
             >
               <Download className="w-3 h-3 sm:w-4 sm:h-4" />
