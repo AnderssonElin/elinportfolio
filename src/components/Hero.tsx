@@ -74,7 +74,7 @@ FROM experience;`;
         duration: 0.5,
         delay: lineIndex * 0.15,
       }}
-      className="flex whitespace-pre overflow-hidden text-[0.72rem] xs:text-lg sm:text-xl md:text-[1.32rem] leading-[1.6] xs:leading-[1.7] sm:leading-[1.8]"
+      className="flex whitespace-pre overflow-hidden text-[0.6rem] xs:text-sm sm:text-base md:text-[1.1rem] leading-[1.6] xs:leading-[1.7] sm:leading-[1.8]"
     >
       {line.split('').map((char, charIndex) => (
         <motion.span
@@ -114,14 +114,14 @@ FROM experience;`;
 
   return (
     <div className="absolute inset-0 flex items-center justify-center" style={{ height: "100vh" }}>
-      <div className="w-[95%] max-w-4xl px-4 flex flex-col items-center" style={{ marginTop: "-2rem" }}>
+      <div className="w-[90%] max-w-3xl px-4 flex flex-col items-center" style={{ marginTop: "-2rem" }}>
         <motion.div
-          className="bg-primary/30 p-4 sm:p-5 md:p-7 lg:p-10 rounded-lg backdrop-blur-sm font-sql overflow-hidden w-full"
+          className="bg-primary/30 p-3 sm:p-4 md:p-6 lg:p-8 rounded-lg backdrop-blur-sm font-sql overflow-hidden w-full"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
         >
-          <pre className="space-y-3">
+          <pre className="space-y-2">
             {colorizedSQL}
           </pre>
         </motion.div>
@@ -139,7 +139,7 @@ FROM experience;`;
           }}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="relative mt-5 mx-auto block bg-emerald-500 hover:bg-emerald-600 text-white px-5 sm:px-7 py-2.5 sm:py-3.5 rounded-md font-sql flex items-center gap-2 justify-center transition-colors text-base sm:text-lg group"
+          className="relative mt-4 mx-auto block bg-emerald-500 hover:bg-emerald-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-md font-sql flex items-center gap-2 justify-center transition-colors text-sm sm:text-base group"
         >
           <motion.div
             className="absolute -inset-0.5 rounded-md bg-emerald-400/20"
@@ -153,7 +153,7 @@ FROM experience;`;
             }}
           />
           <span className="relative flex items-center gap-2">
-            <Play className="w-4 h-4 sm:w-5 sm:h-5" />
+            <Play className="w-3 h-3 sm:w-4 sm:h-4" />
             Execute (F5)
           </span>
         </motion.button>
