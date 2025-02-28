@@ -140,137 +140,113 @@ const AskMe = () => {
   };
 
   return (
-    <>
-      <div className="fixed bottom-8 right-8 z-30">
-        <motion.button
-          onClick={() => setIsVisible(true)}
-          className="bg-accent bg-opacity-70 shadow-lg hover:bg-opacity-100 text-white p-3 rounded-full flex items-center justify-center transition"
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
+    <AnimatePresence>
+      {isVisible && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm"
+          onClick={(e) => {
+            if (e.target === e.currentTarget) {
+              setIsVisible(false);
+            }
+          }}
         >
           <motion.div
-            animate={{
-              rotate: 360
-            }}
-            transition={{
-              duration: 12, // Långsammare rotation
-              ease: "linear",
-              repeat: Infinity,
-            }}
+            className="w-full max-w-2xl bg-secondary p-8 rounded-2xl relative"
+            initial={{ scale: 0.9, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.9, opacity: 0 }}
+            onClick={(e) => e.stopPropagation()}
           >
-            <Bot className="w-6 h-6" />
-          </motion.div>
-        </motion.button>
-      </div>
-      
-      <AnimatePresence>
-        {isVisible && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm"
-            onClick={(e) => {
-              if (e.target === e.currentTarget) {
-                setIsVisible(false);
-              }
-            }}
-          >
-            <motion.div
-              className="w-full max-w-2xl bg-secondary p-8 rounded-2xl relative"
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              onClick={(e) => e.stopPropagation()}
+            <button
+              onClick={() => setIsVisible(false)}
+              className="absolute top-4 right-4 text-white/60 hover:text-white transition-colors"
             >
-              <button
-                onClick={() => setIsVisible(false)}
-                className="absolute top-4 right-4 text-white/60 hover:text-white transition-colors"
-              >
-                <X className="w-6 h-6" />
-              </button>
+              <X className="w-6 h-6" />
+            </button>
 
-              <h2 className="text-3xl font-bold text-center text-white mb-8">Ask the BI Oracle</h2>
-              
-              <div className="relative">
-                <AnimatePresence>
-                  {showCelebration && (
-                    <>
-                      {[...Array(12)].map((_, i) => (
-                        <Firework
-                          key={`firework-${i}`}
-                          style={{
-                            left: `${Math.random() * 100}%`,
-                            top: `${Math.random() * 100}%`,
-                          }}
-                        />
-                      ))}
-                      
-                      {[...Array(30)].map((_, i) => (
-                        <Glitter
-                          key={`glitter-${i}`}
-                          style={{
-                            left: `${Math.random() * 100}%`,
-                            top: `${Math.random() * 100}%`,
-                            animationDelay: `${Math.random() * 2}s`,
-                          }}
-                        />
-                      ))}
-                      
-                      {[...Array(8)].map((_, i) => (
-                        <Star
-                          key={`star-${i}`}
-                          style={{
-                            left: `${Math.random() * 100}%`,
-                            top: `${Math.random() * 100}%`,
-                            animationDelay: `${Math.random() * 0.3}s`,
-                          }}
-                        />
-                      ))}
-                    </>
-                  )}
-                </AnimatePresence>
-
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div className="flex gap-2">
-                    <input
-                      type="text"
-                      value={question}
-                      onChange={(e) => setQuestion(e.target.value)}
-                      placeholder="Ask about BI..."
-                      className="w-full bg-white/10 text-white px-4 py-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-accent"
-                    />
-                    <motion.button
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      type="submit"
-                      className="bg-accent text-white p-3 rounded-xl flex items-center justify-center"
-                    >
-                      <Send className="w-4 h-4" />
-                    </motion.button>
-                  </div>
-                </form>
-
-                {response && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="mt-8 bg-white/5 p-6 rounded-xl"
-                  >
-                    <div className="flex items-start gap-4">
-                      <div className="bg-accent/20 p-2 rounded-lg">
-                        <Bot className="w-6 h-6 text-accent" />
-                      </div>
-                      <p className="text-white">{response}</p>
-                    </div>
-                  </motion.div>
+            <h2 className="text-3xl font-bold text-center text-white mb-8">Ask the BI Oracle</h2>
+            
+            <div className="relative">
+              <AnimatePresence>
+                {showCelebration && (
+                  <>
+                    {[...Array(12)].map((_, i) => (
+                      <Firework
+                        key={`firework-${i}`}
+                        style={{
+                          left: `${Math.random() * 100}%`,
+                          top: `${Math.random() * 100}%`,
+                        }}
+                      />
+                    ))}
+                    
+                    {[...Array(30)].map((_, i) => (
+                      <Glitter
+                        key={`glitter-${i}`}
+                        style={{
+                          left: `${Math.random() * 100}%`,
+                          top: `${Math.random() * 100}%`,
+                          animationDelay: `${Math.random() * 2}s`,
+                        }}
+                      />
+                    ))}
+                    
+                    {[...Array(8)].map((_, i) => (
+                      <Star
+                        key={`star-${i}`}
+                        style={{
+                          left: `${Math.random() * 100}%`,
+                          top: `${Math.random() * 100}%`,
+                          animationDelay: `${Math.random() * 0.3}s`,
+                        }}
+                      />
+                    ))}
+                  </>
                 )}
-              </div>
-            </motion.div>
+              </AnimatePresence>
+
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div className="flex gap-2">
+                  <input
+                    type="text"
+                    value={question}
+                    onChange={(e) => setQuestion(e.target.value)}
+                    placeholder="Ask about BI..."
+                    className="w-full bg-white/10 text-white px-4 py-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-accent"
+                  />
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    type="submit"
+                    className="bg-accent text-white p-3 rounded-xl flex items-center justify-center"
+                  >
+                    <Send className="w-4 h-4" />
+                  </motion.button>
+                </div>
+              </form>
+
+              {response && (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="mt-8 bg-white/5 p-6 rounded-xl"
+                >
+                  <div className="flex items-start gap-4">
+                    <div className="bg-accent/20 p-2 rounded-lg">
+                      <Bot className="w-6 h-6 text-accent" />
+                    </div>
+                    <p className="text-white">{response}</p>
+                  </div>
+                </motion.div>
+              )}
+            </div>
           </motion.div>
-        )}
-      </AnimatePresence>
-    </>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 };
 
