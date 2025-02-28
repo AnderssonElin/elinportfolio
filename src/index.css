@@ -100,13 +100,20 @@
     @apply bg-background text-foreground;
   }
   
-  /* Fixa så att footer är genomskinlig för bakgrundsanimeringen */
-  footer {
-    @apply bg-transparent !important;
+  /* Genomskinlig bakgrund för alla sektioner */
+  section, footer, header {
+    @apply bg-transparent;
   }
   
-  /* Navigation bar blur effect */
-  .nav-blur {
-    @apply backdrop-blur-sm;
+  /* Se till att alla bakgrunder är transparenta där det behövs */
+  .transparent-bg {
+    @apply bg-transparent;
+  }
+  
+  /* För mobilvy - mindre padding */
+  @media (max-width: 640px) {
+    .mobile-reduced-padding {
+      padding: 0.3rem !important;
+    }
   }
 }
