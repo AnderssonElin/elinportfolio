@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
 import { Award, Coffee, Code, Database, Users, Star } from "lucide-react";
 import { useState } from "react";
-import WaveSection from "./WaveSection";
 
 const stats = [
   { 
@@ -125,21 +124,16 @@ const Dashboard = () => {
   const [isHovering, setIsHovering] = useState(false);
 
   return (
-    <section className="min-h-screen py-12 sm:py-16 md:py-20 bg-primary px-4 sm:px-6 md:px-8 font-sql relative flex items-center" id="dashboard">
-      {/* Wave at the top */}
-      <div className="absolute top-0 left-0 w-full">
-        <WaveSection position="top" fillColor="#151823" backgroundColor="#151823" />
-      </div>
+    <div className="container mx-auto px-4 sm:px-6 md:px-8" id="dashboard">
+      <h2 className="text-2xl sm:text-3xl font-bold text-center mb-16 text-white">Dashboard</h2>
       
       <motion.div 
-        className="container mx-auto relative z-10 my-auto"
+        className="relative z-10"
         animate={{
           filter: isHovering ? "blur(0px)" : "blur(0px)",
           transition: { duration: 0.3 }
         }}
       >
-        <h2 className="text-2xl sm:text-3xl font-bold text-center mb-16 text-white">Dashboard</h2>
-        
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8 sm:mb-12 md:mb-16">
           {stats.map((Stat, index) => (
             <motion.div
@@ -149,7 +143,7 @@ const Dashboard = () => {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
               whileHover={{ y: -5 }}
-              className="bg-secondary/50 backdrop-blur-sm p-4 sm:p-6 rounded-2xl shadow-lg min-h-[120px]"
+              className="bg-primary/30 backdrop-blur-sm p-4 sm:p-6 rounded-2xl shadow-lg min-h-[120px]"
             >
               <div className="flex items-center gap-3 sm:gap-4">
                 <Stat.icon className="w-6 h-6 sm:w-8 sm:h-8 text-accent flex-shrink-0" />
@@ -162,7 +156,7 @@ const Dashboard = () => {
           ))}
         </div>
 
-        <div className="bg-secondary/50 backdrop-blur-sm p-4 sm:p-6 rounded-2xl shadow-lg relative">
+        <div className="bg-primary/30 backdrop-blur-sm p-4 sm:p-6 rounded-2xl shadow-lg relative">
           <h3 className="text-lg sm:text-xl font-semibold mb-4 sm:mb-6 text-white">Project Performance</h3>
           <div className="h-[250px] sm:h-[300px]">
             <ResponsiveContainer width="100%" height="100%">
@@ -213,12 +207,7 @@ const Dashboard = () => {
           />
         )}
       </AnimatePresence>
-      
-      {/* Wave at the bottom */}
-      <div className="absolute bottom-0 left-0 w-full">
-        <WaveSection position="bottom" fillColor="#151823" backgroundColor="#1A1F2C" />
-      </div>
-    </section>
+    </div>
   );
 };
 

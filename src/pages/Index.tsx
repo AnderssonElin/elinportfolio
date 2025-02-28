@@ -9,7 +9,6 @@ import AskMe, { AskMeProvider } from "@/components/AskMe";
 import CoinCounter from "@/components/CoinCounter";
 import DownloadCV from "@/components/DownloadCV";
 import Copyright from "@/components/Copyright";
-import WaveSection from "@/components/WaveSection";
 import BackgroundRain from "@/components/BackgroundRain";
 
 const Index = () => {
@@ -28,45 +27,38 @@ const Index = () => {
     return () => document.removeEventListener("click", handleAnchorClick);
   }, []);
 
-  // Gemensam bakgrundsfärg för hela sidan
-  const backgroundColor = "#151823";
-
   return (
     <AskMeProvider>
-      <main className="relative">
+      <main className="relative bg-secondary">
         {/* Bakgrundsanimering som täcker hela sidan */}
-        <div className="fixed inset-0 z-0 bg-secondary">
+        <div className="fixed inset-0 z-0">
           <BackgroundRain />
         </div>
         
         <DownloadCV />
         
         {/* Hero-sektionen */}
-        <section className="relative bg-transparent">
+        <section className="relative bg-transparent py-12">
           <Hero />
         </section>
         
         {/* Timeline-sektionen */}
-        <section className="relative bg-transparent pt-16">
-          <WaveSection position="top" backgroundColor={backgroundColor} />
+        <section className="relative bg-transparent py-12" id="timeline">
           <Timeline />
         </section>
         
         {/* Dashboard-sektionen */}
-        <section className="relative bg-transparent pt-16">
-          <WaveSection position="top" backgroundColor={backgroundColor} />
+        <section className="relative bg-transparent py-12">
           <Dashboard />
         </section>
         
         {/* Projects-sektionen */}
-        <section className="relative bg-transparent pt-16">
-          <WaveSection position="top" backgroundColor={backgroundColor} />
+        <section className="relative bg-transparent py-12" id="projects">
           <Projects />
         </section>
         
         {/* Slutsektionen */}
-        <section className="relative bg-transparent pt-16">
-          <WaveSection position="top" backgroundColor={backgroundColor} />
+        <section className="relative bg-transparent py-12">
           <CoinCounter />
           <AskMe />
           <Footer />
