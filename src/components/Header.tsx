@@ -84,25 +84,6 @@ const Header = () => {
                 ))}
               </motion.div>
               
-              {/* Pulsating coin icon */}
-              <motion.div
-                className="w-6 h-6 mr-2 rounded-full flex items-center justify-center"
-                animate={{
-                  scale: [1, 1.1, 1],
-                  opacity: [0.9, 1, 0.9],
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-                style={{
-                  background: "radial-gradient(circle at 30% 30%, #9b87f5, #7b67d5)",
-                }}
-              >
-                <span className="text-yellow-200 text-xs">✨</span>
-              </motion.div>
-              
               <span className="text-white font-bold text-sm">{clickCount} 🧞‍♂️</span>
             </motion.button>
           </div>
