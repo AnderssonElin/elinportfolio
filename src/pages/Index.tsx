@@ -6,11 +6,9 @@ import Dashboard from "@/components/Dashboard";
 import Projects from "@/components/Projects";
 import Footer from "@/components/Footer";
 import AskMe, { AskMeProvider } from "@/components/AskMe";
-import CoinCounter from "@/components/CoinCounter";
-import DownloadCV from "@/components/DownloadCV";
 import Copyright from "@/components/Copyright";
 import BackgroundAnimation from "@/components/BackgroundAnimation";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState("hero");
@@ -64,13 +62,11 @@ const Index = () => {
 
   return (
     <AskMeProvider>
-      <main className="relative bg-secondary">
+      <main className="relative bg-secondary pt-16"> {/* Lägg till padding-top för att ge plats åt headern */}
         {/* Bakgrundsanimering som täcker hela sidan */}
         <div className="fixed inset-0 z-0 pointer-events-none">
           <BackgroundAnimation />
         </div>
-        
-        <DownloadCV />
         
         {/* Hero-sektionen */}
         <motion.section 
@@ -139,9 +135,6 @@ const Index = () => {
           transition={{ duration: 0.5 }}
           id="contact"
         >
-          <div className="flex-grow flex flex-col justify-center items-center mb-8">
-            <CoinCounter />
-          </div>
           <AskMe />
           <Footer />
           <Copyright />

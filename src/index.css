@@ -110,6 +110,11 @@
     @apply bg-transparent;
   }
   
+  /* Header styling */
+  header {
+    @apply shadow-sm;
+  }
+  
   /* För mobilvy - mindre padding */
   @media (max-width: 640px) {
     .mobile-reduced-padding {
