@@ -19,13 +19,13 @@ const Footer = () => {
   };
 
   return (
-    <footer className="py-8 sm:py-12 px-4 sm:px-6 md:px-8 bg-transparent">
+    <footer className="py-8 sm:py-12 px-4 sm:px-6 md:px-8 bg-transparent flex items-center justify-center">
       <div className="container mx-auto max-w-md">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="space-y-6 bg-secondary/50 backdrop-blur-sm p-6 rounded-lg"
+          className="space-y-6 bg-secondary/50 backdrop-blur-sm p-6 rounded-lg mx-auto"
         >
           <h3 className="text-xl sm:text-2xl font-bold text-white text-center">Get in Touch</h3>
           <form onSubmit={handleSubmit} className="space-y-4">
