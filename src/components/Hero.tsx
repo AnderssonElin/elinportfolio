@@ -113,7 +113,7 @@ FROM experience;`;
   }, []);
 
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center overflow-hidden relative" id="hero">
+    <section className="min-h-[calc(100vh-4rem)] flex items-center justify-center p-4 mt-16" id="hero">
       <div className="w-full max-w-3xl mx-auto relative z-20 flex flex-col items-center justify-center m-auto">
         <motion.div
           className="bg-primary/30 mobile-reduced-padding sm:p-4 md:p-6 lg:p-8 rounded-lg backdrop-blur-sm font-sql overflow-hidden"

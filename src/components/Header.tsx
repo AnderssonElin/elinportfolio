@@ -31,15 +31,15 @@ const Header = () => {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50">
+    <header className="fixed top-0 left-0 right-0 z-50 h-16">
       <div 
-        className={`w-full transition-all duration-300 py-2 px-4 ${
+        className={`w-full h-full transition-all duration-300 py-2 px-4 ${
           isScrolled 
             ? "bg-secondary/70 backdrop-blur-md" 
             : "bg-secondary/30 backdrop-blur-sm"
         }`}
       >
-        <div className="container mx-auto flex items-center justify-between">
+        <div className="container mx-auto flex items-center justify-between h-full">
           {/* Vänster sida - Coin Counter */}
           <div className="flex items-center">
             <motion.button
@@ -99,7 +99,7 @@ const Header = () => {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Github className="w-4 h-4 text-accent" />
+                <Github className="w-5 h-5 sm:w-6 sm:h-6 text-accent" />
               </motion.a>
               
               <motion.a
@@ -110,7 +110,7 @@ const Header = () => {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Linkedin className="w-4 h-4 text-accent" />
+                <Linkedin className="w-5 h-5 sm:w-6 sm:h-6 text-accent" />
               </motion.a>
               
               <motion.a
@@ -119,7 +119,7 @@ const Header = () => {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Mail className="w-4 h-4 text-accent" />
+                <Mail className="w-5 h-5 sm:w-6 sm:h-6 text-accent" />
               </motion.a>
             </div>
             
