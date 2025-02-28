@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Sparkles, Github, Linkedin, Mail, Download } from "lucide-react";
+import { Github, Linkedin, Mail, Download, Sparkles } from "lucide-react";
 import { useAskMeVisibility } from "./AskMe";
 
 const Header = () => {
@@ -43,42 +43,68 @@ const Header = () => {
           {/* Vänster sida - Coin Counter */}
           <div className="flex items-center">
             <motion.button
-              className="w-10 h-10 rounded-full cursor-pointer flex items-center justify-center overflow-hidden mr-3"
-              animate={{
-                rotate: [0, 360],
-                scale: [1, 1.1, 1],
-              }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                ease: "linear",
-              }}
-              whileHover={{
-                boxShadow: "0 0 15px rgba(155, 135, 245, 0.5)",
-              }}
+              className="relative group bg-accent/20 backdrop-blur-sm px-3 py-1 rounded-full inline-flex items-center cursor-pointer overflow-hidden hover:bg-accent/30 transition-all duration-300"
               onClick={handleClick}
-              style={{
-                background: "radial-gradient(circle at 30% 30%, #9b87f5, #7b67d5)",
-              }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
+              {/* Glitter animation runt countern */}
+              <motion.div 
+                className="absolute -inset-1 opacity-0 group-hover:opacity-100"
+                initial={false}
+                animate={{ rotate: [0, 360] }}
+                transition={{ 
+                  duration: 8, 
+                  ease: "linear", 
+                  repeat: Infinity 
+                }}
+              >
+                {[...Array(8)].map((_, i) => (
+                  <motion.div
+                    key={i}
+                    className="absolute"
+                    style={{
+                      left: `${50 + 35 * Math.cos(2 * Math.PI * i / 8)}%`,
+                      top: `${50 + 35 * Math.sin(2 * Math.PI * i / 8)}%`,
+                    }}
+                    initial={{ opacity: 0, scale: 0 }}
+                    animate={{
+                      opacity: [0, 1, 0],
+                      scale: [0, 1, 0]
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      delay: i * 0.15,
+                      repeatDelay: 0.5
+                    }}
+                  >
+                    <Sparkles className="w-3 h-3 text-yellow-200" />
+                  </motion.div>
+                ))}
+              </motion.div>
+              
+              {/* Pulsating coin icon */}
               <motion.div
+                className="w-6 h-6 mr-2 rounded-full flex items-center justify-center"
                 animate={{
-                  scale: [1, 1.2, 1],
-                  opacity: [0.7, 1, 0.7],
+                  scale: [1, 1.1, 1],
+                  opacity: [0.9, 1, 0.9],
                 }}
                 transition={{
                   duration: 2,
                   repeat: Infinity,
                   ease: "easeInOut",
                 }}
+                style={{
+                  background: "radial-gradient(circle at 30% 30%, #9b87f5, #7b67d5)",
+                }}
               >
-                <Sparkles className="w-4 h-4 text-yellow-200" />
+                <span className="text-yellow-200 text-xs">✨</span>
               </motion.div>
-            </motion.button>
-            
-            <div className="bg-accent/20 backdrop-blur-sm px-3 py-1 rounded-full inline-block">
+              
               <span className="text-white font-bold text-sm">{clickCount} 🧞‍♂️</span>
-            </div>
+            </motion.button>
           </div>
           
           {/* Höger sida - Sociala ikoner och CV */}
@@ -88,31 +114,31 @@ const Header = () => {
                 href="https://github.com/your-username"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 rounded-full bg-black/10 backdrop-blur-sm hover:bg-black/20 transition-colors"
+                className="p-2 rounded-full hover:bg-black/10 transition-colors"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Github className="w-4 h-4 text-white" />
+                <Github className="w-4 h-4 text-accent" />
               </motion.a>
               
               <motion.a
                 href="https://linkedin.com/in/your-profile"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 rounded-full bg-black/10 backdrop-blur-sm hover:bg-black/20 transition-colors"
+                className="p-2 rounded-full hover:bg-black/10 transition-colors"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Linkedin className="w-4 h-4 text-white" />
+                <Linkedin className="w-4 h-4 text-accent" />
               </motion.a>
               
               <motion.a
                 href="mailto:your-email@example.com"
-                className="p-2 rounded-full bg-black/10 backdrop-blur-sm hover:bg-black/20 transition-colors"
+                className="p-2 rounded-full hover:bg-black/10 transition-colors"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Mail className="w-4 h-4 text-white" />
+                <Mail className="w-4 h-4 text-accent" />
               </motion.a>
             </div>
             
