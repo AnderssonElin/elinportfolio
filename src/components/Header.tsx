@@ -43,7 +43,7 @@ const Header = () => {
           {/* Vänster sida - Coin Counter */}
           <div className="flex items-center">
             <motion.button
-              className="relative group bg-accent/20 backdrop-blur-sm px-3 py-1 rounded-full inline-flex items-center cursor-pointer overflow-hidden hover:bg-accent/30 transition-all duration-300"
+              className="relative group bg-accent/20 backdrop-blur-sm px-3 py-1 sm:px-4 sm:py-1.5 rounded-full inline-flex items-center cursor-pointer overflow-hidden hover:bg-accent/30 transition-all duration-300"
               onClick={handleClick}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -79,12 +79,12 @@ const Header = () => {
                       repeatDelay: 0.5
                     }}
                   >
-                    <Sparkles className="w-3 h-3 text-yellow-200" />
+                    <Sparkles className="w-3 h-3 text-yellow-200 sm:w-4 sm:h-4" />
                   </motion.div>
                 ))}
               </motion.div>
               
-              <span className="text-white font-bold text-sm">{clickCount} 🧞‍♂️</span>
+              <span className="text-white font-bold text-sm sm:text-base">{clickCount} 🧞‍♂️</span>
             </motion.button>
           </div>
           
