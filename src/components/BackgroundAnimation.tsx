@@ -21,7 +21,7 @@ const BackgroundAnimation = () => {
     resizeCanvas();
     
     // Konfigurera partiklar
-    const particleCount = 100;
+    const particleCount = 150; // Öka antalet för bättre täckning
     const particles: Particle[] = [];
     
     // Olika typer av partiklar
@@ -37,11 +37,11 @@ const BackgroundAnimation = () => {
       constructor() {
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 4 + 1; // Små partiklar
-        this.speed = Math.random() * 0.5 + 0.1; // Långsamt fall
+        this.size = Math.random() * 2 + 0.5; // 50% mindre än tidigare
+        this.speed = Math.random() * 0.3 + 0.1; // Långsamt fall
         this.color = this.getRandomColor();
         this.type = this.getRandomType();
-        this.opacity = Math.random() * 0.5 + 0.1; // Subtil opacity
+        this.opacity = Math.random() * 0.3 + 0.1; // Subtil opacity
       }
       
       getRandomColor() {
@@ -63,10 +63,19 @@ const BackgroundAnimation = () => {
       update() {
         this.y += this.speed;
         
+        // Beräkna opacity baserat på position (tonas ut ju längre ner de kommer)
+        const fadeStart = canvas.height * 0.7; // Starta uttoning vid 70% av skärmhöjden
+        
+        if (this.y > fadeStart) {
+          const fadeProgress = (this.y - fadeStart) / (canvas.height - fadeStart);
+          this.opacity = Math.max(0.05, this.opacity * (1 - fadeProgress));
+        }
+        
         // Återställ när de når botten
         if (this.y > canvas.height) {
           this.y = -this.size * 2;
           this.x = Math.random() * canvas.width;
+          this.opacity = Math.random() * 0.3 + 0.1; // Återställ opacity
         }
       }
       
