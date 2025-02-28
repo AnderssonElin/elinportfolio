@@ -113,10 +113,10 @@ FROM experience;`;
   }, []);
 
   return (
-    <section className="min-h-screen flex items-center justify-center overflow-hidden relative" id="hero">
-      <div className="absolute inset-0 flex items-center justify-center">
+    <section className="min-h-screen flex items-center justify-center p-4" id="hero">
+      <div className="flex flex-col items-center justify-center">
         <motion.div
-          className="bg-primary/30 mobile-reduced-padding sm:p-4 md:p-6 lg:p-8 rounded-lg backdrop-blur-sm font-sql overflow-hidden mx-4"
+          className="bg-primary/30 p-3 sm:p-4 md:p-6 lg:p-8 rounded-lg backdrop-blur-sm font-sql overflow-hidden max-w-full"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
@@ -139,7 +139,7 @@ FROM experience;`;
           }}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="absolute bottom-6 left-1/2 transform -translate-x-1/2 bg-emerald-500 hover:bg-emerald-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-md font-sql flex items-center gap-2 transition-colors text-sm sm:text-base group"
+          className="mt-6 bg-emerald-500 hover:bg-emerald-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-md font-sql flex items-center gap-2 transition-colors text-sm sm:text-base group"
         >
           <motion.div
             className="absolute -inset-0.5 rounded-md bg-emerald-400/20"
