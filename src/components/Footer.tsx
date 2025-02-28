@@ -20,9 +20,9 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-primary py-12 sm:py-16 px-4 sm:px-6 md:px-8">
+    <footer className="bg-secondary py-12 sm:py-16 px-4 sm:px-6 md:px-8">
       <div className="container mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-start">
           {/* Contact Form */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -74,34 +74,36 @@ const Footer = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="flex flex-col justify-center items-center md:items-start space-y-6"
+            className="space-y-6"
           >
             <h3 className="text-xl sm:text-2xl font-bold text-white">Connect With Me</h3>
-            <a
-              href="https://linkedin.com/in/your-profile"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors"
-            >
-              <Linkedin className="w-6 h-6" />
-              <span>LinkedIn Profile</span>
-            </a>
-            <a
-              href="https://github.com/your-username"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors"
-            >
-              <Github className="w-6 h-6" />
-              <span>GitHub Profile</span>
-            </a>
-            <a
-              href="mailto:your@email.com"
-              className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors"
-            >
-              <Mail className="w-6 h-6" />
-              <span>your@email.com</span>
-            </a>
+            <div className="space-y-4">
+              <a
+                href="https://linkedin.com/in/your-profile"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors"
+              >
+                <Linkedin className="w-6 h-6" />
+                <span>LinkedIn Profile</span>
+              </a>
+              <a
+                href="https://github.com/your-username"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors"
+              >
+                <Github className="w-6 h-6" />
+                <span>GitHub Profile</span>
+              </a>
+              <a
+                href="mailto:your@email.com"
+                className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors"
+              >
+                <Mail className="w-6 h-6" />
+                <span>your@email.com</span>
+              </a>
+            </div>
           </motion.div>
         </div>
       </div>

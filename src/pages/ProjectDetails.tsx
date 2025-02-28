@@ -1,7 +1,7 @@
 
 import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowLeft, ChevronDown, X } from "lucide-react";
+import { X, ChevronDown } from "lucide-react";
 
 interface ProjectData {
   id: number;
@@ -150,8 +150,7 @@ const ProjectDetails = ({ projectId, onClose }: ProjectDetailsProps) => {
             onClick={onClose} 
             className="flex items-center gap-2 bg-accent hover:bg-accent/80 px-4 py-2 rounded-md transition-colors"
           >
-            <ArrowLeft size={16} />
-            Back to Projects
+            Close
           </button>
         </div>
       </motion.div>
@@ -180,21 +179,11 @@ const ProjectDetails = ({ projectId, onClose }: ProjectDetailsProps) => {
             initial={{ opacity: 1 }}
             animate={{ opacity: 1 }}
           >
-            <div className="flex-1">
-              <button 
-                onClick={onClose}
-                className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors"
-              >
-                <ArrowLeft size={16} />
-                Back to Projects
-              </button>
-            </div>
-            
             <div className="flex-grow text-center">
-              <h1 className="text-xl md:text-2xl font-bold text-accent truncate">{project.title}</h1>
+              <h1 className="text-xl md:text-2xl font-bold text-accent line-clamp-1">{project.title}</h1>
             </div>
             
-            <div className="flex-1 flex justify-end">
+            <div className="flex justify-end">
               <button
                 onClick={onClose}
                 className="text-gray-300 hover:text-white p-1 rounded-full transition-colors"

@@ -9,7 +9,7 @@ import AskMe, { AskMeProvider } from "@/components/AskMe";
 import CoinCounter from "@/components/CoinCounter";
 import DownloadCV from "@/components/DownloadCV";
 import Copyright from "@/components/Copyright";
-import BackgroundRain from "@/components/BackgroundRain";
+import BackgroundAnimation from "@/components/BackgroundAnimation";
 
 const Index = () => {
   useEffect(() => {
@@ -31,35 +31,37 @@ const Index = () => {
     <AskMeProvider>
       <main className="relative bg-secondary">
         {/* Bakgrundsanimering som täcker hela sidan */}
-        <div className="fixed inset-0 z-0">
-          <BackgroundRain />
+        <div className="fixed inset-0 z-0 pointer-events-none">
+          <BackgroundAnimation />
         </div>
         
         <DownloadCV />
         
         {/* Hero-sektionen */}
-        <section className="relative bg-transparent py-12">
+        <section className="relative min-h-screen flex items-center justify-center px-4 py-16">
           <Hero />
         </section>
         
         {/* Timeline-sektionen */}
-        <section className="relative bg-transparent py-12" id="timeline">
+        <section className="relative min-h-screen flex items-center justify-center px-4 py-16" id="timeline">
           <Timeline />
         </section>
         
         {/* Dashboard-sektionen */}
-        <section className="relative bg-transparent py-12">
+        <section className="relative min-h-screen flex items-center justify-center px-4 py-16">
           <Dashboard />
         </section>
         
         {/* Projects-sektionen */}
-        <section className="relative bg-transparent py-12" id="projects">
+        <section className="relative min-h-screen flex items-center justify-center px-4 py-16" id="projects">
           <Projects />
         </section>
         
         {/* Slutsektionen */}
-        <section className="relative bg-transparent py-12">
-          <CoinCounter />
+        <section className="relative min-h-screen flex flex-col justify-center px-4 py-16">
+          <div className="flex-grow flex flex-col justify-center items-center mb-8">
+            <CoinCounter />
+          </div>
           <AskMe />
           <Footer />
           <Copyright />
