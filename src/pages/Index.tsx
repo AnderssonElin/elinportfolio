@@ -69,7 +69,7 @@ const Index = () => {
       {/* Hero-sektionen */}
       <motion.section 
         ref={sectionRefs.hero}
-        className="relative min-h-screen flex items-center justify-center px-4 py-16"
+        className="relative flex items-center justify-center min-h-screen px-4 py-16"
         animate={{ 
           opacity: activeSection === "hero" ? 1 : 0.3,
           scale: activeSection === "hero" ? 1 : 0.98
