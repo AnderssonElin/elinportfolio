@@ -74,7 +74,7 @@ FROM experience;`;
         duration: 0.5,
         delay: lineIndex * 0.15,
       }}
-      className="flex whitespace-pre overflow-hidden text-[0.6rem] xs:text-xs sm:text-sm md:text-sm"
+      className="flex whitespace-pre overflow-hidden text-[0.7rem] xs:text-sm sm:text-sm md:text-base leading-[1.6] xs:leading-[1.7] sm:leading-[1.8]"
     >
       {line.split('').map((char, charIndex) => (
         <motion.span
@@ -114,7 +114,7 @@ FROM experience;`;
 
   return (
     <section className="min-h-screen flex flex-col items-center justify-center overflow-hidden relative" id="hero">
-      <div className="w-full max-w-3xl mx-auto relative z-20 px-4 py-24">
+      <div className="w-full max-w-3xl mx-auto relative z-20 px-2 sm:px-4 py-24">
         <motion.div
           className="bg-primary/30 p-3 sm:p-4 md:p-6 lg:p-8 rounded-lg backdrop-blur-sm font-sql overflow-hidden"
           initial={{ opacity: 0 }}
