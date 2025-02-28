@@ -113,8 +113,8 @@ FROM experience;`;
   }, []);
 
   return (
-    <div className="absolute inset-0 flex items-center justify-center" style={{ height: "100vh" }}>
-      <div className="w-full sm:w-[90%] max-w-3xl px-4 flex flex-col items-center" style={{ marginTop: "-2rem" }}>
+    <div className="flex items-center justify-center h-full w-full" style={{ minHeight: "100vh" }}>
+      <div className="w-full sm:w-[90%] max-w-3xl px-4 flex flex-col items-center">
         <motion.div
           className="bg-primary/30 p-[0.2rem] sm:p-3 md:p-6 lg:p-8 rounded-lg backdrop-blur-sm font-sql overflow-hidden w-full"
           initial={{ opacity: 0 }}
