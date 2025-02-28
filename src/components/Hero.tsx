@@ -113,12 +113,8 @@ FROM experience;`;
   }, []);
 
   return (
-    <section 
-      className="relative w-full h-screen flex items-center justify-center" 
-      id="hero"
-      style={{ paddingTop: '4rem' }} // Kompenserar för header-höjden
-    >
-      <div className="w-[90%] max-w-3xl mx-auto px-4 flex flex-col items-center">
+    <div className="absolute inset-0 flex items-center justify-center" style={{ height: "100vh" }}>
+      <div className="w-[90%] max-w-3xl px-4 flex flex-col items-center" style={{ marginTop: "-2rem" }}>
         <motion.div
           className="bg-primary/30 p-3 sm:p-4 md:p-6 lg:p-8 rounded-lg backdrop-blur-sm font-sql overflow-hidden w-full"
           initial={{ opacity: 0 }}
@@ -162,7 +158,7 @@ FROM experience;`;
           </span>
         </motion.button>
       </div>
-    </section>
+    </div>
   );
 };
 
