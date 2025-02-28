@@ -97,11 +97,13 @@ const Glitter = ({ style }: { style: React.CSSProperties }) => (
   />
 );
 
-export const AskMeProvider = ({ children }: { children: React.ReactNode }) => {
+export const AskMeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isVisible, setIsVisible] = useState(false);
+  
   return (
     <AskMeContext.Provider value={{ isVisible, setIsVisible }}>
       {children}
+      <AskMe />
     </AskMeContext.Provider>
   );
 };

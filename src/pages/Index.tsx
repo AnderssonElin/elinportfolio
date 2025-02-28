@@ -5,7 +5,6 @@ import Timeline from "@/components/Timeline";
 import Dashboard from "@/components/Dashboard";
 import Projects from "@/components/Projects";
 import Footer from "@/components/Footer";
-import AskMe from "@/components/AskMe";
 import Copyright from "@/components/Copyright";
 import BackgroundAnimation from "@/components/BackgroundAnimation";
 import { motion } from "framer-motion";
@@ -134,7 +133,6 @@ const Index = () => {
         transition={{ duration: 0.5 }}
         id="contact"
       >
-        <AskMe />
         <Footer />
         <Copyright />
       </motion.section>
