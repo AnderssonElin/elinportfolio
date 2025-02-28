@@ -99,7 +99,7 @@ const Header = () => {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Github className="w-5 h-5 sm:w-6 sm:h-6 text-accent" />
+                <Github className="w-6 h-6 sm:w-8 sm:h-8 text-accent" />
               </motion.a>
               
               <motion.a
@@ -110,7 +110,7 @@ const Header = () => {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Linkedin className="w-5 h-5 sm:w-6 sm:h-6 text-accent" />
+                <Linkedin className="w-6 h-6 sm:w-8 sm:h-8 text-accent" />
               </motion.a>
               
               <motion.a
@@ -119,7 +119,7 @@ const Header = () => {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Mail className="w-5 h-5 sm:w-6 sm:h-6 text-accent" />
+                <Mail className="w-6 h-6 sm:w-8 sm:h-8 text-accent" />
               </motion.a>
             </div>
             
@@ -129,7 +129,7 @@ const Header = () => {
               className="bg-accent hover:bg-accent/90 text-white px-2 py-1 sm:px-3 sm:py-2 rounded-md flex items-center gap-1 transition-colors text-xs sm:text-sm"
             >
               <Download className="w-3 h-3 sm:w-4 sm:h-4" />
-              <span className="hidden xs:inline">CV</span>
+              <span className="inline">CV</span>
             </a>
           </div>
         </div>
