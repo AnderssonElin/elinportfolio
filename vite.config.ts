@@ -22,7 +22,4 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  build: {
-    outDir: 'build/client' // Lägg till denna rad för att ställa in utgångskatalogen
-  }
 }));
