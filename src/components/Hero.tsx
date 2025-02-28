@@ -114,7 +114,7 @@ FROM experience;`;
 
   return (
     <section className="min-h-screen flex flex-col items-center justify-center overflow-hidden relative" id="hero">
-      <div className="w-full max-w-3xl mx-auto relative z-20 px-0 sm:px-4 py-24 flex flex-col items-center">
+      <div className="w-full max-w-3xl mx-auto relative z-20 flex flex-col items-center justify-center m-auto">
         <motion.div
           className="bg-primary/30 mobile-reduced-padding sm:p-4 md:p-6 lg:p-8 rounded-lg backdrop-blur-sm font-sql overflow-hidden"
           initial={{ opacity: 0 }}
