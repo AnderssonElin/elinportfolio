@@ -113,9 +113,12 @@ FROM experience;`;
   }, []);
 
   return (
-    <section className="h-screen relative" id="hero">
-      {/* Central SQL code box with fixed positioning */}
-      <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 w-[90%] max-w-3xl px-4">
+    <section 
+      className="relative w-full h-screen flex items-center justify-center" 
+      id="hero"
+      style={{ paddingTop: '4rem' }} // Kompenserar för header-höjden
+    >
+      <div className="w-[90%] max-w-3xl mx-auto px-4 flex flex-col items-center">
         <motion.div
           className="bg-primary/30 p-3 sm:p-4 md:p-6 lg:p-8 rounded-lg backdrop-blur-sm font-sql overflow-hidden w-full"
           initial={{ opacity: 0 }}
