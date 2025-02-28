@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -97,5 +98,15 @@
 
   body {
     @apply bg-background text-foreground;
+  }
+  
+  /* Fixa så att footer är genomskinlig för bakgrundsanimeringen */
+  footer {
+    @apply bg-transparent !important;
+  }
+  
+  /* Navigation bar blur effect */
+  .nav-blur {
+    @apply backdrop-blur-sm;
   }
 }

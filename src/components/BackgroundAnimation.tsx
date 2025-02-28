@@ -14,14 +14,14 @@ const BackgroundAnimation = () => {
     // Anpassa canvas till fönsterstorlek
     const resizeCanvas = () => {
       canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      canvas.height = window.innerHeight * 2; // Fördubbla canvas höjd för att täcka hela sidan
     };
     
     window.addEventListener("resize", resizeCanvas);
     resizeCanvas();
     
     // Konfigurera partiklar
-    const particleCount = 150; // Öka antalet för bättre täckning
+    const particleCount = 150;
     const particles: Particle[] = [];
     
     // Olika typer av partiklar
@@ -33,6 +33,7 @@ const BackgroundAnimation = () => {
       color: string;
       type: 'circle' | 'square' | 'triangle';
       opacity: number;
+      maxOpacity: number;
       
       constructor() {
         this.x = Math.random() * canvas.width;
@@ -41,7 +42,8 @@ const BackgroundAnimation = () => {
         this.speed = Math.random() * 0.3 + 0.1; // Långsamt fall
         this.color = this.getRandomColor();
         this.type = this.getRandomType();
-        this.opacity = Math.random() * 0.3 + 0.1; // Subtil opacity
+        this.maxOpacity = Math.random() * 0.3 + 0.2; // Bas-opacitet, minst 0.2
+        this.opacity = this.maxOpacity;
       }
       
       getRandomColor() {
@@ -68,14 +70,18 @@ const BackgroundAnimation = () => {
         
         if (this.y > fadeStart) {
           const fadeProgress = (this.y - fadeStart) / (canvas.height - fadeStart);
-          this.opacity = Math.max(0.05, this.opacity * (1 - fadeProgress));
+          // Minimum opacitet på 0.2
+          this.opacity = Math.max(0.2, this.maxOpacity * (1 - fadeProgress * 0.7));
+        } else {
+          this.opacity = this.maxOpacity;
         }
         
         // Återställ när de når botten
         if (this.y > canvas.height) {
           this.y = -this.size * 2;
           this.x = Math.random() * canvas.width;
-          this.opacity = Math.random() * 0.3 + 0.1; // Återställ opacity
+          this.maxOpacity = Math.random() * 0.3 + 0.2;
+          this.opacity = this.maxOpacity;
         }
       }
       
@@ -103,7 +109,7 @@ const BackgroundAnimation = () => {
       }
     }
     
-    // Skapa partiklar
+    // Skapa partiklar med jämn fördelning över hela canvas
     for (let i = 0; i < particleCount; i++) {
       particles.push(new Particle());
     }
@@ -113,6 +119,9 @@ const BackgroundAnimation = () => {
     
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      // Uppdatera canvas position baserat på scrollning
+      canvas.style.top = `${-window.scrollY}px`;
       
       for (const particle of particles) {
         particle.update();
@@ -133,7 +142,7 @@ const BackgroundAnimation = () => {
   return (
     <canvas 
       ref={canvasRef} 
-      className="fixed inset-0 w-full h-full pointer-events-none" 
+      className="fixed inset-0 w-full h-[200vh] pointer-events-none" 
       style={{ zIndex: -1 }}
     />
   );

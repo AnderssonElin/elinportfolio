@@ -15,9 +15,15 @@ const CoinCounter = () => {
 
   return (
     <>
-      <div className="fixed top-0 left-0 w-screen h-20 bg-gradient-to-br from-secondary/80 to-secondary/60 backdrop-blur-sm z-40">
-        <div className="fixed top-4 left-4 bg-accent/20 backdrop-blur-sm px-4 py-2 rounded-full">
-          <span className="text-white font-bold">{clickCount} 🧞‍♂️</span>
+      <div className="fixed top-0 left-0 right-0 z-40 h-16">
+        <div className="w-full h-full bg-gradient-to-br from-secondary/80 to-secondary/60 backdrop-blur-sm">
+          <div className="container mx-auto h-full flex items-center px-4">
+            <div className="flex-1">
+              <div className="bg-accent/20 backdrop-blur-sm px-4 py-2 rounded-full inline-block">
+                <span className="text-white font-bold">{clickCount} 🧞‍♂️</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <motion.button

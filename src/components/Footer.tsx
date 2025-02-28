@@ -1,7 +1,6 @@
 
-import { Mail, Linkedin, Github } from "lucide-react";
-import { motion } from "framer-motion";
 import { useState } from "react";
+import { motion } from "framer-motion";
 import { useToast } from "@/hooks/use-toast";
 
 const Footer = () => {
@@ -20,13 +19,13 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-secondary py-12 sm:py-16 px-4 sm:px-6 md:px-8">
+    <footer className="py-12 sm:py-16 px-4 sm:px-6 md:px-8">
       <div className="container mx-auto max-w-md">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="space-y-6"
+          className="space-y-6 bg-secondary/70 backdrop-blur-sm p-6 rounded-lg"
         >
           <h3 className="text-xl sm:text-2xl font-bold text-white text-center">Get in Touch</h3>
           <form onSubmit={handleSubmit} className="space-y-4">
