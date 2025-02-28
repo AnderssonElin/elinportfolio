@@ -5,7 +5,7 @@ import Timeline from "@/components/Timeline";
 import Dashboard from "@/components/Dashboard";
 import Projects from "@/components/Projects";
 import Footer from "@/components/Footer";
-import AskMe, { AskMeProvider } from "@/components/AskMe";
+import AskMe from "@/components/AskMe";
 import Copyright from "@/components/Copyright";
 import BackgroundAnimation from "@/components/BackgroundAnimation";
 import { motion } from "framer-motion";
@@ -61,86 +61,84 @@ const Index = () => {
   }, []);
 
   return (
-    <AskMeProvider>
-      <main className="relative bg-secondary pt-16"> {/* Lägg till padding-top för att ge plats åt headern */}
-        {/* Bakgrundsanimering som täcker hela sidan */}
-        <div className="fixed inset-0 z-0 pointer-events-none">
-          <BackgroundAnimation />
-        </div>
-        
-        {/* Hero-sektionen */}
-        <motion.section 
-          ref={sectionRefs.hero}
-          className="relative min-h-screen flex items-center justify-center px-4 py-16"
-          animate={{ 
-            opacity: activeSection === "hero" ? 1 : 0.3,
-            scale: activeSection === "hero" ? 1 : 0.98
-          }}
-          transition={{ duration: 0.5 }}
-          id="hero"
-        >
-          <Hero />
-        </motion.section>
-        
-        {/* Timeline-sektionen */}
-        <motion.section 
-          ref={sectionRefs.timeline}
-          className="relative min-h-screen flex items-center justify-center px-4 py-16" 
-          animate={{ 
-            opacity: activeSection === "timeline" ? 1 : 0.3,
-            scale: activeSection === "timeline" ? 1 : 0.98
-          }}
-          transition={{ duration: 0.5 }}
-          id="timeline"
-        >
-          <Timeline />
-        </motion.section>
-        
-        {/* Dashboard-sektionen */}
-        <motion.section 
-          ref={sectionRefs.dashboard}
-          className="relative min-h-screen flex items-center justify-center px-4 py-16"
-          animate={{ 
-            opacity: activeSection === "dashboard" ? 1 : 0.3,
-            scale: activeSection === "dashboard" ? 1 : 0.98
-          }}
-          transition={{ duration: 0.5 }}
-          id="dashboard"
-        >
-          <Dashboard />
-        </motion.section>
-        
-        {/* Projects-sektionen */}
-        <motion.section 
-          ref={sectionRefs.projects}
-          className="relative min-h-screen flex items-center justify-center px-4 py-16" 
-          animate={{ 
-            opacity: activeSection === "projects" ? 1 : 0.3,
-            scale: activeSection === "projects" ? 1 : 0.98
-          }}
-          transition={{ duration: 0.5 }}
-          id="projects"
-        >
-          <Projects />
-        </motion.section>
-        
-        {/* Slutsektionen */}
-        <motion.section 
-          ref={sectionRefs.contact}
-          className="relative min-h-screen flex flex-col justify-center px-4 py-16"
-          animate={{ 
-            opacity: activeSection === "contact" ? 1 : 0.3,
-            scale: activeSection === "contact" ? 1 : 0.98
-          }}
-          transition={{ duration: 0.5 }}
-          id="contact"
-        >
-          <AskMe />
-          <Footer />
-          <Copyright />
-        </motion.section>
-      </main>
-    </AskMeProvider>
+    <main className="relative bg-secondary pt-16"> {/* Lägg till padding-top för att ge plats åt headern */}
+      {/* Bakgrundsanimering som täcker hela sidan */}
+      <div className="fixed inset-0 z-0 pointer-events-none">
+        <BackgroundAnimation />
+      </div>
+      
+      {/* Hero-sektionen */}
+      <motion.section 
+        ref={sectionRefs.hero}
+        className="relative min-h-screen flex items-center justify-center px-4 py-16"
+        animate={{ 
+          opacity: activeSection === "hero" ? 1 : 0.3,
+          scale: activeSection === "hero" ? 1 : 0.98
+        }}
+        transition={{ duration: 0.5 }}
+        id="hero"
+      >
+        <Hero />
+      </motion.section>
+      
+      {/* Timeline-sektionen */}
+      <motion.section 
+        ref={sectionRefs.timeline}
+        className="relative min-h-screen flex items-center justify-center px-4 py-16" 
+        animate={{ 
+          opacity: activeSection === "timeline" ? 1 : 0.3,
+          scale: activeSection === "timeline" ? 1 : 0.98
+        }}
+        transition={{ duration: 0.5 }}
+        id="timeline"
+      >
+        <Timeline />
+      </motion.section>
+      
+      {/* Dashboard-sektionen */}
+      <motion.section 
+        ref={sectionRefs.dashboard}
+        className="relative min-h-screen flex items-center justify-center px-4 py-16"
+        animate={{ 
+          opacity: activeSection === "dashboard" ? 1 : 0.3,
+          scale: activeSection === "dashboard" ? 1 : 0.98
+        }}
+        transition={{ duration: 0.5 }}
+        id="dashboard"
+      >
+        <Dashboard />
+      </motion.section>
+      
+      {/* Projects-sektionen */}
+      <motion.section 
+        ref={sectionRefs.projects}
+        className="relative min-h-screen flex items-center justify-center px-4 py-16" 
+        animate={{ 
+          opacity: activeSection === "projects" ? 1 : 0.3,
+          scale: activeSection === "projects" ? 1 : 0.98
+        }}
+        transition={{ duration: 0.5 }}
+        id="projects"
+      >
+        <Projects />
+      </motion.section>
+      
+      {/* Slutsektionen */}
+      <motion.section 
+        ref={sectionRefs.contact}
+        className="relative min-h-screen flex flex-col justify-center px-4 py-16"
+        animate={{ 
+          opacity: activeSection === "contact" ? 1 : 0.3,
+          scale: activeSection === "contact" ? 1 : 0.98
+        }}
+        transition={{ duration: 0.5 }}
+        id="contact"
+      >
+        <AskMe />
+        <Footer />
+        <Copyright />
+      </motion.section>
+    </main>
   );
 };
 
