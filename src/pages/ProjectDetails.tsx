@@ -1,7 +1,7 @@
+
 import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ChevronDown, ExternalLink } from "lucide-react";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 interface ProjectData {
   id: number;
@@ -292,31 +292,24 @@ const ProjectDetails = ({ projectId, onClose }: ProjectDetailsProps) => {
                         }}
                         viewport={{ once: false, margin: "-100px" }}
                       >
-                        <img 
-                          src={image} 
-                          alt={`${project.title} screenshot ${index + 1}`} 
-                          className="object-cover rounded-lg shadow-xl"
-                          style={{ maxWidth: "800px", maxHeight: "800px", width: "100%" }}
-                        />
-                        
-                        <TooltipProvider>
-                          <Tooltip>
-                            <TooltipTrigger asChild>
-                              <a 
-                                href={image}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="absolute top-2 right-2 p-2 bg-black/70 rounded-full text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black/90"
-                                aria-label="Open image in new tab"
-                              >
-                                <ExternalLink size={16} />
-                              </a>
-                            </TooltipTrigger>
-                            <TooltipContent>
-                              <p>Open in full screen</p>
-                            </TooltipContent>
-                          </Tooltip>
-                        </TooltipProvider>
+                        <div className="relative">
+                          <img 
+                            src={image} 
+                            alt={`${project.title} screenshot ${index + 1}`} 
+                            className="object-cover rounded-lg shadow-xl"
+                            style={{ maxWidth: "800px", maxHeight: "800px", width: "100%" }}
+                          />
+                          
+                          <a 
+                            href={image}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="absolute top-2 right-2 p-2 bg-accent hover:bg-accent/80 rounded-full text-white opacity-0 group-hover:opacity-100 transition-opacity"
+                            aria-label="Open image in new tab"
+                          >
+                            <ExternalLink size={16} />
+                          </a>
+                        </div>
                       </motion.div>
                     ))}
                   </div>
