@@ -22,9 +22,9 @@ const projectsData: Record<string, ProjectData> = {
     description: "A comprehensive data lake solution that centralizes all enterprise data sources into a single, scalable platform. The implementation provides real-time analytics capabilities, data cataloging, and automated data quality checks. This solution has reduced data retrieval times by 85% and enabled new business insights across departments.",
     role: "As lead BI analyst, I designed the data architecture, defined data modeling strategies, and worked closely with stakeholders to ensure the solution met business requirements. I also implemented key performance dashboards and trained the analytics team on the new data platform.",
     images: [
-      "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/HimalayaK%26V_S%C3%A4lj.png",
-      "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/HimalayaK%26V_HR.png",
-      "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/HimalayaK%26V_Kampanj.png"
+      "https://raw.githubusercontent.com/AnderssonElin/playful-data-portfolio-61/refs/heads/main/images/HimalayaK%26V_S%C3%A4lj.png",
+      "https://raw.githubusercontent.com/AnderssonElin/playful-data-portfolio-61/refs/heads/main/images/HimalayaK%26V_S%C3%A4lj.png",
+      "https://raw.githubusercontent.com/AnderssonElin/playful-data-portfolio-61/refs/heads/main/images/HimalayaK%26V_S%C3%A4lj.png"
     ]
   },
   "ml-pipeline": {
