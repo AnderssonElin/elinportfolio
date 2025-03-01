@@ -24,8 +24,7 @@ const projectsData: Record<string, ProjectData> = {
     images: [
       "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/HimalayaK&V_S%C3%A4lj.png?raw=true",
       "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/HimalayaK&V_HR.png?raw=true",
-      "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/HimalayaK&V_Kampanj.png?raw=true",
-      "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/HimalayaK&V_Ekonomi.png?raw=true"
+      "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/HimalayaK&V_Kampanj.png?raw=true"
     ]
   },
   "ml-pipeline": {
