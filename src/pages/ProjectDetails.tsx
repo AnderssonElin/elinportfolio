@@ -1,3 +1,4 @@
+
 import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ChevronDown, ExternalLink } from "lucide-react";
@@ -290,7 +291,7 @@ const ProjectDetails = ({ projectId, onClose }: ProjectDetailsProps) => {
                         }}
                         viewport={{ once: false, margin: "-100px" }}
                       >
-                        <div className="relative inline-block">
+                        <div className="relative">
                           <img 
                             src={image} 
                             alt={`${project.title} screenshot ${index + 1}`} 
