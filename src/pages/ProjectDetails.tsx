@@ -1,3 +1,4 @@
+
 import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ChevronDown, ExternalLink } from "lucide-react";
@@ -305,7 +306,7 @@ const ProjectDetails = ({ projectId, onClose }: ProjectDetailsProps) => {
                                 href={image}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="absolute top-2 right-2 p-2 bg-black/70 rounded-full text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black/90"
+                                className="absolute top-2 right-2 p-2 bg-accent hover:bg-accent/80 rounded-full text-white opacity-0 group-hover:opacity-100 transition-opacity"
                                 aria-label="Open image in new tab"
                               >
                                 <ExternalLink size={16} />
