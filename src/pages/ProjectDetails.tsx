@@ -14,7 +14,7 @@ interface ProjectData {
 }
 
 const projectsData: Record<string, ProjectData> = {
-  "Power BI": {
+  "TEST Power BI": {
     id: 1,
     title: "Power BI report in sales",
     year: "2023",
