@@ -12,7 +12,7 @@ interface ProjectData {
   images: string[];
 }
 
-// Sample project data
+// Project data
 const projectsData: Record<string, ProjectData> = {
   "data-lake": {
     id: 1,
