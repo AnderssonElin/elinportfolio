@@ -16,15 +16,15 @@ interface ProjectData {
 const projectsData: Record<string, ProjectData> = {
   "data-lake": {
     id: 1,
-    title: "Data Lake Implementation",
+    title: "Power BI report",
     year: "2023",
-    tech: ["AWS", "Snowflake", "Python", "Apache Spark", "Airflow"],
+    tech: ["Power BI", "Power Query", "DAX"],
     description: "A comprehensive data lake solution that centralizes all enterprise data sources into a single, scalable platform. The implementation provides real-time analytics capabilities, data cataloging, and automated data quality checks. This solution has reduced data retrieval times by 85% and enabled new business insights across departments.",
     role: "As lead BI analyst, I designed the data architecture, defined data modeling strategies, and worked closely with stakeholders to ensure the solution met business requirements. I also implemented key performance dashboards and trained the analytics team on the new data platform.",
     images: [
-      "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=800&q=80"
+      "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/HimalayaK%26V_S%C3%A4lj.png",
+      "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/HimalayaK%26V_HR.png",
+      "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/HimalayaK%26V_Kampanj.png"
     ]
   },
   "ml-pipeline": {
