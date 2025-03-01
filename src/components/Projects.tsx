@@ -1,8 +1,7 @@
-
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import ProjectDetails from "../pages/ProjectDetails";
-import { useMobile } from "@/hooks/use-mobile";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const projectsData = [
   {
@@ -53,20 +52,18 @@ const Projects = () => {
   const [hoveredId, setHoveredId] = useState<number | null>(null);
   const [selectedProject, setSelectedProject] = useState<string | null>(null);
   const [touchedId, setTouchedId] = useState<number | null>(null);
-  const isMobile = useMobile();
+  const isMobile = useIsMobile();
 
-  // Reset touch state after a short delay
   useEffect(() => {
     if (touchedId !== null) {
       const timer = setTimeout(() => {
         setTouchedId(null);
-      }, 3000); // Show preview for 3 seconds
+      }, 3000);
       
       return () => clearTimeout(timer);
     }
   }, [touchedId]);
 
-  // For mobile: show preview effect when scrolling past items
   useEffect(() => {
     if (!isMobile) return;
     
@@ -108,16 +105,13 @@ const Projects = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            {/* Yttram som efterliknar bilden med windowskontrollen */}
             <div className="rounded-lg p-3 bg-primary/20 backdrop-blur-sm border border-accent/10 shadow-lg overflow-hidden">
-              {/* Windowskontroller */}
               <div className="flex gap-2 mb-2">
                 <div className="w-3 h-3 rounded-full bg-purple-900/30"></div>
                 <div className="w-3 h-3 rounded-full bg-purple-900/30"></div>
                 <div className="w-3 h-3 rounded-full bg-purple-900/30"></div>
               </div>
               
-              {/* Inre container med bild och innehåll */}
               <div className="relative aspect-square overflow-hidden rounded-md bg-black/40">
                 <div className="absolute inset-0 bg-gradient-to-r from-accent/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 
@@ -160,7 +154,6 @@ const Projects = () => {
         ))}
       </div>
       
-      {/* Render the project details overlay if a project is selected */}
       {selectedProject && (
         <ProjectDetails 
           projectId={selectedProject} 
