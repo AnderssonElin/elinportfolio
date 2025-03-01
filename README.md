@@ -64,6 +64,23 @@ This project is built with .
 
 Simply open [Lovable](https://lovable.dev/projects/2504e0e4-2e28-4067-ba88-738ace47425a) and click on Share -> Publish.
 
+If you want to deploy your project under your own domain using Netlify, follow these additional steps:
+
+1. Unhide the following comment in your `vite.config.js` file:
+    ```javascript
+    build: {
+      outDir: 'build/client'
+    }
+    ```
+
+2. Run the following commands to create the `build/client` directory:
+    ```sh
+    npm run build
+    npm run deploy
+    ```
+
+For more details, visit our docs: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
+
 ## I want to use a custom domain - is that possible?
 
 We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
