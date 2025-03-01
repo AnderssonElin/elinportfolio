@@ -6,9 +6,9 @@ import { useIsMobile } from "@/hooks/use-mobile";
 const projectsData = [
   {
     id: 1,
-    title: "Data Lake Implementation Elin",
-    description: "Enterprise-wide data lake architecture with real-time analytics",
-    imageUrl: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=800&q=80",
+    title: "Power BI",
+    description: "A Power BI solution integrating data modeling, advanced DAX calculations, and interactive dashboards for real-time business insights.",
+    imageUrl: "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/HimalayaK&V_HR.png?raw=true",
     slug: "powerbi"
   },
   {
