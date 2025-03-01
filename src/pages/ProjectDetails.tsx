@@ -1,4 +1,3 @@
-
 import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ChevronDown } from "lucide-react";
@@ -158,20 +157,26 @@ const ProjectDetails = ({ projectId, onClose }: ProjectDetailsProps) => {
   }
   
   return (
-    <AnimatePresence>
+    <AnimatePresence mode="wait">
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
+        transition={{ duration: 0.25 }}
         className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center"
       >
         <motion.div 
           ref={containerRef}
           className="bg-secondary rounded-lg shadow-xl w-full h-full md:w-11/12 md:h-[90%] md:max-w-6xl overflow-y-auto"
-          initial={{ y: 50, opacity: 0 }}
+          initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          exit={{ y: 50, opacity: 0 }}
-          transition={{ type: "spring", damping: 25 }}
+          exit={{ y: 20, opacity: 0 }}
+          transition={{ 
+            type: "spring", 
+            damping: 30, 
+            stiffness: 300, 
+            duration: 0.2 
+          }}
         >
           {/* Header Section */}
           <motion.div
@@ -199,7 +204,7 @@ const ProjectDetails = ({ projectId, onClose }: ProjectDetailsProps) => {
               className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: showHeader ? 1 : 0, y: showHeader ? 0 : -20 }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.3 }}
             >
               <div>
                 <div className="mb-8">
@@ -244,21 +249,21 @@ const ProjectDetails = ({ projectId, onClose }: ProjectDetailsProps) => {
                   opacity: showScrollIndicator ? 1 : 0, 
                   y: showScrollIndicator ? 0 : -10 
                 }}
-                transition={{ duration: 0.5 }}
+                transition={{ duration: 0.3 }}
               >
                 <motion.button
                   onClick={scrollToGallery}
                   className="text-gray-400 hover:text-accent transition-colors flex flex-col items-center"
-                  whileHover={{ scale: 1.1 }}
+                  whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
                   <p className="mb-2 text-sm">View Images</p>
                   <motion.div
                     animate={{
-                      y: [0, 10, 0],
+                      y: [0, 8, 0],
                     }}
                     transition={{
-                      duration: 1.5,
+                      duration: 1.2,
                       repeat: Infinity,
                       ease: "easeInOut",
                     }}
@@ -274,21 +279,21 @@ const ProjectDetails = ({ projectId, onClose }: ProjectDetailsProps) => {
               <div ref={galleryRef} className="min-h-[50vh] md:min-h-[80vh]">
                 <motion.div 
                   className="mt-16 pb-16"
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={{ opacity: !showHeader ? 1 : 0.3, y: !showHeader ? 0 : 50 }}
-                  transition={{ duration: 0.5 }}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: !showHeader ? 1 : 0.3, y: !showHeader ? 0 : 30 }}
+                  transition={{ duration: 0.3 }}
                 >
-                  <div className="space-y-16">
+                  <div className="space-y-12">
                     {project.images.map((image, index) => (
                       <motion.div 
                         key={index} 
                         className="flex justify-center"
-                        initial={{ opacity: 0, scale: 0.95 }}
+                        initial={{ opacity: 0, scale: 0.98 }}
                         animate={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: index * 0.3 }}
+                        transition={{ delay: index * 0.2, duration: 0.4 }}
                         whileInView={{ 
-                          scale: 1.02,
-                          transition: { duration: 0.5 }
+                          scale: 1.01,
+                          transition: { duration: 0.3 }
                         }}
                         viewport={{ once: false, margin: "-100px" }}
                       >

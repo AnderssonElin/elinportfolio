@@ -1,8 +1,6 @@
-
 import { useEffect, useState, useRef } from "react";
 import Hero from "@/components/Hero";
 import Timeline from "@/components/Timeline";
-import Dashboard from "@/components/Dashboard";
 import Projects from "@/components/Projects";
 import Footer from "@/components/Footer";
 import Copyright from "@/components/Copyright";
@@ -14,7 +12,6 @@ const Index = () => {
   const sectionRefs = {
     hero: useRef<HTMLElement>(null),
     timeline: useRef<HTMLElement>(null),
-    dashboard: useRef<HTMLElement>(null),
     projects: useRef<HTMLElement>(null),
     contact: useRef<HTMLElement>(null),
   };
@@ -92,20 +89,6 @@ const Index = () => {
         id="timeline"
       >
         <Timeline />
-      </motion.section>
-      
-      {/* Dashboard-sektionen */}
-      <motion.section 
-        ref={sectionRefs.dashboard}
-        className="relative min-h-screen flex items-center justify-center px-4 py-16"
-        animate={{ 
-          opacity: activeSection === "dashboard" ? 1 : 0.3,
-          scale: activeSection === "dashboard" ? 1 : 0.98
-        }}
-        transition={{ duration: 0.5 }}
-        id="dashboard"
-      >
-        <Dashboard />
       </motion.section>
       
       {/* Projects-sektionen */}

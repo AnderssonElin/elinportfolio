@@ -1,7 +1,8 @@
 
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ProjectDetails from "../pages/ProjectDetails";
+import { useMobile } from "@/hooks/use-mobile";
 
 const projectsData = [
   {
@@ -51,6 +52,43 @@ const projectsData = [
 const Projects = () => {
   const [hoveredId, setHoveredId] = useState<number | null>(null);
   const [selectedProject, setSelectedProject] = useState<string | null>(null);
+  const [touchedId, setTouchedId] = useState<number | null>(null);
+  const isMobile = useMobile();
+
+  // Reset touch state after a short delay
+  useEffect(() => {
+    if (touchedId !== null) {
+      const timer = setTimeout(() => {
+        setTouchedId(null);
+      }, 3000); // Show preview for 3 seconds
+      
+      return () => clearTimeout(timer);
+    }
+  }, [touchedId]);
+
+  // For mobile: show preview effect when scrolling past items
+  useEffect(() => {
+    if (!isMobile) return;
+    
+    const handleScroll = () => {
+      const projects = document.querySelectorAll('.project-card');
+      
+      projects.forEach((project, index) => {
+        const rect = project.getBoundingClientRect();
+        const isVisible = (
+          rect.top < window.innerHeight * 0.8 && 
+          rect.bottom > window.innerHeight * 0.2
+        );
+        
+        if (isVisible && touchedId !== projectsData[index].id) {
+          setTouchedId(projectsData[index].id);
+        }
+      });
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [isMobile, touchedId]);
 
   return (
     <div className="container mx-auto px-4 sm:px-6 md:px-8">
@@ -60,7 +98,7 @@ const Projects = () => {
         {projectsData.map((project) => (
           <motion.div
             key={project.id}
-            className="group cursor-pointer"
+            className="group cursor-pointer project-card"
             onHoverStart={() => setHoveredId(project.id)}
             onHoverEnd={() => setHoveredId(null)}
             onClick={() => setSelectedProject(project.slug)}
@@ -86,7 +124,7 @@ const Projects = () => {
                 <motion.div
                   className="absolute inset-0 border border-accent/10 group-hover:border-accent/30 transition-all duration-300 z-10 rounded-md"
                   animate={{
-                    borderColor: hoveredId === project.id ? "rgba(155, 135, 245, 0.3)" : "rgba(155, 135, 245, 0.1)"
+                    borderColor: (hoveredId === project.id || touchedId === project.id) ? "rgba(155, 135, 245, 0.3)" : "rgba(155, 135, 245, 0.1)"
                   }}
                 />
                 
@@ -94,7 +132,7 @@ const Projects = () => {
                   className="absolute inset-0 w-full h-full"
                   initial={false}
                   animate={{
-                    scale: hoveredId === project.id ? 1.1 : 1
+                    scale: (hoveredId === project.id || touchedId === project.id) ? 1.1 : 1
                   }}
                   transition={{ duration: 0.4 }}
                 >
@@ -109,7 +147,7 @@ const Projects = () => {
                   className="absolute inset-0 flex flex-col justify-end p-6 bg-gradient-to-t from-black/80 to-black/10"
                   initial={{ opacity: 0 }}
                   animate={{ 
-                    opacity: hoveredId === project.id ? 1 : 0
+                    opacity: (hoveredId === project.id || touchedId === project.id) ? 1 : 0
                   }}
                   transition={{ duration: 0.3 }}
                 >

@@ -8,9 +8,19 @@ const timelineData = [
     description: "Led data transformation initiatives across multiple departments",
   },
   {
+    year: "2022",
+    title: "Data Science Course",
+    description: "Completed advanced certification in data science and machine learning",
+  },
+  {
     year: "2021",
     title: "BI Consultant",
     description: "Helped 20+ companies optimize their data strategy",
+  },
+  {
+    year: "2020",
+    title: "Analytics Lead",
+    description: "Managed a team of analysts for a major e-commerce platform",
   },
   {
     year: "2019",
