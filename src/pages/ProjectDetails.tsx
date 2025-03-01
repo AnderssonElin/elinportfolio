@@ -14,17 +14,18 @@ interface ProjectData {
 }
 
 const projectsData: Record<string, ProjectData> = {
-  "data-lake": {
+  "Power BI": {
     id: 1,
-    title: "Power BI report",
+    title: "Power BI report in sales",
     year: "2023",
     tech: ["Power BI", "Power Query", "DAX"],
-    description: "A comprehensive data lake solution that centralizes all enterprise data sources into a single, scalable platform. The implementation provides real-time analytics capabilities, data cataloging, and automated data quality checks. This solution has reduced data retrieval times by 85% and enabled new business insights across departments.",
-    role: "As lead BI analyst, I designed the data architecture, defined data modeling strategies, and worked closely with stakeholders to ensure the solution met business requirements. I also implemented key performance dashboards and trained the analytics team on the new data platform.",
+    description: "This Power BI solution integrates and visualizes key business data across multiple departments, enabling data-driven decision-making and performance tracking. The project involved data modeling, ETL processes, advanced DAX calculations, and interactive dashboards to support strategic analysis in HR, Sales, Campaigns, and Finance.",
+    role: "As a BI Analyst, I designed and built the data architecture, implemented optimized DAX calculations, and configured data pipelines to ensure accuracy and scalability. I worked closely with business stakeholders to define key performance indicators and tailored dashboards to improve analytics adoption across departments.",
     images: [
-      "https://raw.githubusercontent.com/AnderssonElin/playful-data-portfolio-61/refs/heads/main/images/HimalayaK%26V_S%C3%A4lj.png",
-      "https://raw.githubusercontent.com/AnderssonElin/playful-data-portfolio-61/refs/heads/main/images/HimalayaK%26V_S%C3%A4lj.png",
-      "https://raw.githubusercontent.com/AnderssonElin/playful-data-portfolio-61/refs/heads/main/images/HimalayaK%26V_S%C3%A4lj.png"
+      "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/HimalayaK&V_S%C3%A4lj.png?raw=true",
+      "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/HimalayaK&V_HR.png?raw=true",
+      "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/HimalayaK&V_Kampanj.png?raw=true",
+      "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/HimalayaK&V_Ekonomi.png?raw=true"
     ]
   },
   "ml-pipeline": {
