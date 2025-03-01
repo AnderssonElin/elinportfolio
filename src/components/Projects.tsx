@@ -9,7 +9,7 @@ const projectsData = [
     title: "Data Lake Implementation Elin",
     description: "Enterprise-wide data lake architecture with real-time analytics",
     imageUrl: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=800&q=80",
-    slug: "data-lake"
+    slug: "powerbi"
   },
   {
     id: 2,
