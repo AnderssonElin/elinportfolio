@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ChevronDown } from "lucide-react";
+import { X, ChevronDown, ExternalLink } from "lucide-react";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 interface ProjectData {
   id: number;
@@ -12,7 +13,6 @@ interface ProjectData {
   images: string[];
 }
 
-// Project data
 const projectsData: Record<string, ProjectData> = {
   "data-lake": {
     id: 1,
@@ -100,10 +100,8 @@ const ProjectDetails = ({ projectId, onClose }: ProjectDetailsProps) => {
   
   const project = projectsData[projectId];
   
-  // Block scroll on body when modal is open
   useEffect(() => {
     document.body.style.overflow = 'hidden';
-    // Ensure we start at the top of the modal
     if (containerRef.current) {
       containerRef.current.scrollTop = 0;
     }
@@ -173,12 +171,11 @@ const ProjectDetails = ({ projectId, onClose }: ProjectDetailsProps) => {
           exit={{ y: 20, opacity: 0 }}
           transition={{ 
             type: "spring", 
-            damping: 30, 
-            stiffness: 300, 
-            duration: 0.2 
+            damping: 35, 
+            stiffness: 350, 
+            duration: 0.15 
           }}
         >
-          {/* Header Section */}
           <motion.div
             className="py-6 px-4 md:px-8 sticky top-0 z-10 bg-primary/90 backdrop-blur-sm flex justify-between items-center"
             initial={{ opacity: 1 }}
@@ -198,7 +195,6 @@ const ProjectDetails = ({ projectId, onClose }: ProjectDetailsProps) => {
             </div>
           </motion.div>
           
-          {/* Content Section */}
           <div className="px-4 md:px-8 py-8">
             <motion.div 
               className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12"
@@ -240,7 +236,6 @@ const ProjectDetails = ({ projectId, onClose }: ProjectDetailsProps) => {
               </div>
             </motion.div>
             
-            {/* Scroll indicator - only show if there are images */}
             {project.images.length > 0 && (
               <motion.div 
                 className="flex justify-center mt-8 mb-16"
@@ -274,7 +269,6 @@ const ProjectDetails = ({ projectId, onClose }: ProjectDetailsProps) => {
               </motion.div>
             )}
             
-            {/* Images Section - Use a fixed min-height to ensure it's visible */}
             {project.images.length > 0 && (
               <div ref={galleryRef} className="min-h-[50vh] md:min-h-[80vh]">
                 <motion.div 
@@ -287,7 +281,7 @@ const ProjectDetails = ({ projectId, onClose }: ProjectDetailsProps) => {
                     {project.images.map((image, index) => (
                       <motion.div 
                         key={index} 
-                        className="flex justify-center"
+                        className="flex justify-center relative group"
                         initial={{ opacity: 0, scale: 0.98 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ delay: index * 0.2, duration: 0.4 }}
@@ -303,6 +297,25 @@ const ProjectDetails = ({ projectId, onClose }: ProjectDetailsProps) => {
                           className="object-cover rounded-lg shadow-xl"
                           style={{ maxWidth: "800px", maxHeight: "800px", width: "100%" }}
                         />
+                        
+                        <TooltipProvider>
+                          <Tooltip>
+                            <TooltipTrigger asChild>
+                              <a 
+                                href={image}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="absolute top-2 right-2 p-2 bg-black/70 rounded-full text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black/90"
+                                aria-label="Open image in new tab"
+                              >
+                                <ExternalLink size={16} />
+                              </a>
+                            </TooltipTrigger>
+                            <TooltipContent>
+                              <p>Open in full screen</p>
+                            </TooltipContent>
+                          </Tooltip>
+                        </TooltipProvider>
                       </motion.div>
                     ))}
                   </div>
