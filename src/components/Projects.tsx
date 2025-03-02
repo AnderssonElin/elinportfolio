@@ -35,10 +35,10 @@ const projectsData = [
   },
   {
     id: 5,
-    title: "Data Visualization Tool",
-    description: "Interactive data visualization and reporting platform",
-    imageUrl: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=800&q=80",
-    slug: "data-viz"
+    title: "Machine Learning & Predictive Modeling in R",
+    description: "Developed a machine learning pipeline in R, using K-means clustering for data segmentation and random forest regression for predictive modeling.",
+    imageUrl: "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/R_first_pic.png?raw=true",
+    slug: "R-studio"
   },
   {
     id: 6,

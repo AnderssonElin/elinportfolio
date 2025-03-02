@@ -47,8 +47,8 @@ const projectsData: Record<string, ProjectData> = {
     description: "This project involved the modeling and design of a structured banking database system, ensuring a well-defined structure with clear relationships between entities. The process began with a thorough needs analysis and data collection to identify essential business processes and data elements. A conceptual data model was created to map out the overarching structure, followed by a logical data model that detailed tables, columns, data types, and key business concepts. The database design was developed visually in draw.io, incorporating all relevant entities, defining relationships between columns, and establishing primary keys. The logical model was further refined into a physical data model, considering constraints and optimizations for database management systems. The final step included comprehensive documentation of the database schema, specifying table structures, column attributes, and relationship definitions to facilitate future implementation and development.",
     role: "I was responsible for developing the data architecture and ensuring a well-structured and efficient relational model. I created and refined the conceptual, logical, and physical data models, aligning them with real-world banking operations. Additionally, I documented the entire schema, ensuring clarity and ease of implementation in SQL Server while maintaining relational integrity and scalability.",
     images: [
-      "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/Bank_fysisk%20ERD.jpg?raw=true",
       "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/Bank_konceptuell%20ERD.jpg?raw=true",
+      "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/Bank_fysisk%20ERD.jpg?raw=true",
       "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/Modellering_databas_diagram.png?raw=true",
       "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/Modellering_sql.png?raw=true"
 
@@ -68,15 +68,17 @@ const projectsData: Record<string, ProjectData> = {
       "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/SSIS_tabular_table.png?raw=true"
     ]
   },
-  "data-viz": {
+  "R-studio": {
     id: 5,
-    title: "Data Visualization Tool",
-    year: "2021",
-    tech: ["D3.js", "React", "Node.js", "MongoDB", "Express"],
-    description: "An interactive data visualization and reporting platform that enables users to create custom visualizations without coding knowledge. The tool includes a drag-and-drop interface, a library of chart templates, and export capabilities for presentations and reports.",
-    role: "I designed the user interface, implemented the visualization rendering engine, and created the data connector architecture. I worked closely with UX designers to ensure the tool was intuitive for non-technical users.",
+    title: "Machine Learning & Predictive Modeling in R",
+    year: "2024",
+    tech: ["Machine Learning", "R", "RStudio", "Random Forest", "K-means Clustering"],
+    description: "This project was developed as part of a team effort, focusing on machine learning-based predictive modeling and clustering using R. The dataset was cleaned and prepared by handling missing values and outliers before selecting relevant features for analysis. We applied unsupervised learning techniques, specifically K-means clustering, to segment companies based on workforce size and salary distribution, using the Elbow Method and Silhouette Score to determine the optimal number of clusters. In the predictive modeling phase, we implemented supervised machine learning techniques, training linear regression and random forest models to predict company financial performance. The models were evaluated using Mean Absolute Error (MAE), Mean Squared Error (MSE), and Root Mean Squared Error (RMSE) to compare predictive accuracy. We also tested whether incorporating cluster membership as a feature improved prediction performance.",
+    role: "As part of the team, I contributed to data preprocessing, feature selection, and model development. I worked on K-means clustering and visualization, ensuring the segmentation was meaningful and interpretable. Additionally, I played a key role in designing, implementing, and evaluating the machine learning models, including training the random forest and regression models, tuning hyperparameters, and analyzing performance metrics. My contributions helped refine the predictive approach, making the insights more actionable for financial decision-making.",
     images: [
-      "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=800&q=80"
+      "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/R_first_pic.png?raw=true",
+      "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/R_kod.png?raw=true",
+      "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/R_tabell.png?raw=true"
     ]
   },
   "ai-analytics": {
