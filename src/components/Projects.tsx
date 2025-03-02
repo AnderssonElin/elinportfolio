@@ -10,42 +10,48 @@ const projectsData = [
     title: "Power BI report in Sales",
     description: "A Power BI solution integrating data modeling, advanced DAX calculations, and interactive dashboards for real-time business insights.",
     imageUrl: "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/HimalayaK&V_HR.png?raw=true",
-    slug: "powerbi"
+    slug: "powerbi",
+    githubUrl: "https://github.com/AnderssonElin/playful-data-portfolio-61"
   },
   {
     id: 2,
     title: "ETL in SQL",
     description: "A complete ETL pipeline in SQL, integrating data extraction, transformation, and loading into a Power BI dashboard for business analytics and decision-making",
     imageUrl: "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/SQL_first_pic.png?raw=true",
-    slug: "sql"
+    slug: "sql",
+    githubUrl: "https://github.com/AnderssonElin/playful-data-portfolio-61"
   },
   {
     id: 3,
     title: "Banking System Data Model",
     description: "A comprehensive database design for a banking system, including conceptual, logical, and physical modeling to ensure structured data management and scalability.",
     imageUrl: "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/Bank_konceptuell%20ERD.jpg?raw=true",
-    slug: "draw.io"
+    slug: "draw.io",
+    githubUrl: "https://github.com/AnderssonElin/playful-data-portfolio-61"
   },
   {
     id: 4,
     title: "Data ETL & Analysis in SSIS and SSAS",
     description: "Designed an SSIS ETL pipeline for flight data cleansing, built an SSAS tabular model for efficient analysis.",
     imageUrl: "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/SSIS_first_pic.png?raw=true",
-    slug: "SSIS"
+    slug: "SSIS",
+    githubUrl: "https://github.com/AnderssonElin/playful-data-portfolio-61"
   },
   {
     id: 5,
     title: "Machine Learning & Predictive Modeling in R",
     description: "Developed a machine learning pipeline in R, using K-means clustering for data segmentation and random forest regression for predictive modeling.",
     imageUrl: "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/R_first_pic.png?raw=true",
-    slug: "R-studio"
+    slug: "R-studio",
+    githubUrl: "https://github.com/AnderssonElin/playful-data-portfolio-61"
   },
   {
     id: 6,
     title: "AI Analytics Engine",
     description: "AI-powered analytics engine for predictive insights",
     imageUrl: "https://images.unsplash.com/photo-1509718443690-d8e2fb3474b7?auto=format&fit=crop&w=800&q=80",
-    slug: "ai-analytics"
+    slug: "ai-analytics",
+    githubUrl: "https://github.com/AnderssonElin/playful-data-portfolio-61"
   }
 ];
 
@@ -89,24 +95,24 @@ const Projects = () => {
   }, [isMobile, touchedId]);
 
   return (
-    <div className="container mx-auto px-4 sm:px-6 md:px-8">
-      <h2 className="text-2xl sm:text-3xl font-bold text-center mb-16 text-white">Projects</h2>
+    <div className="container mx-auto px-4 sm:px-6 md:px-8 overflow-y-auto max-h-screen pb-20">
+      <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8 text-white">Projects</h2>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
         {projectsData.map((project) => (
           <motion.div
             key={project.id}
-            className="group cursor-pointer project-card"
+            className="group cursor-pointer project-card transform scale-80"
             onHoverStart={() => setHoveredId(project.id)}
             onHoverEnd={() => setHoveredId(null)}
             onClick={() => setSelectedProject(project.slug)}
-            whileHover={{ scale: 1.02 }}
+            whileHover={{ scale: 0.84 }}
             transition={{ duration: 0.2 }}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <div className="rounded-lg p-3 bg-primary/20 backdrop-blur-sm border border-accent/10 shadow-lg overflow-hidden">
+            <div className="rounded-lg p-3 bg-primary/20 backdrop-blur-sm border border-[#0eec58]/50 shadow-lg overflow-hidden">
               <div className="flex gap-2 mb-2">
                 <div className="w-3 h-3 rounded-full bg-purple-900/30"></div>
                 <div className="w-3 h-3 rounded-full bg-purple-900/30"></div>
@@ -127,9 +133,9 @@ const Projects = () => {
                 <div className="absolute inset-0 bg-gradient-to-r from-accent/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 
                 <motion.div
-                  className="absolute inset-0 border border-accent/10 group-hover:border-accent/30 transition-all duration-300 z-10 rounded-md"
+                  className="absolute inset-0 border border-[#0eec58]/30 group-hover:border-[#0eec58]/70 transition-all duration-300 z-10 rounded-md"
                   animate={{
-                    borderColor: (hoveredId === project.id || touchedId === project.id) ? "rgba(155, 135, 245, 0.3)" : "rgba(155, 135, 245, 0.1)"
+                    borderColor: (hoveredId === project.id || touchedId === project.id) ? "rgba(14, 236, 88, 0.7)" : "rgba(14, 236, 88, 0.3)"
                   }}
                 />
                 

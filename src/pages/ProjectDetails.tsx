@@ -1,7 +1,7 @@
 
 import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ChevronDown, ExternalLink } from "lucide-react";
+import { X, ChevronDown, ExternalLink, Github } from "lucide-react";
 
 interface ProjectData {
   id: number;
@@ -11,6 +11,7 @@ interface ProjectData {
   description: string;
   role: string;
   images: string[];
+  githubUrl?: string;
 }
 
 const projectsData: Record<string, ProjectData> = {
@@ -26,7 +27,8 @@ const projectsData: Record<string, ProjectData> = {
       "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/HimalayaK&V_HR.png?raw=true",
       "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/HimalayaK&V_Kampanj.png?raw=true",
       "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/HimalayaK&V_Ekonomi.png?raw=true"
-    ]
+    ],
+    githubUrl: "https://github.com/AnderssonElin/playful-data-portfolio-61"
   },
   "sql": {
     id: 2,
@@ -37,7 +39,8 @@ const projectsData: Record<string, ProjectData> = {
     role: "In my role as a BI Analyst, I designed and implemented the ETL architecture, structured data pipelines, and created stored procedures for automated transformations. I developed a scalable star schema, ensuring optimized performance and seamless Power BI integration. Additionally, I built SQL views to provide end-users with easy access to business insights without complex queries.",
     images: [
       "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/SQL_code.png?raw=true"
-    ]
+    ],
+    githubUrl: "https://github.com/AnderssonElin/playful-data-portfolio-61"
   },
   "draw.io": {
     id: 3,
@@ -51,8 +54,8 @@ const projectsData: Record<string, ProjectData> = {
       "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/Bank_fysisk%20ERD.jpg?raw=true",
       "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/Modellering_databas_diagram.png?raw=true",
       "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/Modellering_sql.png?raw=true"
-
-    ]
+    ],
+    githubUrl: "https://github.com/AnderssonElin/playful-data-portfolio-61"
   },
   "SSIS": {
     id: 4,
@@ -66,7 +69,8 @@ const projectsData: Record<string, ProjectData> = {
       "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/SSIS_fl%C3%B6de2.png?raw=true",
       "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/SSIS_tabular_cube.png?raw=true",
       "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/SSIS_tabular_table.png?raw=true"
-    ]
+    ],
+    githubUrl: "https://github.com/AnderssonElin/playful-data-portfolio-61"
   },
   "R-studio": {
     id: 5,
@@ -79,7 +83,8 @@ const projectsData: Record<string, ProjectData> = {
       "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/R_first_pic.png?raw=true",
       "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/R_kod.png?raw=true",
       "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/R_tabell.png?raw=true"
-    ]
+    ],
+    githubUrl: "https://github.com/AnderssonElin/playful-data-portfolio-61"
   },
   "ai-analytics": {
     id: 6,
@@ -91,7 +96,8 @@ const projectsData: Record<string, ProjectData> = {
     images: [
       "https://images.unsplash.com/photo-1509718443690-d8e2fb3474b7?auto=format&fit=crop&w=800&q=80",
       "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=800&q=80"
-    ]
+    ],
+    githubUrl: "https://github.com/AnderssonElin/playful-data-portfolio-61"
   }
 };
 
@@ -103,6 +109,7 @@ interface ProjectDetailsProps {
 const ProjectDetails = ({ projectId, onClose }: ProjectDetailsProps) => {
   const [showHeader, setShowHeader] = useState(true);
   const [showScrollIndicator, setShowScrollIndicator] = useState(true);
+  const [fullscreenImage, setFullscreenImage] = useState<string | null>(null);
   const galleryRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   
@@ -139,6 +146,10 @@ const ProjectDetails = ({ projectId, onClose }: ProjectDetailsProps) => {
   
   const scrollToGallery = () => {
     galleryRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
+  const handleImageClick = (imageSrc: string) => {
+    setFullscreenImage(imageSrc);
   };
   
   if (!project) {
@@ -189,8 +200,19 @@ const ProjectDetails = ({ projectId, onClose }: ProjectDetailsProps) => {
             initial={{ opacity: 1 }}
             animate={{ opacity: 1 }}
           >
-            <div className="flex-grow text-center">
+            <div className="flex-grow text-center relative">
               <h1 className="text-xl md:text-2xl font-bold text-accent line-clamp-1">{project.title}</h1>
+              {project.githubUrl && (
+                <a 
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="absolute right-8 top-1/2 transform -translate-y-1/2 p-2 hover:bg-accent/10 rounded-full transition-colors"
+                  aria-label="View on GitHub"
+                >
+                  <Github size={20} className="text-accent" />
+                </a>
+              )}
             </div>
             
             <div className="flex justify-end">
@@ -299,11 +321,11 @@ const ProjectDetails = ({ projectId, onClose }: ProjectDetailsProps) => {
                         }}
                         viewport={{ once: false, margin: "-100px" }}
                       >
-                        <div className="relative">
+                        <div className="relative cursor-pointer" onClick={() => handleImageClick(image)}>
                           <img 
                             src={image} 
                             alt={`${project.title} screenshot ${index + 1}`} 
-                            className="object-cover rounded-lg shadow-xl"
+                            className="object-cover rounded-lg shadow-xl cursor-pointer hover:opacity-90 transition-opacity"
                             style={{ maxWidth: "800px", maxHeight: "800px", width: "100%" }}
                           />
                           
@@ -313,6 +335,7 @@ const ProjectDetails = ({ projectId, onClose }: ProjectDetailsProps) => {
                             rel="noopener noreferrer"
                             className="absolute top-2 right-2 p-2 bg-accent hover:bg-accent/80 rounded-full text-white opacity-0 group-hover:opacity-100 transition-opacity"
                             aria-label="Open image in new tab"
+                            onClick={(e) => e.stopPropagation()}
                           >
                             <ExternalLink size={16} />
                           </a>
@@ -325,6 +348,35 @@ const ProjectDetails = ({ projectId, onClose }: ProjectDetailsProps) => {
             )}
           </div>
         </motion.div>
+
+        {/* Fullscreen Image Viewer */}
+        <AnimatePresence>
+          {fullscreenImage && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 bg-black/90 z-[60] flex items-center justify-center"
+              onClick={() => setFullscreenImage(null)}
+            >
+              <motion.img
+                src={fullscreenImage}
+                alt="Fullscreen view"
+                className="max-w-[95vw] max-h-[95vh] object-contain"
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.9, opacity: 0 }}
+                transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              />
+              <button
+                className="absolute top-4 right-4 p-2 bg-black/50 hover:bg-black/70 rounded-full text-white transition-colors"
+                onClick={() => setFullscreenImage(null)}
+              >
+                <X size={24} />
+              </button>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </motion.div>
     </AnimatePresence>
   );

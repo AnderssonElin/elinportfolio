@@ -1,3 +1,4 @@
+
 import { useEffect, useState, useRef } from "react";
 import Hero from "@/components/Hero";
 import Timeline from "@/components/Timeline";
@@ -57,7 +58,7 @@ const Index = () => {
   }, []);
 
   return (
-    <main className="relative bg-secondary pt-16"> {/* Lägg till padding-top för att ge plats åt headern */}
+    <main className="relative bg-secondary pt-16 h-screen snap-y snap-mandatory overflow-y-auto overflow-x-hidden"> 
       {/* Bakgrundsanimering som täcker hela sidan */}
       <div className="fixed inset-0 z-0 pointer-events-none">
         <BackgroundAnimation />
@@ -66,7 +67,7 @@ const Index = () => {
       {/* Hero-sektionen */}
       <motion.section 
         ref={sectionRefs.hero}
-        className="relative min-h-screen flex items-center justify-center px-4 py-16"
+        className="relative min-h-screen h-screen flex items-center justify-center px-4 py-16 snap-start"
         animate={{ 
           opacity: activeSection === "hero" ? 1 : 0.3,
           scale: activeSection === "hero" ? 1 : 0.98
@@ -80,7 +81,7 @@ const Index = () => {
       {/* Timeline-sektionen */}
       <motion.section 
         ref={sectionRefs.timeline}
-        className="relative min-h-screen flex items-center justify-center px-4 py-16" 
+        className="relative min-h-screen h-screen flex items-center justify-center px-4 py-16 snap-start" 
         animate={{ 
           opacity: activeSection === "timeline" ? 1 : 0.3,
           scale: activeSection === "timeline" ? 1 : 0.98
@@ -94,7 +95,7 @@ const Index = () => {
       {/* Projects-sektionen */}
       <motion.section 
         ref={sectionRefs.projects}
-        className="relative min-h-screen flex items-center justify-center px-4 py-16" 
+        className="relative min-h-screen h-screen flex items-center justify-center px-4 py-16 snap-start" 
         animate={{ 
           opacity: activeSection === "projects" ? 1 : 0.3,
           scale: activeSection === "projects" ? 1 : 0.98
@@ -108,7 +109,7 @@ const Index = () => {
       {/* Slutsektionen */}
       <motion.section 
         ref={sectionRefs.contact}
-        className="relative min-h-screen flex flex-col justify-center px-4 py-16"
+        className="relative min-h-screen h-screen flex flex-col justify-center px-4 py-16 snap-start"
         animate={{ 
           opacity: activeSection === "contact" ? 1 : 0.3,
           scale: activeSection === "contact" ? 1 : 0.98
