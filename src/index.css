@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -98,11 +97,11 @@
 
   body {
     @apply bg-background text-foreground;
-    cursor: url('/lovable-uploads/dd55ee05-f14c-4efc-8fb3-8de24394a78c.png'), auto;
+    cursor: url('../images/group.png'), auto;
   }
   
   a, button, [role="button"], .cursor-pointer {
-    cursor: url('/lovable-uploads/dd55ee05-f14c-4efc-8fb3-8de24394a78c.png'), pointer;
+    cursor: url('../images/group.png'), pointer;
   }
   
   /* Genomskinlig bakgrund för alla sektioner */
