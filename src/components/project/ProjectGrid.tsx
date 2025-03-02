@@ -87,7 +87,7 @@ const ProjectGrid = ({ onProjectSelect }: ProjectGridProps) => {
           isVisible={visibleProjects.includes(project.id)}
           isDelayedVisible={delayedVisibleProjects.includes(project.id)}
           isMobile={!!isMobile}
-          ref={(el) => projectRefs.current[index] = el}
+          ref={el => projectRefs.current[index] = el}
           onHoverStart={() => setHoveredId(project.id)}
           onHoverEnd={() => setHoveredId(null)}
           onClick={() => onProjectSelect(project.slug)}

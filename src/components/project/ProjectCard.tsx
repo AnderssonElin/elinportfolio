@@ -1,5 +1,5 @@
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, forwardRef } from "react";
 import { motion } from "framer-motion";
 import { ProjectType } from "./types";
 
@@ -13,10 +13,9 @@ interface ProjectCardProps {
   onHoverStart: () => void;
   onHoverEnd: () => void;
   onClick: () => void;
-  ref: React.RefObject<HTMLDivElement>;
 }
 
-const ProjectCard = ({ 
+const ProjectCard = forwardRef<HTMLDivElement, ProjectCardProps>(({ 
   project, 
   isHovered, 
   isTouched, 
@@ -25,9 +24,8 @@ const ProjectCard = ({
   isMobile,
   onHoverStart, 
   onHoverEnd, 
-  onClick,
-  ref
-}: ProjectCardProps) => {
+  onClick
+}, ref) => {
   return (
     <motion.div 
       key={project.id} 
@@ -125,6 +123,8 @@ const ProjectCard = ({
       </div>
     </motion.div>
   );
-};
+});
+
+ProjectCard.displayName = "ProjectCard";
 
 export default ProjectCard;
