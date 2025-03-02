@@ -1,7 +1,10 @@
-
 import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ChevronDown, ExternalLink, Github } from "lucide-react";
+import ProjectHeader from "@/components/project-details/ProjectHeader";
+import ProjectInfo from "@/components/project-details/ProjectInfo";
+import ScrollIndicator from "@/components/project-details/ScrollIndicator";
+import ProjectGallery from "@/components/project-details/ProjectGallery";
+import ProjectNotFound from "@/components/project-details/ProjectNotFound";
 
 interface ProjectData {
   id: number;
@@ -109,7 +112,6 @@ interface ProjectDetailsProps {
 const ProjectDetails = ({ projectId, onClose }: ProjectDetailsProps) => {
   const [showHeader, setShowHeader] = useState(true);
   const [showScrollIndicator, setShowScrollIndicator] = useState(true);
-  const [fullscreenImage, setFullscreenImage] = useState<string | null>(null);
   const galleryRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   
@@ -153,24 +155,7 @@ const ProjectDetails = ({ projectId, onClose }: ProjectDetailsProps) => {
   };
   
   if (!project) {
-    return (
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4"
-      >
-        <div className="bg-secondary rounded-lg shadow-xl p-8 max-w-lg w-full">
-          <h1 className="text-2xl text-accent mb-4">Project Not Found</h1>
-          <button 
-            onClick={onClose} 
-            className="flex items-center gap-2 bg-accent hover:bg-accent/80 px-4 py-2 rounded-md transition-colors"
-          >
-            Close
-          </button>
-        </div>
-      </motion.div>
-    );
+    return <ProjectNotFound onClose={onClose} />;
   }
   
   return (
@@ -195,155 +180,36 @@ const ProjectDetails = ({ projectId, onClose }: ProjectDetailsProps) => {
             duration: 0.15 
           }}
         >
-          <motion.div
-            className="py-6 px-4 md:px-8 sticky top-0 z-10 bg-primary/90 backdrop-blur-sm flex justify-between items-center"
-            initial={{ opacity: 1 }}
-            animate={{ opacity: 1 }}
-          >
-            <div className="flex-grow text-center relative">
-              <h1 className="text-xl md:text-2xl font-bold text-accent line-clamp-1">{project.title}</h1>
-            </div>
-            
-            <div className="flex justify-end">
-              <button
-                onClick={onClose}
-                className="text-gray-300 hover:text-white p-1 rounded-full transition-colors"
-              >
-                <X size={20} />
-              </button>
-            </div>
-          </motion.div>
+          <ProjectHeader 
+            title={project.title} 
+            onClose={onClose}
+          />
           
           <div className="px-4 md:px-8 py-8">
-            <motion.div 
-              className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: showHeader ? 1 : 0, y: showHeader ? 0 : -20 }}
-              transition={{ duration: 0.3 }}
-            >
-              <div>
-                <div className="mb-8">
-                  <h2 className="text-xl font-semibold text-accent mb-3">Year</h2>
-                  <p className="text-gray-300">{project.year}</p>
-                </div>
-                
-                <div className="mb-8">
-                  <h2 className="text-xl font-semibold text-accent mb-3">Tech & Technique</h2>
-                  <div className="flex flex-wrap gap-2">
-                    {project.tech.map((tech, index) => (
-                      <span 
-                        key={index} 
-                        className="px-3 py-1 bg-primary/50 rounded-full text-sm text-gray-300"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-              
-              <div>
-                <div className="mb-8">
-                  <h2 className="text-xl font-semibold text-accent mb-3">Description</h2>
-                  <p className="text-gray-300">{project.description}</p>
-                  {project.githubUrl && (
-                    <a 
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="mt-4 inline-flex items-center gap-2 text-[#0eec58] hover:text-[#0eec58]/80 transition-colors"
-                    >
-                      <Github size={18} />
-                      <span>View project on GitHub</span>
-                    </a>
-                  )}
-                </div>
-                
-                <div className="mb-8">
-                  <h2 className="text-xl font-semibold text-accent mb-3">My Role</h2>
-                  <p className="text-gray-300">{project.role}</p>
-                </div>
-              </div>
-            </motion.div>
+            <ProjectInfo
+              year={project.year}
+              tech={project.tech}
+              description={project.description}
+              role={project.role}
+              githubUrl={project.githubUrl}
+              showHeader={showHeader}
+            />
             
             {project.images.length > 0 && (
-              <motion.div 
-                className="flex justify-center mt-8 mb-16"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ 
-                  opacity: showScrollIndicator ? 1 : 0, 
-                  y: showScrollIndicator ? 0 : -10 
-                }}
-                transition={{ duration: 0.3 }}
-              >
-                <motion.button
-                  onClick={scrollToGallery}
-                  className="text-gray-400 hover:text-accent transition-colors flex flex-col items-center"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <p className="mb-2 text-sm">View Images</p>
-                  <motion.div
-                    animate={{
-                      y: [0, 8, 0],
-                    }}
-                    transition={{
-                      duration: 1.2,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                    }}
-                  >
-                    <ChevronDown size={24} />
-                  </motion.div>
-                </motion.button>
-              </motion.div>
+              <ScrollIndicator 
+                showScrollIndicator={showScrollIndicator}
+                scrollToGallery={scrollToGallery}
+              />
             )}
             
             {project.images.length > 0 && (
-              <div ref={galleryRef} className="min-h-[50vh] md:min-h-[80vh]">
-                <motion.div 
-                  className="mt-16 pb-16"
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: !showHeader ? 1 : 0.3, y: !showHeader ? 0 : 30 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <div className="space-y-12">
-                    {project.images.map((image, index) => (
-                      <motion.div 
-                        key={index} 
-                        className="flex justify-center relative group"
-                        initial={{ opacity: 0, scale: 0.98 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: index * 0.2, duration: 0.4 }}
-                        whileInView={{ 
-                          scale: 1.01,
-                          transition: { duration: 0.3 }
-                        }}
-                        viewport={{ once: false, margin: "-100px" }}
-                      >
-                        <div className="relative cursor-pointer" onClick={() => handleImageClick(image)}>
-                          <img 
-                            src={image} 
-                            alt={`${project.title} screenshot ${index + 1}`} 
-                            className="object-cover rounded-lg shadow-xl cursor-pointer hover:opacity-90 transition-opacity"
-                            style={{ maxWidth: "800px", maxHeight: "800px", width: "100%" }}
-                          />
-                          
-                          <a 
-                            href={image}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="absolute top-2 right-2 p-2 bg-accent hover:bg-accent/80 rounded-full text-white opacity-0 group-hover:opacity-100 transition-opacity"
-                            aria-label="Open image in new tab"
-                            onClick={(e) => e.stopPropagation()}
-                          >
-                            <ExternalLink size={16} />
-                          </a>
-                        </div>
-                      </motion.div>
-                    ))}
-                  </div>
-                </motion.div>
+              <div ref={galleryRef}>
+                <ProjectGallery
+                  images={project.images}
+                  title={project.title}
+                  showHeader={showHeader}
+                  handleImageClick={handleImageClick}
+                />
               </div>
             )}
           </div>
