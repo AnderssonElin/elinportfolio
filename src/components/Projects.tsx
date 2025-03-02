@@ -95,10 +95,10 @@ const Projects = () => {
   }, [isMobile, touchedId]);
 
   return (
-    <div className="container h-full mx-auto px-4 py-8 sm:px-6 md:px-8 overflow-y-auto">
-      <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8 text-white">Projects</h2>
+    <div className="container mx-auto px-2 sm:px-4 md:px-6 py-6 h-full overflow-y-auto">
+      <h2 className="text-2xl sm:text-3xl font-bold text-center mb-6 text-white">Projects</h2>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-6xl mx-auto">
         {projectsData.map((project) => (
           <motion.div
             key={project.id}
@@ -112,17 +112,17 @@ const Projects = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <div className="rounded-lg p-3 bg-primary/20 backdrop-blur-sm border border-[#0eec58]/30 shadow-lg overflow-hidden">
+            <div className="rounded-lg p-3 bg-primary/20 backdrop-blur-sm border border-[#9b87f5]/30 shadow-lg overflow-hidden">
               <div className="flex gap-2 mb-2">
-                <div className="w-3 h-3 rounded-full bg-[#0eec58]/30"></div>
-                <div className="w-3 h-3 rounded-full bg-[#0eec58]/30"></div>
-                <div className="w-3 h-3 rounded-full bg-[#0eec58]/30"></div>
+                <div className="w-3 h-3 rounded-full bg-[#9b87f5]/30"></div>
+                <div className="w-3 h-3 rounded-full bg-[#9b87f5]/30"></div>
+                <div className="w-3 h-3 rounded-full bg-[#9b87f5]/30"></div>
               </div>
               
               <div className="relative aspect-square overflow-hidden rounded-md bg-black/40">
                 {/* Purple overlay that disappears on hover */}
                 <motion.div 
-                  className="absolute inset-0 bg-[#9b87f5]/40 z-10 pointer-events-none"
+                  className="absolute inset-0 bg-[#9b87f5]/50 z-10 pointer-events-none"
                   initial={{ opacity: 1 }}
                   animate={{ 
                     opacity: (hoveredId === project.id || touchedId === project.id) ? 0 : 1 
@@ -150,7 +150,7 @@ const Projects = () => {
                   <img
                     src={project.imageUrl}
                     alt={project.title}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover opacity-90"
                   />
                 </motion.div>
                 

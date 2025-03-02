@@ -69,7 +69,11 @@ const Index = () => {
   return (
     <div 
       ref={sectionsContainerRef}
-      className="relative bg-secondary h-screen overflow-y-auto overflow-x-hidden scroll-smooth"
+      className="relative bg-secondary h-screen snap-y snap-mandatory overflow-y-auto overflow-x-hidden scroll-smooth"
+      style={{
+        scrollSnapType: "y mandatory",
+        WebkitOverflowScrolling: "touch"
+      }}
     > 
       {/* Background animation that covers the entire page */}
       <div className="fixed inset-0 z-0 pointer-events-none">
@@ -83,7 +87,7 @@ const Index = () => {
             key={section}
             className={`w-3 h-3 rounded-full transition-all duration-300 cursor-pointer ${
               activeSection === section 
-                ? "bg-[#0eec58] scale-125" 
+                ? "bg-[#9b87f5] scale-125" 
                 : "bg-white/30 hover:bg-white/50"
             }`}
             whileHover={{ scale: 1.2 }}
@@ -98,38 +102,46 @@ const Index = () => {
       {/* Hero section */}
       <section 
         ref={sectionRefs.hero}
-        className="relative min-h-screen flex items-center justify-center px-4 py-16 pt-16"
+        className="relative min-h-screen h-screen flex items-center justify-center px-4 py-16 snap-start"
         id="hero"
       >
-        <Hero />
+        <div className="pt-16 w-full max-h-full overflow-hidden">
+          <Hero />
+        </div>
       </section>
       
       {/* Timeline section */}
       <section 
         ref={sectionRefs.timeline}
-        className="relative min-h-screen flex items-center justify-center px-4 py-20 pt-24" 
+        className="relative min-h-screen h-screen flex items-center justify-center px-4 py-20 snap-start" 
         id="timeline"
       >
-        <Timeline />
+        <div className="pt-16 w-full max-h-full overflow-y-auto">
+          <Timeline />
+        </div>
       </section>
       
       {/* Projects section */}
       <section 
         ref={sectionRefs.projects}
-        className="relative min-h-screen flex items-center justify-center px-4 py-20 pt-24" 
+        className="relative min-h-screen h-screen flex items-center justify-center px-4 py-20 snap-start" 
         id="projects"
       >
-        <Projects />
+        <div className="pt-16 w-full max-h-full overflow-y-auto">
+          <Projects />
+        </div>
       </section>
       
       {/* Final section */}
       <section 
         ref={sectionRefs.contact}
-        className="relative min-h-screen flex flex-col justify-center px-4 py-20 pt-24"
+        className="relative min-h-screen h-screen flex flex-col justify-center px-4 py-20 snap-start"
         id="contact"
       >
-        <Footer />
-        <Copyright />
+        <div className="pt-16 w-full">
+          <Footer />
+          <Copyright />
+        </div>
       </section>
     </div>
   );
