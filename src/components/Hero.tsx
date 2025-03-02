@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 const Hero = () => {
   const sqlCode = `/* Booting Up My Profile */ 
 SELECT 
-  'Hello, I'm Elin' AS Greeting, 
+  'Hello, I Am Elin' AS Greeting, 
   'BI Analyst' AS Role, 
   'Mining Data for Gold' AS Tagline 
 FROM experience;`;
