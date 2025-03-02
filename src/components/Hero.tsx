@@ -6,9 +6,9 @@ import { useState, useEffect } from "react";
 const Hero = () => {
   const sqlCode = `/* Booting Up My Profile */ 
 SELECT 
-  'Hello, my name is ' || 'Elin' AS Greeting, 
+  'Hello, my name is Elin' AS Greeting, 
   'BI Analyst' AS Role, 
-  'Transforming raw data into golden insights' AS Tagline 
+  'Mining Data for Gold' AS Tagline 
 FROM experience;`;
 
   const getColor = (text: string, char: string, index: number): string => {
