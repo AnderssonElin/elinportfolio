@@ -74,7 +74,7 @@ FROM experience;`;
         duration: 0.5,
         delay: lineIndex * 0.15,
       }}
-      className="flex whitespace-pre overflow-hidden text-[0.6rem] xs:text-sm sm:text-base md:text-[1.1rem] leading-[1.6] xs:leading-[1.7] sm:leading-[1.8]"
+      className="flex whitespace-pre overflow-hidden text-[0.8rem] xs:text-sm sm:text-base md:text-[1.1rem] leading-[1.6] xs:leading-[1.7] sm:leading-[1.8]"
     >
       {line.split('').map((char, charIndex) => (
         <motion.span
