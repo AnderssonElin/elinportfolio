@@ -98,7 +98,7 @@ const Projects = () => {
       <h2 className="text-2xl sm:text-3xl font-bold text-center mb-4 sm:mb-6 text-white">Projects</h2>
       
       <div className="w-full">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 gap-y-12 max-w-[85%] mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 gap-y-11 max-w-[85%] mx-auto">
           {projectsData.map((project, index) => <motion.div 
             key={project.id} 
             className="group cursor-pointer project-card" 
