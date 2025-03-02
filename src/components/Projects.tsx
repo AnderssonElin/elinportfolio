@@ -1,3 +1,4 @@
+
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import ProjectDetails from "../pages/ProjectDetails";
@@ -113,6 +114,16 @@ const Projects = () => {
               </div>
               
               <div className="relative aspect-square overflow-hidden rounded-md bg-black/40">
+                {/* Purple overlay that disappears on hover */}
+                <motion.div 
+                  className="absolute inset-0 bg-purple-500/30 z-10 pointer-events-none"
+                  initial={{ opacity: 1 }}
+                  animate={{ 
+                    opacity: (hoveredId === project.id || touchedId === project.id) ? 0 : 1 
+                  }}
+                  transition={{ duration: 0.3 }}
+                />
+                
                 <div className="absolute inset-0 bg-gradient-to-r from-accent/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 
                 <motion.div
