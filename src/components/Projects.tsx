@@ -1,52 +1,58 @@
-
 import { motion, useAnimation } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
 import ProjectDetails from "../pages/ProjectDetails";
 import { useIsMobile } from "@/hooks/use-mobile";
 
-const projectsData = [{
-  id: 1,
-  title: "Power BI report in Sales",
-  description: "A Power BI solution integrating data modeling, advanced DAX calculations, and interactive dashboards for real-time business insights.",
-  imageUrl: "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/HimalayaK&V_HR.png?raw=true",
-  slug: "powerbi",
-  githubUrl: "https://github.com/AnderssonElin/playful-data-portfolio-61"
-}, {
-  id: 2,
-  title: "ETL in SQL",
-  description: "A complete ETL pipeline in SQL, integrating data extraction, transformation, and loading into a Power BI dashboard for business analytics and decision-making",
-  imageUrl: "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/SQL_first_pic.png?raw=true",
-  slug: "sql",
-  githubUrl: "https://github.com/AnderssonElin/playful-data-portfolio-61"
-}, {
-  id: 3,
-  title: "Banking System Data Model",
-  description: "A comprehensive database design for a banking system, including conceptual, logical, and physical modeling to ensure structured data management and scalability.",
-  imageUrl: "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/Bank_konceptuell%20ERD.jpg?raw=true",
-  slug: "draw.io",
-  githubUrl: "https://github.com/AnderssonElin/playful-data-portfolio-61"
-}, {
-  id: 4,
-  title: "Data ETL & Analysis in SSIS and SSAS",
-  description: "Designed an SSIS ETL pipeline for flight data cleansing, built an SSAS tabular model for efficient analysis.",
-  imageUrl: "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/SSIS_first_pic.png?raw=true",
-  slug: "SSIS",
-  githubUrl: "https://github.com/AnderssonElin/playful-data-portfolio-61"
-}, {
-  id: 5,
-  title: "Machine Learning & Predictive Modeling in R",
-  description: "Developed a machine learning pipeline in R, using K-means clustering for data segmentation and random forest regression for predictive modeling.",
-  imageUrl: "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/R_first_pic.png?raw=true",
-  slug: "R-studio",
-  githubUrl: "https://github.com/AnderssonElin/playful-data-portfolio-61"
-}, {
-  id: 6,
-  title: "AI Analytics Engine",
-  description: "AI-powered analytics engine for predictive insights",
-  imageUrl: "https://images.unsplash.com/photo-1509718443690-d8e2fb3474b7?auto=format&fit=crop&w=800&q=80",
-  slug: "ai-analytics",
-  githubUrl: "https://github.com/AnderssonElin/playful-data-portfolio-61"
-}];
+const projectsData = [
+  {
+    id: 1,
+    title: "Power BI report in Sales",
+    description: "A Power BI solution integrating data modeling, advanced DAX calculations, and interactive dashboards for real-time business insights.",
+    imageUrl: "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/HimalayaK&V_HR.png?raw=true",
+    slug: "powerbi",
+    githubUrl: "https://github.com/AnderssonElin/playful-data-portfolio-61"
+  },
+  {
+    id: 2,
+    title: "ETL in SQL",
+    description: "A complete ETL pipeline in SQL, integrating data extraction, transformation, and loading into a Power BI dashboard for business analytics and decision-making",
+    imageUrl: "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/SQL_first_pic.png?raw=true",
+    slug: "sql",
+    githubUrl: "https://github.com/AnderssonElin/playful-data-portfolio-61"
+  },
+  {
+    id: 3,
+    title: "Banking System Data Model",
+    description: "A comprehensive database design for a banking system, including conceptual, logical, and physical modeling to ensure structured data management and scalability.",
+    imageUrl: "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/Bank_konceptuell%20ERD.jpg?raw=true",
+    slug: "draw.io",
+    githubUrl: "https://github.com/AnderssonElin/playful-data-portfolio-61"
+  },
+  {
+    id: 4,
+    title: "Data ETL & Analysis in SSIS and SSAS",
+    description: "Designed an SSIS ETL pipeline for flight data cleansing, built an SSAS tabular model for efficient analysis.",
+    imageUrl: "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/SSIS_first_pic.png?raw=true",
+    slug: "SSIS",
+    githubUrl: "https://github.com/AnderssonElin/playful-data-portfolio-61"
+  },
+  {
+    id: 5,
+    title: "Machine Learning & Predictive Modeling in R",
+    description: "Developed a machine learning pipeline in R, using K-means clustering for data segmentation and random forest regression for predictive modeling.",
+    imageUrl: "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/R_first_pic.png?raw=true",
+    slug: "R-studio",
+    githubUrl: "https://github.com/AnderssonElin/playful-data-portfolio-61"
+  },
+  {
+    id: 6,
+    title: "AI Analytics Engine",
+    description: "AI-powered analytics engine for predictive insights",
+    imageUrl: "https://images.unsplash.com/photo-1509718443690-d8e2fb3474b7?auto=format&fit=crop&w=800&q=80",
+    slug: "ai-analytics",
+    githubUrl: "https://github.com/AnderssonElin/playful-data-portfolio-61"
+  }
+];
 
 const Projects = () => {
   const [hoveredId, setHoveredId] = useState<number | null>(null);
@@ -55,8 +61,8 @@ const Projects = () => {
   const isMobile = useIsMobile();
   const projectRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [visibleProjects, setVisibleProjects] = useState<number[]>([]);
+  const [delayedVisibleProjects, setDelayedVisibleProjects] = useState<number[]>([]);
 
-  // Set up intersection observer for mobile
   useEffect(() => {
     if (isMobile) {
       const observer = new IntersectionObserver(
@@ -84,6 +90,29 @@ const Projects = () => {
       };
     }
   }, [isMobile, projectRefs.current.length]);
+
+  useEffect(() => {
+    const timers: NodeJS.Timeout[] = [];
+    
+    visibleProjects.forEach(id => {
+      if (!delayedVisibleProjects.includes(id)) {
+        const timer = setTimeout(() => {
+          setDelayedVisibleProjects(prev => [...prev, id]);
+        }, 2000);
+        timers.push(timer);
+      }
+    });
+    
+    delayedVisibleProjects.forEach(id => {
+      if (!visibleProjects.includes(id)) {
+        setDelayedVisibleProjects(prev => prev.filter(item => item !== id));
+      }
+    });
+    
+    return () => {
+      timers.forEach(timer => clearTimeout(timer));
+    };
+  }, [visibleProjects, delayedVisibleProjects]);
 
   useEffect(() => {
     if (touchedId !== null) {
@@ -141,7 +170,7 @@ const Projects = () => {
                     initial={{ opacity: 1 }} 
                     animate={{
                       opacity: hoveredId === project.id || touchedId === project.id || 
-                              (isMobile && visibleProjects.includes(project.id)) ? 0 : 0.5
+                              (isMobile && delayedVisibleProjects.includes(project.id)) ? 0 : 0.5
                     }} 
                     transition={{ duration: 0.3 }}
                   />
@@ -152,7 +181,7 @@ const Projects = () => {
                     className="absolute inset-0 border border-[#9b87f5]/40 group-hover:border-[#9b87f5] transition-all duration-300 z-10 rounded-md" 
                     animate={{
                       borderColor: hoveredId === project.id || touchedId === project.id || 
-                                  (isMobile && visibleProjects.includes(project.id)) 
+                                  (isMobile && delayedVisibleProjects.includes(project.id)) 
                                   ? "rgba(155, 135, 245, 1)" 
                                   : "rgba(155, 135, 245, 0.4)"
                     }}
@@ -163,7 +192,7 @@ const Projects = () => {
                     initial={false} 
                     animate={{
                       scale: hoveredId === project.id || touchedId === project.id || 
-                             (isMobile && visibleProjects.includes(project.id)) ? 1.05 : 1
+                             (isMobile && delayedVisibleProjects.includes(project.id)) ? 1.05 : 1
                     }} 
                     transition={{ duration: 0.4 }}
                   >
@@ -173,7 +202,7 @@ const Projects = () => {
                       className="w-full h-full object-cover" 
                       animate={{
                         opacity: hoveredId === project.id || touchedId === project.id || 
-                                (isMobile && visibleProjects.includes(project.id)) ? 0.3 : 0.9
+                                (isMobile && delayedVisibleProjects.includes(project.id)) ? 0.3 : 0.9
                       }}
                       transition={{ duration: 0.6 }}
                     />
@@ -184,7 +213,7 @@ const Projects = () => {
                     initial={{ opacity: 0 }} 
                     animate={{
                       opacity: hoveredId === project.id || touchedId === project.id || 
-                              (isMobile && visibleProjects.includes(project.id)) ? 1 : 0
+                              (isMobile && delayedVisibleProjects.includes(project.id)) ? 1 : 0
                     }} 
                     transition={{ duration: 0.3 }}
                   >
