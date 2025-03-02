@@ -12,6 +12,8 @@ import { useIsMobile } from "@/hooks/use-mobile";
 const Index = () => {
   const [activeSection, setActiveSection] = useState("hero");
   const isMobile = useIsMobile();
+  const sectionsContainerRef = useRef<HTMLDivElement>(null);
+  
   const sectionRefs = {
     hero: useRef<HTMLElement>(null),
     timeline: useRef<HTMLElement>(null),
@@ -30,7 +32,14 @@ const Index = () => {
       }
     };
 
+    document.addEventListener("click", handleAnchorClick);
+    return () => document.removeEventListener("click", handleAnchorClick);
+  }, []);
+
+  useEffect(() => {
     const handleScroll = () => {
+      if (!sectionsContainerRef.current) return;
+      
       const scrollPosition = window.scrollY + window.innerHeight / 3;
       
       // Check which section is visible
@@ -47,20 +56,21 @@ const Index = () => {
       });
     };
 
-    document.addEventListener("click", handleAnchorClick);
     window.addEventListener("scroll", handleScroll);
     
     // Trigger initial check
     handleScroll();
     
     return () => {
-      document.removeEventListener("click", handleAnchorClick);
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
   return (
-    <main className={`relative bg-secondary pt-16 h-screen ${!isMobile ? "snap-y snap-mandatory" : ""} overflow-y-auto overflow-x-hidden scroll-smooth`}> 
+    <div 
+      ref={sectionsContainerRef}
+      className="relative bg-secondary h-screen overflow-y-auto overflow-x-hidden scroll-smooth"
+    > 
       {/* Background animation that covers the entire page */}
       <div className="fixed inset-0 z-0 pointer-events-none">
         <BackgroundAnimation />
@@ -88,7 +98,7 @@ const Index = () => {
       {/* Hero section */}
       <section 
         ref={sectionRefs.hero}
-        className="relative min-h-screen h-screen flex items-center justify-center px-4 py-16 snap-start"
+        className="relative min-h-screen flex items-center justify-center px-4 py-16 pt-16"
         id="hero"
       >
         <Hero />
@@ -97,7 +107,7 @@ const Index = () => {
       {/* Timeline section */}
       <section 
         ref={sectionRefs.timeline}
-        className="relative min-h-screen h-screen flex items-center justify-center px-4 py-20 snap-start" 
+        className="relative min-h-screen flex items-center justify-center px-4 py-20 pt-24" 
         id="timeline"
       >
         <Timeline />
@@ -106,24 +116,22 @@ const Index = () => {
       {/* Projects section */}
       <section 
         ref={sectionRefs.projects}
-        className="relative min-h-screen h-screen flex items-center justify-center px-4 py-20 snap-start" 
+        className="relative min-h-screen flex items-center justify-center px-4 py-20 pt-24" 
         id="projects"
       >
-        <div className="w-full h-full overflow-hidden">
-          <Projects />
-        </div>
+        <Projects />
       </section>
       
       {/* Final section */}
       <section 
         ref={sectionRefs.contact}
-        className="relative min-h-screen h-screen flex flex-col justify-center px-4 py-20 snap-start"
+        className="relative min-h-screen flex flex-col justify-center px-4 py-20 pt-24"
         id="contact"
       >
         <Footer />
         <Copyright />
       </section>
-    </main>
+    </div>
   );
 };
 

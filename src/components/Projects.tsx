@@ -95,24 +95,24 @@ const Projects = () => {
   }, [isMobile, touchedId]);
 
   return (
-    <div className="container h-full mx-auto px-4 sm:px-6 md:px-8 pb-20">
+    <div className="container h-full mx-auto px-4 py-8 sm:px-6 md:px-8 overflow-y-auto">
       <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8 text-white">Projects</h2>
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
         {projectsData.map((project) => (
           <motion.div
             key={project.id}
-            className="group cursor-pointer project-card transform scale-80"
+            className="group cursor-pointer project-card"
             onHoverStart={() => setHoveredId(project.id)}
             onHoverEnd={() => setHoveredId(null)}
             onClick={() => setSelectedProject(project.slug)}
-            whileHover={{ scale: 0.84 }}
+            whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.2 }}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <div className="rounded-lg p-3 bg-primary/20 backdrop-blur-sm border border-[#0eec58]/50 shadow-lg overflow-hidden">
+            <div className="rounded-lg p-3 bg-primary/20 backdrop-blur-sm border border-[#0eec58]/30 shadow-lg overflow-hidden">
               <div className="flex gap-2 mb-2">
                 <div className="w-3 h-3 rounded-full bg-[#0eec58]/30"></div>
                 <div className="w-3 h-3 rounded-full bg-[#0eec58]/30"></div>
@@ -122,7 +122,7 @@ const Projects = () => {
               <div className="relative aspect-square overflow-hidden rounded-md bg-black/40">
                 {/* Purple overlay that disappears on hover */}
                 <motion.div 
-                  className="absolute inset-0 bg-[#9b87f5]/25 z-10 pointer-events-none"
+                  className="absolute inset-0 bg-[#9b87f5]/40 z-10 pointer-events-none"
                   initial={{ opacity: 1 }}
                   animate={{ 
                     opacity: (hoveredId === project.id || touchedId === project.id) ? 0 : 1 
@@ -158,7 +158,7 @@ const Projects = () => {
                   className="absolute inset-0 flex flex-col justify-end p-6 bg-gradient-to-t from-black/80 to-black/10"
                   initial={{ opacity: 0 }}
                   animate={{ 
-                    opacity: (hoveredId === project.id || touchedId === project.id) ? 1 : 0
+                    opacity: (hoveredId === project.id || touchedId === project.id) ? 1 : 0.2
                   }}
                   transition={{ duration: 0.3 }}
                 >

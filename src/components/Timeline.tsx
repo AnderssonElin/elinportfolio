@@ -31,8 +31,8 @@ const timelineData = [
 
 const Timeline = () => {
   return (
-    <div className="container mx-auto px-4 sm:px-6 md:px-8">
-      <h2 className="text-2xl sm:text-3xl font-bold text-center mb-16 text-white">My Journey</h2>
+    <div className="container mx-auto px-4 sm:px-6 md:px-8 py-12">
+      <h2 className="text-2xl sm:text-3xl font-bold text-center mb-12 text-white">My Journey</h2>
       <div className="relative">
         {/* Timeline line */}
         <div className="absolute h-full w-0.5 bg-accent/20 left-1/2 transform -translate-x-1/2" />
@@ -43,15 +43,15 @@ const Timeline = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: index * 0.2 }}
+            transition={{ delay: index * 0.1 }}
             className={`flex flex-col ${
               index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-            } mb-8 md:mb-0`}
+            } mb-6 md:mb-2`}
           >
             <div className="w-full md:w-1/2 px-4 md:px-6 mb-4 md:mb-8">
               <motion.div
                 whileHover={{ scale: 1.05 }}
-                className="bg-primary/50 backdrop-blur-sm p-4 sm:p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow"
+                className="bg-primary/50 backdrop-blur-sm p-4 sm:p-5 rounded-lg shadow-lg hover:shadow-xl transition-shadow"
               >
                 <span className="text-accent font-bold text-sm sm:text-base">{item.year}</span>
                 <h3 className="text-lg sm:text-xl font-semibold mt-2 text-white">{item.title}</h3>
