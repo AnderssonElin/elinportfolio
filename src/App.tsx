@@ -8,6 +8,7 @@ import Header from "./components/Header";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import { AskMeProvider } from "./components/AskMe";
+import ViewportHeightFix from "./components/ViewportHeightFix";
 
 const queryClient = new QueryClient();
 
@@ -15,6 +16,7 @@ const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <AskMeProvider>
+        <ViewportHeightFix />
         <Toaster />
         <Sonner />
         <BrowserRouter>

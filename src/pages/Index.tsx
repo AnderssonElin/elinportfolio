@@ -102,7 +102,7 @@ const Index = () => {
       {/* Hero section */}
       <section 
         ref={sectionRefs.hero}
-        className="relative h-screen w-full flex items-center justify-center px-4 snap-start"
+        className="relative vh-section w-full flex items-center justify-center px-4 snap-start"
         id="hero"
       >
         <div className="w-full max-w-full flex items-center justify-center">
@@ -113,7 +113,7 @@ const Index = () => {
       {/* Timeline section */}
       <section 
         ref={sectionRefs.timeline}
-        className="relative h-screen w-full flex items-center justify-center px-4 snap-start" 
+        className="relative vh-section w-full flex items-center justify-center px-4 snap-start" 
         id="timeline"
       >
         <div className="w-full max-w-full flex items-center justify-center">
@@ -124,7 +124,7 @@ const Index = () => {
       {/* Projects section */}
       <section 
         ref={sectionRefs.projects}
-        className="relative h-screen w-full flex items-center justify-center px-4 snap-start" 
+        className="relative vh-section w-full flex items-center justify-center px-4 snap-start" 
         id="projects"
       >
         <div className="w-full max-w-full flex items-center justify-center">
@@ -135,7 +135,7 @@ const Index = () => {
       {/* Final section */}
       <section 
         ref={sectionRefs.contact}
-        className="relative h-screen w-full flex flex-col items-center justify-center px-4 snap-start"
+        className="relative vh-section w-full flex flex-col items-center justify-center px-4 snap-start"
         id="contact"
       >
         <div className="w-full max-w-full">

@@ -95,11 +95,11 @@ const Projects = () => {
   }, [isMobile, touchedId]);
 
   return (
-    <div className="w-full h-full flex flex-col py-4">
-      <h2 className="text-2xl sm:text-3xl font-bold text-center mb-4 text-white">Projects</h2>
+    <div className="w-full h-full flex flex-col py-2 sm:py-4">
+      <h2 className="text-2xl sm:text-3xl font-bold text-center mb-2 sm:mb-4 text-white">Projects</h2>
       
       <div className="flex-grow">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 max-w-6xl mx-auto h-full">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-1 sm:gap-2 max-w-6xl mx-auto">
           {projectsData.slice(0, 6).map((project) => (
             <motion.div
               key={project.id}

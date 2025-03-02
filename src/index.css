@@ -99,10 +99,20 @@
   body {
     @apply bg-background text-foreground;
     cursor: url('/lovable-uploads/dd55ee05-f14c-4efc-8fb3-8de24394a78c.png'), auto;
+    height: 100%;
+    margin: 0;
+    padding: 0;
   }
   
   a, button, [role="button"], .cursor-pointer {
     cursor: url('/lovable-uploads/dd55ee05-f14c-4efc-8fb3-8de24394a78c.png'), pointer;
+  }
+
+  /* Full screen section styles */
+  .vh-section {
+    height: calc(var(--vh, 1vh) * 100);
+    width: 100%;
+    overflow-x: hidden;
   }
   
   /* Genomskinlig bakgrund för alla sektioner */
