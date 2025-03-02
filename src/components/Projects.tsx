@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import ProjectDetails from "../pages/ProjectDetails";
@@ -90,7 +89,7 @@ const Projects = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              <div className="rounded-lg p-1 bg-primary/20 backdrop-blur-sm border border-[#9b87f5]/30 shadow-lg overflow-hidden h-full">
+              <div className="rounded-lg p-1 bg-primary/40 backdrop-blur-sm border border-[#9b87f5]/30 shadow-lg overflow-hidden h-full">
                 <div className="flex gap-2 mb-1">
                   <div className="w-2 h-2 rounded-full bg-[#9b87f5]/30"></div>
                   <div className="w-2 h-2 rounded-full bg-[#9b87f5]/30"></div>
@@ -98,7 +97,6 @@ const Projects = () => {
                 </div>
                 
                 <div className="relative aspect-video overflow-hidden rounded-md bg-black/40">
-                  {/* Purple overlay that disappears on hover */}
                   <motion.div 
                     className="absolute inset-0 bg-[#9b87f5]/50 z-10 pointer-events-none"
                     initial={{ opacity: 1 }}
