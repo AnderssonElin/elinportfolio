@@ -1,6 +1,6 @@
 
-import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
+import { motion, useAnimation } from "framer-motion";
+import { useState, useEffect, useRef } from "react";
 import ProjectDetails from "../pages/ProjectDetails";
 import { useIsMobile } from "@/hooks/use-mobile";
 
@@ -53,6 +53,37 @@ const Projects = () => {
   const [selectedProject, setSelectedProject] = useState<string | null>(null);
   const [touchedId, setTouchedId] = useState<number | null>(null);
   const isMobile = useIsMobile();
+  const projectRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [visibleProjects, setVisibleProjects] = useState<number[]>([]);
+
+  // Set up intersection observer for mobile
+  useEffect(() => {
+    if (isMobile) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            const id = parseInt(entry.target.getAttribute('data-id') || '0');
+            if (entry.isIntersecting) {
+              setVisibleProjects(prev => prev.includes(id) ? prev : [...prev, id]);
+            } else {
+              setVisibleProjects(prev => prev.filter(item => item !== id));
+            }
+          });
+        },
+        { threshold: 0.6 } // Require 60% visibility to trigger
+      );
+
+      projectRefs.current.forEach(ref => {
+        if (ref) observer.observe(ref);
+      });
+
+      return () => {
+        projectRefs.current.forEach(ref => {
+          if (ref) observer.unobserve(ref);
+        });
+      };
+    }
+  }, [isMobile, projectRefs.current.length]);
 
   useEffect(() => {
     if (touchedId !== null) {
@@ -67,10 +98,12 @@ const Projects = () => {
       <h2 className="text-2xl sm:text-3xl font-bold text-center mb-4 sm:mb-6 text-white">Projects</h2>
       
       <div className="w-full">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-[85%] mx-auto">
-          {projectsData.map(project => <motion.div 
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 gap-y-12 max-w-[85%] mx-auto">
+          {projectsData.map((project, index) => <motion.div 
             key={project.id} 
             className="group cursor-pointer project-card" 
+            ref={el => projectRefs.current[index] = el}
+            data-id={project.id}
             onHoverStart={() => setHoveredId(project.id)} 
             onHoverEnd={() => setHoveredId(null)} 
             onClick={() => setSelectedProject(project.slug)} 
@@ -103,35 +136,58 @@ const Projects = () => {
                 </div>
                 
                 <div className="relative aspect-video overflow-hidden rounded-md bg-black/40">
-                  <motion.div className="absolute inset-0 bg-[#9b87f5]/30 z-10 pointer-events-none" initial={{
-                opacity: 1
-              }} animate={{
-                opacity: hoveredId === project.id || touchedId === project.id ? 0 : 0.5
-              }} transition={{
-                duration: 0.3
-              }} />
+                  <motion.div 
+                    className="absolute inset-0 bg-[#9b87f5]/10 z-10 pointer-events-none" 
+                    initial={{ opacity: 1 }} 
+                    animate={{
+                      opacity: hoveredId === project.id || touchedId === project.id || 
+                              (isMobile && visibleProjects.includes(project.id)) ? 0 : 0.5
+                    }} 
+                    transition={{ duration: 0.3 }}
+                  />
                   
                   <div className="absolute inset-0 bg-gradient-to-r from-[#9b87f5]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   
-                  <motion.div className="absolute inset-0 border border-[#9b87f5]/70 group-hover:border-[#9b87f5] transition-all duration-300 z-10 rounded-md" animate={{
-                borderColor: hoveredId === project.id || touchedId === project.id ? "rgba(155, 135, 245, 1)" : "rgba(155, 135, 245, 0.7)"
-              }} />
+                  <motion.div 
+                    className="absolute inset-0 border border-[#9b87f5]/40 group-hover:border-[#9b87f5] transition-all duration-300 z-10 rounded-md" 
+                    animate={{
+                      borderColor: hoveredId === project.id || touchedId === project.id || 
+                                  (isMobile && visibleProjects.includes(project.id)) 
+                                  ? "rgba(155, 135, 245, 1)" 
+                                  : "rgba(155, 135, 245, 0.4)"
+                    }}
+                  />
                   
-                  <motion.div className="absolute inset-0 w-full h-full" initial={false} animate={{
-                scale: hoveredId === project.id || touchedId === project.id ? 1.05 : 1
-              }} transition={{
-                duration: 0.4
-              }}>
-                    <img src={project.imageUrl} alt={project.title} className="w-full h-full object-cover opacity-90" />
+                  <motion.div 
+                    className="absolute inset-0 w-full h-full" 
+                    initial={false} 
+                    animate={{
+                      scale: hoveredId === project.id || touchedId === project.id || 
+                             (isMobile && visibleProjects.includes(project.id)) ? 1.05 : 1
+                    }} 
+                    transition={{ duration: 0.4 }}
+                  >
+                    <motion.img 
+                      src={project.imageUrl} 
+                      alt={project.title} 
+                      className="w-full h-full object-cover" 
+                      animate={{
+                        opacity: hoveredId === project.id || touchedId === project.id || 
+                                (isMobile && visibleProjects.includes(project.id)) ? 0.3 : 0.9
+                      }}
+                      transition={{ duration: 0.6 }}
+                    />
                   </motion.div>
                   
-                  <motion.div className="absolute inset-0 flex flex-col justify-end p-2 bg-gradient-to-t from-black/80 to-black/10" initial={{
-                opacity: 0
-              }} animate={{
-                opacity: hoveredId === project.id || touchedId === project.id || (isMobile && false) ? 1 : 0
-              }} transition={{
-                duration: 0.3
-              }}>
+                  <motion.div 
+                    className="absolute inset-0 flex flex-col justify-end p-2 bg-gradient-to-t from-black/80 to-black/10" 
+                    initial={{ opacity: 0 }} 
+                    animate={{
+                      opacity: hoveredId === project.id || touchedId === project.id || 
+                              (isMobile && visibleProjects.includes(project.id)) ? 1 : 0
+                    }} 
+                    transition={{ duration: 0.3 }}
+                  >
                     <h3 className="text-sm font-bold text-white mb-1">{project.title}</h3>
                     <p className="text-gray-200 text-xs line-clamp-2">{project.description}</p>
                   </motion.div>
