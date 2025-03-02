@@ -2,15 +2,51 @@ import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import ProjectDetails from "../pages/ProjectDetails";
 import { useIsMobile } from "@/hooks/use-mobile";
-import { projectsData } from "./project-details/projectData";
 
-const projectList = Object.entries(projectsData).map(([slug, project]) => ({
-  id: project.id,
-  title: project.title.split(" ")[0],
-  description: project.description,
-  imageUrl: project.images[0] || "",
-  slug: slug
-}));
+const projectsData = [
+  {
+    id: 1,
+    title: "Power BI",
+    description: "A Power BI solution integrating data modeling, advanced DAX calculations, and interactive dashboards for real-time business insights.",
+    imageUrl: "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/HimalayaK&V_HR.png?raw=true",
+    slug: "powerbi"
+  },
+  {
+    id: 2,
+    title: "ETL in SQL",
+    description: "A complete ETL pipeline in SQL, integrating data extraction, transformation, and loading into a Power BI dashboard for business analytics and decision-making",
+    imageUrl: "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/SQL_first_pic.png?raw=true",
+    slug: "sql"
+  },
+  {
+    id: 3,
+    title: "Analytics Platform",
+    description: "Self-service analytics platform with interactive dashboards",
+    imageUrl: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80",
+    slug: "analytics"
+  },
+  {
+    id: 4,
+    title: "BI Dashboard Suite",
+    description: "Comprehensive business intelligence dashboard solution",
+    imageUrl: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=800&q=80",
+    slug: "bi-dashboard"
+  },
+  {
+    id: 5,
+    title: "Data Visualization Tool",
+    description: "Interactive data visualization and reporting platform",
+    imageUrl: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=800&q=80",
+    slug: "data-viz"
+  },
+  {
+    id: 6,
+    title: "AI Analytics Engine",
+    description: "AI-powered analytics engine for predictive insights",
+    imageUrl: "https://images.unsplash.com/photo-1509718443690-d8e2fb3474b7?auto=format&fit=crop&w=800&q=80",
+    slug: "ai-analytics"
+  }
+];
 
 const Projects = () => {
   const [hoveredId, setHoveredId] = useState<number | null>(null);
@@ -41,8 +77,8 @@ const Projects = () => {
           rect.bottom > window.innerHeight * 0.2
         );
         
-        if (isVisible && touchedId !== projectList[index].id) {
-          setTouchedId(projectList[index].id);
+        if (isVisible && touchedId !== projectsData[index].id) {
+          setTouchedId(projectsData[index].id);
         }
       });
     };
@@ -55,8 +91,8 @@ const Projects = () => {
     <div className="container mx-auto px-4 sm:px-6 md:px-8">
       <h2 className="text-2xl sm:text-3xl font-bold text-center mb-16 text-white">Projects</h2>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl mx-auto [&_*]:cursor-[url('/lovable-uploads/bc1d05b8-0954-4049-86be-92522d845815.png'),_pointer]">
-        {projectList.map((project) => (
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl mx-auto">
+        {projectsData.map((project) => (
           <motion.div
             key={project.id}
             className="group cursor-pointer project-card"
@@ -77,7 +113,6 @@ const Projects = () => {
               </div>
               
               <div className="relative aspect-square overflow-hidden rounded-md bg-black/40">
-                <div className="absolute inset-0 bg-accent/30 group-hover:opacity-0 transition-opacity duration-300" />
                 <div className="absolute inset-0 bg-gradient-to-r from-accent/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 
                 <motion.div
