@@ -1,3 +1,4 @@
+
 import { motion, useAnimation } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
 import ProjectDetails from "../pages/ProjectDetails";
@@ -98,7 +99,7 @@ const Projects = () => {
       if (!delayedVisibleProjects.includes(id)) {
         const timer = setTimeout(() => {
           setDelayedVisibleProjects(prev => [...prev, id]);
-        }, 2000);
+        }, 1000); // Changed from 2000 to 1000 for 1 second delay
         timers.push(timer);
       }
     });
