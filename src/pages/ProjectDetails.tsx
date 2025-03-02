@@ -1,3 +1,4 @@
+
 import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ChevronDown, ExternalLink, Github } from "lucide-react";
@@ -201,17 +202,6 @@ const ProjectDetails = ({ projectId, onClose }: ProjectDetailsProps) => {
           >
             <div className="flex-grow text-center relative">
               <h1 className="text-xl md:text-2xl font-bold text-accent line-clamp-1">{project.title}</h1>
-              {project.githubUrl && (
-                <a 
-                  href={project.githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="absolute right-8 top-1/2 transform -translate-y-1/2 p-2 hover:bg-accent/10 rounded-full transition-colors"
-                  aria-label="View on GitHub"
-                >
-                  <Github size={20} className="text-accent" />
-                </a>
-              )}
             </div>
             
             <div className="flex justify-end">
@@ -256,6 +246,17 @@ const ProjectDetails = ({ projectId, onClose }: ProjectDetailsProps) => {
                 <div className="mb-8">
                   <h2 className="text-xl font-semibold text-accent mb-3">Description</h2>
                   <p className="text-gray-300">{project.description}</p>
+                  {project.githubUrl && (
+                    <a 
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-4 inline-flex items-center gap-2 text-[#0eec58] hover:text-[#0eec58]/80 transition-colors"
+                    >
+                      <Github size={18} />
+                      <span>View project on GitHub</span>
+                    </a>
+                  )}
                 </div>
                 
                 <div className="mb-8">

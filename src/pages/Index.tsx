@@ -60,7 +60,7 @@ const Index = () => {
   }, []);
 
   return (
-    <main className={`relative bg-secondary pt-16 h-screen ${!isMobile ? "snap-y snap-mandatory" : ""} overflow-y-auto overflow-x-hidden`}> 
+    <main className={`relative bg-secondary pt-16 h-screen ${!isMobile ? "snap-y snap-mandatory" : ""} overflow-y-auto overflow-x-hidden scroll-smooth`}> 
       {/* Background animation that covers the entire page */}
       <div className="fixed inset-0 z-0 pointer-events-none">
         <BackgroundAnimation />
