@@ -1,4 +1,3 @@
-
 import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ChevronDown, ExternalLink, Github } from "lucide-react";
@@ -149,7 +148,7 @@ const ProjectDetails = ({ projectId, onClose }: ProjectDetailsProps) => {
   };
 
   const handleImageClick = (imageSrc: string) => {
-    setFullscreenImage(imageSrc);
+    window.open(imageSrc, '_blank');
   };
   
   if (!project) {
@@ -348,35 +347,6 @@ const ProjectDetails = ({ projectId, onClose }: ProjectDetailsProps) => {
             )}
           </div>
         </motion.div>
-
-        {/* Fullscreen Image Viewer */}
-        <AnimatePresence>
-          {fullscreenImage && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/90 z-[60] flex items-center justify-center"
-              onClick={() => setFullscreenImage(null)}
-            >
-              <motion.img
-                src={fullscreenImage}
-                alt="Fullscreen view"
-                className="max-w-[95vw] max-h-[95vh] object-contain"
-                initial={{ scale: 0.9, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                exit={{ scale: 0.9, opacity: 0 }}
-                transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              />
-              <button
-                className="absolute top-4 right-4 p-2 bg-black/50 hover:bg-black/70 rounded-full text-white transition-colors"
-                onClick={() => setFullscreenImage(null)}
-              >
-                <X size={24} />
-              </button>
-            </motion.div>
-          )}
-        </AnimatePresence>
       </motion.div>
     </AnimatePresence>
   );
