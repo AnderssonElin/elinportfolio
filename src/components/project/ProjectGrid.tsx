@@ -51,7 +51,7 @@ const ProjectGrid = ({ onProjectSelect }: ProjectGridProps) => {
       if (!delayedVisibleProjects.includes(id)) {
         const timer = setTimeout(() => {
           setDelayedVisibleProjects(prev => [...prev, id]);
-        }, 1000); // 1 second delay
+        }, 500); // Changed from 1000ms to 500ms (half the time)
         timers.push(timer);
       }
     });
