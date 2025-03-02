@@ -16,7 +16,7 @@ interface ProjectData {
 const projectsData: Record<string, ProjectData> = {
   "powerbi": {
     id: 1,
-    title: "Power BI report in sales",
+    title: "Power BI report in Sales",
     year: "2023",
     tech: ["Power BI", "Power Query", "DAX"],
     description: "This Power BI solution integrates and visualizes key business data across multiple departments, enabling data-driven decision-making and performance tracking. The project involved data modeling, ETL processes, advanced DAX calculations, and interactive dashboards to support strategic analysis in HR, Sales, Campaigns, and Finance.",
@@ -39,24 +39,24 @@ const projectsData: Record<string, ProjectData> = {
       "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/SQL_code.png?raw=true"
     ]
   },
-  "analytics": {
+  "draw.io": {
     id: 3,
-    title: "Analytics Platform",
+    title: "Banking System Data Model",
     year: "2023",
-    tech: ["Power BI", "SQL Server", "DAX", "Python", "Azure Data Factory"],
-    description: "A self-service analytics platform that democratizes data access across the organization. The solution includes a suite of interactive dashboards, an ad-hoc query builder, and automated reporting capabilities. The platform serves over 500 users and has eliminated thousands of manual reporting hours.",
-    role: "I architected the semantic data model, designed the core dashboards, and implemented row-level security for sensitive data. I also conducted training sessions for business users and created documentation for self-service report creation.",
+    tech: ["draw.io", "SQL", "SSMS"],
+    description: "This project involved the modeling and design of a structured banking database system, ensuring a well-defined structure with clear relationships between entities. The process began with a thorough needs analysis and data collection to identify essential business processes and data elements. A conceptual data model was created to map out the overarching structure, followed by a logical data model that detailed tables, columns, data types, and key business concepts. The database design was developed visually in draw.io, incorporating all relevant entities, defining relationships between columns, and establishing primary keys. The logical model was further refined into a physical data model, considering constraints and optimizations for database management systems. The final step included comprehensive documentation of the database schema, specifying table structures, column attributes, and relationship definitions to facilitate future implementation and development.",
+    role: "I was responsible for developing the data architecture and ensuring a well-structured and efficient relational model. I created and refined the conceptual, logical, and physical data models, aligning them with real-world banking operations. Additionally, I documented the entire schema, ensuring clarity and ease of implementation in SQL Server while maintaining relational integrity and scalability.",
     images: [
       "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80"
     ]
   },
-  "bi-dashboard": {
+  "SSIS": {
     id: 4,
-    title: "BI Dashboard Suite",
-    year: "2022",
-    tech: ["Tableau", "PostgreSQL", "Python", "R", "ETL"],
-    description: "A comprehensive business intelligence dashboard solution that provides real-time insights into key business metrics. The suite includes executive summaries, departmental deep-dives, and operational monitoring tools. The dashboards have become essential decision-making tools for leadership.",
-    role: "I translated complex business requirements into technical specifications, designed the data pipeline for dashboard refreshes, and implemented advanced visualizations. I conducted user acceptance testing and made iterative improvements based on feedback.",
+    title: "Data ETL & Analysis in SSIS and SSAS",
+    year: "2024",
+    tech: ["SSIS", "SSAS", "Visual Studio", "SSMS"],
+    description: "This project involved designing and implementing an ETL pipeline in SQL Server Integration Services (SSIS) to clean and transform flight data for analytical processing. The pipeline extracted raw flight records, performed data cleansing operations such as handling null values and formatting timestamps, and then loaded the refined data into a staging area before populating dimension and fact tables. A tabular model was created in SQL Server Analysis Services (SSAS) to simplify complex analytical queries and improve reporting performance. The cube was designed with well-structured relationships between fact and dimension tables, allowing for efficient aggregations and analysis. ",
+    role: "As the ETL Developer, I designed and implemented the SSIS pipeline, ensuring efficient data transformation and error handling throughout the process. I developed the tabular cube in SSAS, structuring the model to enhance analytical capabilities while optimizing query performance.",
     images: [
       "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=800&q=80",
       "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=800&q=80"

@@ -6,7 +6,7 @@ import { useIsMobile } from "@/hooks/use-mobile";
 const projectsData = [
   {
     id: 1,
-    title: "Power BI",
+    title: "Power BI report in Sales",
     description: "A Power BI solution integrating data modeling, advanced DAX calculations, and interactive dashboards for real-time business insights.",
     imageUrl: "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/HimalayaK&V_HR.png?raw=true",
     slug: "powerbi"
@@ -20,17 +20,17 @@ const projectsData = [
   },
   {
     id: 3,
-    title: "Analytics Platform",
-    description: "Self-service analytics platform with interactive dashboards",
+    title: "Banking System Data Model",
+    description: "A comprehensive database design for a banking system, including conceptual, logical, and physical modeling to ensure structured data management and scalability.",
     imageUrl: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80",
-    slug: "analytics"
+    slug: "draw.io"
   },
   {
     id: 4,
-    title: "BI Dashboard Suite",
-    description: "Comprehensive business intelligence dashboard solution",
+    title: "Data ETL & Analysis in SSIS and SSAS",
+    description: "Designed an SSIS ETL pipeline for flight data cleansing, built an SSAS tabular model for efficient analysis.",
     imageUrl: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=800&q=80",
-    slug: "bi-dashboard"
+    slug: "SSIS"
   },
   {
     id: 5,
