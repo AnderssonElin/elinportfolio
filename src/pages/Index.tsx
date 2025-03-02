@@ -6,7 +6,7 @@ import Projects from "@/components/Projects";
 import Footer from "@/components/Footer";
 import Copyright from "@/components/Copyright";
 import BackgroundAnimation from "@/components/BackgroundAnimation";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 const Index = () => {
@@ -71,25 +71,54 @@ const Index = () => {
       {/* Side navigation indicator */}
       <div className="fixed right-6 top-1/2 transform -translate-y-1/2 z-20 hidden md:flex flex-col items-center gap-6">
         {Object.keys(sectionRefs).map((section) => (
-          <motion.div
-            key={section}
-            className={`
-              ${activeSection === section 
-                ? "bg-[#9b87f5]" 
-                : "bg-white/30 hover:bg-white/50"
-              } 
-              ${activeSection === section 
-                ? "rotate-45 scale-110" 
-                : "rounded-full"
-              }
-              w-3 h-3 transition-all duration-300 cursor-pointer
-            `}
-            whileHover={{ scale: 1.2 }}
-            onClick={() => {
-              const element = document.getElementById(section);
-              element?.scrollIntoView({ behavior: "smooth" });
-            }}
-          />
+          <div key={section} className="relative w-6 h-6 flex items-center justify-center">
+            <motion.div
+              className={`
+                ${activeSection === section 
+                  ? "bg-[#9b87f5]" 
+                  : "bg-white/30 hover:bg-white/50"
+                } 
+                w-3 h-3 rounded-full absolute transition-colors duration-500
+              `}
+              whileHover={{ scale: 1.2 }}
+              initial={false}
+              animate={{
+                scale: activeSection === section ? 1.1 : 1,
+                opacity: activeSection === section ? 0 : 1
+              }}
+              transition={{ duration: 0.4 }}
+              onClick={() => {
+                const element = document.getElementById(section);
+                element?.scrollIntoView({ behavior: "smooth" });
+              }}
+            />
+            <AnimatePresence mode="wait">
+              {activeSection === section && (
+                <motion.div
+                  className="w-3 h-3 bg-[#9b87f5] rotate-45 absolute cursor-pointer"
+                  initial={{ scale: 0, rotate: 0, borderRadius: "50%" }}
+                  animate={{ 
+                    scale: 1.1, 
+                    rotate: 45,
+                    borderRadius: "0%" 
+                  }}
+                  exit={{ 
+                    scale: 0,
+                    rotate: 0,
+                    borderRadius: "50%" 
+                  }}
+                  transition={{ 
+                    duration: 0.4,
+                    ease: "easeInOut"
+                  }}
+                  onClick={() => {
+                    const element = document.getElementById(section);
+                    element?.scrollIntoView({ behavior: "smooth" });
+                  }}
+                />
+              )}
+            </AnimatePresence>
+          </div>
         ))}
       </div>
       

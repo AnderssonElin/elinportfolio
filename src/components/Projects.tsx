@@ -1,3 +1,4 @@
+
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import ProjectDetails from "../pages/ProjectDetails";
@@ -67,19 +68,33 @@ const Projects = () => {
       
       <div className="w-full">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-[85%] mx-auto">
-          {projectsData.map(project => <motion.div key={project.id} className="group cursor-pointer project-card" onHoverStart={() => setHoveredId(project.id)} onHoverEnd={() => setHoveredId(null)} onClick={() => setSelectedProject(project.slug)} whileHover={{
-          scale: 1.03
-        }} transition={{
-          duration: 0.2
-        }} initial={{
-          opacity: 0,
-          y: 20
-        }} whileInView={{
-          opacity: 1,
-          y: 0
-        }} viewport={{
-          once: true
-        }}>
+          {projectsData.map(project => <motion.div 
+            key={project.id} 
+            className="group cursor-pointer project-card" 
+            onHoverStart={() => setHoveredId(project.id)} 
+            onHoverEnd={() => setHoveredId(null)} 
+            onClick={() => setSelectedProject(project.slug)} 
+            whileHover={{
+              scale: 1.03
+            }} 
+            transition={{
+              duration: 0.2
+            }} 
+            initial={{
+              opacity: 0,
+              y: 20
+            }} 
+            whileInView={{
+              opacity: 1,
+              y: 0
+            }} 
+            viewport={{
+              once: true
+            }}
+            style={{
+              transform: "scale(1.2)"
+            }}
+          >
               <div className="rounded-lg p-1 backdrop-blur-sm border border-[#9b87f5]/30 shadow-lg overflow-hidden h-full bg-[#3b56a0]/[0.21]">
                 <div className="flex gap-2 mb-1">
                   <div className="w-2 h-2 rounded-full bg-[#9b87f5]/30"></div>
