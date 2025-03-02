@@ -102,10 +102,10 @@ const Index = () => {
       {/* Hero section */}
       <section 
         ref={sectionRefs.hero}
-        className="relative min-h-screen h-screen flex items-center justify-center px-4 py-16 snap-start"
+        className="relative h-screen w-full flex items-center justify-center px-4 snap-start overflow-hidden"
         id="hero"
       >
-        <div className="pt-16 w-full max-h-full overflow-hidden">
+        <div className="w-full max-w-full flex items-center justify-center">
           <Hero />
         </div>
       </section>
@@ -113,10 +113,10 @@ const Index = () => {
       {/* Timeline section */}
       <section 
         ref={sectionRefs.timeline}
-        className="relative min-h-screen h-screen flex items-center justify-center px-4 py-20 snap-start" 
+        className="relative h-screen w-full flex items-center justify-center px-4 snap-start overflow-hidden" 
         id="timeline"
       >
-        <div className="pt-16 w-full max-h-full overflow-y-auto">
+        <div className="w-full max-w-full flex items-center justify-center">
           <Timeline />
         </div>
       </section>
@@ -124,10 +124,10 @@ const Index = () => {
       {/* Projects section */}
       <section 
         ref={sectionRefs.projects}
-        className="relative min-h-screen h-screen flex items-center justify-center px-4 py-20 snap-start" 
+        className="relative h-screen w-full flex items-center justify-center px-4 snap-start overflow-hidden" 
         id="projects"
       >
-        <div className="pt-16 w-full max-h-full overflow-y-auto">
+        <div className="w-full max-w-full flex items-center justify-center">
           <Projects />
         </div>
       </section>
@@ -135,10 +135,10 @@ const Index = () => {
       {/* Final section */}
       <section 
         ref={sectionRefs.contact}
-        className="relative min-h-screen h-screen flex flex-col justify-center px-4 py-20 snap-start"
+        className="relative h-screen w-full flex flex-col items-center justify-center px-4 snap-start overflow-hidden"
         id="contact"
       >
-        <div className="pt-16 w-full">
+        <div className="w-full max-w-full">
           <Footer />
           <Copyright />
         </div>

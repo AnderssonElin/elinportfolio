@@ -95,80 +95,82 @@ const Projects = () => {
   }, [isMobile, touchedId]);
 
   return (
-    <div className="container mx-auto px-2 sm:px-4 md:px-6 py-6 h-full overflow-y-auto">
-      <h2 className="text-2xl sm:text-3xl font-bold text-center mb-6 text-white">Projects</h2>
+    <div className="w-full max-h-[85vh] flex flex-col">
+      <h2 className="text-2xl sm:text-3xl font-bold text-center mb-4 text-white">Projects</h2>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-6xl mx-auto">
-        {projectsData.map((project) => (
-          <motion.div
-            key={project.id}
-            className="group cursor-pointer project-card"
-            onHoverStart={() => setHoveredId(project.id)}
-            onHoverEnd={() => setHoveredId(null)}
-            onClick={() => setSelectedProject(project.slug)}
-            whileHover={{ scale: 1.05 }}
-            transition={{ duration: 0.2 }}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <div className="rounded-lg p-3 bg-primary/20 backdrop-blur-sm border border-[#9b87f5]/30 shadow-lg overflow-hidden">
-              <div className="flex gap-2 mb-2">
-                <div className="w-3 h-3 rounded-full bg-[#9b87f5]/30"></div>
-                <div className="w-3 h-3 rounded-full bg-[#9b87f5]/30"></div>
-                <div className="w-3 h-3 rounded-full bg-[#9b87f5]/30"></div>
-              </div>
-              
-              <div className="relative aspect-square overflow-hidden rounded-md bg-black/40">
-                {/* Purple overlay that disappears on hover */}
-                <motion.div 
-                  className="absolute inset-0 bg-[#9b87f5]/50 z-10 pointer-events-none"
-                  initial={{ opacity: 1 }}
-                  animate={{ 
-                    opacity: (hoveredId === project.id || touchedId === project.id) ? 0 : 1 
-                  }}
-                  transition={{ duration: 0.3 }}
-                />
+      <div className="overflow-y-auto" style={{ maxHeight: "calc(85vh - 4rem)" }}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 max-w-6xl mx-auto px-2 py-2">
+          {projectsData.map((project) => (
+            <motion.div
+              key={project.id}
+              className="group cursor-pointer project-card"
+              onHoverStart={() => setHoveredId(project.id)}
+              onHoverEnd={() => setHoveredId(null)}
+              onClick={() => setSelectedProject(project.slug)}
+              whileHover={{ scale: 1.03 }}
+              transition={{ duration: 0.2 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              <div className="rounded-lg p-2 bg-primary/20 backdrop-blur-sm border border-[#9b87f5]/30 shadow-lg overflow-hidden">
+                <div className="flex gap-2 mb-1">
+                  <div className="w-2 h-2 rounded-full bg-[#9b87f5]/30"></div>
+                  <div className="w-2 h-2 rounded-full bg-[#9b87f5]/30"></div>
+                  <div className="w-2 h-2 rounded-full bg-[#9b87f5]/30"></div>
+                </div>
                 
-                <div className="absolute inset-0 bg-gradient-to-r from-[#9b87f5]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                
-                <motion.div
-                  className="absolute inset-0 border border-[#9b87f5]/30 group-hover:border-[#9b87f5]/70 transition-all duration-300 z-10 rounded-md"
-                  animate={{
-                    borderColor: (hoveredId === project.id || touchedId === project.id) ? "rgba(155, 135, 245, 0.7)" : "rgba(155, 135, 245, 0.3)"
-                  }}
-                />
-                
-                <motion.div
-                  className="absolute inset-0 w-full h-full"
-                  initial={false}
-                  animate={{
-                    scale: (hoveredId === project.id || touchedId === project.id) ? 1.1 : 1
-                  }}
-                  transition={{ duration: 0.4 }}
-                >
-                  <img
-                    src={project.imageUrl}
-                    alt={project.title}
-                    className="w-full h-full object-cover opacity-90"
+                <div className="relative aspect-[4/3] overflow-hidden rounded-md bg-black/40">
+                  {/* Purple overlay that disappears on hover */}
+                  <motion.div 
+                    className="absolute inset-0 bg-[#9b87f5]/50 z-10 pointer-events-none"
+                    initial={{ opacity: 1 }}
+                    animate={{ 
+                      opacity: (hoveredId === project.id || touchedId === project.id) ? 0 : 0.5 
+                    }}
+                    transition={{ duration: 0.3 }}
                   />
-                </motion.div>
-                
-                <motion.div
-                  className="absolute inset-0 flex flex-col justify-end p-6 bg-gradient-to-t from-black/80 to-black/10"
-                  initial={{ opacity: 0 }}
-                  animate={{ 
-                    opacity: (hoveredId === project.id || touchedId === project.id) ? 1 : 0.2
-                  }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <h3 className="text-xl font-bold text-white mb-2">{project.title}</h3>
-                  <p className="text-gray-200 text-sm">{project.description}</p>
-                </motion.div>
+                  
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#9b87f5]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  
+                  <motion.div
+                    className="absolute inset-0 border border-[#9b87f5]/30 group-hover:border-[#9b87f5]/70 transition-all duration-300 z-10 rounded-md"
+                    animate={{
+                      borderColor: (hoveredId === project.id || touchedId === project.id) ? "rgba(155, 135, 245, 0.7)" : "rgba(155, 135, 245, 0.3)"
+                    }}
+                  />
+                  
+                  <motion.div
+                    className="absolute inset-0 w-full h-full"
+                    initial={false}
+                    animate={{
+                      scale: (hoveredId === project.id || touchedId === project.id) ? 1.05 : 1
+                    }}
+                    transition={{ duration: 0.4 }}
+                  >
+                    <img
+                      src={project.imageUrl}
+                      alt={project.title}
+                      className="w-full h-full object-cover opacity-90"
+                    />
+                  </motion.div>
+                  
+                  <motion.div
+                    className="absolute inset-0 flex flex-col justify-end p-3 sm:p-4 bg-gradient-to-t from-black/80 to-black/10"
+                    initial={{ opacity: 0 }}
+                    animate={{ 
+                      opacity: (hoveredId === project.id || touchedId === project.id) ? 1 : 0.2
+                    }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <h3 className="text-base sm:text-lg font-bold text-white mb-1">{project.title}</h3>
+                    <p className="text-gray-200 text-xs sm:text-sm line-clamp-2">{project.description}</p>
+                  </motion.div>
+                </div>
               </div>
-            </div>
-          </motion.div>
-        ))}
+            </motion.div>
+          ))}
+        </div>
       </div>
       
       {selectedProject && (

@@ -113,15 +113,15 @@ FROM experience;`;
   }, []);
 
   return (
-    <div className="absolute inset-0 flex items-center justify-center" style={{ height: "100vh" }}>
-      <div className="w-full sm:w-[90%] max-w-3xl px-4 flex flex-col items-center" style={{ marginTop: "-2rem" }}>
+    <div className="flex items-center justify-center w-full h-full">
+      <div className="w-full sm:w-[90%] max-w-3xl px-2 sm:px-4 flex flex-col items-center">
         <motion.div
-          className="bg-primary/30 p-[0.2rem] sm:p-3 md:p-6 lg:p-8 rounded-lg backdrop-blur-sm font-sql overflow-hidden w-full"
+          className="bg-primary/30 p-2 sm:p-4 md:p-5 rounded-lg backdrop-blur-sm font-sql overflow-hidden w-full"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
         >
-          <pre className="space-y-2">
+          <pre className="space-y-1 sm:space-y-2">
             {colorizedSQL}
           </pre>
         </motion.div>
@@ -139,7 +139,7 @@ FROM experience;`;
           }}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="relative mt-4 mx-auto block bg-emerald-500 hover:bg-emerald-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-md font-sql flex items-center gap-2 justify-center transition-colors text-sm sm:text-base group"
+          className="relative mt-4 mx-auto block bg-emerald-500 hover:bg-emerald-600 text-white px-3 sm:px-5 py-2 rounded-md font-sql flex items-center gap-2 justify-center transition-colors text-sm sm:text-base group"
         >
           <motion.div
             className="absolute -inset-0.5 rounded-md bg-emerald-400/20"
