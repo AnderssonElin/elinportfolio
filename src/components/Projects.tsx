@@ -4,50 +4,13 @@ import ProjectDetails from "../pages/ProjectDetails";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { projectsData } from "./project-details/projectData";
 
-const projectList = [
-  {
-    id: 1,
-    title: "Power BI",
-    description: "A Power BI solution integrating data modeling, advanced DAX calculations, and interactive dashboards for real-time business insights.",
-    imageUrl: "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/HimalayaK&V_HR.png?raw=true",
-    slug: "powerbi"
-  },
-  {
-    id: 2,
-    title: "ETL in SQL",
-    description: "A complete ETL pipeline in SQL, integrating data extraction, transformation, and loading into a Power BI dashboard for business analytics and decision-making",
-    imageUrl: "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/SQL_first_pic.png?raw=true",
-    slug: "sql"
-  },
-  {
-    id: 3,
-    title: "Analytics Platform",
-    description: "Self-service analytics platform with interactive dashboards",
-    imageUrl: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80",
-    slug: "analytics"
-  },
-  {
-    id: 4,
-    title: "BI Dashboard Suite",
-    description: "Comprehensive business intelligence dashboard solution",
-    imageUrl: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=800&q=80",
-    slug: "bi-dashboard"
-  },
-  {
-    id: 5,
-    title: "Data Visualization Tool",
-    description: "Interactive data visualization and reporting platform",
-    imageUrl: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=800&q=80",
-    slug: "data-viz"
-  },
-  {
-    id: 6,
-    title: "AI Analytics Engine",
-    description: "AI-powered analytics engine for predictive insights",
-    imageUrl: "https://images.unsplash.com/photo-1509718443690-d8e2fb3474b7?auto=format&fit=crop&w=800&q=80",
-    slug: "ai-analytics"
-  }
-];
+const projectList = Object.entries(projectsData).map(([slug, project]) => ({
+  id: project.id,
+  title: project.title.split(" ")[0],
+  description: project.description,
+  imageUrl: project.images[0] || "",
+  slug: slug
+}));
 
 const Projects = () => {
   const [hoveredId, setHoveredId] = useState<number | null>(null);
