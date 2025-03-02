@@ -102,6 +102,12 @@
     height: 100%;
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
+  }
+  
+  html, body, #root {
+    height: 100%;
+    width: 100%;
   }
   
   a, button, [role="button"], .cursor-pointer {
@@ -109,18 +115,19 @@
   }
 
   /* Full screen section styles */
-  .vh-section {
-    height: calc(var(--vh, 1vh) * 100);
-    width: 100%;
-    overflow-x: hidden;
+  section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   
-  /* Genomskinlig bakgrund för alla sektioner */
+  /* Transparent background for all sections */
   section, footer, header {
     @apply bg-transparent;
   }
   
-  /* Se till att alla bakgrunder är transparenta där det behövs */
+  /* Ensuring all backgrounds are transparent where needed */
   .transparent-bg {
     @apply bg-transparent;
   }
@@ -130,7 +137,7 @@
     @apply shadow-sm;
   }
   
-  /* För mobilvy - mindre padding */
+  /* For mobile view - reduced padding */
   @media (max-width: 640px) {
     .mobile-reduced-padding {
       padding: 0.3rem !important;

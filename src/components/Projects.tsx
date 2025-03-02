@@ -71,36 +71,13 @@ const Projects = () => {
     }
   }, [touchedId]);
 
-  useEffect(() => {
-    if (!isMobile) return;
-    
-    const handleScroll = () => {
-      const projects = document.querySelectorAll('.project-card');
-      
-      projects.forEach((project, index) => {
-        const rect = project.getBoundingClientRect();
-        const isVisible = (
-          rect.top < window.innerHeight * 0.8 && 
-          rect.bottom > window.innerHeight * 0.2
-        );
-        
-        if (isVisible && touchedId !== projectsData[index].id) {
-          setTouchedId(projectsData[index].id);
-        }
-      });
-    };
-    
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [isMobile, touchedId]);
-
   return (
-    <div className="w-full h-full flex flex-col py-2 sm:py-4">
-      <h2 className="text-2xl sm:text-3xl font-bold text-center mb-2 sm:mb-4 text-white">Projects</h2>
+    <div className="w-full flex flex-col py-8">
+      <h2 className="text-2xl sm:text-3xl font-bold text-center mb-4 sm:mb-6 text-white">Projects</h2>
       
-      <div className="flex-grow">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-1 sm:gap-2 max-w-6xl mx-auto">
-          {projectsData.slice(0, 6).map((project) => (
+      <div className="w-full">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 max-w-5xl mx-auto">
+          {projectsData.map((project) => (
             <motion.div
               key={project.id}
               className="group cursor-pointer project-card"

@@ -12,7 +12,6 @@ import { useIsMobile } from "@/hooks/use-mobile";
 const Index = () => {
   const [activeSection, setActiveSection] = useState("hero");
   const isMobile = useIsMobile();
-  const sectionsContainerRef = useRef<HTMLDivElement>(null);
   
   const sectionRefs = {
     hero: useRef<HTMLElement>(null),
@@ -38,8 +37,6 @@ const Index = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (!sectionsContainerRef.current) return;
-      
       const scrollPosition = window.scrollY + window.innerHeight / 3;
       
       // Check which section is visible
@@ -57,9 +54,7 @@ const Index = () => {
     };
 
     window.addEventListener("scroll", handleScroll);
-    
-    // Trigger initial check
-    handleScroll();
+    handleScroll(); // Initial check
     
     return () => {
       window.removeEventListener("scroll", handleScroll);
@@ -67,14 +62,7 @@ const Index = () => {
   }, []);
 
   return (
-    <div 
-      ref={sectionsContainerRef}
-      className="relative bg-secondary h-screen snap-y snap-mandatory overflow-y-auto overflow-x-hidden scroll-smooth"
-      style={{
-        scrollSnapType: "y mandatory",
-        WebkitOverflowScrolling: "touch"
-      }}
-    > 
+    <div className="relative bg-secondary min-h-screen">
       {/* Background animation that covers the entire page */}
       <div className="fixed inset-0 z-0 pointer-events-none">
         <BackgroundAnimation />
@@ -102,10 +90,10 @@ const Index = () => {
       {/* Hero section */}
       <section 
         ref={sectionRefs.hero}
-        className="relative vh-section w-full flex items-center justify-center px-4 snap-start"
+        className="min-h-screen w-full flex items-center justify-center px-4"
         id="hero"
       >
-        <div className="w-full max-w-full flex items-center justify-center">
+        <div className="w-full max-w-5xl flex items-center justify-center">
           <Hero />
         </div>
       </section>
@@ -113,10 +101,10 @@ const Index = () => {
       {/* Timeline section */}
       <section 
         ref={sectionRefs.timeline}
-        className="relative vh-section w-full flex items-center justify-center px-4 snap-start" 
+        className="min-h-screen w-full flex items-center justify-center px-4" 
         id="timeline"
       >
-        <div className="w-full max-w-full flex items-center justify-center">
+        <div className="w-full max-w-5xl flex items-center justify-center">
           <Timeline />
         </div>
       </section>
@@ -124,10 +112,10 @@ const Index = () => {
       {/* Projects section */}
       <section 
         ref={sectionRefs.projects}
-        className="relative vh-section w-full flex items-center justify-center px-4 snap-start" 
+        className="min-h-screen w-full flex items-center justify-center px-4" 
         id="projects"
       >
-        <div className="w-full max-w-full flex items-center justify-center">
+        <div className="w-full max-w-5xl flex items-center justify-center">
           <Projects />
         </div>
       </section>
@@ -135,10 +123,10 @@ const Index = () => {
       {/* Final section */}
       <section 
         ref={sectionRefs.contact}
-        className="relative vh-section w-full flex flex-col items-center justify-center px-4 snap-start"
+        className="min-h-screen w-full flex flex-col items-center justify-center px-4"
         id="contact"
       >
-        <div className="w-full max-w-full">
+        <div className="w-full max-w-5xl">
           <Footer />
           <Copyright />
         </div>
