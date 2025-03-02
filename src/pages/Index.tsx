@@ -73,11 +73,17 @@ const Index = () => {
         {Object.keys(sectionRefs).map((section) => (
           <motion.div
             key={section}
-            className={`w-3 h-3 rounded-full transition-all duration-300 cursor-pointer ${
-              activeSection === section 
-                ? "bg-[#9b87f5] scale-125" 
+            className={`
+              ${activeSection === section 
+                ? "bg-[#9b87f5]" 
                 : "bg-white/30 hover:bg-white/50"
-            }`}
+              } 
+              ${activeSection === section 
+                ? "rotate-45 scale-110" 
+                : "rounded-full"
+              }
+              w-3 h-3 transition-all duration-300 cursor-pointer
+            `}
             whileHover={{ scale: 1.2 }}
             onClick={() => {
               const element = document.getElementById(section);
