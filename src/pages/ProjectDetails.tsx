@@ -30,11 +30,11 @@ const projectsData: Record<string, ProjectData> = {
   },
   "sql": {
     id: 2,
-    title: "ML Pipeline Development",
-    year: "2022",
-    tech: ["Python", "TensorFlow", "Kubernetes", "Docker", "MLflow"],
-    description: "An automated machine learning pipeline that enables data scientists to quickly deploy, monitor, and update predictive models. The system handles feature engineering, model training, validation, and deployment with minimal manual intervention. This has reduced model deployment time from weeks to hours.",
-    role: "I led the requirements gathering process and defined the key performance indicators for the machine learning models. I collaborated with data scientists to implement a feature store and created visualization components to explain model predictions to business stakeholders.",
+    title: "ETL in SQL",
+    year: "2024",
+    tech: ["SQL", "SSMS", "Power BI"],
+    description: "This project is a complete ETL pipeline designed to extract, transform, and load (ETL) data into a structured data warehouse (DW). The implementation integrates raw data from AdventureWorks2019, processes it through a staging layer, and transforms it into a star schema model for analytics and reporting in Power BI. The solution includes: Data extraction & bulk loading using SQL BULK INSERT procedures, Data transformation & modeling with stored procedures and T-SQL operations, Dimensional modeling (Kimball approach) to optimize query performance, Fact & Dimension table relationships enabling efficient BI analysis, Automated data integration for Power BI reporting",
+    role: "In my role as a BI Analyst, I designed and implemented the ETL architecture, structured data pipelines, and created stored procedures for automated transformations. I developed a scalable star schema, ensuring optimized performance and seamless Power BI integration. Additionally, I built SQL views to provide end-users with easy access to business insights without complex queries.",
     images: [
       "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?auto=format&fit=crop&w=800&q=80",
       "https://images.unsplash.com/photo-1509718443690-d8e2fb3474b7?auto=format&fit=crop&w=800&q=80"
