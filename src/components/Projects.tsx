@@ -13,10 +13,10 @@ const projectsData = [
   },
   {
     id: 2,
-    title: "ML Pipeline Development",
-    description: "Automated machine learning pipeline for predictive analytics",
-    imageUrl: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?auto=format&fit=crop&w=800&q=80",
-    slug: "ml-pipeline"
+    title: "ETL in SQL",
+    description: "A complete ETL pipeline in SQL, integrating data extraction, transformation, and loading into a Power BI dashboard for business analytics and decision-making",
+    imageUrl: "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/SQL_first_pic.png?raw=true",
+    slug: "sql"
   },
   {
     id: 3,

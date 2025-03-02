@@ -28,7 +28,7 @@ const projectsData: Record<string, ProjectData> = {
       "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/HimalayaK&V_Ekonomi.png?raw=true"
     ]
   },
-  "ml-pipeline": {
+  "sql": {
     id: 2,
     title: "ML Pipeline Development",
     year: "2022",
