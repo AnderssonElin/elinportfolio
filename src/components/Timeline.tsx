@@ -60,7 +60,8 @@ const Timeline = () => {
                     <p className="text-xs sm:text-sm text-gray-400 mt-1">{item.description}</p>
                   </motion.div>
                 </div>
-                <div className="w-2 h-2 bg-accent rounded-full absolute left-1/2 transform -translate-x-1/2 hidden md:block" />
+                {/* Changed from circle to diamond shape */}
+                <div className="w-3 h-3 bg-accent rotate-45 absolute left-1/2 transform -translate-x-1/2 hidden md:block" />
               </motion.div>
             ))}
           </div>

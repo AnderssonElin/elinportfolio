@@ -43,7 +43,7 @@ const ProjectInfo = ({ year, tech, description, role, githubUrl, showHeader }: P
               href={githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-4 inline-flex items-center gap-2 text-accent hover:text-accent/80 transition-colors"
+              className="mt-8 inline-flex items-center gap-2 text-accent hover:text-accent/80 transition-colors"
             >
               <Github size={18} />
               <span>View project on GitHub</span>

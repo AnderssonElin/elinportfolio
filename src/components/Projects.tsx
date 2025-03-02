@@ -76,7 +76,7 @@ const Projects = () => {
       <h2 className="text-2xl sm:text-3xl font-bold text-center mb-4 sm:mb-6 text-white">Projects</h2>
       
       <div className="w-full">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 max-w-[90%] mx-auto">
           {projectsData.map((project) => (
             <motion.div
               key={project.id}
@@ -111,9 +111,9 @@ const Projects = () => {
                   <div className="absolute inset-0 bg-gradient-to-r from-[#9b87f5]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   
                   <motion.div
-                    className="absolute inset-0 border border-[#9b87f5]/30 group-hover:border-[#9b87f5]/70 transition-all duration-300 z-10 rounded-md"
+                    className="absolute inset-0 border-2 border-[#9b87f5]/70 group-hover:border-[#9b87f5] transition-all duration-300 z-10 rounded-md"
                     animate={{
-                      borderColor: (hoveredId === project.id || touchedId === project.id) ? "rgba(155, 135, 245, 0.7)" : "rgba(155, 135, 245, 0.3)"
+                      borderColor: (hoveredId === project.id || touchedId === project.id) ? "rgba(155, 135, 245, 1)" : "rgba(155, 135, 245, 0.7)"
                     }}
                   />
                   
@@ -136,7 +136,7 @@ const Projects = () => {
                     className="absolute inset-0 flex flex-col justify-end p-2 bg-gradient-to-t from-black/80 to-black/10"
                     initial={{ opacity: 0 }}
                     animate={{ 
-                      opacity: (hoveredId === project.id || touchedId === project.id) ? 1 : 0.2
+                      opacity: (hoveredId === project.id || touchedId === project.id || isMobile) ? 1 : 0
                     }}
                     transition={{ duration: 0.3 }}
                   >
