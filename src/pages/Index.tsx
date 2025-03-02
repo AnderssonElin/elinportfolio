@@ -31,7 +31,7 @@ const Index = () => {
     };
 
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + window.innerHeight / 2;
+      const scrollPosition = window.scrollY + window.innerHeight / 3;
       
       // Check which section is visible
       Object.entries(sectionRefs).forEach(([key, ref]) => {
@@ -97,7 +97,7 @@ const Index = () => {
       {/* Timeline section */}
       <section 
         ref={sectionRefs.timeline}
-        className="relative min-h-screen h-screen flex items-center justify-center px-4 py-16 snap-start" 
+        className="relative min-h-screen h-screen flex items-center justify-center px-4 py-20 snap-start" 
         id="timeline"
       >
         <Timeline />
@@ -106,16 +106,18 @@ const Index = () => {
       {/* Projects section */}
       <section 
         ref={sectionRefs.projects}
-        className="relative min-h-screen h-screen flex items-center justify-center px-4 py-16 snap-start" 
+        className="relative min-h-screen h-screen flex items-center justify-center px-4 py-20 snap-start" 
         id="projects"
       >
-        <Projects />
+        <div className="w-full h-full overflow-hidden">
+          <Projects />
+        </div>
       </section>
       
       {/* Final section */}
       <section 
         ref={sectionRefs.contact}
-        className="relative min-h-screen h-screen flex flex-col justify-center px-4 py-16 snap-start"
+        className="relative min-h-screen h-screen flex flex-col justify-center px-4 py-20 snap-start"
         id="contact"
       >
         <Footer />

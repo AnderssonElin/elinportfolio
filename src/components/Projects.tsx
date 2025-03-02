@@ -95,7 +95,7 @@ const Projects = () => {
   }, [isMobile, touchedId]);
 
   return (
-    <div className="container mx-auto px-4 sm:px-6 md:px-8 max-h-[calc(100vh-2rem)] overflow-y-auto pb-20">
+    <div className="container h-full mx-auto px-4 sm:px-6 md:px-8 pb-20">
       <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8 text-white">Projects</h2>
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
@@ -114,15 +114,15 @@ const Projects = () => {
           >
             <div className="rounded-lg p-3 bg-primary/20 backdrop-blur-sm border border-[#0eec58]/50 shadow-lg overflow-hidden">
               <div className="flex gap-2 mb-2">
-                <div className="w-3 h-3 rounded-full bg-[#0eec58]/20"></div>
-                <div className="w-3 h-3 rounded-full bg-[#0eec58]/20"></div>
-                <div className="w-3 h-3 rounded-full bg-[#0eec58]/20"></div>
+                <div className="w-3 h-3 rounded-full bg-[#0eec58]/30"></div>
+                <div className="w-3 h-3 rounded-full bg-[#0eec58]/30"></div>
+                <div className="w-3 h-3 rounded-full bg-[#0eec58]/30"></div>
               </div>
               
               <div className="relative aspect-square overflow-hidden rounded-md bg-black/40">
-                {/* Green overlay that disappears on hover */}
+                {/* Purple overlay that disappears on hover */}
                 <motion.div 
-                  className="absolute inset-0 bg-[#0eec58]/20 z-10 pointer-events-none"
+                  className="absolute inset-0 bg-[#9b87f5]/25 z-10 pointer-events-none"
                   initial={{ opacity: 1 }}
                   animate={{ 
                     opacity: (hoveredId === project.id || touchedId === project.id) ? 0 : 1 
@@ -130,12 +130,12 @@ const Projects = () => {
                   transition={{ duration: 0.3 }}
                 />
                 
-                <div className="absolute inset-0 bg-gradient-to-r from-[#0eec58]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute inset-0 bg-gradient-to-r from-[#9b87f5]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 
                 <motion.div
-                  className="absolute inset-0 border border-[#0eec58]/30 group-hover:border-[#0eec58]/70 transition-all duration-300 z-10 rounded-md"
+                  className="absolute inset-0 border border-[#9b87f5]/30 group-hover:border-[#9b87f5]/70 transition-all duration-300 z-10 rounded-md"
                   animate={{
-                    borderColor: (hoveredId === project.id || touchedId === project.id) ? "rgba(14, 236, 88, 0.7)" : "rgba(14, 236, 88, 0.3)"
+                    borderColor: (hoveredId === project.id || touchedId === project.id) ? "rgba(155, 135, 245, 0.7)" : "rgba(155, 135, 245, 0.3)"
                   }}
                 />
                 
