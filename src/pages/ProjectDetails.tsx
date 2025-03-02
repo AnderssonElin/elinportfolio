@@ -47,7 +47,11 @@ const projectsData: Record<string, ProjectData> = {
     description: "This project involved the modeling and design of a structured banking database system, ensuring a well-defined structure with clear relationships between entities. The process began with a thorough needs analysis and data collection to identify essential business processes and data elements. A conceptual data model was created to map out the overarching structure, followed by a logical data model that detailed tables, columns, data types, and key business concepts. The database design was developed visually in draw.io, incorporating all relevant entities, defining relationships between columns, and establishing primary keys. The logical model was further refined into a physical data model, considering constraints and optimizations for database management systems. The final step included comprehensive documentation of the database schema, specifying table structures, column attributes, and relationship definitions to facilitate future implementation and development.",
     role: "I was responsible for developing the data architecture and ensuring a well-structured and efficient relational model. I created and refined the conceptual, logical, and physical data models, aligning them with real-world banking operations. Additionally, I documented the entire schema, ensuring clarity and ease of implementation in SQL Server while maintaining relational integrity and scalability.",
     images: [
-      "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80"
+      "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/Bank_fysisk%20ERD.jpg?raw=true",
+      "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/Bank_konceptuell%20ERD.jpg?raw=true",
+      "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/Modellering_databas_diagram.png?raw=true",
+      "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/Modellering_sql.png?raw=true"
+
     ]
   },
   "SSIS": {
@@ -58,8 +62,10 @@ const projectsData: Record<string, ProjectData> = {
     description: "This project involved designing and implementing an ETL pipeline in SQL Server Integration Services (SSIS) to clean and transform flight data for analytical processing. The pipeline extracted raw flight records, performed data cleansing operations such as handling null values and formatting timestamps, and then loaded the refined data into a staging area before populating dimension and fact tables. A tabular model was created in SQL Server Analysis Services (SSAS) to simplify complex analytical queries and improve reporting performance. The cube was designed with well-structured relationships between fact and dimension tables, allowing for efficient aggregations and analysis. ",
     role: "As the ETL Developer, I designed and implemented the SSIS pipeline, ensuring efficient data transformation and error handling throughout the process. I developed the tabular cube in SSAS, structuring the model to enhance analytical capabilities while optimizing query performance.",
     images: [
-      "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=800&q=80"
+      "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/SSIS_fl%C3%B6de1.png?raw=true",
+      "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/SSIS_fl%C3%B6de2.png?raw=true",
+      "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/SSIS_tabular_cube.png?raw=true",
+      "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/SSIS_tabular_table.png?raw=true"
     ]
   },
   "data-viz": {
