@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muspekare Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            cursor: url('/cursor.png'), auto;
+        }
+        
+        button {
+            padding: 10px 20px;
+            margin: 20px;
+            cursor: url('/cursor.png'), pointer;
+        }
+        
+        .alt-cursor {
+            cursor: url('/cursor.png') 16 16, auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Test av anpassad muspekare</h1>
+    <p>Om allt fungerar korrekt bör du se en anpassad muspekare när du rör musen över denna sida.</p>
+    
+    <button>Klicka här</button>
+    
+    <div class="alt-cursor" style="margin: 30px; padding: 20px; border: 1px solid #ccc;">
+        Detta område använder en alternativ version av muspekaren med offset (16,16)
+    </div>
+    
+    <p>Om du inte ser den anpassade muspekaren, kan det bero på:</p>
+    <ul style="text-align: left; max-width: 500px; margin: 0 auto;">
+        <li>Bilden är för stor (försök med en mindre bild)</li>
+        <li>Bilden har fel format (PNG med transparens rekommenderas)</li>
+        <li>Sökvägen till bilden är felaktig</li>
+        <li>Webbläsaren stöder inte anpassade muspekare</li>
+    </ul>
+</body>
+</html> 

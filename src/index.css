@@ -97,11 +97,11 @@
 
   body {
     @apply bg-background text-foreground;
-    cursor: url('../images/group.png'), auto;
+    cursor: url('/cursor.png') 16 16, auto;
   }
   
   a, button, [role="button"], .cursor-pointer {
-    cursor: url('../images/group.png'), pointer;
+    cursor: url('/cursor.png') 16 16, pointer;
   }
   
   /* Genomskinlig bakgrund för alla sektioner */
