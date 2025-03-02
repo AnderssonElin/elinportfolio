@@ -132,6 +132,10 @@ const ProjectDetails = ({ projectId, onClose }: ProjectDetailsProps) => {
   const scrollToGallery = () => {
     galleryRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
+
+  const openImageInNewTab = (imageUrl: string) => {
+    window.open(imageUrl, '_blank');
+  };
   
   if (!project) {
     return (
@@ -281,7 +285,7 @@ const ProjectDetails = ({ projectId, onClose }: ProjectDetailsProps) => {
                     {project.images.map((image, index) => (
                       <motion.div 
                         key={index} 
-                        className="flex justify-center relative group"
+                        className="flex justify-center relative group cursor-pointer"
                         initial={{ opacity: 0, scale: 0.98 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ delay: index * 0.2, duration: 0.4 }}
@@ -290,6 +294,7 @@ const ProjectDetails = ({ projectId, onClose }: ProjectDetailsProps) => {
                           transition: { duration: 0.3 }
                         }}
                         viewport={{ once: false, margin: "-100px" }}
+                        onClick={() => openImageInNewTab(image)}
                       >
                         <div className="relative">
                           <img 
@@ -299,15 +304,12 @@ const ProjectDetails = ({ projectId, onClose }: ProjectDetailsProps) => {
                             style={{ maxWidth: "800px", maxHeight: "800px", width: "100%" }}
                           />
                           
-                          <a 
-                            href={image}
-                            target="_blank"
-                            rel="noopener noreferrer"
+                          <button 
                             className="absolute top-2 right-2 p-2 bg-accent hover:bg-accent/80 rounded-full text-white opacity-0 group-hover:opacity-100 transition-opacity"
                             aria-label="Open image in new tab"
                           >
                             <ExternalLink size={16} />
-                          </a>
+                          </button>
                         </div>
                       </motion.div>
                     ))}
