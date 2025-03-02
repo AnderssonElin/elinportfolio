@@ -1,10 +1,10 @@
-
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import ProjectDetails from "../pages/ProjectDetails";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { projectsData } from "./project-details/projectData";
 
-const projectsData = [
+const projectList = [
   {
     id: 1,
     title: "Power BI",
@@ -78,8 +78,8 @@ const Projects = () => {
           rect.bottom > window.innerHeight * 0.2
         );
         
-        if (isVisible && touchedId !== projectsData[index].id) {
-          setTouchedId(projectsData[index].id);
+        if (isVisible && touchedId !== projectList[index].id) {
+          setTouchedId(projectList[index].id);
         }
       });
     };
@@ -93,7 +93,7 @@ const Projects = () => {
       <h2 className="text-2xl sm:text-3xl font-bold text-center mb-16 text-white">Projects</h2>
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl mx-auto [&_*]:cursor-[url('/lovable-uploads/bc1d05b8-0954-4049-86be-92522d845815.png'),_pointer]">
-        {projectsData.map((project) => (
+        {projectList.map((project) => (
           <motion.div
             key={project.id}
             className="group cursor-pointer project-card"
