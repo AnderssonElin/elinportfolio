@@ -1,70 +1,59 @@
-# Welcome to your Lovable project
+# Playful Data Portfolio
 
-## Project info
+An interactive and playful portfolio project that visualizes data in an engaging way.
 
-**URL**: https://lovable.dev/projects/2504e0e4-2e28-4067-ba88-738ace47425a
+## Project Structure
 
-## How can I edit this code?
+```
+├── public/             # Static files
+├── src/
+│   ├── components/     # React components
+│   ├── lib/           # Helper functions and utilities
+│   ├── styles/        # CSS and styling
+│   └── pages/         # Page components
+├── images/            # Image resources
+└── tests/            # Test files
+```
 
-There are several ways of editing your application.
+## Tech Stack
 
-**Use Lovable**
+This project is built with modern web technologies:
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/2504e0e4-2e28-4067-ba88-738ace47425a) and start prompting.
+### Core Technology
+- **React** - A JavaScript library for building user interfaces
+- **TypeScript** - Typed JavaScript for better development experience
+- **Vite** - Fast and modern build tool for web development
 
-Changes made via Lovable will be committed automatically to this repo.
+### UI & Styling
+- **shadcn/ui** - Reusable UI components
+- **Tailwind CSS** - A utility-first CSS framework
+- **Framer Motion** - For animations and interactions
 
-**Use your preferred IDE**
+### Data & State Management
+- **React Query** - For data handling and caching
+- **Zustand** - Simple and efficient state management
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## Getting Started
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+To run the project locally, you need to have Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
+# Clone the repo
 git clone <YOUR_GIT_URL>
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+# Navigate to the project directory
+cd playful-data-portfolio
 
-# Step 3: Install the necessary dependencies.
-npm i
+# Install dependencies
+npm install
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Start the development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with .
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
 ## How can I deploy this project?
 
-Simply open [Lovable](https://lovable.dev/projects/2504e0e4-2e28-4067-ba88-738ace47425a) and click on Share -> Publish.
-
-If you want to deploy your project under your own domain using Netlify, follow these additional steps:
+If you want to deploy your project using Netlify, follow these steps:
 
 1. Unhide the following comment in your `vite.config.js` file:
     ```javascript
@@ -79,8 +68,14 @@ If you want to deploy your project under your own domain using Netlify, follow t
     npm run deploy
     ```
 
-For more details, visit our docs: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
+## Contributing
 
-## I want to use a custom domain - is that possible?
+1. Fork the repo
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
