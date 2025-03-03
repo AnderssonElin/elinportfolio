@@ -53,7 +53,7 @@ export const projectsData: ProjectType[] = [
     id: 6,
     title: "NBA API using Pandas",
     description: "Python-powered insights with Dash, Pandas, Plotly and more.",
-    imageUrl: "https://github.com/AnderssonElin/elinportfolio/blob/main/images/nba_dashboard.PNG?raw=true",
+    imageUrl: "https://github.com/AnderssonElin/elinportfolio/blob/main/images/nba_dashboard_1.PNG?raw=true",
     slug: "nba-dashboard",
     githubUrl: "https://github.com/AnderssonElin/playful-data-portfolio-61"
   }

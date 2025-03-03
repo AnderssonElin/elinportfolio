@@ -97,8 +97,9 @@ const projectsData: Record<string, ProjectData> = {
     description: "The NBA Game Analysis Dashboard is an interactive tool that evaluates and visualizes the quality of NBA games based on various metrics. It analyzes factors like score closeness, lead changes, overtime periods, three-point shooting, and star performances to assign each game a quality score and grade (A+ to D). Built with Python, the project features both a web-based dashboard (using Dash) for real-time analysis and Jupyter notebooks for detailed exploration. Using the NBA API, it automatically fetches game data, processes it through scoring algorithms (implemented with Pandas), and presents the results through interactive visualizations (powered by Plotly) including radar charts, scatter plots, and detailed data tables. This makes it easy for users to identify the most exciting games and understand what makes them interesting, whether through the interactive dashboard or through custom analysis in notebooks.",
     role: "Led the development from concept to implementation. This included designing the scoring algorithms, integrating the NBA API for automated data retrieval, building the interactive dashboard with Dash, and structuring the analysis in Jupyter notebooks. Additionally, I handled data processing with Pandas and created the visualizations using Plotly to ensure an intuitive and insightful user experience.",
     images: [
-      "https://github.com/AnderssonElin/elinportfolio/blob/main/images/nba_dashboard.PNG?raw=true",
-      "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=800&q=80"
+      "https://github.com/AnderssonElin/elinportfolio/blob/main/images/nba_dashboard_2.PNG?raw=true",
+      "https://github.com/AnderssonElin/elinportfolio/blob/main/images/nba_dashboard_3.PNG?raw=true",
+      "https://github.com/AnderssonElin/elinportfolio/blob/main/images/nba_dashboard_4.PNG?raw=true"
     ],
     githubUrl: "https://github.com/AnderssonElin/nba-dashboard"
   }
