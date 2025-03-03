@@ -91,16 +91,16 @@ const projectsData: Record<string, ProjectData> = {
   },
   "ai-analytics": {
     id: 6,
-    title: "AI Analytics Engine",
+    title: "NBA API using Pandas",
     year: "2023",
-    tech: ["Python", "PyTorch", "NLP", "AWS Sagemaker", "React"],
-    description: "An AI-powered analytics engine that uses natural language processing to automatically identify trends, anomalies, and insights in large datasets. The system can generate narrative explanations of data changes and recommend actions based on historical patterns.",
-    role: "I led the feature specification process, defined the insight generation algorithms, and developed the integration with existing BI tools. I also conducted A/B testing to validate the system's recommendations against expert analyst decisions.",
+    tech: ["Python", "NBA API", "Pandas", "Plotly", "Dash", "Jupyter"],
+    description: "The NBA Game Analysis Dashboard is an interactive tool that evaluates and visualizes the quality of NBA games based on various metrics. It analyzes factors like score closeness, lead changes, overtime periods, three-point shooting, and star performances to assign each game a quality score and grade (A+ to D). Built with Python, the project features both a web-based dashboard (using Dash) for real-time analysis and Jupyter notebooks for detailed exploration. Using the NBA API, it automatically fetches game data, processes it through scoring algorithms (implemented with Pandas), and presents the results through interactive visualizations (powered by Plotly) including radar charts, scatter plots, and detailed data tables. This makes it easy for users to identify the most exciting games and understand what makes them interesting, whether through the interactive dashboard or through custom analysis in notebooks.",
+    role: "Led the development from concept to implementation. This included designing the scoring algorithms, integrating the NBA API for automated data retrieval, building the interactive dashboard with Dash, and structuring the analysis in Jupyter notebooks. Additionally, I handled data processing with Pandas and created the visualizations using Plotly to ensure an intuitive and insightful user experience.",
     images: [
       "https://images.unsplash.com/photo-1509718443690-d8e2fb3474b7?auto=format&fit=crop&w=800&q=80",
       "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=800&q=80"
     ],
-    githubUrl: "https://github.com/AnderssonElin/playful-data-portfolio-61"
+    githubUrl: "https://github.com/AnderssonElin/nba-dashboard"
   }
 };
 
