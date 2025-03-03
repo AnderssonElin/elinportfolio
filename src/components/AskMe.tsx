@@ -23,6 +23,10 @@ const funResponses = [
   "My sentiment analysis is detecting extreme positivity about this! 😁",
   "The data clusters have spoken - proceed with confidence! 🌟",
   "My machine learning model just evolved to answer this question perfectly! 🦋",
+  "Your question is being processed... in an incredibly inefficient ETL pipeline from 2007!",
+  "The answer is hidden deep within your data source. Too bad it's full of duplicates and missing values!",
+  "Your question is processing… but first, let me refresh all 94,573 rows in this table.",
+  "This question requires advanced analytics… or we could just guess like we always do?",
 ];
 
 const Firework = ({ style }: { style: React.CSSProperties }) => (
