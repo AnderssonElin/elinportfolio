@@ -51,10 +51,10 @@ export const projectsData: ProjectType[] = [
   },
   {
     id: 6,
-    title: "AI Analytics Engine",
-    description: "AI-powered analytics engine for predictive insights",
+    title: "NBA API using Pandas",
+    description: "NBA Game Analysis Dashboard – Python-powered insights with Dash, Pandas, and Plotly.",
     imageUrl: "https://images.unsplash.com/photo-1509718443690-d8e2fb3474b7?auto=format&fit=crop&w=800&q=80",
-    slug: "ai-analytics",
+    slug: "nba-dashboard",
     githubUrl: "https://github.com/AnderssonElin/playful-data-portfolio-61"
   }
 ];

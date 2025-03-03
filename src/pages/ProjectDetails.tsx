@@ -89,7 +89,7 @@ const projectsData: Record<string, ProjectData> = {
     ],
     githubUrl: "https://github.com/AnderssonElin/playful-data-portfolio-61"
   },
-  "ai-analytics": {
+  "nba-dashboard": {
     id: 6,
     title: "NBA API using Pandas",
     year: "2023",
