@@ -59,7 +59,7 @@ const projectsData: Record<string, ProjectData> = {
       "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/Modellering_databas_diagram.png?raw=true",
       "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/Modellering_sql.png?raw=true"
     ],
-    githubUrl: "https://github.com/AnderssonElin/playful-data-portfolio-61"
+    githubUrl: "https://github.com/AnderssonElin/bank_architecture"
   },
   "SSIS": {
     id: 4,
