@@ -1,4 +1,5 @@
-import { useEffect, useState, useRef } from "react";
+
+import { useEffect, useState, useRef, KeyboardEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import ProjectHeader from "@/components/project-details/ProjectHeader";
 import ProjectInfo from "@/components/project-details/ProjectInfo";
@@ -124,10 +125,20 @@ const ProjectDetails = ({ projectId, onClose }: ProjectDetailsProps) => {
       containerRef.current.scrollTop = 0;
     }
     
+    // Lägg till lyssnare för Escape-knappen
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        onClose();
+      }
+    };
+    
+    document.addEventListener('keydown', handleKeyDown as any);
+    
     return () => {
       document.body.style.overflow = 'auto';
+      document.removeEventListener('keydown', handleKeyDown as any);
     };
-  }, [projectId]);
+  }, [projectId, onClose]);
   
   useEffect(() => {
     const handleScroll = () => {
