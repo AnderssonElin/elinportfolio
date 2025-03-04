@@ -44,7 +44,7 @@ const projectsData: Record<string, ProjectData> = {
     images: [
       "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/SQL_code.png?raw=true"
     ],
-    githubUrl: "https://github.com/AnderssonElin/playful-data-portfolio-61"
+    githubUrl: "https://github.com/AnderssonElin/etl-pipeline-sql"
   },
   "draw.io": {
     id: 3,

@@ -27,7 +27,7 @@ export const projectsData: ProjectType[] = [
   },
   {
     id: 3,
-    title: "Banking System Data Model",
+    title: "Banking System Data Architecture",
     description: "Banking database with Draw.io, SQL, and SSMS.",
     imageUrl: "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/Bank_konceptuell%20ERD.jpg?raw=true",
     slug: "draw.io",
