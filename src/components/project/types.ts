@@ -19,16 +19,16 @@ export const projectsData: ProjectType[] = [
   },
   {
     id: 2,
-    title: "ETL in SQL",
-    description: "Automated SQL ETL Pipeline: load into structured Data Warehouse using SQL Server procedures and bulk operations.",
+    title: "Automated SQL ETL Pipeline",
+    description: "Data Warehouse using SQL Server procedures and bulk operations.",
     imageUrl: "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/SQL_first_pic.png?raw=true",
     slug: "sql",
-    githubUrl: "https://github.com/AnderssonElin/playful-data-portfolio-61"
+    githubUrl: "https://github.com/AnderssonElin/etl-pipeline-sql"
   },
   {
     id: 3,
     title: "Banking System Data Model",
-    description: "A comprehensive database design for a banking system, including conceptual, logical, and physical modeling to ensure structured data management and scalability.",
+    description: "Banking database with Draw.io, SQL, and SSMS.",
     imageUrl: "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/Bank_konceptuell%20ERD.jpg?raw=true",
     slug: "draw.io",
     githubUrl: "https://github.com/AnderssonElin/playful-data-portfolio-61"
