@@ -20,7 +20,7 @@ export const projectsData: ProjectType[] = [
   {
     id: 2,
     title: "ETL in SQL",
-    description: "A complete ETL pipeline in SQL, integrating data extraction, transformation, and loading into a Power BI dashboard for business analytics and decision-making",
+    description: "Automated SQL ETL Pipeline: load into structured Data Warehouse using SQL Server procedures and bulk operations.",
     imageUrl: "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/SQL_first_pic.png?raw=true",
     slug: "sql",
     githubUrl: "https://github.com/AnderssonElin/playful-data-portfolio-61"
