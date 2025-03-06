@@ -10,25 +10,24 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import { AskMeProvider } from "./components/AskMe";
 import ViewportHeightFix from "./components/ViewportHeightFix";
-import { initGA, trackPageview } from "./lib/analytics";
+import { initGA, trackPageview, hasGAID } from "./lib/analytics";
 
-// Ersätt detta med ditt faktiska Google Analytics mätID
-const GA_MEASUREMENT_ID = "G-XXXXXXXXXX";
-
-// Komponent för att spåra sidvisningar
+// Component to track page views
 const RouteTracker = () => {
   const location = useLocation();
   const navigationType = useNavigationType();
 
   useEffect(() => {
-    // Initiera Google Analytics
-    initGA(GA_MEASUREMENT_ID);
+    // Initialize Google Analytics
+    initGA();
   }, []);
 
   useEffect(() => {
-    // Spåra sidvisning vid varje routeändring
-    const currentPath = location.pathname + location.search;
-    trackPageview(currentPath);
+    // Track page view on each route change
+    if (hasGAID()) {
+      const currentPath = location.pathname + location.search;
+      trackPageview(currentPath);
+    }
   }, [location]);
 
   return null;

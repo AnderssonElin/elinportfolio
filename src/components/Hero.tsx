@@ -94,9 +94,9 @@ FROM experience;`;
   ));
 
   const handleExecute = () => {
-    const timelineSection = document.getElementById('timeline');
-    if (timelineSection) {
-      timelineSection.scrollIntoView({ behavior: 'smooth' });
+    const projectsSection = document.getElementById('projects');
+    if (projectsSection) {
+      projectsSection.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
