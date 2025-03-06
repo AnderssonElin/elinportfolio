@@ -10,24 +10,21 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import { AskMeProvider } from "./components/AskMe";
 import ViewportHeightFix from "./components/ViewportHeightFix";
-import { initGA, trackPageview, hasGAID } from "./lib/analytics";
+import { initGA, trackPageview } from "./lib/analytics";
 
 // Component to track page views
 const RouteTracker = () => {
   const location = useLocation();
-  const navigationType = useNavigationType();
 
   useEffect(() => {
-    // Initialize Google Analytics
+    // Initialize Google Analytics once on component mount
     initGA();
   }, []);
 
   useEffect(() => {
     // Track page view on each route change
-    if (hasGAID()) {
-      const currentPath = location.pathname + location.search;
-      trackPageview(currentPath);
-    }
+    const currentPath = location.pathname + location.search;
+    trackPageview(currentPath);
   }, [location]);
 
   return null;

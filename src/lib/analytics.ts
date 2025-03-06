@@ -1,26 +1,17 @@
 
 import ReactGA from "react-ga4";
 
+// Initialize Google Analytics with the measurement ID directly in the code
+const GOOGLE_ANALYTICS_ID = "G-XXXXXXXXXX"; // Replace with your actual Google Analytics ID
+
 // Initialize Google Analytics
-export const initGA = (measurementId?: string) => {
-  // If a measurementId is provided, store it in localStorage
-  if (measurementId) {
-    localStorage.setItem("ga_id", measurementId);
+export const initGA = () => {
+  if (process.env.NODE_ENV === 'production') {
+    ReactGA.initialize(GOOGLE_ANALYTICS_ID);
+  } else {
+    console.log("GA initialized in development mode with ID:", GOOGLE_ANALYTICS_ID);
   }
-  
-  // Get the ID from localStorage
-  const storedId = localStorage.getItem("ga_id");
-  
-  if (storedId) {
-    if (process.env.NODE_ENV === 'production') {
-      ReactGA.initialize(storedId);
-    } else {
-      console.log("GA initialized in development mode with ID:", storedId);
-    }
-    return true;
-  }
-  
-  return false;
+  return true;
 };
 
 // Track pageviews
@@ -38,13 +29,7 @@ export const trackEvent = (category: string, action: string, label?: string, val
   });
 };
 
-// Set Google Analytics ID
-export const setGAID = (id: string) => {
-  localStorage.setItem("ga_id", id);
-  return initGA();
-};
-
-// Check if Google Analytics ID is set
+// Check if Google Analytics ID is set (always returns true in this implementation)
 export const hasGAID = () => {
-  return !!localStorage.getItem("ga_id");
+  return true;
 };
