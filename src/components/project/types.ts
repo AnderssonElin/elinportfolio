@@ -56,5 +56,13 @@ export const projectsData: ProjectType[] = [
     imageUrl: "https://github.com/AnderssonElin/elinportfolio/blob/main/images/nba_dashboard_1.PNG?raw=true",
     slug: "nba-dashboard",
     githubUrl: "https://github.com/AnderssonElin/playful-data-portfolio-61"
+  },
+  {
+    id: 7,
+    title: "Data Visualization Portfolio",
+    description: "Collection of interactive visualizations created with D3.js, Tableau, and Power BI for various business analytics use cases.",
+    imageUrl: "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/HimalayaK&V_Sälj.png?raw=true",
+    slug: "data-viz",
+    githubUrl: "https://github.com/AnderssonElin/playful-data-portfolio-61"
   }
 ];
