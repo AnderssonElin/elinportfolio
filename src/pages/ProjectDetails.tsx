@@ -1,4 +1,3 @@
-
 import { useEffect, useState, useRef, KeyboardEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import ProjectHeader from "@/components/project-details/ProjectHeader";
@@ -103,6 +102,21 @@ const projectsData: Record<string, ProjectData> = {
       "https://github.com/AnderssonElin/elinportfolio/blob/main/images/nba_dashboard_4.PNG?raw=true"
     ],
     githubUrl: "https://github.com/AnderssonElin/nba-dashboard"
+  },
+  "data-viz": {
+    id: 7,
+    title: "Data Visualization Portfolio",
+    year: "2023",
+    tech: ["Power BI", "D3.js", "Tableau", "Data Visualization"],
+    description: "This portfolio showcases a collection of interactive data visualizations created for various business analytics use cases. Using tools like D3.js, Tableau, and Power BI, I've designed dashboards and reports that transform complex data into intuitive visual insights. The project demonstrates best practices in information design, interactive filtering, and performance optimization for large datasets. Each visualization focuses on answering specific business questions and enabling data-driven decision making through clear visual communication.",
+    role: "As the data visualization specialist, I was responsible for gathering requirements, designing the visual approach, and implementing the technical solutions across multiple platforms. I translated complex business needs into effective visualizations, optimized dashboard performance, and ensured accessibility across devices. The role involved close collaboration with stakeholders to refine the visualizations based on feedback and evolving business needs.",
+    images: [
+      "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/HimalayaK&V_Sälj.png?raw=true",
+      "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/HimalayaK&V_HR.png?raw=true",
+      "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/HimalayaK&V_Kampanj.png?raw=true",
+      "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/HimalayaK&V_Ekonomi.png?raw=true"
+    ],
+    githubUrl: "https://github.com/AnderssonElin/playful-data-portfolio-61"
   }
 };
 
@@ -125,7 +139,6 @@ const ProjectDetails = ({ projectId, onClose }: ProjectDetailsProps) => {
       containerRef.current.scrollTop = 0;
     }
     
-    // Lägg till lyssnare för Escape-knappen
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
         onClose();
