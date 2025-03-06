@@ -15,8 +15,8 @@ const Index = () => {
   
   const sectionRefs = {
     hero: useRef<HTMLElement>(null),
-    timeline: useRef<HTMLElement>(null),
     projects: useRef<HTMLElement>(null),
+    timeline: useRef<HTMLElement>(null),
     contact: useRef<HTMLElement>(null),
   };
 
@@ -133,18 +133,7 @@ const Index = () => {
         </div>
       </section>
       
-      {/* Timeline section */}
-      <section 
-        ref={sectionRefs.timeline}
-        className="min-h-screen w-full flex items-center justify-center px-4" 
-        id="timeline"
-      >
-        <div className="w-full max-w-5xl flex items-center justify-center">
-          <Timeline />
-        </div>
-      </section>
-      
-      {/* Projects section */}
+      {/* Projects section (moved up) */}
       <section 
         ref={sectionRefs.projects}
         className="min-h-screen w-full flex items-center justify-center px-4" 
@@ -152,6 +141,17 @@ const Index = () => {
       >
         <div className="w-full max-w-5xl flex items-center justify-center">
           <Projects />
+        </div>
+      </section>
+      
+      {/* Timeline section (moved down) */}
+      <section 
+        ref={sectionRefs.timeline}
+        className="min-h-screen w-full flex items-center justify-center px-4" 
+        id="timeline"
+      >
+        <div className="w-full max-w-5xl flex items-center justify-center">
+          <Timeline />
         </div>
       </section>
       

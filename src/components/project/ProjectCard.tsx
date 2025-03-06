@@ -71,7 +71,7 @@ const ProjectCard = forwardRef<HTMLDivElement, ProjectCardProps>(({
               opacity: isHovered || isTouched || 
                       (isMobile && isDelayedVisible) ? 0 : 0.5
             }} 
-            transition={{ duration: 0.15 }} // Changed from 0.3 to 0.15 (half the time)
+            transition={{ duration: 0.15 }}
           />
           
           <div className="absolute inset-0 bg-gradient-to-r from-[#9b87f5]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -93,7 +93,7 @@ const ProjectCard = forwardRef<HTMLDivElement, ProjectCardProps>(({
               scale: isHovered || isTouched || 
                      (isMobile && isDelayedVisible) ? 1.05 : 1
             }} 
-            transition={{ duration: 0.2 }} // Changed from 0.4 to 0.2 (half the time)
+            transition={{ duration: 0.2 }}
           >
             <motion.img 
               src={project.imageUrl} 
@@ -103,7 +103,7 @@ const ProjectCard = forwardRef<HTMLDivElement, ProjectCardProps>(({
                 opacity: isHovered || isTouched || 
                         (isMobile && isDelayedVisible) ? 0.3 : 0.9
               }}
-              transition={{ duration: 0.3 }} // Changed from 0.6 to 0.3 (half the time)
+              transition={{ duration: 0.3 }}
             />
           </motion.div>
           
@@ -114,7 +114,7 @@ const ProjectCard = forwardRef<HTMLDivElement, ProjectCardProps>(({
               opacity: isHovered || isTouched || 
                       (isMobile && isDelayedVisible) ? 1 : 0
             }} 
-            transition={{ duration: 0.15 }} // Changed from 0.3 to 0.15 (half the time)
+            transition={{ duration: 0.15 }}
           >
             <h3 className="text-sm font-bold text-white mb-1">{project.title}</h3>
             <p className="text-gray-200 text-xs line-clamp-2">{project.description}</p>

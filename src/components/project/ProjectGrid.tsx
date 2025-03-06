@@ -77,7 +77,7 @@ const ProjectGrid = ({ onProjectSelect }: ProjectGridProps) => {
   }, [touchedId]);
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 gap-y-10 max-w-[85%] mx-auto">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 gap-y-10 max-w-[95%] mx-auto">
       {projectsData.map((project, index) => (
         <ProjectCard 
           key={project.id}
