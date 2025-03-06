@@ -36,7 +36,7 @@ export const projectsData: ProjectType[] = [
   {
     id: 4,
     title: "Data ETL & Analysis in SSIS and SSAS",
-    description: "Designed an SSIS ETL pipeline for flight data cleansing, built an SSAS tabular model for efficient analysis.",
+    description: "SSIS ETL pipeline for flight data cleansing, SSAS tabular model for analysis.",
     imageUrl: "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/SSIS_first_pic.png?raw=true",
     slug: "SSIS",
     githubUrl: "https://github.com/AnderssonElin/playful-data-portfolio-61"
@@ -44,7 +44,7 @@ export const projectsData: ProjectType[] = [
   {
     id: 5,
     title: "Machine Learning & Predictive Modeling in R",
-    description: "Developed a machine learning pipeline in R, using K-means clustering for data segmentation and random forest regression for predictive modeling.",
+    description: "Machine learning pipeline in R, K-means clustering and random forest regression.",
     imageUrl: "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/R_first_pic.png?raw=true",
     slug: "R-studio",
     githubUrl: "https://github.com/AnderssonElin/playful-data-portfolio-61"
