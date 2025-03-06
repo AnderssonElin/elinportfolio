@@ -88,7 +88,7 @@ const projectsData: Record<string, ProjectData> = {
       "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/R_kod.png?raw=true",
       "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/R_tabell.png?raw=true"
     ],
-    githubUrl: "https://github.com/AnderssonElin/playful-data-portfolio-61"
+    githubUrl: "https://github.com/AnderssonElin/Machine-Learning-R"
   },
   "nba-dashboard": {
     id: 6,
