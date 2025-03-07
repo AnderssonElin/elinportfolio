@@ -40,9 +40,9 @@ const projectsData: Record<string, ProjectData> = {
     description: "This project was developed as part of a team effort, focusing on machine learning-based predictive modeling and clustering using R. The dataset was cleaned and prepared by handling missing values and outliers before selecting relevant features for analysis. We applied unsupervised learning techniques, specifically K-means clustering, to segment companies based on workforce size and salary distribution, using the Elbow Method and Silhouette Score to determine the optimal number of clusters. In the predictive modeling phase, we implemented supervised machine learning techniques, training linear regression and random forest models to predict company financial performance. The models were evaluated using Mean Absolute Error (MAE), Mean Squared Error (MSE), and Root Mean Squared Error (RMSE) to compare predictive accuracy. We also tested whether incorporating cluster membership as a feature improved prediction performance.",
     role: "As part of the team, I contributed to data preprocessing, feature selection, and model development. I worked on K-means clustering and visualization, ensuring the segmentation was meaningful and interpretable. Additionally, I played a key role in designing, implementing, and evaluating the machine learning models, including training the random forest and regression models, tuning hyperparameters, and analyzing performance metrics. My contributions helped refine the predictive approach, making the insights more actionable for financial decision-making.",
     images: [
-      "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/R_first_pic.png?raw=true",
-      "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/R_kod.png?raw=true",
-      "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/R_tabell.png?raw=true"
+      "https://github.com/AnderssonElin/Machine-Learning-R/blob/main/images/R_cluster_1.png?raw=true",
+      "https://github.com/AnderssonElin/Machine-Learning-R/blob/main/images/R_code_2.png?raw=true",
+      "https://github.com/AnderssonElin/Machine-Learning-R/blob/main/images/R_code_3.png?raw=true"
     ],
     githubUrl: "https://github.com/AnderssonElin/Machine-Learning-R"
   },
@@ -69,10 +69,10 @@ const projectsData: Record<string, ProjectData> = {
     description: "This project involved the modeling and design of a structured banking database system, ensuring a well-defined structure with clear relationships between entities. The process began with a thorough needs analysis and data collection to identify essential business processes and data elements. A conceptual data model was created to map out the overarching structure, followed by a logical data model that detailed tables, columns, data types, and key business concepts. The database design was developed visually in draw.io, incorporating all relevant entities, defining relationships between columns, and establishing primary keys. The logical model was further refined into a physical data model, considering constraints and optimizations for database management systems. The final step included comprehensive documentation of the database schema, specifying table structures, column attributes, and relationship definitions to facilitate future implementation and development.",
     role: "I was responsible for developing the data architecture and ensuring a well-structured and efficient relational model. I created and refined the conceptual, logical, and physical data models, aligning them with real-world banking operations. Additionally, I documented the entire schema, ensuring clarity and ease of implementation in SQL Server while maintaining relational integrity and scalability.",
     images: [
-      "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/Bank_konceptuell%20ERD.jpg?raw=true",
-      "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/Bank_fysisk%20ERD.jpg?raw=true",
-      "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/Modellering_databas_diagram.png?raw=true",
-      "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/Modellering_sql.png?raw=true"
+      "https://github.com/AnderssonElin/bank_architecture/blob/main/images/1_bank_concept.jpg?raw=true",
+      "https://github.com/AnderssonElin/bank_architecture/blob/main/images/2_bank_erd.jpg?raw=true",
+      "https://github.com/AnderssonElin/bank_architecture/blob/main/images/3_bank_database.png?raw=true",
+      "https://github.com/AnderssonElin/bank_architecture/blob/main/images/4_bank_code.png?raw=true"
     ],
     githubUrl: "https://github.com/AnderssonElin/bank_architecture"
   },
@@ -84,7 +84,7 @@ const projectsData: Record<string, ProjectData> = {
     description: "This project is a complete ETL pipeline designed to extract, transform, and load (ETL) data into a structured data warehouse (DW). The implementation integrates raw data from AdventureWorks2019, processes it through a staging layer, and transforms it into a star schema model for analytics and reporting in Power BI. The solution includes: Data extraction & bulk loading using SQL BULK INSERT procedures, Data transformation & modeling with stored procedures and T-SQL operations, Dimensional modeling (Kimball approach) to optimize query performance, Fact & Dimension table relationships enabling efficient BI analysis, Automated data integration for Power BI reporting.",
     role: "In my role as a BI Analyst, I designed and implemented the ETL architecture, structured data pipelines, and created stored procedures for automated transformations. I developed a scalable star schema, ensuring optimized performance and seamless Power BI integration. Additionally, I built SQL views to provide end-users with easy access to business insights without complex queries.",
     images: [
-      "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/SQL_code.png?raw=true"
+      "https://github.com/AnderssonElin/etl-pipeline-sql/blob/main/images/1_sql_code.png?raw=true"
     ],
     githubUrl: "https://github.com/AnderssonElin/etl-pipeline-sql"
   },

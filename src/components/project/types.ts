@@ -20,7 +20,7 @@ export const projectsData: ProjectType[] = [
     id: 2,
     title: "Machine Learning & Predictive Modeling in R",
     description: "K-means clustering and random forest regression.",
-    imageUrl: "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/R_first_pic.png?raw=true",
+    imageUrl: "https://github.com/AnderssonElin/Machine-Learning-R/blob/main/images/R_cluster_1.png?raw=true",
     slug: "R-studio",
     githubUrl: "https://github.com/AnderssonElin/playful-data-portfolio-61"
   },
@@ -36,7 +36,7 @@ export const projectsData: ProjectType[] = [
     id: 4,
     title: "Banking System Data Architecture",
     description: "Banking database with Draw.io, SQL, and SSMS.",
-    imageUrl: "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/Bank_konceptuell%20ERD.jpg?raw=true",
+    imageUrl: "https://github.com/AnderssonElin/bank_architecture/blob/main/images/1_bank_concept.jpg?raw=true",
     slug: "draw.io",
     githubUrl: "https://github.com/AnderssonElin/bank_architecture"
   },
@@ -44,7 +44,7 @@ export const projectsData: ProjectType[] = [
     id: 5,
     title: "Automated SQL ETL Pipeline",
     description: "Data Warehouse using SQL Server procedures and bulk operations.",
-    imageUrl: "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/SQL_first_pic.png?raw=true",
+    imageUrl: "https://github.com/AnderssonElin/etl-pipeline-sql/blob/main/images/1_sql_code.png?raw=true",
     slug: "sql",
     githubUrl: "https://github.com/AnderssonElin/etl-pipeline-sql"
   },
