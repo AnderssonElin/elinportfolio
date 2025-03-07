@@ -51,7 +51,7 @@ export const projectsData: ProjectType[] = [
   {
     id: 6,
     title: "Dynamics 365 Sales Dashboard in Power BI",
-    description: "CRM data: pipeline analysis, market segmentation, product performance metrics.",
+    description: "Pipeline analysis, market segmentation, product performance metrics.",
     imageUrl: "https://github.com/AnderssonElin/sales-kpi-powerbi/blob/main/images/kpi_sample.png?raw=true",
     slug: "sales-kpi",
     githubUrl: "https://github.com/AnderssonElin/sales-kpi-powerbi"
