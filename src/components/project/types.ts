@@ -61,8 +61,8 @@ export const projectsData: ProjectType[] = [
     id: 7,
     title: "Data Visualization Portfolio",
     description: "Collection of interactive visualizations created with D3.js, Tableau, and Power BI for various business analytics use cases.",
-    imageUrl: "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/HimalayaK&V_Sälj.png?raw=true",
+    imageUrl: "https://github.com/AnderssonElin/sales-kpi-powerbi/blob/main/images/sample_kpi.png?raw=true",
     slug: "data-viz",
-    githubUrl: "https://github.com/AnderssonElin/playful-data-portfolio-61"
+    githubUrl: "https://github.com/AnderssonElin/sales-kpi-powerbi"
   }
 ];

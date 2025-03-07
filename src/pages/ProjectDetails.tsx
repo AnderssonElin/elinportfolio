@@ -107,16 +107,14 @@ const projectsData: Record<string, ProjectData> = {
     id: 7,
     title: "Data Visualization Portfolio",
     year: "2023",
-    tech: ["Power BI", "D3.js", "Tableau", "Data Visualization"],
-    description: "This portfolio showcases a collection of interactive data visualizations created for various business analytics use cases. Using tools like D3.js, Tableau, and Power BI, I've designed dashboards and reports that transform complex data into intuitive visual insights. The project demonstrates best practices in information design, interactive filtering, and performance optimization for large datasets. Each visualization focuses on answering specific business questions and enabling data-driven decision making through clear visual communication.",
-    role: "As the data visualization specialist, I was responsible for gathering requirements, designing the visual approach, and implementing the technical solutions across multiple platforms. I translated complex business needs into effective visualizations, optimized dashboard performance, and ensured accessibility across devices. The role involved close collaboration with stakeholders to refine the visualizations based on feedback and evolving business needs.",
+    tech: ["Power BI", "DAX", "Dynamics 365", "SQL", "DirectQuery"],
+    description: "A Power BI report that tracks sales goals and performance by analyzing data from Dynamics 365 CRM. The report includes pipeline analysis, market segmentation, product performance metrics, and annual revenue distribution for multi-year opportunities.",
+    role: "Responsible for designing and implementing the report, including data modeling, DAX calculations, and configuring the DirectQuery connection to Dynamics 365 CRM (using SQL in Power BI). Worked closely with stakeholders from the sales department and c-level management to ensure the report met business needs and optimized performance.",
     images: [
-      "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/HimalayaK&V_Sälj.png?raw=true",
-      "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/HimalayaK&V_HR.png?raw=true",
-      "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/HimalayaK&V_Kampanj.png?raw=true",
-      "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/HimalayaK&V_Ekonomi.png?raw=true"
+      "https://github.com/AnderssonElin/sales-kpi-powerbi/blob/main/images/dashboard_1.png?raw=true",
+      "https://github.com/AnderssonElin/sales-kpi-powerbi/blob/main/images/dashboard_2.png?raw=true"
     ],
-    githubUrl: "https://github.com/AnderssonElin/playful-data-portfolio-61"
+    githubUrl: "https://github.com/AnderssonElin/sales-kpi-powerbi"
   }
 };
 
