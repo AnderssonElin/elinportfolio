@@ -98,7 +98,7 @@
 
   body {
     @apply bg-background text-foreground;
-    cursor: url('/images/group.png'), auto;
+    cursor: url('/group.png') 16 16, auto;
     height: 100%;
     margin: 0;
     padding: 0;
@@ -111,7 +111,7 @@
   }
   
   a, button, [role="button"], .cursor-pointer {
-    cursor: url('/images/group.png'), pointer;
+    cursor: url('/group.png') 16 16, pointer;
   }
 
   /* Full screen section styles */
