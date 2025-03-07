@@ -58,7 +58,7 @@ const projectsData: Record<string, ProjectData> = {
       "https://github.com/AnderssonElin/skydata-analytics-SSIS-SSAS/blob/main/images/transformation_process.png?raw=true",
       "https://github.com/AnderssonElin/skydata-analytics-SSIS-SSAS/blob/main/images/ssas_model.png?raw=true"
     ],
-    githubUrl: "https://github.com/AnderssonElin/playful-data-portfolio-61"
+    githubUrl: "https://github.com/AnderssonElin/skydata-analytics-SSIS-SSAS/tree/main"
   },
   "draw.io": {
     id: 4,
