@@ -18,7 +18,7 @@ export const projectsData: ProjectType[] = [
     id: 2,
     title: "Machine Learning & Predictive Modeling in R",
     description: "K-means clustering and random forest regression.",
-    imageUrl: "https://github.com/AnderssonElin/Machine-Learning-R/blob/main/images/R_cluster_1.png?raw=true",
+    imageUrl: "https://github.com/AnderssonElin/Machine-Learning-R/blob/main/images/R_cluster_thumbnail.png?raw=true",
     slug: "R-studio"
   },
   {
