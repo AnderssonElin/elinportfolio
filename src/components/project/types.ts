@@ -14,7 +14,7 @@ export const projectsData: ProjectType[] = [
     description: "Python-powered insights with Dash, Pandas, Plotly and more.",
     imageUrl: "https://github.com/AnderssonElin/elinportfolio/blob/main/images/nba_dashboard_1.PNG?raw=true",
     slug: "nba-dashboard",
-    githubUrl: "https://github.com/AnderssonElin/playful-data-portfolio-61"
+    githubUrl: "https://github.com/AnderssonElin/nba-dashboard/blob/main/images/nba_dashboard_1.PNG?raw=true"
   },
   {
     id: 2,
