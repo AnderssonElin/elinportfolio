@@ -27,8 +27,8 @@ const projectsData: Record<string, ProjectData> = {
     role: "Led the development from concept to implementation. This included designing the scoring algorithms, integrating the NBA API for automated data retrieval, building the interactive dashboard with Dash, and structuring the analysis in Jupyter notebooks. Additionally, I handled data processing with Pandas and created the visualizations using Plotly to ensure an intuitive and insightful user experience.",
     images: [
       "https://github.com/AnderssonElin/nba-dashboard/blob/main/images/nba_dashboard_2.PNG?raw=true",
-      "https://github.com/AnderssonElin/nba-dashboard/blob/main/images/nba_dashboard_2.PNG?raw=true",
-      "https://github.com/AnderssonElin/nba-dashboard/blob/main/images/nba_dashboard_3.PNG?raw=true"
+      "https://github.com/AnderssonElin/nba-dashboard/blob/main/images/nba_dashboard_3.PNG?raw=true",
+      "https://github.com/AnderssonElin/nba-dashboard/blob/main/images/nba_dashboard_4.PNG?raw=true"
     ],
     githubUrl: "https://github.com/AnderssonElin/nba-dashboard"
   },
