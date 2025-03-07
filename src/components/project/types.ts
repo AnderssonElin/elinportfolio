@@ -25,7 +25,7 @@ export const projectsData: ProjectType[] = [
     id: 3,
     title: "Data ETL & Analysis in SSIS and SSAS",
     description: "Flight data cleansing, SSAS tabular model for analysis.",
-    imageUrl: "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/SSIS_first_pic.png?raw=true",
+    imageUrl: "https://github.com/AnderssonElin/skydata-analytics-SSIS-SSAS/blob/main/images/extraction_process.png?raw=true",
     slug: "SSIS"
   },
   {
