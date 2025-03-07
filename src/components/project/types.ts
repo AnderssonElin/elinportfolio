@@ -53,7 +53,7 @@ export const projectsData: ProjectType[] = [
     id: 7,
     title: "Power BI report in Sales",
     description: "Data-driven insights with ETL, DAX, and interactive dashboards.",
-    imageUrl: "https://github.com/AnderssonElin/Machine-Learning-R/blob/main/images/R_cluster_thumbnail.png?raw=true",
+    imageUrl: "https://github.com/AnderssonElin/finance-dashboard-pbi/blob/main/images/5_sales_projectthumbnail.png?raw=true",
     slug: "powerbi"
   }
 ];
