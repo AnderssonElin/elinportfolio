@@ -54,9 +54,9 @@ const projectsData: Record<string, ProjectData> = {
     description: "This project involved designing and implementing an ETL pipeline in SQL Server Integration Services (SSIS) to clean and transform flight data for analytical processing. The pipeline extracted raw flight records, performed data cleansing operations such as handling null values and formatting timestamps, and then loaded the refined data into a staging area before populating dimension and fact tables. A tabular model was created in SQL Server Analysis Services (SSAS) to simplify complex analytical queries and improve reporting performance. The cube was designed with well-structured relationships between fact and dimension tables, allowing for efficient aggregations and analysis.",
     role: "As the ETL Developer, I designed and implemented the SSIS pipeline, ensuring efficient data transformation and error handling throughout the process. I developed the tabular cube in SSAS, structuring the model to enhance analytical capabilities while optimizing query performance.",
     images: [
-      "https://raw.githubusercontent.com/AnderssonElin/skydata-analytics-SSIS-SSAS/refs/heads/main/images/dataflow_schema.png?token=GHSAT0AAAAAAC76PGRDT2SE4TATEVGXYQHMZ6LNNJA",
-      "https://raw.githubusercontent.com/AnderssonElin/skydata-analytics-SSIS-SSAS/refs/heads/main/images/transformation_process.png?token=GHSAT0AAAAAAC76PGRDRX6NJINQLOZAKMHCZ6LNNOA",
-      "https://raw.githubusercontent.com/AnderssonElin/skydata-analytics-SSIS-SSAS/refs/heads/main/images/ssas_model.png?token=GHSAT0AAAAAAC76PGRCOIW6SYPLCE5SEYVCZ6LNNVQ"
+      "https://github.com/AnderssonElin/skydata-analytics-SSIS-SSAS/blob/main/images/dataflow_schema.png?raw=true",
+      "https://github.com/AnderssonElin/skydata-analytics-SSIS-SSAS/blob/main/images/loading_process.png?raw=true",
+      "https://github.com/AnderssonElin/skydata-analytics-SSIS-SSAS/blob/main/images/ssas_model.png?raw=true"
     ],
     githubUrl: "https://github.com/AnderssonElin/skydata-analytics-SSIS-SSAS/tree/main"
   },
