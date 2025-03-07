@@ -109,10 +109,10 @@ const projectsData: Record<string, ProjectData> = {
     description: "This Power BI solution integrates and visualizes key business data across multiple departments, enabling data-driven decision-making and performance tracking. The project involved data modeling, ETL processes, advanced DAX calculations, and interactive dashboards to support strategic analysis in HR, Sales, Campaigns, and Finance.",
     role: "As a BI Analyst, I designed and built the data architecture, implemented optimized DAX calculations, and configured data pipelines to ensure accuracy and scalability. I worked closely with business stakeholders to define key performance indicators and tailored dashboards to improve analytics adoption across departments.",
     images: [
-      "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/HimalayaK&V_S%C3%A4lj.png?raw=true",
-      "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/HimalayaK&V_HR.png?raw=true",
-      "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/HimalayaK&V_Kampanj.png?raw=true",
-      "https://github.com/AnderssonElin/playful-data-portfolio-61/blob/main/images/HimalayaK&V_Ekonomi.png?raw=true"
+      "https://github.com/AnderssonElin/finance-dashboard-pbi/blob/main/images/1_financial.png?raw=true",
+      "https://github.com/AnderssonElin/finance-dashboard-pbi/blob/main/images/2_hr.png?raw=true",
+      "https://github.com/AnderssonElin/finance-dashboard-pbi/blob/main/images/3_campaign.png?raw=true",
+      "https://github.com/AnderssonElin/finance-dashboard-pbi/blob/main/images/4_sales.png?raw=true"
     ],
     githubUrl: "https://github.com/AnderssonElin/finance-dashboard-pbi"
   }
