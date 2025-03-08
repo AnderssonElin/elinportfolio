@@ -31,7 +31,7 @@ const Timeline = () => {
             viewport={{ once: true }}
             transition={{ delay: 0.3, duration: 0.5 }}
           >
-            In 2024, I got my climbing certification. I thought it would be about strength, but it turns out it's mostly about trusting ropes and life choices.
+            The first time I managed to squeeze three weeks' worth of travel gear into just 4.8 kg, I knew I'd found my calling: simplifying complexity. This same obsession with efficiency led me into Business Intelligence, where I've led several BI projects, turning messy data into clear and helpful insights.
           </motion.p>
           
           <motion.p 
@@ -41,7 +41,7 @@ const Timeline = () => {
             viewport={{ once: true }}
             transition={{ delay: 0.4, duration: 0.5 }}
           >
-            2023 was a year of change when I decided to completely change career paths. Still not sure if it was bravery or madness, but here we are.
+            My internships at different consulting firms have taught me the value of clearly communicating complicated ideas—something I regularly practice by teaching my parents how pivot tables work (still a challenge!). When I'm not conquering data, I'm probably at the climbing gym, officially certified but still cautiously facing my fear of heights. Or maybe re-watching "The Office"—proudly (or embarrassingly?) holding a personal record of finishing it in just 3 weeks and 2 days.
           </motion.p>
           
           <motion.p 
@@ -51,38 +51,11 @@ const Timeline = () => {
             viewport={{ once: true }}
             transition={{ delay: 0.5, duration: 0.5 }}
           >
-            Back in 2018, I binge-watched The Office in 3 weeks and 2 days, developing a deep emotional connection to fictional coworkers. See you tomorrow Dwight!
+            Whether it's automating reports, baking the perfect pizza, or delivering dad jokes so terrible they're impressive, I'm always curious and looking for ways to make everyday life easier, smarter, and definitely funnier.
           </motion.p>
           
-          <motion.div 
-            className="pt-4 border-t border-accent/30"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.6, duration: 0.5 }}
-          >
-            <p className="text-base sm:text-lg leading-relaxed">
-              My journey began in 2017 when I wrote my first line of code. I had no idea what I was doing but felt like a genius. And in 2015, I moved to England and quickly realized that "fancy a cuppa?" is the beginning of every serious conversation.
-            </p>
-          </motion.div>
         </div>
         
-        {/* Mission statement */}
-        <motion.div 
-          className="mt-10 pt-6 border-t border-accent/30"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.7, duration: 0.5 }}
-        >
-          <p className="text-accent italic text-base sm:text-lg leading-relaxed">
-            My mission is to combine creativity, functionality, and polish — all to create genuinely charming experiences that never get in the way of the user's goals.
-          </p>
-          
-          <p className="text-accent italic text-base sm:text-lg leading-relaxed mt-4">
-            But most importantly, I never take myself too seriously.
-          </p>
-        </motion.div>
       </motion.div>
     </div>
   );
