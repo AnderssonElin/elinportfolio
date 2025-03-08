@@ -71,7 +71,7 @@ const projectsData: Record<string, ProjectData> = {
       "https://github.com/AnderssonElin/bank_architecture/blob/main/images/1_bank_concept.jpg?raw=true",
       "https://github.com/AnderssonElin/bank_architecture/blob/main/images/2_bank_erd.jpg?raw=true",
       "https://github.com/AnderssonElin/bank_architecture/blob/main/images/3_bank_database.png?raw=true",
-      "https://github.com/AnderssonElin/bank_architecture/blob/main/images/4_bank_code.png?raw=true"
+      "https://github.com/AnderssonElin/bank_architecture/blob/main/images/4_bank_SQL.png?raw=true"
     ],
     githubUrl: "https://github.com/AnderssonElin/bank_architecture"
   },
