@@ -41,7 +41,7 @@ const Timeline = () => {
             viewport={{ once: true }}
             transition={{ delay: 0.4, duration: 0.5 }}
           >
-            My internships at different consulting firms have taught me the value of clearly communicating complicated ideas—something I regularly practice by teaching my parents how pivot tables work (still a challenge!). When I'm not conquering data, I'm probably at the climbing gym, officially certified but still cautiously facing my fear of heights. Or maybe re-watching "The Office"—proudly (or embarrassingly?) holding a personal record of finishing it in just 3 weeks and 2 days.
+            My internships at different consulting firms have taught me the value of clearly communicating complicated ideas — something I regularly practice by teaching my parents how pivot tables work (still a challenge!). When I'm not conquering data, I'm probably at the climbing gym, officially certified but still cautiously facing my fear of heights. Or maybe re-watching "The Office" — proudly (or embarrassingly?) holding a personal record of finishing it in just 3 weeks and 2 days.
           </motion.p>
           
           <motion.p 
