@@ -11,6 +11,7 @@ import NotFound from "./pages/NotFound";
 import { AskMeProvider } from "./components/AskMe";
 import ViewportHeightFix from "./components/ViewportHeightFix";
 import { initGA, trackPageview } from "./lib/analytics";
+import { CoinCounterProvider } from "./context/CoinCounterContext";
 
 // Component to track page views
 const RouteTracker = () => {
@@ -35,20 +36,22 @@ const queryClient = new QueryClient();
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-      <AskMeProvider>
-        <ViewportHeightFix />
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <RouteTracker />
-          <Header />
-          <Routes>
-            <Route path="/" element={<Index />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
-      </AskMeProvider>
+      <CoinCounterProvider>
+        <AskMeProvider>
+          <ViewportHeightFix />
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <RouteTracker />
+            <Header />
+            <Routes>
+              <Route path="/" element={<Index />} />
+              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </BrowserRouter>
+        </AskMeProvider>
+      </CoinCounterProvider>
     </TooltipProvider>
   </QueryClientProvider>
 );

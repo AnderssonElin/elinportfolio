@@ -116,7 +116,7 @@ FROM experience;`;
     <div className="flex items-center justify-center w-full h-full">
       <div className="w-full sm:w-[90%] max-w-3xl px-2 sm:px-4 flex flex-col items-center">
         <motion.div
-          className="bg-primary/30 p-2 sm:p-4 md:p-5 rounded-lg backdrop-blur-sm font-sql overflow-hidden w-full"
+          className="bg-primary/30 p-2 sm:p-4 md:p-5 rounded-lg font-sql overflow-hidden w-full"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}

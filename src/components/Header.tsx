@@ -3,11 +3,12 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Github, Linkedin, Mail, Download, Sparkles } from "lucide-react";
 import { useAskMeVisibility } from "./AskMe";
+import { useCoinCounter } from "../context/CoinCounterContext";
 
 const Header = () => {
-  const [clickCount, setClickCount] = useState(0);
   const [isScrolled, setIsScrolled] = useState(false);
   const { setIsVisible } = useAskMeVisibility();
+  const { count, incrementCount } = useCoinCounter();
 
   useEffect(() => {
     // Lyssna på scroll-händelser för att aktivera blur-effekten
@@ -25,8 +26,8 @@ const Header = () => {
     };
   }, []);
 
-  const handleClick = () => {
-    setClickCount(prev => prev + 1);
+  const handleClick = async () => {
+    await incrementCount();
     setIsVisible(true);
   };
 
@@ -84,7 +85,7 @@ const Header = () => {
                 ))}
               </motion.div>
               
-              <span className="text-white font-bold text-sm sm:text-base">{clickCount} 🧞‍♂️</span>
+              <span className="text-white font-bold text-sm sm:text-base">{count} 🧞‍♂️</span>
             </motion.button>
           </div>
           

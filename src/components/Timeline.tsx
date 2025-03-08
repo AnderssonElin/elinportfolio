@@ -5,7 +5,7 @@ const Timeline = () => {
   return (
     <div className="w-full flex flex-col justify-center py-8 px-4 sm:px-6">
       <motion.div 
-        className="max-w-3xl mx-auto bg-primary/50 backdrop-blur-sm p-6 sm:p-8 rounded-xl shadow-lg"
+        className="max-w-3xl mx-auto p-6 sm:p-8 rounded-xl"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
