@@ -120,17 +120,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 30vh;
   }
   
-  /* Första sektionen behöver kanske inte ha margin-top */
-  section:first-of-type {
-    margin-top: 0;
+  /* Lägg till padding-top på alla sektioner utom hero-sektionen */
+  section:not(#hero) {
+    padding-top: 5rem; /* Ungefär höjden på header plus lite extra utrymme */
   }
   
-  /* Sista sektionen behöver kanske inte ha margin-bottom */
-  section:last-of-type {
-    margin-bottom: 0;
+  /* Om du vill ha mer avstånd mellan sektionerna kan du också lägga till margin-bottom */
+  section:not(:last-child) {
+    margin-bottom: 2rem;
   }
   
   /* Transparent background for all sections */
