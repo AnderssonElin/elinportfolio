@@ -124,7 +124,7 @@
   
   /* Lägg till padding-top på alla sektioner utom hero-sektionen */
   section:not(#hero) {
-    padding-top: 5rem; /* Ungefär höjden på header plus lite extra utrymme */
+    padding-top: 4rem; /* Ungefär höjden på header plus lite extra utrymme */
   }
   
   /* Om du vill ha mer avstånd mellan sektionerna kan du också lägga till margin-bottom */
