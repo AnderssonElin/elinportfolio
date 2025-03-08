@@ -8,7 +8,7 @@ import { useCoinCounter } from "../context/CoinCounterContext";
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const { setIsVisible } = useAskMeVisibility();
-  const { count, incrementCount } = useCoinCounter();
+  const { count, incrementCount, isLoading } = useCoinCounter();
 
   useEffect(() => {
     // Lyssna på scroll-händelser för att aktivera blur-effekten
@@ -48,6 +48,7 @@ const Header = () => {
               onClick={handleClick}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              disabled={isLoading}
             >
               {/* Glitter animation runt countern */}
               <motion.div 
@@ -85,7 +86,9 @@ const Header = () => {
                 ))}
               </motion.div>
               
-              <span className="text-white font-bold text-sm sm:text-base">{count} 🧞‍♂️</span>
+              <span className="text-white font-bold text-sm sm:text-base">
+                {isLoading ? "Laddar..." : `${count} 🧞‍♂️`}
+              </span>
             </motion.button>
           </div>
           

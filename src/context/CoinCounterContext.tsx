@@ -6,6 +6,7 @@ import { toast } from '@/components/ui/use-toast';
 interface CoinCounterContextType {
   count: number;
   incrementCount: () => Promise<void>;
+  isLoading: boolean;
 }
 
 const CoinCounterContext = createContext<CoinCounterContextType | undefined>(undefined);
@@ -20,10 +21,10 @@ export const useCoinCounter = () => {
 
 export const CoinCounterProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [count, setCount] = useState<number>(0);
-  const [loading, setLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
+  // Hämta räknaren från databasen när komponenten monteras
   useEffect(() => {
-    // Fetch the current count from Supabase when the component mounts
     const fetchCount = async () => {
       try {
         const { data, error } = await supabase
@@ -44,14 +45,14 @@ export const CoinCounterProvider: React.FC<{ children: React.ReactNode }> = ({ c
       } catch (error) {
         console.error('Error in fetchCount:', error);
       } finally {
-        setLoading(false);
+        setIsLoading(false);
       }
     };
 
     fetchCount();
 
-    // Set up a subscription to listen for changes
-    const subscription = supabase
+    // Sätt upp en prenumeration för att lyssna på ändringar
+    const channel = supabase
       .channel('coin_counter_changes')
       .on('postgres_changes', { 
         event: 'UPDATE', 
@@ -67,39 +68,51 @@ export const CoinCounterProvider: React.FC<{ children: React.ReactNode }> = ({ c
       .subscribe();
 
     return () => {
-      subscription.unsubscribe();
+      channel.unsubscribe();
     };
   }, []);
 
   const incrementCount = async () => {
     try {
-      // Call the RPC function to increment the count
+      // Anropa RPC-funktionen för att öka räknaren
       const { data, error } = await supabase
         .rpc('increment_coin_counter', { row_id: 1 });
       
       if (error) {
-        console.error('Error incrementing count:', error);
+        console.error('Error incrementing count:', error.message);
         toast({
           title: "Error",
-          description: "Failed to increment count. Please try again.",
+          description: "Kunde inte öka räknaren. Försök igen.",
           variant: "destructive"
         });
         return;
       }
       
-      // Update state with the new count returned from the function
+      // Uppdatera state med det nya antalet som returneras från funktionen
       if (data !== null) {
         console.log('New count from increment function:', data);
         setCount(data);
+        
+        // Bekräftelse toast (frivilligt)
+        toast({
+          title: "Räknaren ökad",
+          description: `Ny räkning: ${data}`,
+          variant: "default"
+        });
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error('Error in incrementCount:', error);
+      toast({
+        title: "Error",
+        description: error?.message || "Ett fel uppstod. Försök igen.",
+        variant: "destructive"
+      });
     }
   };
 
   return (
-    <CoinCounterContext.Provider value={{ count, incrementCount }}>
-      {!loading && children}
+    <CoinCounterContext.Provider value={{ count, incrementCount, isLoading }}>
+      {!isLoading && children}
     </CoinCounterContext.Provider>
   );
 };

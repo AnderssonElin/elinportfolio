@@ -29,7 +29,12 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      increment_coin_counter: {
+        Args: {
+          row_id?: number
+        }
+        Returns: number
+      }
     }
     Enums: {
       [_ in never]: never
