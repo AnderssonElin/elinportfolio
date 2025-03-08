@@ -120,6 +120,17 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: 20vh;
+  }
+  
+  /* Första sektionen behöver kanske inte ha margin-top */
+  section:first-of-type {
+    margin-top: 0;
+  }
+  
+  /* Sista sektionen behöver kanske inte ha margin-bottom */
+  section:last-of-type {
+    margin-bottom: 0;
   }
   
   /* Transparent background for all sections */
