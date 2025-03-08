@@ -39,7 +39,7 @@ export const projectsData: ProjectType[] = [
     id: 5,
     title: "Automated SQL ETL Pipeline",
     description: "Data Warehouse using SQL Server procedures and bulk operations.",
-    imageUrl: "https://github.com/AnderssonElin/etl-pipeline-sql/blob/main/images/1_sql_code.png?raw=true",
+    imageUrl: "https://github.com/AnderssonElin/etl-pipeline-sql/blob/main/images/SQL_first_pic.png?raw=true",
     slug: "sql"
   },
   {
