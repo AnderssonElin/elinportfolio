@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Github, Linkedin, Mail, Download, Sparkles } from "lucide-react";
@@ -28,6 +27,24 @@ const Header = () => {
   const handleClick = () => {
     setClickCount(prev => prev + 1);
     setIsVisible(true);
+  };
+
+  const scrollToSection = (id: string) => {
+    setIsMobileMenuOpen(false);
+    const element = document.getElementById(id);
+    if (element) {
+      // Beräkna headerns höjd
+      const headerHeight = document.querySelector('header')?.offsetHeight || 0;
+      
+      // Beräkna elementets position
+      const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+      
+      // Skrolla till elementet minus headerns höjd
+      window.scrollTo({
+        top: elementPosition - headerHeight,
+        behavior: "smooth"
+      });
+    }
   };
 
   return (
