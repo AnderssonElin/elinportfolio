@@ -1,6 +1,7 @@
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { supabase } from '../integrations/supabase/client';
+import { toast } from '@/components/ui/use-toast';
 
 interface CoinCounterContextType {
   count: number;
@@ -37,6 +38,7 @@ export const CoinCounterProvider: React.FC<{ children: React.ReactNode }> = ({ c
         }
 
         if (data) {
+          console.log('Initial count from database:', data.count);
           setCount(data.count);
         }
       } catch (error) {
@@ -57,6 +59,7 @@ export const CoinCounterProvider: React.FC<{ children: React.ReactNode }> = ({ c
         table: 'coin_counter',
         filter: 'id=eq.1'
       }, (payload) => {
+        console.log('Received update from subscription:', payload);
         if (payload.new && typeof payload.new.count === 'number') {
           setCount(payload.new.count);
         }
@@ -70,22 +73,27 @@ export const CoinCounterProvider: React.FC<{ children: React.ReactNode }> = ({ c
 
   const incrementCount = async () => {
     try {
-      // Update the local state optimistically
-      setCount(prevCount => prevCount + 1);
-      
-      // Update the count in the database
-      const { error } = await supabase
+      // Call the RPC function to increment the count
+      const { data, error } = await supabase
         .rpc('increment_coin_counter', { row_id: 1 });
       
       if (error) {
         console.error('Error incrementing count:', error);
-        // Revert the optimistic update if there was an error
-        setCount(prevCount => prevCount - 1);
+        toast({
+          title: "Error",
+          description: "Failed to increment count. Please try again.",
+          variant: "destructive"
+        });
+        return;
+      }
+      
+      // Update state with the new count returned from the function
+      if (data !== null) {
+        console.log('New count from increment function:', data);
+        setCount(data);
       }
     } catch (error) {
       console.error('Error in incrementCount:', error);
-      // Revert the optimistic update if there was an error
-      setCount(prevCount => prevCount - 1);
     }
   };
 
