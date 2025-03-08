@@ -3,29 +3,29 @@ import { motion } from "framer-motion";
 
 const timelineData = [
   {
+    year: "2024",
+    title: "Got my climbing certification",
+    description: "Thought it would be about strength, turns out it’s mostly about trusting ropes and life choices",
+  },
+  {
     year: "2023",
-    title: "Senior BI Analyst",
-    description: "Led data transformation initiatives across multiple departments",
+    title: "Decided to completely change career paths",
+    description: "Still not sure if it was bravery or madness, but here we are",
   },
   {
-    year: "2022",
-    title: "Data Science Course",
-    description: "Completed advanced certification in data science and machine learning",
+    year: "2018",
+    title: "Binge-watched The Office in 3 weeks and 2 days",
+    description: "Developed a deep emotional connection to fictional coworkers. See you tomorrow Dwight!",
   },
   {
-    year: "2021",
-    title: "BI Consultant",
-    description: "Helped 20+ companies optimize their data strategy",
+    year: "2017",
+    title: "Wrote my first line of code",
+    description: "Had no idea what I was doing but felt like a genius",
   },
   {
-    year: "2020",
-    title: "Analytics Lead",
-    description: "Managed a team of analysts for a major e-commerce platform",
-  },
-  {
-    year: "2019",
-    title: "Data Analyst",
-    description: "Started my journey in data analytics",
+    year: "2015",
+    title: "Moved to England",
+    description: "Realized that “fancy a cuppa?” is the beginning of every serious conversation",
   },
 ];
 
