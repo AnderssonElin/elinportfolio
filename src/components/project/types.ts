@@ -32,7 +32,7 @@ export const projectsData: ProjectType[] = [
     id: 4,
     title: "Banking System Data Architecture",
     description: "Banking database with Draw.io, SQL, and SSMS.",
-    imageUrl: "https://github.com/AnderssonElin/bank_architecture/blob/main/images/1_bank_concept.jpg?raw=true",
+    imageUrl: "https://github.com/AnderssonElin/bank_architecture/blob/main/images/0_bank_front_page.png?raw=true",
     slug: "draw.io"
   },
   {
