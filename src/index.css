@@ -114,6 +114,11 @@
     cursor: url('/images/cursor_small.png'), pointer;
   }
 
+  /* Säkerställ att den anpassade muspekaren visas över alla element */
+  img, svg, video, canvas, iframe, div, span, p, h1, h2, h3, h4, h5, h6, input, textarea, select {
+    cursor: url('/images/cursor_small.png'), auto !important;
+  }
+
   /* Full screen section styles */
   section {
     min-height: 100vh;
