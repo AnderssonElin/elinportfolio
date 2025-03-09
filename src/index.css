@@ -134,7 +134,7 @@
   
   /* Om du vill ha mer avstånd mellan sektionerna kan du också lägga till margin-bottom */
   section:not(:last-child) {
-    margin-bottom: 15rem;
+    margin-bottom: 10rem;
   }
   
   /* Transparent background for all sections */
