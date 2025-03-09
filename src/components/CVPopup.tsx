@@ -32,9 +32,9 @@ export const useCVPopupVisibility = () => {
 const CVPopup = () => {
   const { isVisible, setIsVisible } = useCVPopupVisibility();
   
-  // URL:er för CV-filerna
+  // URLs for CV files
   const englishCVUrl = "https://drive.google.com/file/d/1yAX0uWaitCJcuYLzuX-d6e81JR_HmAV8/view?usp=sharing";
-  const swedishCVUrl = "https://drive.google.com/file/d/1yAX0uWaitCJcuYLzuX-d6e81JR_HmAV8/view?usp=sharing"; // Ersätt med korrekt URL för det svenska CV:t
+  const swedishCVUrl = "https://drive.google.com/file/d/1yAX0uWaitCJcuYLzuX-d6e81JR_HmAV8/view?usp=sharing"; // Replace with correct URL for the Swedish CV
 
   return (
     <AnimatePresence>
@@ -64,10 +64,10 @@ const CVPopup = () => {
               <X className="w-6 h-6" />
             </button>
 
-            <h2 className="text-3xl font-bold text-center text-white mb-8">Ladda ner CV</h2>
+            <h2 className="text-3xl font-bold text-center text-white mb-8">Download CV</h2>
             
             <div className="space-y-6">
-              <p className="text-center text-white text-lg">Välj vilket språk du vill ladda ner CV:t på:</p>
+              <p className="text-center text-white text-lg">Choose which language you want to download the CV in:</p>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <motion.a
@@ -79,7 +79,7 @@ const CVPopup = () => {
                   whileTap={{ scale: 0.97 }}
                 >
                   <FileText className="w-5 h-5" />
-                  <span>English CV</span>
+                  <span>English</span>
                   <Download className="w-4 h-4 ml-1" />
                 </motion.a>
                 
@@ -92,7 +92,7 @@ const CVPopup = () => {
                   whileTap={{ scale: 0.97 }}
                 >
                   <FileText className="w-5 h-5" />
-                  <span>Svenska CV</span>
+                  <span>Svenska</span>
                   <Download className="w-4 h-4 ml-1" />
                 </motion.a>
               </div>
