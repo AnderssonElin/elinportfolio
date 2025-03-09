@@ -33,8 +33,8 @@ const CVPopup = () => {
   const { isVisible, setIsVisible } = useCVPopupVisibility();
   
   // URLs for CV files
-  const englishCVUrl = "https://drive.google.com/file/d/1yAX0uWaitCJcuYLzuX-d6e81JR_HmAV8/view?usp=sharing";
-  const swedishCVUrl = "https://drive.google.com/file/d/1yAX0uWaitCJcuYLzuX-d6e81JR_HmAV8/view?usp=sharing"; // Replace with correct URL for the Swedish CV
+  const englishCVUrl = "https://drive.google.com/file/d/1K3umbgOVYpv5CJX92RfSkQia9b0L7E9k/view?usp=sharing";
+  const swedishCVUrl = "https://drive.google.com/file/d/1K3umbgOVYpv5CJX92RfSkQia9b0L7E9k/view?usp=sharing"; // Replace with correct URL for the Swedish CV
 
   return (
     <AnimatePresence>
