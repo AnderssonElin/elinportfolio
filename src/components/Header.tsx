@@ -3,11 +3,13 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Github, Linkedin, Mail, Download, Sparkles } from "lucide-react";
 import { useAskMeVisibility } from "./AskMe";
+import { useCVPopupVisibility } from "./CVPopup";
 import { useCoinCounter } from "../context/CoinCounterContext";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const { setIsVisible } = useAskMeVisibility();
+  const { setIsVisible: setAskMeVisible } = useAskMeVisibility();
+  const { setIsVisible: setCVPopupVisible } = useCVPopupVisibility();
   const { count, incrementCount, isLoading } = useCoinCounter();
 
   useEffect(() => {
@@ -28,7 +30,11 @@ const Header = () => {
 
   const handleClick = async () => {
     await incrementCount();
-    setIsVisible(true);
+    setAskMeVisible(true);
+  };
+
+  const handleCVClick = () => {
+    setCVPopupVisible(true);
   };
 
   return (
@@ -127,15 +133,15 @@ const Header = () => {
               </motion.a>
             </div>
             
-            <a
-              href="https://drive.google.com/file/d/1yAX0uWaitCJcuYLzuX-d6e81JR_HmAV8/view?usp=sharing"
-              target="_blank"
-              rel="noopener noreferrer"
+            <motion.button
+              onClick={handleCVClick}
               className="bg-accent hover:bg-accent/90 text-white px-2 py-1 sm:px-3 sm:py-2 rounded-md flex items-center gap-1 transition-colors text-xs sm:text-sm"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
               <Download className="w-3 h-3 sm:w-4 sm:h-4" />
               <span className="inline">CV</span>
-            </a>
+            </motion.button>
           </div>
         </div>
       </div>
