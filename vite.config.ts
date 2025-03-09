@@ -23,7 +23,7 @@ export default defineConfig(({ mode }) => ({
     },
   },
   // Needed for deploying to netlify
-   build: {
-     outDir: 'build/client'
+  // build: {
+  //   outDir: 'build/client'
    }
 }));
