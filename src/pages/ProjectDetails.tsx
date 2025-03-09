@@ -21,7 +21,7 @@ const projectsData: Record<string, ProjectData> = {
   "nba-dashboard": {
     id: 1,
     title: "NBA API using Pandas",
-    year: "2023",
+    year: "2025",
     tech: ["Python", "NBA API", "Pandas", "Plotly", "Dash", "Jupyter"],
     description: "The NBA Game Analysis Dashboard is an interactive tool that evaluates and visualizes the quality of NBA games based on various metrics. It analyzes factors like score closeness, lead changes, overtime periods, three-point shooting, and star performances to assign each game a quality score and grade (A+ to D). Built with Python, the project features both a web-based dashboard (using Dash) for real-time analysis and Jupyter notebooks for detailed exploration. Using the NBA API, it automatically fetches game data, processes it through scoring algorithms (implemented with Pandas), and presents the results through interactive visualizations (powered by Plotly) including radar charts, scatter plots, and detailed data tables. This makes it easy for users to identify the most exciting games and understand what makes them interesting, whether through the interactive dashboard or through custom analysis in notebooks.",
     role: "Led the development from concept to implementation. This included designing the scoring algorithms, integrating the NBA API for automated data retrieval, building the interactive dashboard with Dash, and structuring the analysis in Jupyter notebooks. Additionally, I handled data processing with Pandas and created the visualizations using Plotly to ensure an intuitive and insightful user experience.",
@@ -63,7 +63,7 @@ const projectsData: Record<string, ProjectData> = {
   "draw.io": {
     id: 4,
     title: "Banking System Data Model",
-    year: "2023",
+    year: "2024",
     tech: ["draw.io", "SQL", "SSMS"],
     description: "This project involved the modeling and design of a structured banking database system, ensuring a well-defined structure with clear relationships between entities. The process began with a thorough needs analysis and data collection to identify essential business processes and data elements. A conceptual data model was created to map out the overarching structure, followed by a logical data model that detailed tables, columns, data types, and key business concepts. The database design was developed visually in draw.io, incorporating all relevant entities, defining relationships between columns, and establishing primary keys. The logical model was further refined into a physical data model, considering constraints and optimizations for database management systems. The final step included comprehensive documentation of the database schema, specifying table structures, column attributes, and relationship definitions to facilitate future implementation and development.",
     role: "I was responsible for developing the data architecture and ensuring a well-structured and efficient relational model. I created and refined the conceptual, logical, and physical data models, aligning them with real-world banking operations. Additionally, I documented the entire schema, ensuring clarity and ease of implementation in SQL Server while maintaining relational integrity and scalability.",
