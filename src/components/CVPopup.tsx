@@ -33,7 +33,7 @@ const CVPopup = () => {
   const { isVisible, setIsVisible } = useCVPopupVisibility();
   
   // URLs for CV files
-  const englishCVUrl = "https://drive.google.com/file/d/1XqjGGosH4YAgKx-dANcqcUe5duTUZ7Fh/view?usp=sharing";
+  const englishCVUrl = "https://drive.google.com/file/d/1Trh3r-U0kB_XNM-iXJ07vU0sDHX_Jxm-/view?usp=sharing"; // Replace with correct URL for the English CV
   const swedishCVUrl = "https://drive.google.com/file/d/1XqjGGosH4YAgKx-dANcqcUe5duTUZ7Fh/view?usp=sharing"; // Replace with correct URL for the Swedish CV
 
   return (
