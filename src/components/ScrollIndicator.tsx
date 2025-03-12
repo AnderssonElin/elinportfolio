@@ -14,7 +14,7 @@ const ScrollIndicator = () => {
             y: [0, 10, 20],
           }}
           transition={{
-            duration: 1.5,
+            duration: 0.5,
             delay: index * 0.3,
             repeat: Infinity,
             repeatType: "loop",
