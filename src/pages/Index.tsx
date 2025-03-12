@@ -8,6 +8,7 @@ import Copyright from "@/components/Copyright";
 import BackgroundAnimation from "@/components/BackgroundAnimation";
 import { motion, AnimatePresence } from "framer-motion";
 import { useIsMobile } from "@/hooks/use-mobile";
+import ScrollIndicator from "@/components/ScrollIndicator";
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState("hero");
@@ -125,40 +126,43 @@ const Index = () => {
       {/* Hero section */}
       <section 
         ref={sectionRefs.hero}
-        className="min-h-screen w-full flex items-center justify-center px-4"
+        className="relative min-h-screen w-full flex items-center justify-center px-4"
         id="hero"
       >
         <div className="w-full max-w-5xl flex items-center justify-center">
           <Hero />
         </div>
+        <ScrollIndicator />
       </section>
       
       {/* Projects section - moved before Timeline */}
       <section 
         ref={sectionRefs.projects}
-        className="min-h-screen w-full flex items-center justify-center px-4" 
+        className="relative min-h-screen w-full flex items-center justify-center px-4" 
         id="projects"
       >
         <div className="w-full max-w-5xl flex items-center justify-center">
           <Projects />
         </div>
+        <ScrollIndicator />
       </section>
       
       {/* Timeline section - moved after Projects */}
       <section 
         ref={sectionRefs.timeline}
-        className="min-h-screen w-full flex items-center justify-center px-4" 
+        className="relative min-h-screen w-full flex items-center justify-center px-4" 
         id="timeline"
       >
         <div className="w-full max-w-5xl flex items-center justify-center">
           <Timeline />
         </div>
+        {/* No ScrollIndicator on the last section */}
       </section>
       
       {/* Final section */}
       <section 
         ref={sectionRefs.contact}
-        className="min-h-screen w-full flex flex-col items-center justify-center px-4"
+        className="relative min-h-screen w-full flex flex-col items-center justify-center px-4"
         id="contact"
       >
         <div className="w-full max-w-5xl">
