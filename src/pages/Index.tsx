@@ -1,4 +1,3 @@
-
 import { useEffect, useState, useRef } from "react";
 import Hero from "@/components/Hero";
 import Timeline from "@/components/Timeline";
@@ -62,6 +61,9 @@ const Index = () => {
     };
   }, []);
 
+  // Determine if we should show the scroll indicator
+  const shouldShowScrollIndicator = activeSection === "hero" || activeSection === "projects";
+
   return (
     <div className="relative bg-secondary min-h-screen">
       {/* Background animation that covers the entire page */}
@@ -123,6 +125,9 @@ const Index = () => {
         ))}
       </div>
       
+      {/* Scroll indicator - only show on specific sections */}
+      {shouldShowScrollIndicator && <ScrollIndicator />}
+      
       {/* Hero section */}
       <section 
         ref={sectionRefs.hero}
@@ -132,7 +137,6 @@ const Index = () => {
         <div className="w-full max-w-5xl flex items-center justify-center">
           <Hero />
         </div>
-        <ScrollIndicator />
       </section>
       
       {/* Projects section - moved before Timeline */}
@@ -144,7 +148,6 @@ const Index = () => {
         <div className="w-full max-w-5xl flex items-center justify-center">
           <Projects />
         </div>
-        <ScrollIndicator />
       </section>
       
       {/* Timeline section - moved after Projects */}
@@ -156,7 +159,6 @@ const Index = () => {
         <div className="w-full max-w-5xl flex items-center justify-center">
           <Timeline />
         </div>
-        {/* No ScrollIndicator on the last section */}
       </section>
       
       {/* Final section */}
