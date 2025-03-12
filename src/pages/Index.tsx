@@ -1,3 +1,4 @@
+
 import { useEffect, useState, useRef } from "react";
 import Hero from "@/components/Hero";
 import Timeline from "@/components/Timeline";
@@ -7,7 +8,6 @@ import Copyright from "@/components/Copyright";
 import BackgroundAnimation from "@/components/BackgroundAnimation";
 import { motion, AnimatePresence } from "framer-motion";
 import { useIsMobile } from "@/hooks/use-mobile";
-import ScrollIndicator from "@/components/ScrollIndicator";
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState("hero");
@@ -60,9 +60,6 @@ const Index = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-
-  // Determine if we should show the scroll indicator
-  const shouldShowScrollIndicator = activeSection === "hero" || activeSection === "projects";
 
   return (
     <div className="relative bg-secondary min-h-screen">
@@ -125,13 +122,10 @@ const Index = () => {
         ))}
       </div>
       
-      {/* Scroll indicator - only show on specific sections */}
-      {shouldShowScrollIndicator && <ScrollIndicator />}
-      
       {/* Hero section */}
       <section 
         ref={sectionRefs.hero}
-        className="relative min-h-screen w-full flex items-center justify-center px-4"
+        className="min-h-screen w-full flex items-center justify-center px-4"
         id="hero"
       >
         <div className="w-full max-w-5xl flex items-center justify-center">
@@ -142,7 +136,7 @@ const Index = () => {
       {/* Projects section - moved before Timeline */}
       <section 
         ref={sectionRefs.projects}
-        className="relative min-h-screen w-full flex items-center justify-center px-4" 
+        className="min-h-screen w-full flex items-center justify-center px-4" 
         id="projects"
       >
         <div className="w-full max-w-5xl flex items-center justify-center">
@@ -153,7 +147,7 @@ const Index = () => {
       {/* Timeline section - moved after Projects */}
       <section 
         ref={sectionRefs.timeline}
-        className="relative min-h-screen w-full flex items-center justify-center px-4" 
+        className="min-h-screen w-full flex items-center justify-center px-4" 
         id="timeline"
       >
         <div className="w-full max-w-5xl flex items-center justify-center">
@@ -164,7 +158,7 @@ const Index = () => {
       {/* Final section */}
       <section 
         ref={sectionRefs.contact}
-        className="relative min-h-screen w-full flex flex-col items-center justify-center px-4"
+        className="min-h-screen w-full flex flex-col items-center justify-center px-4"
         id="contact"
       >
         <div className="w-full max-w-5xl">
