@@ -1,4 +1,3 @@
-
 import { useEffect, useState, useRef } from "react";
 import Hero from "@/components/Hero";
 import Timeline from "@/components/Timeline";
@@ -6,6 +5,7 @@ import Projects from "@/components/Projects";
 import Footer from "@/components/Footer";
 import Copyright from "@/components/Copyright";
 import BackgroundAnimation from "@/components/BackgroundAnimation";
+import ScrollIndicator from "@/components/ScrollIndicator";
 import { motion, AnimatePresence } from "framer-motion";
 import { useIsMobile } from "@/hooks/use-mobile";
 
@@ -19,6 +19,8 @@ const Index = () => {
     timeline: useRef<HTMLElement>(null),
     contact: useRef<HTMLElement>(null),
   };
+
+  const isLastSection = activeSection === 'contact';
 
   useEffect(() => {
     const handleAnchorClick = (e: MouseEvent) => {
@@ -121,6 +123,9 @@ const Index = () => {
           </div>
         ))}
       </div>
+      
+      {/* Scroll indicator - only show if not on the last section */}
+      {!isLastSection && <ScrollIndicator />}
       
       {/* Hero section */}
       <section 
