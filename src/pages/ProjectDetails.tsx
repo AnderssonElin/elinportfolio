@@ -1,3 +1,4 @@
+
 import { useEffect, useState, useRef, KeyboardEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import ProjectHeader from "@/components/project-details/ProjectHeader";
@@ -176,6 +177,13 @@ const ProjectDetails = ({ projectId, onClose }: ProjectDetailsProps) => {
     window.open(imageSrc, '_blank');
   };
   
+  const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    // Only close if clicking the backdrop directly, not the modal content
+    if (e.target === e.currentTarget) {
+      onClose();
+    }
+  };
+  
   if (!project) {
     return <ProjectNotFound onClose={onClose} />;
   }
@@ -188,6 +196,7 @@ const ProjectDetails = ({ projectId, onClose }: ProjectDetailsProps) => {
         exit={{ opacity: 0 }}
         transition={{ duration: 0.25 }}
         className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center"
+        onClick={handleBackdropClick}
       >
         <motion.div 
           ref={containerRef}
@@ -201,6 +210,7 @@ const ProjectDetails = ({ projectId, onClose }: ProjectDetailsProps) => {
             stiffness: 350, 
             duration: 0.15 
           }}
+          onClick={(e) => e.stopPropagation()} // Prevent clicks inside from closing
         >
           <ProjectHeader 
             title={project.title} 
