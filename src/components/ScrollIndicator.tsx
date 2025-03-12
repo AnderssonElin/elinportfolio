@@ -15,7 +15,7 @@ const ScrollIndicator = () => {
           }}
           transition={{
             duration: 3.0,
-            delay: index * 0.3,
+            delay: index * 0.6,
             repeat: Infinity,
             repeatType: "loop",
             ease: "easeInOut",
