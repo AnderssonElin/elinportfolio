@@ -29,6 +29,24 @@ const funResponses = [
   "This question requires advanced analytics… or we could just guess like we always do?",
 ];
 
+// Pre-compute firework positions to reduce layout calculation during animation
+const fireworkPositions = [...Array(12)].map(() => ({
+  left: `${Math.random() * 100}%`,
+  top: `${Math.random() * 100}%`,
+}));
+
+const glitterPositions = [...Array(30)].map(() => ({
+  left: `${Math.random() * 100}%`,
+  top: `${Math.random() * 100}%`,
+  delay: `${Math.random() * 2}s`,
+}));
+
+const starPositions = [...Array(8)].map(() => ({
+  left: `${Math.random() * 100}%`,
+  top: `${Math.random() * 100}%`,
+  delay: `${Math.random() * 0.3}s`,
+}));
+
 const Firework = ({ style }: { style: React.CSSProperties }) => (
   <motion.div
     initial={{ scale: 0, opacity: 1 }}
@@ -65,22 +83,6 @@ const Star = ({ style }: { style: React.CSSProperties }) => (
   >
     <Sparkle className="w-6 h-6" />
   </motion.div>
-);
-
-const Bubble = ({ style }: { style: React.CSSProperties }) => (
-  <motion.div
-    initial={{ y: 0, opacity: 1 }}
-    animate={{
-      y: -100,
-      opacity: [1, 0],
-    }}
-    transition={{
-      duration: 1,
-      ease: "easeOut",
-    }}
-    className="absolute w-2 h-2 bg-yellow-200 rounded-full"
-    style={style}
-  />
 );
 
 const Glitter = ({ style }: { style: React.CSSProperties }) => (
@@ -127,6 +129,11 @@ const AskMe = () => {
   const [showCelebration, setShowCelebration] = useState(false);
   const { isVisible, setIsVisible } = useAskMeVisibility();
 
+  // Optimize by pre-selecting a random response
+  const getRandomResponse = () => {
+    return funResponses[Math.floor(Math.random() * funResponses.length)];
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!question.trim()) return;
@@ -134,24 +141,22 @@ const AskMe = () => {
     setIsAnimating(true);
     setShowCelebration(true);
     
+    // Reduce timeout duration for faster response
     setTimeout(() => {
-      const randomResponse = funResponses[Math.floor(Math.random() * funResponses.length)];
-      setResponse(randomResponse);
+      setResponse(getRandomResponse());
       setIsAnimating(false);
       
       setTimeout(() => {
         setShowCelebration(false);
-      }, 2000);
-    }, 1000);
+      }, 1500); // Reduced from 2000ms to 1500ms
+    }, 500); // Reduced from 1000ms to 500ms
   };
 
+  // Use simpler animation for modal entry/exit
   return (
-    <AnimatePresence>
+    <AnimatePresence mode="wait">
       {isVisible && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
+        <div
           className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm"
           onClick={(e) => {
             if (e.target === e.currentTarget) {
@@ -161,9 +166,10 @@ const AskMe = () => {
         >
           <motion.div
             className="w-full max-w-2xl bg-secondary p-8 rounded-2xl relative"
-            initial={{ scale: 0.9, opacity: 0 }}
+            initial={{ scale: 0.95, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.9, opacity: 0 }}
+            exit={{ scale: 0.95, opacity: 0 }}
+            transition={{ duration: 0.2 }} // Faster transition
             onClick={(e) => e.stopPropagation()}
           >
             <button
@@ -179,34 +185,31 @@ const AskMe = () => {
               <AnimatePresence>
                 {showCelebration && (
                   <>
-                    {[...Array(12)].map((_, i) => (
+                    {fireworkPositions.map((position, i) => (
                       <Firework
                         key={`firework-${i}`}
-                        style={{
-                          left: `${Math.random() * 100}%`,
-                          top: `${Math.random() * 100}%`,
-                        }}
+                        style={position}
                       />
                     ))}
                     
-                    {[...Array(30)].map((_, i) => (
+                    {glitterPositions.map((position, i) => (
                       <Glitter
                         key={`glitter-${i}`}
                         style={{
-                          left: `${Math.random() * 100}%`,
-                          top: `${Math.random() * 100}%`,
-                          animationDelay: `${Math.random() * 2}s`,
+                          left: position.left,
+                          top: position.top,
+                          animationDelay: position.delay,
                         }}
                       />
                     ))}
                     
-                    {[...Array(8)].map((_, i) => (
+                    {starPositions.map((position, i) => (
                       <Star
                         key={`star-${i}`}
                         style={{
-                          left: `${Math.random() * 100}%`,
-                          top: `${Math.random() * 100}%`,
-                          animationDelay: `${Math.random() * 0.3}s`,
+                          left: position.left,
+                          top: position.top,
+                          animationDelay: position.delay,
                         }}
                       />
                     ))}
@@ -226,6 +229,7 @@ const AskMe = () => {
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
+                    transition={{ duration: 0.1 }} // Faster button animation
                     type="submit"
                     className="bg-accent text-white p-3 rounded-xl flex items-center justify-center"
                   >
@@ -236,8 +240,9 @@ const AskMe = () => {
 
               {response && (
                 <motion.div
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 10 }} // Reduced y distance
                   animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.2 }} // Faster transition
                   className="mt-8 bg-white/5 p-6 rounded-xl"
                 >
                   <div className="flex items-start gap-4">
@@ -250,7 +255,7 @@ const AskMe = () => {
               )}
             </div>
           </motion.div>
-        </motion.div>
+        </div>
       )}
     </AnimatePresence>
   );
