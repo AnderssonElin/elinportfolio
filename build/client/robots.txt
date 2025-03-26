@@ -1,0 +1,6 @@
+# Allow all search engines to index all content
+User-agent: *
+Allow: /
+
+# Sitemap file
+Sitemap: https://elinportfolio.se/sitemap.xml 

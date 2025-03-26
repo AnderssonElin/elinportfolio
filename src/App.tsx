@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -11,6 +10,7 @@ import { AskMeProvider } from "./components/AskMe";
 import ViewportHeightFix from "./components/ViewportHeightFix";
 import { CoinCounterProvider } from "./context/CoinCounterContext";
 import { CVPopupProvider } from "./components/CVPopup";
+// import SchemaOrg from "./components/SchemaOrg"; // Uncomment after installing react-helmet
 
 const queryClient = new QueryClient();
 
@@ -23,6 +23,14 @@ const App = () => (
             <ViewportHeightFix />
             <Toaster />
             <Sonner />
+            {/* 
+            <SchemaOrg 
+              url="https://elinportfolio.se"
+              title="Elin - Business Intelligence Analyst Portfolio"
+              description="Explore Elin's Business Intelligence Analyst portfolio showcasing expertise in Power BI, SQL, Python, and data visualization."
+              imageUrl="/images/og-image.png"
+            />
+            */}
             <BrowserRouter>
               <Header />
               <Routes>
